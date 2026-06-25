@@ -1012,6 +1012,118 @@
   align-items: start;
 }
 
+.method-shell {
+  width: min(1660px, calc(100vw - 16px));
+}
+
+.method-shell .brand-block span {
+  font-size: 12px;
+}
+
+.method-nav {
+  grid-template-columns: repeat(auto-fit, minmax(126px, 1fr));
+}
+
+.method-grid,
+.case-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.method-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.case-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.method-card,
+.code-panel,
+.fbd-panel {
+  padding: 12px;
+  border: 1px solid #b8c5d6;
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.method-card h3,
+.code-panel h3,
+.fbd-panel h3 {
+  margin: 0 0 8px;
+  color: #1e293b;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.method-card p,
+.code-panel p,
+.fbd-panel p {
+  margin: 0;
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.method-card code {
+  color: #1d4ed8;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.code-panel {
+  overflow-x: auto;
+}
+
+.code-panel pre {
+  min-width: 520px;
+  margin: 0 0 10px;
+  padding: 10px;
+  border: 1px solid #b8c5d6;
+  border-radius: 6px;
+  background: #0b1220;
+  color: #dbeafe;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.fbd-flow {
+  display: grid;
+  grid-template-columns: minmax(100px, 1fr) 82px minmax(120px, 1fr) 82px minmax(90px, 0.8fr);
+  gap: 8px;
+  align-items: center;
+  min-width: 560px;
+  margin-bottom: 8px;
+}
+
+.fbd-flow span,
+.fbd-flow b {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 7px 8px;
+  border: 1px solid #b8c5d6;
+  border-radius: 5px;
+  color: #0f172a;
+  font-size: 11px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.fbd-flow b {
+  border-color: #67e8f9;
+  background: #ecfeff;
+  color: #0e7490;
+}
+
+.fbd-panel {
+  overflow-x: auto;
+}
+
 .mode-grid,
 .process-lad-grid {
   display: grid;
@@ -1119,6 +1231,8 @@
   .industrial-intro-grid,
   .brand-grid,
   .compare-grid,
+  .method-grid,
+  .case-grid,
   .mode-grid,
   .robust-grid,
   .language-grid {
@@ -1130,6 +1244,10 @@
   }
 
   .oil-nav {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  .method-nav {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   }
 }
@@ -1149,6 +1267,14 @@
   }
 
   .oil-nav {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .method-shell {
+    width: min(100vw - 20px, 720px);
+  }
+
+  .method-nav {
     grid-template-columns: 1fr 1fr;
   }
 

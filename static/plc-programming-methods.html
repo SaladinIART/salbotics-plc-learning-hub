@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PLC Trainer - Programming Methods</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="stylesheet" href="/static/guide.css" />
+  </head>
+  <body>
+    <div class="app-shell guide-shell industrial-shell method-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <strong>PLC TRAINER</strong>
+          <span>PROGRAMMING METHODS</span>
+        </div>
+        <div class="top-actions">
+          <a class="connection-pill guide-back" href="/">SIMULATOR PANEL</a>
+          <a class="header-link" href="/static/how-it-works.html">HOW IT WORKS</a>
+          <a class="header-link" href="/static/oil-palm-industrial-environment.html">OIL PALM PLANT</a>
+        </div>
+        <div class="status-strip guide-status-strip">
+          <div class="status-item"><span>Start</span><strong>FLOW</strong></div>
+          <div class="status-item"><span>First Code</span><strong>LAD</strong></div>
+          <div class="status-item"><span>Compare</span><strong>ST/FBD/SFC</strong></div>
+          <div class="status-item"><span>Cases</span><strong>3</strong></div>
+        </div>
+      </header>
+
+      <main class="guide-main">
+        <section class="panel lesson-panel intro-panel industrial-intro">
+          <div class="panel-heading">
+            <h1>How To Write A Reliable PLC Program From Scratch</h1>
+            <span>flowcharts first, Ladder first, then choose the right language for each job</span>
+          </div>
+          <div class="intro-grid industrial-intro-grid">
+            <div>
+              <h2>Core idea</h2>
+              <p>
+                Reliable PLC programming is not typing rungs quickly. It is turning a real machine
+                into a clear control story: modes, states, permissives, interlocks, alarms, outputs,
+                recovery, tests, and documentation. Flowchart first, code second.
+              </p>
+            </div>
+            <div class="safety-note">
+              <h2>Important boundary</h2>
+              <p>
+                Normal PLC application code is not a substitute for a certified safety system. Emergency
+                stops, guard locks, boiler trips, pressure protection, and high-risk motion require risk
+                assessment, certified components, and qualified engineering review.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <nav class="scenario-nav industrial-nav method-nav" aria-label="PLC programming methods sections">
+          <a href="#scratch-method">Scratch Method</a>
+          <a href="#flowcharts">Flowcharts</a>
+          <a href="#lad-structure">Reliable LAD</a>
+          <a href="#languages">Languages</a>
+          <a href="#limits">CPU Limits</a>
+          <a href="#case-conveyor">Case 1</a>
+          <a href="#case-sterilizer">Case 2</a>
+          <a href="#case-clarifier">Case 3</a>
+          <a href="#checklist">Checklist</a>
+        </nav>
+
+        <section id="scratch-method" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>1. Reliable Program Method From Scratch</h2>
+            <span>the order matters more than the software brand</span>
+          </div>
+          <div class="diagram-panel">
+            <svg class="process-svg method-svg" viewBox="0 0 1180 430" role="img" aria-labelledby="scratch-title">
+              <title id="scratch-title">Reliable PLC program development flow</title>
+              <defs>
+                <marker id="arrow-method" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"></path>
+                </marker>
+              </defs>
+              <rect x="18" y="24" width="1144" height="340" rx="12" class="svg-bg"></rect>
+              <g class="flow-node raw" transform="translate(44 80)"><rect width="150" height="86" rx="8"></rect><text x="75" y="30">1. Scope</text><text x="75" y="56">machine boundary</text></g>
+              <g class="flow-node steam" transform="translate(226 80)"><rect width="150" height="86" rx="8"></rect><text x="75" y="30">2. Hazards</text><text x="75" y="56">safe states</text></g>
+              <g class="flow-node mech" transform="translate(408 80)"><rect width="150" height="86" rx="8"></rect><text x="75" y="30">3. I/O</text><text x="75" y="56">tags + types</text></g>
+              <g class="flow-node heat" transform="translate(590 80)"><rect width="150" height="86" rx="8"></rect><text x="75" y="30">4. Modes</text><text x="75" y="56">manual/semi/auto</text></g>
+              <g class="flow-node motor" transform="translate(772 80)"><rect width="150" height="86" rx="8"></rect><text x="75" y="30">5. States</text><text x="75" y="56">flowchart</text></g>
+              <g class="flow-node clean" transform="translate(954 80)"><rect width="150" height="86" rx="8"></rect><text x="75" y="30">6. Rungs</text><text x="75" y="56">LAD/ST/FBD</text></g>
+              <line x1="194" y1="123" x2="226" y2="123" class="flow-branch" marker-end="url(#arrow-method)"></line>
+              <line x1="376" y1="123" x2="408" y2="123" class="flow-branch" marker-end="url(#arrow-method)"></line>
+              <line x1="558" y1="123" x2="590" y2="123" class="flow-branch" marker-end="url(#arrow-method)"></line>
+              <line x1="740" y1="123" x2="772" y2="123" class="flow-branch" marker-end="url(#arrow-method)"></line>
+              <line x1="922" y1="123" x2="954" y2="123" class="flow-branch" marker-end="url(#arrow-method)"></line>
+              <g class="flow-node water" transform="translate(136 240)"><rect width="176" height="74" rx="8"></rect><text x="88" y="30">7. Simulate</text><text x="88" y="52">force-less test</text></g>
+              <g class="flow-node water" transform="translate(374 240)"><rect width="176" height="74" rx="8"></rect><text x="88" y="30">8. FAT</text><text x="88" y="52">expected behavior</text></g>
+              <g class="flow-node water" transform="translate(612 240)"><rect width="176" height="74" rx="8"></rect><text x="88" y="30">9. Commission</text><text x="88" y="52">loop checks</text></g>
+              <g class="flow-node water" transform="translate(850 240)"><rect width="176" height="74" rx="8"></rect><text x="88" y="30">10. Maintain</text><text x="88" y="52">backup + logs</text></g>
+              <line x1="1018" y1="166" x2="938" y2="240" class="flow-branch" marker-end="url(#arrow-method)"></line>
+              <line x1="850" y1="277" x2="788" y2="277" class="flow-branch" marker-end="url(#arrow-method)"></line>
+              <line x1="612" y1="277" x2="550" y2="277" class="flow-branch" marker-end="url(#arrow-method)"></line>
+              <line x1="374" y1="277" x2="312" y2="277" class="flow-branch" marker-end="url(#arrow-method)"></line>
+              <text x="590" y="386" class="svg-center">Do not start with outputs. Start with safe states, then build readable logic around them.</text>
+            </svg>
+          </div>
+          <div class="method-grid">
+            <div class="method-card"><h3>Define safe state</h3><p>For every output, write what it must do when stopped, faulted, E-stop active, comms lost, or mode changes.</p></div>
+            <div class="method-card"><h3>Separate mode ownership</h3><p>Manual, semi-auto, and auto should not fight for the same output. Make one command arbitration rung.</p></div>
+            <div class="method-card"><h3>Name the truth</h3><p>Use tags like <code>CV101_DownstreamReady</code>, <code>Press_LubeOk</code>, and <code>Ster_CycleStep</code> instead of mystery bits.</p></div>
+            <div class="method-card"><h3>Build small blocks</h3><p>One motor block, one valve block, one analog scaling block, one station sequence. Reuse instead of copying chaos.</p></div>
+            <div class="method-card"><h3>Alarm as sentences</h3><p>Alarm text should tell source, condition, and action: "CV101 blocked chute - inspect discharge before reset".</p></div>
+            <div class="method-card"><h3>Test before site pressure</h3><p>Create a test matrix for every state, interlock, permissive, fault, reset, and abnormal sensor condition.</p></div>
+          </div>
+        </section>
+
+        <section id="flowcharts" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>2. Flowcharts Before Ladder</h2>
+            <span>flowchart is the machine story; Ladder is only one expression of it</span>
+          </div>
+          <div class="compare-grid">
+            <div class="diagram-panel">
+              <svg class="process-svg mini-flow-svg" viewBox="0 0 900 430" role="img" aria-labelledby="flow-title">
+                <title id="flow-title">Generic machine flowchart</title>
+                <defs><marker id="arrow-flow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"></path></marker></defs>
+                <rect x="18" y="20" width="864" height="370" rx="12" class="svg-bg"></rect>
+                <g class="flow-node raw" transform="translate(70 54)"><rect width="180" height="70" rx="8"></rect><text x="90" y="30">STOPPED</text><text x="90" y="50">all outputs safe</text></g>
+                <g class="flow-node steam" transform="translate(360 54)"><rect width="180" height="70" rx="8"></rect><text x="90" y="30">READY?</text><text x="90" y="50">permissives OK</text></g>
+                <g class="flow-node motor" transform="translate(650 54)"><rect width="180" height="70" rx="8"></rect><text x="90" y="30">STARTING</text><text x="90" y="50">timed sequence</text></g>
+                <g class="flow-node mech" transform="translate(650 188)"><rect width="180" height="70" rx="8"></rect><text x="90" y="30">RUNNING</text><text x="90" y="50">monitor faults</text></g>
+                <g class="flow-node heat" transform="translate(360 188)"><rect width="180" height="70" rx="8"></rect><text x="90" y="30">STOPPING</text><text x="90" y="50">cleanout delay</text></g>
+                <g class="flow-node clean" transform="translate(70 188)"><rect width="180" height="70" rx="8"></rect><text x="90" y="30">FAULTED</text><text x="90" y="50">latched alarm</text></g>
+                <line x1="250" y1="89" x2="360" y2="89" class="flow-branch" marker-end="url(#arrow-flow)"></line>
+                <line x1="540" y1="89" x2="650" y2="89" class="flow-branch" marker-end="url(#arrow-flow)"></line>
+                <line x1="740" y1="124" x2="740" y2="188" class="flow-branch" marker-end="url(#arrow-flow)"></line>
+                <line x1="650" y1="223" x2="540" y2="223" class="flow-branch" marker-end="url(#arrow-flow)"></line>
+                <line x1="360" y1="223" x2="250" y2="223" class="flow-branch" marker-end="url(#arrow-flow)"></line>
+                <path d="M160 188 C160 150, 160 150, 160 124" class="flow-branch" marker-end="url(#arrow-flow)"></path>
+                <path d="M650 230 C420 340, 245 320, 160 258" class="flow-branch" marker-end="url(#arrow-flow)"></path>
+                <text x="450" y="344" class="svg-center">Fault can happen from any active state. Reset returns to stopped, not directly to running.</text>
+              </svg>
+            </div>
+            <div class="mini-table">
+              <h3>Flowchart rules</h3>
+              <table>
+                <tbody>
+                  <tr><th>One state owns action</th><td>Do not let two states command the same output in different rungs.</td></tr>
+                  <tr><th>Transitions are conditions</th><td>Write exact conditions for moving from one state to another.</td></tr>
+                  <tr><th>Fault path is explicit</th><td>Every running state must say what fault means and how reset works.</td></tr>
+                  <tr><th>Timers live in states</th><td>Start timers only when the state is active, then use done bits as transitions.</td></tr>
+                  <tr><th>Manual is separate</th><td>Manual commands share interlocks, but should not corrupt auto sequence steps.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="lad-structure" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>3. Reliable Ladder Structure</h2>
+            <span>recommended rung order for maintainable LAD</span>
+          </div>
+          <div class="wide-table">
+            <table>
+              <thead>
+                <tr><th>Program section</th><th>Purpose</th><th>Beginner rule</th><th>Example tags</th></tr>
+              </thead>
+              <tbody>
+                <tr><th>Input map</th><td>Copy raw inputs into named internal bits.</td><td>Never scatter raw addresses across logic.</td><td>I0.4 -> CV101_ZeroSpeedRaw</td></tr>
+                <tr><th>Debounce/filter</th><td>Clean noisy switches or analog thresholds.</td><td>Use timers for field signals that chatter.</td><td>ChuteHigh_Filtered</td></tr>
+                <tr><th>Mode logic</th><td>Choose manual, semi-auto, auto ownership.</td><td>One mode active at a time.</td><td>ManualMode, AutoMode</td></tr>
+                <tr><th>Permissives</th><td>Prove the machine is allowed to run.</td><td>Permissive bits should be visible on HMI.</td><td>DownstreamReady, LubeOk</td></tr>
+                <tr><th>Sequence</th><td>Step/state machine and timers.</td><td>One step coil active, clear transition rules.</td><td>Step_Starting, Step_Running</td></tr>
+                <tr><th>Commands</th><td>Build output requests from modes and sequence.</td><td>Use command bits before real outputs.</td><td>CV101_RunCmd</td></tr>
+                <tr><th>Faults/alarms</th><td>Latch abnormal conditions and reset rules.</td><td>Reset only after the cause is gone.</td><td>Alm_CV101_BeltSlip</td></tr>
+                <tr><th>Output map</th><td>Write final physical outputs in one place.</td><td>Last section wins, easy to audit.</td><td>Q0.2 := CV101_RunCmd</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="ladder-diagram" aria-label="Reliable Ladder skeleton">
+            <h3>LAD Skeleton</h3>
+            <div class="ladder-row active"><span class="rung-id">L001</span><div class="ladder-track"><span class="ld-contact">RAW_START_PB</span><span class="ld-coil">StartPb</span></div><p>Map raw input to a readable tag.</p></div>
+            <div class="ladder-row"><span class="rung-id">L020</span><div class="ladder-track"><span class="ld-contact">AutoMode</span><span class="ld-contact">SafetyOk</span><span class="ld-contact">DownstreamReady</span><span class="ld-coil">StationPermissive</span></div><p>Build readable permissive bits.</p></div>
+            <div class="ladder-row"><span class="rung-id">L040</span><div class="ladder-track"><span class="ld-contact">Step_Start</span><span class="ld-timer">T_StartDelay 2s</span><span class="ld-coil">Step_Run</span></div><p>Step transition is visible and timed.</p></div>
+            <div class="ladder-row danger"><span class="rung-id">L090</span><div class="ladder-track"><span class="ld-contact">FaultActive</span><span class="ld-coil reset">RST RunCmd</span><span class="ld-coil danger">AlarmHorn</span></div><p>Fault section removes command and announces it.</p></div>
+          </div>
+        </section>
+
+        <section id="languages" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>4. PLC Programming Languages And Modern Approaches</h2>
+            <span>LAD is not old-fashioned; it is one tool in a mixed toolkit</span>
+          </div>
+          <div class="wide-table">
+            <table>
+              <thead>
+                <tr><th>Technique</th><th>Best use</th><th>Why use it</th><th>When not to use it</th></tr>
+              </thead>
+              <tbody>
+                <tr><th>LAD / LD</th><td>Discrete interlocks, motors, valves, alarms, permissives, maintenance logic.</td><td>Electricians and technicians can read it online during downtime.</td><td>Large math, arrays, parsing, recipe loops, complex data handling.</td></tr>
+                <tr><th>FBD</th><td>Analog processing, PID, signal conditioning, reusable function blocks.</td><td>Shows signal flow clearly from input to block to output.</td><td>Long sequential logic or many branching states.</td></tr>
+                <tr><th>ST / Structured Text</th><td>Math, scaling, arrays, recipes, loops, sorting, string/data manipulation.</td><td>Compact and powerful for algorithmic logic.</td><td>Simple interlocks that maintenance must troubleshoot quickly.</td></tr>
+                <tr><th>SFC</th><td>Batch cycles, step sequences, sterilizer phases, start/stop trains.</td><td>Matches flowcharts and makes active step obvious.</td><td>Pure combinational interlock logic or very small machines.</td></tr>
+                <tr><th>CFC/vendor block diagrams</th><td>Continuous process control and custom vendor libraries.</td><td>Flexible block placement and process-style signal tracing.</td><td>If target PLC does not support it or portability matters.</td></tr>
+                <tr><th>Function Blocks/AOI/FB libraries</th><td>Standard motors, valves, analog instruments, VFDs, alarms.</td><td>Reusable tested behavior reduces copy-paste bugs.</td><td>If hidden block internals make troubleshooting impossible.</td></tr>
+                <tr><th>UDT/OOP style</th><td>Large programs with repeated equipment, recipes, and structured data.</td><td>Encapsulates equipment data and supports scalable architecture.</td><td>Very small PLCs or teams not trained to maintain it.</td></tr>
+                <tr><th>IEC 61499/event-driven/distributed</th><td>Distributed control research, modular cyber-physical systems, multi-device applications.</td><td>Application-centric and event-driven instead of only cyclic scan thinking.</td><td>Most plant maintenance teams still live in IEC 61131-3 tools.</td></tr>
+                <tr><th>Simulation/formal verification/AI assist</th><td>Testing properties, finding state bugs, documentation, conversion support.</td><td>Helps catch unreachable steps, conflicting outputs, or missing transitions earlier.</td><td>Do not trust generated logic blindly; engineer reviews and site tests remain mandatory.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="limits" class="panel scenario-panel danger-scenario">
+          <div class="panel-heading">
+            <h2>5. Hardware Processing Limits Shape The Programming Style</h2>
+            <span>scan time, memory, watchdog, I/O update, and online troubleshooting matter</span>
+          </div>
+          <div class="robust-grid">
+            <div class="robust-item"><h3>Scan time</h3><p>Every extra rung, loop, communication call, and calculation adds work. Slow scans can miss short pulses or make control feel late.</p></div>
+            <div class="robust-item"><h3>Watchdog</h3><p>Loops in ST must be bounded. A bad loop can exceed watchdog time and fault the controller.</p></div>
+            <div class="robust-item"><h3>Memory</h3><p>Small PLCs may have limited program memory, retentive memory, timers, counters, and data tables.</p></div>
+            <div class="robust-item"><h3>Analog math</h3><p>Floating point, filters, and PID blocks may be heavier on older CPUs. Use fixed-point or scaled integers when appropriate.</p></div>
+            <div class="robust-item"><h3>Communication load</h3><p>HMI, SCADA, VFD networks, MQTT gateways, and remote I/O can affect update rates and diagnostics.</p></div>
+            <div class="robust-item"><h3>Maintainability</h3><p>The fastest code is not always the best plant code. A readable rung during a 2 AM breakdown is worth a lot.</p></div>
+          </div>
+        </section>
+
+        <section id="case-conveyor" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>Case Study 1: Conveyor Train</h2>
+            <span>best default: LAD for interlocks, SFC for sequence, ST only for counters/data</span>
+          </div>
+          <div class="case-grid">
+            <div class="ladder-diagram compact-lad">
+              <h3>LAD version</h3>
+              <div class="ladder-row active"><span class="rung-id">CV01</span><div class="ladder-track"><span class="ld-contact">AUTO_MODE</span><span class="ld-contact">CV102_RUNNING</span><span class="ld-contact">CHUTE_CLEAR</span><span class="ld-contact nc">/PULL_CORD</span><span class="ld-coil">CV101_RUN</span></div><p>Readable for maintenance: downstream, chute, pull-cord, run.</p></div>
+              <div class="ladder-row danger"><span class="rung-id">CV02</span><div class="ladder-track"><span class="ld-contact">CV101_RUN</span><span class="ld-contact nc">/ZERO_SPEED</span><span class="ld-timer">T_ZS 3s</span><span class="ld-coil danger">ALM_ZERO_SPEED</span></div><p>Missing rotation after command becomes a fault.</p></div>
+            </div>
+            <div class="code-panel">
+              <h3>ST version</h3>
+              <pre><code>CV101_Run := AutoMode
+  AND CV102_Running
+  AND ChuteClear
+  AND NOT PullCord;
+
+IF CV101_Run AND NOT ZeroSpeed THEN
+  ZeroSpeedTimer(IN := TRUE, PT := T#3s);
+ELSE
+  ZeroSpeedTimer(IN := FALSE);
+END_IF;
+
+Alm_ZeroSpeed := ZeroSpeedTimer.Q;</code></pre>
+              <p>ST is compact, but technicians may prefer the LAD view for fault tracing.</p>
+            </div>
+            <div class="mini-table">
+              <h3>Decision</h3>
+              <table><tbody>
+                <tr><th>Use LAD</th><td>Motor starters, conveyors, interlocks, alarms.</td></tr>
+                <tr><th>Use SFC</th><td>Long start sequence: CV103, CV102, CV101, feeder.</td></tr>
+                <tr><th>Use ST</th><td>Production counters, runtime totals, shift statistics.</td></tr>
+              </tbody></table>
+            </div>
+          </div>
+        </section>
+
+        <section id="case-sterilizer" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>Case Study 2: Sterilizer Batch Cycle</h2>
+            <span>best default: SFC or state machine, with LAD safety/permissive rungs</span>
+          </div>
+          <div class="case-grid">
+            <div class="mini-table">
+              <h3>SFC steps</h3>
+              <table><tbody>
+                <tr><th>Step 0</th><td>Idle: doors unlocked only when pressure safe.</td></tr>
+                <tr><th>Step 1</th><td>Load cage and confirm door closed/locked.</td></tr>
+                <tr><th>Step 2</th><td>Steam fill until pressure setpoint.</td></tr>
+                <tr><th>Step 3</th><td>Hold timer while pressure/temperature valid.</td></tr>
+                <tr><th>Step 4</th><td>Exhaust and drain condensate.</td></tr>
+                <tr><th>Step 5</th><td>Complete: unlock only below safe pressure.</td></tr>
+              </tbody></table>
+            </div>
+            <div class="ladder-diagram compact-lad">
+              <h3>LAD interlock version</h3>
+              <div class="ladder-row active"><span class="rung-id">ST01</span><div class="ladder-track"><span class="ld-contact">STEP_STEAM_FILL</span><span class="ld-contact">DOOR_LOCKED</span><span class="ld-contact nc">/PRESS_HH</span><span class="ld-coil">STEAM_INLET</span></div><p>Critical permissive is readable as a rung.</p></div>
+              <div class="ladder-row danger"><span class="rung-id">ST02</span><div class="ladder-track"><span class="ld-contact">PRESS_HH</span><span class="ld-coil reset">RST STEAM_INLET</span><span class="ld-coil danger">ALM_PRESS_HH</span></div><p>High-high pressure blocks steam inlet.</p></div>
+            </div>
+            <div class="code-panel">
+              <h3>ST state machine version</h3>
+              <pre><code>CASE SterStep OF
+  0: IF StartCycle AND DoorLocked THEN SterStep := 10; END_IF;
+  10: IF PressurePV >= PressureSP THEN SterStep := 20; END_IF;
+  20: HoldTimer(IN := TRUE, PT := RecipeHoldTime);
+      IF HoldTimer.Q THEN SterStep := 30; END_IF;
+  30: IF PressurePV <= SafePressure THEN SterStep := 40; END_IF;
+  40: CycleComplete := TRUE;
+END_CASE;</code></pre>
+              <p>ST is good for state machines, but keep dangerous interlocks visible in LAD too.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="case-clarifier" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>Case Study 3: Clarifier Temperature And Oil Transfer</h2>
+            <span>best default: FBD for analog/PID, ST for scaling, LAD for permissives</span>
+          </div>
+          <div class="case-grid">
+            <div class="code-panel">
+              <h3>ST scaling</h3>
+              <pre><code>// 4-20mA raw count to engineering units
+TempPV := ((RawAI - Raw4mA) * (TempMax - TempMin)
+          / (Raw20mA - Raw4mA)) + TempMin;
+
+SensorFault := RawAI < RawUnderRange OR RawAI > RawOverRange;</code></pre>
+              <p>ST keeps analog scaling readable and reusable.</p>
+            </div>
+            <div class="fbd-panel">
+              <h3>FBD / block idea</h3>
+              <div class="fbd-flow">
+                <span>TempPV</span><b>PID</b><span>SteamValveAO</span><b>LIMIT</b><span>0-100%</span>
+              </div>
+              <div class="fbd-flow">
+                <span>LevelPV</span><b>HI/LO</b><span>PumpPermissive</span><b>AND</b><span>TransferRun</span>
+              </div>
+              <p>FBD makes analog signal flow and PID blocks easier to see.</p>
+            </div>
+            <div class="ladder-diagram compact-lad">
+              <h3>LAD permissive</h3>
+              <div class="ladder-row active"><span class="rung-id">CL01</span><div class="ladder-track"><span class="ld-contact">TempOk</span><span class="ld-contact">LevelOk</span><span class="ld-contact nc">/SensorFault</span><span class="ld-coil">ClarifierReady</span></div><p>Final ready/permissive remains simple and visible.</p></div>
+              <div class="ladder-row danger"><span class="rung-id">CL02</span><div class="ladder-track"><span class="ld-contact">TankHighHigh</span><span class="ld-coil reset">RST TransferRun</span><span class="ld-coil danger">Alm_TankHH</span></div><p>High-high level blocks transfer regardless of analog strategy.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="checklist" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>9. Final Checklist Before Writing Or Downloading Code</h2>
+            <span>use this before touching a live PLC</span>
+          </div>
+          <div class="wide-table">
+            <table>
+              <thead><tr><th>Check</th><th>Question</th><th>Evidence</th></tr></thead>
+              <tbody>
+                <tr><th>Scope</th><td>What machine/station does this program own?</td><td>Boundary drawing and I/O list.</td></tr>
+                <tr><th>Safe state</th><td>What happens on stop, fault, power loss, comms loss?</td><td>Output safe-state table.</td></tr>
+                <tr><th>Modes</th><td>How do manual, semi-auto, and auto differ?</td><td>Mode matrix and command arbitration rung.</td></tr>
+                <tr><th>Sequence</th><td>Can every step be drawn as a flowchart?</td><td>Step/transition chart.</td></tr>
+                <tr><th>Alarms</th><td>Can an operator understand what to inspect?</td><td>Alarm list with source/cause/action.</td></tr>
+                <tr><th>Tests</th><td>Have abnormal paths been tested, not only normal run?</td><td>FAT/SAT checklist and signoff.</td></tr>
+                <tr><th>Backup</th><td>Can the next technician recover the project?</td><td>PLC/HMI/VFD backups and revision notes.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="source-strip">
+            <span>Reference examples:</span>
+            <a href="https://webstore.iec.ch/">IEC 61131 / IEC 61499</a>
+            <a href="https://plcopen.org/">PLCopen</a>
+            <a href="https://opcfoundation.org/about/opc-technologies/opc-ua/">OPC UA</a>
+            <a href="https://mqtt.org/">MQTT</a>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

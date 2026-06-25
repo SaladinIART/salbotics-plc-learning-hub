@@ -18,6 +18,7 @@ def test_root_serves_industrial_trainer_ui() -> None:
     assert "/static/how-it-works.html" in html
     assert "/static/industrial-situations.html" in html
     assert "/static/oil-palm-industrial-environment.html" in html
+    assert "/static/plc-programming-methods.html" in html
 
 
 def test_how_it_works_page_serves_ladder_scenarios() -> None:
@@ -34,6 +35,7 @@ def test_how_it_works_page_serves_ladder_scenarios() -> None:
     assert "Full Ladder View" in html
     assert "ladder-diagram" in html
     assert "/static/industrial-situations.html" in html
+    assert "/static/plc-programming-methods.html" in html
     assert static_response.status_code == 200
     assert "How This PLC Trainer Works" in static_response.text
 
@@ -55,6 +57,7 @@ def test_industrial_situations_page_serves_realistic_training_scenarios() -> Non
     assert "Robust System Design" in html
     assert "troubleshooting" in html.lower()
     assert "/static/oil-palm-industrial-environment.html" in html
+    assert "/static/plc-programming-methods.html" in html
     assert static_response.status_code == 200
     assert "Industrial Situations" in static_response.text
 
@@ -94,6 +97,7 @@ def test_oil_palm_pages_serve_process_and_stack_training() -> None:
     assert "Handling LAD" in plant_html
     assert "Screw Press" in plant_html
     assert "Boiler / Steam / POME Support" in plant_html
+    assert "/static/plc-programming-methods.html" in plant_html
     assert "<svg" in plant_html
     assert "/static/oil-palm-control-stack-analysis.html" in plant_html
 
@@ -108,6 +112,33 @@ def test_oil_palm_pages_serve_process_and_stack_training() -> None:
     assert "small" in analysis_html.lower()
     assert "medium" in analysis_html.lower()
     assert "large" in analysis_html.lower()
+    assert "/static/plc-programming-methods.html" in analysis_html
+
+
+def test_plc_programming_methods_page_serves_reliable_programming_guide() -> None:
+    app = create_app(start_background=False)
+    with TestClient(app) as client:
+        response = client.get("/plc-programming-methods")
+        static_response = client.get("/static/plc-programming-methods.html")
+
+    assert response.status_code == 200
+    assert static_response.status_code == 200
+    html = response.text
+    assert "How To Write A Reliable PLC Program From Scratch" in html
+    assert "Flowcharts Before Ladder" in html
+    assert "Reliable Ladder Structure" in html
+    assert "LAD / LD" in html
+    assert "FBD" in html
+    assert "Structured Text" in html
+    assert "SFC" in html
+    assert "IEC 61131" in html
+    assert "IEC 61499" in html
+    assert "Conveyor Train" in html
+    assert "Sterilizer Batch Cycle" in html
+    assert "Clarifier Temperature" in html
+    assert "scan time" in html.lower()
+    assert "<svg" in html
+    assert "<pre><code>" in html
 
 
 def test_static_assets_are_served() -> None:
@@ -126,3 +157,4 @@ def test_static_assets_are_served() -> None:
     assert "industrial-nav" in guide_styles.text
     assert "process-svg" in guide_styles.text
     assert "process-lad-grid" in guide_styles.text
+    assert "method-nav" in guide_styles.text
