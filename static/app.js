@@ -63,9 +63,9 @@ function renderIoRows(rows, containerId, writable) {
   const container = qs(containerId);
   container.innerHTML = `
     <div class="io-row io-head">
-      <span>Address</span>
+      <span>Addr</span>
       <span>Name</span>
-      <span>Description</span>
+      <span>Desc</span>
       <span>State</span>
     </div>
   `;
@@ -176,13 +176,27 @@ function renderTimers(timers) {
   qs("#target-value").textContent = `${timers.phase_target_s.toFixed(1)}s`;
   qs("#remaining-value").textContent = `${timers.phase_remaining_s.toFixed(1)}s`;
   qs("#scan-time-value").textContent = `${timers.scan_interval_ms}ms`;
+  qs("#scan-time-header").textContent = `${timers.scan_interval_ms}ms`;
   qs("#scan-value").textContent = String(timers.scan_count);
+}
+
+function renderClock() {
+  const now = new Date();
+  qs("#clock-value").textContent = now.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
 }
 
 function render(state) {
   latestState = state;
+  document.body.dataset.mode = state.mode;
   qs("#mode-value").textContent = state.mode.toUpperCase();
   qs("#phase-value").textContent = state.phase;
+  qs("#night-value").textContent = state.inputs.NIGHT_MODE ? "ON" : "OFF";
+  qs("#plc-status").textContent = state.registers.FAULT_ACTIVE ? "PLC FAULT" : "PLC CONNECTED";
+  renderClock();
   renderTimers(state.timers);
   renderIoRows(state.input_rows || fallbackRows(state.inputs), "#input-list", true);
   renderIoRows(state.output_rows || fallbackRows(state.outputs), "#output-list", false);
@@ -219,6 +233,7 @@ document.querySelectorAll("[data-command]").forEach((button) => {
 
 poll();
 pollHandle = window.setInterval(poll, 500);
+window.setInterval(renderClock, 1000);
 
 window.addEventListener("beforeunload", () => {
   if (pollHandle) window.clearInterval(pollHandle);

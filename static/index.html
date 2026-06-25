@@ -9,10 +9,11 @@
   <body>
     <div class="app-shell">
       <header class="topbar">
-        <div>
-          <h1>PLC Traffic-Light Trainer</h1>
-          <p>CLICK C0-00DR-D training model - Ladder-first scan-cycle simulator</p>
+        <div class="brand-block">
+          <strong>PLC TRAINER</strong>
+          <span>4-WAY TRAFFIC LIGHT CONTROLLER</span>
         </div>
+        <div class="connection-pill" id="plc-status">PLC CONNECTED</div>
         <div class="status-strip">
           <div class="status-item">
             <span>Mode</span>
@@ -23,8 +24,20 @@
             <strong id="phase-value">--</strong>
           </div>
           <div class="status-item">
-            <span>Scan</span>
+            <span>Scan Time</span>
+            <strong id="scan-time-header">100ms</strong>
+          </div>
+          <div class="status-item">
+            <span>Cycle Count</span>
             <strong id="scan-value">0</strong>
+          </div>
+          <div class="status-item">
+            <span>Clock</span>
+            <strong id="clock-value">--:--:--</strong>
+          </div>
+          <div class="status-item">
+            <span>Night Mode</span>
+            <strong id="night-value">OFF</strong>
           </div>
         </div>
       </header>
