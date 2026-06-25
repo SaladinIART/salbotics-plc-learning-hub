@@ -17,6 +17,7 @@ def test_root_serves_industrial_trainer_ui() -> None:
     assert "data-field-lamp" in html
     assert "/static/how-it-works.html" in html
     assert "/static/industrial-situations.html" in html
+    assert "/static/oil-palm-industrial-environment.html" in html
 
 
 def test_how_it_works_page_serves_ladder_scenarios() -> None:
@@ -53,8 +54,50 @@ def test_industrial_situations_page_serves_realistic_training_scenarios() -> Non
     assert "NPN / PNP Sensor Troubleshooting" in html
     assert "Robust System Design" in html
     assert "troubleshooting" in html.lower()
+    assert "/static/oil-palm-industrial-environment.html" in html
     assert static_response.status_code == 200
     assert "Industrial Situations" in static_response.text
+
+
+def test_oil_palm_pages_serve_process_and_stack_training() -> None:
+    app = create_app(start_background=False)
+    with TestClient(app) as client:
+        plant_route = client.get("/oil-palm-industrial-environment")
+        plant_static = client.get("/static/oil-palm-industrial-environment.html")
+        analysis_route = client.get("/oil-palm-control-stack-analysis")
+        analysis_static = client.get("/static/oil-palm-control-stack-analysis.html")
+
+    assert plant_route.status_code == 200
+    assert plant_static.status_code == 200
+    assert analysis_route.status_code == 200
+    assert analysis_static.status_code == 200
+
+    plant_html = plant_route.text
+    assert "Oil Palm Plant" in plant_html
+    assert "FFB" in plant_html
+    assert "CPO" in plant_html
+    assert "POME" in plant_html
+    assert "Sterilizer" in plant_html
+    assert "WECON" in plant_html
+    assert "PAC" in plant_html
+    assert "Raspberry Pi" in plant_html
+    assert "Arduino Opta" in plant_html
+    assert "IIoT" in plant_html
+    assert "VFD" in plant_html
+    assert "<svg" in plant_html
+    assert "/static/oil-palm-control-stack-analysis.html" in plant_html
+
+    analysis_html = analysis_route.text
+    assert "Control Stack Analysis" in analysis_html
+    assert "OPC UA" in analysis_html
+    assert "MQTT" in analysis_html
+    assert "Sparkplug" in analysis_html
+    assert "ISO" in analysis_html
+    assert "IEC" in analysis_html
+    assert "hobbyist" in analysis_html.lower()
+    assert "small" in analysis_html.lower()
+    assert "medium" in analysis_html.lower()
+    assert "large" in analysis_html.lower()
 
 
 def test_static_assets_are_served() -> None:
@@ -71,3 +114,4 @@ def test_static_assets_are_served() -> None:
     assert guide_styles.status_code == 200
     assert "ladder-diagram" in guide_styles.text
     assert "industrial-nav" in guide_styles.text
+    assert "process-svg" in guide_styles.text

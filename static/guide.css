@@ -817,6 +817,201 @@
   background: #ecfeff;
 }
 
+.oil-shell {
+  width: min(1660px, calc(100vw - 16px));
+}
+
+.oil-shell .brand-block span {
+  font-size: 12px;
+}
+
+.oil-nav {
+  grid-template-columns: repeat(8, minmax(126px, 1fr));
+}
+
+.diagram-panel,
+.wide-table {
+  overflow-x: auto;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #b8c5d6;
+  border-radius: 6px;
+  background: #ffffff;
+  scrollbar-color: #94a3b8 #e2e8f0;
+  scrollbar-width: thin;
+}
+
+.process-svg {
+  display: block;
+  min-width: 960px;
+  width: 100%;
+  height: auto;
+}
+
+.svg-bg {
+  fill: #f8fafc;
+  stroke: #b8c5d6;
+}
+
+.flow-line line {
+  stroke: #38bdf8;
+  stroke-width: 4;
+}
+
+.flow-branch {
+  fill: none;
+  stroke: #38bdf8;
+  stroke-width: 3;
+}
+
+.flow-node rect,
+.byproduct rect,
+.station-card-svg rect,
+.net-zone,
+.svg-historian {
+  stroke-width: 2;
+}
+
+.flow-node text,
+.byproduct text,
+.station-card-svg text,
+.svg-center {
+  fill: #0f172a;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  text-anchor: middle;
+}
+
+.flow-node text:nth-of-type(n + 2),
+.byproduct text:nth-of-type(n + 2),
+.station-card-svg text:nth-of-type(n + 3),
+.svg-center.small {
+  fill: #475569;
+  font-size: 14px;
+}
+
+.raw rect {
+  fill: #f0fdf4;
+  stroke: #22c55e;
+}
+
+.steam rect,
+.heat rect {
+  fill: #fffbeb;
+  stroke: #f59e0b;
+}
+
+.mech rect,
+.motor rect {
+  fill: #eef2ff;
+  stroke: #818cf8;
+}
+
+.water rect {
+  fill: #ecfeff;
+  stroke: #06b6d4;
+}
+
+.clean rect,
+.product rect {
+  fill: #f8fafc;
+  stroke: #64748b;
+}
+
+.byproduct rect {
+  fill: #fff7ed;
+  stroke: #fb923c;
+}
+
+.station-card-svg.wecon rect {
+  fill: #ecfeff;
+  stroke: #0891b2;
+}
+
+.station-card-svg.pac rect {
+  fill: #eef2ff;
+  stroke: #4f46e5;
+}
+
+.station-card-svg.pi rect {
+  fill: #f0fdf4;
+  stroke: #16a34a;
+}
+
+.station-card-svg.arduino rect {
+  fill: #fffbeb;
+  stroke: #d97706;
+}
+
+.svg-historian {
+  fill: #0b1220;
+  stroke: #38bdf8;
+}
+
+.svg-historian + .svg-center {
+  fill: #dbeafe;
+}
+
+.net-zone.field {
+  fill: #f0fdf4;
+  stroke: #16a34a;
+}
+
+.net-zone.control {
+  fill: #eef2ff;
+  stroke: #4f46e5;
+}
+
+.net-zone.edge {
+  fill: #ecfeff;
+  stroke: #0891b2;
+}
+
+.net-zone.it {
+  fill: #f8fafc;
+  stroke: #64748b;
+}
+
+.net-zone.safety {
+  fill: #fee2e2;
+  stroke: #dc2626;
+}
+
+.wide-table table {
+  width: 100%;
+  min-width: 980px;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+.wide-table th,
+.wide-table td {
+  padding: 9px 10px;
+  border: 1px solid #dbe3ee;
+  color: #334155;
+  font-size: 12px;
+  line-height: 1.35;
+  text-align: left;
+  vertical-align: top;
+}
+
+.wide-table thead th,
+.wide-table tbody th {
+  color: #1d4ed8;
+  font-weight: 900;
+}
+
+.wide-table thead th {
+  background: #e7edf5;
+  color: #0f172a;
+  text-transform: uppercase;
+}
+
+.oil-process-grid {
+  align-items: start;
+}
+
 @media (max-width: 1240px) {
   .industrial-nav {
     grid-template-columns: repeat(4, minmax(120px, 1fr));
@@ -833,6 +1028,10 @@
   .decision-strip {
     grid-template-columns: repeat(3, minmax(130px, 1fr));
   }
+
+  .oil-nav {
+    grid-template-columns: repeat(4, minmax(120px, 1fr));
+  }
 }
 
 @media (max-width: 760px) {
@@ -842,6 +1041,14 @@
 
   .industrial-nav,
   .decision-strip {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .oil-shell {
+    width: min(100vw - 20px, 720px);
+  }
+
+  .oil-nav {
     grid-template-columns: 1fr 1fr;
   }
 

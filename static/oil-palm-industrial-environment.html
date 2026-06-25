@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PLC Trainer - Oil Palm Industrial Environment</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="stylesheet" href="/static/guide.css" />
+  </head>
+  <body>
+    <div class="app-shell guide-shell industrial-shell oil-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <strong>PLC TRAINER</strong>
+          <span>OIL PALM PLANT</span>
+        </div>
+        <div class="top-actions">
+          <a class="connection-pill guide-back" href="/">SIMULATOR PANEL</a>
+          <a class="header-link" href="/static/industrial-situations.html">INDUSTRIAL SITUATIONS</a>
+          <a class="header-link" href="/static/oil-palm-control-stack-analysis.html">STACK ANALYSIS</a>
+        </div>
+        <div class="status-strip guide-status-strip">
+          <div class="status-item">
+            <span>Raw</span>
+            <strong>FFB</strong>
+          </div>
+          <div class="status-item">
+            <span>Product</span>
+            <strong>CPO</strong>
+          </div>
+          <div class="status-item">
+            <span>Stations</span>
+            <strong>4</strong>
+          </div>
+          <div class="status-item">
+            <span>Layer</span>
+            <strong>IIoT</strong>
+          </div>
+        </div>
+      </header>
+
+      <main class="guide-main">
+        <section class="panel lesson-panel intro-panel industrial-intro">
+          <div class="panel-heading">
+            <h1>Oil Palm Plant: From FFB To Crude Palm Oil</h1>
+            <span>process flow, station control, PAC, IIoT, and edge devices</span>
+          </div>
+          <div class="intro-grid industrial-intro-grid">
+            <div>
+              <h2>Training goal</h2>
+              <p>
+                A traffic-light trainer teaches the scan cycle. An oil-palm mill teaches why real
+                factories need station-level control, motor drives, steam/pressure instruments,
+                alarms, historians, segmented networks, and maintainable troubleshooting habits.
+              </p>
+            </div>
+            <div class="safety-note" role="note" aria-label="Plant safety note">
+              <h2>Safety note</h2>
+              <p>
+                This is educational only. Real mills involve steam, pressure vessels, rotating
+                machinery, hot oil, boiler systems, MCC panels, and environmental permits. Follow
+                plant drawings, lockout procedure, DOSH/DOE requirements, and certified safety design.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <nav class="scenario-nav industrial-nav oil-nav" aria-label="Oil palm lesson sections">
+          <a href="#process-flow">Process Flow</a>
+          <a href="#station-map">Stations</a>
+          <a href="#utilities">Utilities</a>
+          <a href="#control-network">Control Network</a>
+          <a href="#equipment-map">I/O Map</a>
+          <a href="#scenarios">Fault Scenarios</a>
+          <a href="#standards">Standards</a>
+          <a href="/static/oil-palm-control-stack-analysis.html">Analysis Page</a>
+        </nav>
+
+        <section id="process-flow" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>1. Main Process Flow</h2>
+            <span>fresh fruit bunches to crude palm oil</span>
+          </div>
+          <div class="diagram-panel" aria-label="FFB to CPO process flow diagram">
+            <svg class="process-svg" viewBox="0 0 1180 360" role="img" aria-labelledby="process-title process-desc">
+              <title id="process-title">Oil palm mill process flow</title>
+              <desc id="process-desc">Fresh fruit bunches move through reception, sterilizer, thresher, digester, press, clarification, dryer, and CPO tank.</desc>
+              <defs>
+                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"></path>
+                </marker>
+              </defs>
+              <rect x="16" y="22" width="1148" height="316" rx="12" class="svg-bg"></rect>
+              <g class="flow-line">
+                <line x1="126" y1="180" x2="1042" y2="180" marker-end="url(#arrow)"></line>
+              </g>
+              <g class="flow-node raw" transform="translate(38 108)">
+                <rect width="132" height="96" rx="8"></rect><text x="66" y="32">FFB</text><text x="66" y="58">Reception</text><text x="66" y="78">weighbridge</text>
+              </g>
+              <g class="flow-node steam" transform="translate(188 108)">
+                <rect width="132" height="96" rx="8"></rect><text x="66" y="32">Sterilizer</text><text x="66" y="58">steam</text><text x="66" y="78">pressure</text>
+              </g>
+              <g class="flow-node mech" transform="translate(338 108)">
+                <rect width="132" height="96" rx="8"></rect><text x="66" y="32">Thresher</text><text x="66" y="58">separate</text><text x="66" y="78">fruit/EFB</text>
+              </g>
+              <g class="flow-node heat" transform="translate(488 108)">
+                <rect width="132" height="96" rx="8"></rect><text x="66" y="32">Digester</text><text x="66" y="58">heat + mash</text><text x="66" y="78">fruit</text>
+              </g>
+              <g class="flow-node motor" transform="translate(638 108)">
+                <rect width="132" height="96" rx="8"></rect><text x="66" y="32">Screw Press</text><text x="66" y="58">extract</text><text x="66" y="78">oil slurry</text>
+              </g>
+              <g class="flow-node water" transform="translate(788 108)">
+                <rect width="132" height="96" rx="8"></rect><text x="66" y="32">Clarifier</text><text x="66" y="58">oil/water</text><text x="66" y="78">solids</text>
+              </g>
+              <g class="flow-node clean" transform="translate(938 108)">
+                <rect width="132" height="96" rx="8"></rect><text x="66" y="32">Purifier</text><text x="66" y="58">drying</text><text x="66" y="78">clean oil</text>
+              </g>
+              <g class="flow-node product" transform="translate(1030 238)">
+                <rect width="112" height="68" rx="8"></rect><text x="56" y="30">CPO Tank</text><text x="56" y="50">storage</text>
+              </g>
+              <line x1="1004" y1="204" x2="1086" y2="238" class="flow-branch" marker-end="url(#arrow)"></line>
+              <g class="byproduct" transform="translate(332 236)">
+                <rect width="146" height="58" rx="8"></rect><text x="73" y="24">EFB</text><text x="73" y="42">empty bunch</text>
+              </g>
+              <line x1="404" y1="204" x2="404" y2="236" class="flow-branch" marker-end="url(#arrow)"></line>
+              <g class="byproduct" transform="translate(636 236)">
+                <rect width="146" height="58" rx="8"></rect><text x="73" y="24">Nut + Fiber</text><text x="73" y="42">kernel / boiler fuel</text>
+              </g>
+              <line x1="704" y1="204" x2="704" y2="236" class="flow-branch" marker-end="url(#arrow)"></line>
+              <g class="byproduct" transform="translate(788 236)">
+                <rect width="146" height="58" rx="8"></rect><text x="73" y="24">POME</text><text x="73" y="42">effluent treatment</text>
+              </g>
+              <line x1="854" y1="204" x2="854" y2="236" class="flow-branch" marker-end="url(#arrow)"></line>
+            </svg>
+          </div>
+          <div class="compare-grid oil-process-grid">
+            <div class="mini-table">
+              <h3>Beginner process meaning</h3>
+              <table>
+                <tbody>
+                  <tr><th>FFB</th><td>Fresh fruit bunches arrive by truck, are weighed, and move into the mill.</td></tr>
+                  <tr><th>Sterilizer</th><td>Steam softens fruit, reduces enzyme activity, and prepares bunches for separation.</td></tr>
+                  <tr><th>Press</th><td>High motor load extracts oil from digested fruit mash.</td></tr>
+                  <tr><th>Clarifier</th><td>Heat, dilution, and settling separate oil from water, solids, and sludge.</td></tr>
+                  <tr><th>CPO</th><td>Crude palm oil is dried, cleaned, and stored before dispatch or refinery transfer.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mini-table">
+              <h3>Automation meaning</h3>
+              <table>
+                <tbody>
+                  <tr><th>Digital I/O</th><td>Motor run feedback, valve open/close, limit switches, level switches, trips.</td></tr>
+                  <tr><th>Analog I/O</th><td>Pressure, temperature, flow, tank level, motor current, speed reference.</td></tr>
+                  <tr><th>VFD</th><td>Controls conveyors, press, pump, fan, and feeder speed where variable control is useful.</td></tr>
+                  <tr><th>HMI/SCADA</th><td>Operator screens, alarms, trends, recipes, production counters, shift reports.</td></tr>
+                  <tr><th>Historian</th><td>Stores sterilizer cycles, press current, clarifier temperature, CPO tank level, and alarms.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="station-map" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>2. Four Mixed Control Stations</h2>
+            <span>economy PLC, PAC, Raspberry Pi industrial edge, Arduino industrial PLC</span>
+          </div>
+          <div class="diagram-panel">
+            <svg class="process-svg station-svg" viewBox="0 0 1180 420" role="img" aria-labelledby="station-title">
+              <title id="station-title">Oil palm four station control architecture</title>
+              <defs>
+                <marker id="arrow-station" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"></path>
+                </marker>
+              </defs>
+              <rect x="16" y="20" width="1148" height="360" rx="12" class="svg-bg"></rect>
+              <g class="station-card-svg wecon" transform="translate(46 70)">
+                <rect width="248" height="230" rx="10"></rect>
+                <text x="124" y="34">Station 1</text><text x="124" y="60">WECON PLC/HMI/VFD</text>
+                <text x="124" y="92">Reception + conveyors</text><text x="124" y="118">Small PLC + HMI</text>
+                <text x="124" y="144">VFD speed control</text><text x="124" y="170">Good economy station</text>
+              </g>
+              <g class="station-card-svg pac" transform="translate(326 70)">
+                <rect width="248" height="230" rx="10"></rect>
+                <text x="124" y="34">Station 2</text><text x="124" y="60">PAC Control</text>
+                <text x="124" y="92">Sterilizer + boiler tie-in</text><text x="124" y="118">More diagnostics</text>
+                <text x="124" y="144">Process + safety design</text><text x="124" y="170">Best for critical areas</text>
+              </g>
+              <g class="station-card-svg pi" transform="translate(606 70)">
+                <rect width="248" height="230" rx="10"></rect>
+                <text x="124" y="34">Station 3</text><text x="124" y="60">Raspberry Pi Industrial</text>
+                <text x="124" y="92">Edge gateway + camera</text><text x="124" y="118">MQTT / OPC UA bridge</text>
+                <text x="124" y="144">AI inspection</text><text x="124" y="170">Not primary safety PLC</text>
+              </g>
+              <g class="station-card-svg arduino" transform="translate(886 70)">
+                <rect width="248" height="230" rx="10"></rect>
+                <text x="124" y="34">Station 4</text><text x="124" y="60">Arduino Opta / Portenta</text>
+                <text x="124" y="92">Prototype skid</text><text x="124" y="118">Remote pump / tank demo</text>
+                <text x="124" y="144">IEC 61131-3 learning</text><text x="124" y="170">Fast experiment station</text>
+              </g>
+              <line x1="294" y1="186" x2="326" y2="186" class="flow-branch" marker-end="url(#arrow-station)"></line>
+              <line x1="574" y1="186" x2="606" y2="186" class="flow-branch" marker-end="url(#arrow-station)"></line>
+              <line x1="854" y1="186" x2="886" y2="186" class="flow-branch" marker-end="url(#arrow-station)"></line>
+              <rect x="210" y="330" width="760" height="54" rx="8" class="svg-historian"></rect>
+              <text x="590" y="363" class="svg-center">Plant network: SCADA / historian / dashboard / maintenance laptop</text>
+              <line x1="170" y1="300" x2="305" y2="330" class="flow-branch" marker-end="url(#arrow-station)"></line>
+              <line x1="450" y1="300" x2="475" y2="330" class="flow-branch" marker-end="url(#arrow-station)"></line>
+              <line x1="730" y1="300" x2="705" y2="330" class="flow-branch" marker-end="url(#arrow-station)"></line>
+              <line x1="1010" y1="300" x2="875" y2="330" class="flow-branch" marker-end="url(#arrow-station)"></line>
+            </svg>
+          </div>
+          <div class="robust-grid">
+            <div class="robust-item">
+              <h3>Station 1: WECON</h3>
+              <p>Use for affordable machine control, local HMI, VFDs, and simple remote support. Strong learning fit for small conveyors and pump panels.</p>
+            </div>
+            <div class="robust-item">
+              <h3>Station 2: PAC</h3>
+              <p>Use PAC-class control where uptime, diagnostics, scalable I/O, process control, motion, and enterprise integration matter.</p>
+            </div>
+            <div class="robust-item">
+              <h3>Station 3: Raspberry Pi</h3>
+              <p>Use industrial Pi hardware as an edge gateway, vision/AI node, protocol bridge, dashboard device, or local data collector.</p>
+            </div>
+            <div class="robust-item">
+              <h3>Station 4: Arduino</h3>
+              <p>Use Opta or Portenta Machine Control for fast prototyping, learning IEC 61131-3, small skids, lab rigs, and controlled pilots.</p>
+            </div>
+            <div class="robust-item">
+              <h3>AI at the edge</h3>
+              <p>Do anomaly detection on motor current, boiler trend changes, camera quality checks, vibration features, or energy dashboards.</p>
+            </div>
+            <div class="robust-item">
+              <h3>Safety boundary</h3>
+              <p>Safety functions need risk assessment and certified safety components. Do not replace a safety PLC with a normal SBC or hobby board.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="utilities" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>3. Utility And Byproduct Loop</h2>
+            <span>steam, fiber/shell fuel, POME, and environmental monitoring</span>
+          </div>
+          <div class="diagram-panel">
+            <svg class="process-svg utility-svg" viewBox="0 0 1180 320" role="img" aria-labelledby="utility-title">
+              <title id="utility-title">Oil palm utility and byproduct loop</title>
+              <defs>
+                <marker id="arrow-utility" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"></path>
+                </marker>
+              </defs>
+              <rect x="18" y="24" width="1144" height="268" rx="12" class="svg-bg"></rect>
+              <g class="flow-node motor" transform="translate(56 104)"><rect width="150" height="80" rx="8"></rect><text x="75" y="32">Fiber/Shell</text><text x="75" y="56">fuel</text></g>
+              <g class="flow-node steam" transform="translate(270 104)"><rect width="150" height="80" rx="8"></rect><text x="75" y="32">Boiler</text><text x="75" y="56">steam pressure</text></g>
+              <g class="flow-node heat" transform="translate(484 104)"><rect width="150" height="80" rx="8"></rect><text x="75" y="32">Sterilizer</text><text x="75" y="56">steam user</text></g>
+              <g class="flow-node water" transform="translate(698 104)"><rect width="150" height="80" rx="8"></rect><text x="75" y="32">Condensate</text><text x="75" y="56">return</text></g>
+              <g class="flow-node clean" transform="translate(912 104)"><rect width="150" height="80" rx="8"></rect><text x="75" y="32">POME</text><text x="75" y="56">treatment</text></g>
+              <line x1="206" y1="144" x2="270" y2="144" class="flow-branch" marker-end="url(#arrow-utility)"></line>
+              <line x1="420" y1="144" x2="484" y2="144" class="flow-branch" marker-end="url(#arrow-utility)"></line>
+              <line x1="634" y1="144" x2="698" y2="144" class="flow-branch" marker-end="url(#arrow-utility)"></line>
+              <path d="M773 184 C740 262, 380 262, 340 184" class="flow-branch" marker-end="url(#arrow-utility)"></path>
+              <line x1="848" y1="144" x2="912" y2="144" class="flow-branch" marker-end="url(#arrow-utility)"></line>
+              <text x="590" y="56" class="svg-center">Utility loop needs pressure, temperature, level, flow, emission, and effluent records.</text>
+            </svg>
+          </div>
+          <div class="compare-grid">
+            <div class="mini-table">
+              <h3>Utility signals</h3>
+              <table>
+                <tbody>
+                  <tr><th>Boiler</th><td>Steam pressure, drum level, feedwater flow, fuel conveyor status, fan VFD, trips.</td></tr>
+                  <tr><th>Sterilizer</th><td>Door status, pressure, temperature, cycle step, condensate drain valve, safety interlocks.</td></tr>
+                  <tr><th>POME</th><td>Effluent pond level, pump status, flow total, pH/COD sampling records, compliance reporting.</td></tr>
+                  <tr><th>Energy</th><td>Motor current, kWh, steam use per ton FFB, compressed air, water consumption.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mini-table">
+              <h3>Why IIoT helps</h3>
+              <table>
+                <tbody>
+                  <tr><th>Traceability</th><td>Connect FFB batches, sterilizer cycles, CPO tank lots, and dispatch records.</td></tr>
+                  <tr><th>Maintenance</th><td>Trend bearing temperature, motor current, vibration, valve cycle count, and drive faults.</td></tr>
+                  <tr><th>Quality</th><td>Track delays, sterilization profile, clarification temperature, moisture, and tank levels.</td></tr>
+                  <tr><th>Compliance</th><td>Support audit evidence for sustainability, environment, safety, and production reports.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="control-network" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>4. PAC And IIoT Control Network</h2>
+            <span>keep control, safety, edge, and cloud roles separated</span>
+          </div>
+          <div class="diagram-panel">
+            <svg class="process-svg network-svg" viewBox="0 0 1180 380" role="img" aria-labelledby="network-title">
+              <title id="network-title">Layered industrial network</title>
+              <defs>
+                <marker id="arrow-network" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"></path>
+                </marker>
+              </defs>
+              <rect x="22" y="24" width="1136" height="310" rx="12" class="svg-bg"></rect>
+              <rect x="62" y="62" width="220" height="84" rx="8" class="net-zone field"></rect>
+              <text x="172" y="94" class="svg-center">Field devices</text><text x="172" y="120" class="svg-center small">sensors, valves, VFDs</text>
+              <rect x="338" y="62" width="220" height="84" rx="8" class="net-zone control"></rect>
+              <text x="448" y="94" class="svg-center">PLC / PAC zone</text><text x="448" y="120" class="svg-center small">real-time control</text>
+              <rect x="614" y="62" width="220" height="84" rx="8" class="net-zone edge"></rect>
+              <text x="724" y="94" class="svg-center">Edge / IIoT zone</text><text x="724" y="120" class="svg-center small">OPC UA, MQTT, AI</text>
+              <rect x="890" y="62" width="220" height="84" rx="8" class="net-zone it"></rect>
+              <text x="1000" y="94" class="svg-center">IT / cloud</text><text x="1000" y="120" class="svg-center small">dashboards, ERP</text>
+              <line x1="282" y1="104" x2="338" y2="104" class="flow-branch" marker-end="url(#arrow-network)"></line>
+              <line x1="558" y1="104" x2="614" y2="104" class="flow-branch" marker-end="url(#arrow-network)"></line>
+              <line x1="834" y1="104" x2="890" y2="104" class="flow-branch" marker-end="url(#arrow-network)"></line>
+              <rect x="338" y="206" width="220" height="70" rx="8" class="net-zone safety"></rect>
+              <text x="448" y="236" class="svg-center">Safety layer</text><text x="448" y="258" class="svg-center small">risk assessed, certified</text>
+              <line x1="448" y1="146" x2="448" y2="206" class="flow-branch" marker-end="url(#arrow-network)"></line>
+              <text x="590" y="318" class="svg-center">Rule: PLC/PAC controls machine. Edge reads and analyzes. Cloud reports. Safety is separately designed.</text>
+            </svg>
+          </div>
+          <div class="compare-grid">
+            <div class="mini-table">
+              <h3>Protocol roles</h3>
+              <table>
+                <tbody>
+                  <tr><th>OPC UA</th><td>Structured industrial data model from PLC/PAC/SCADA to clients, with security and subscriptions.</td></tr>
+                  <tr><th>MQTT</th><td>Lightweight publish/subscribe messaging for remote or bandwidth-limited IIoT data paths.</td></tr>
+                  <tr><th>Sparkplug</th><td>MQTT convention for industrial state awareness, birth/death certificates, and tag discovery.</td></tr>
+                  <tr><th>Historian</th><td>Stores time-series plant data for troubleshooting, quality, energy, and audit evidence.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mini-table">
+              <h3>Network design habits</h3>
+              <table>
+                <tbody>
+                  <tr><th>Segment</th><td>Separate field/control, edge/DMZ, office IT, and cloud paths.</td></tr>
+                  <tr><th>Least access</th><td>Let dashboards read tags; do not let cloud systems directly command critical outputs.</td></tr>
+                  <tr><th>Time sync</th><td>Use consistent timestamps for alarms, trends, batches, and event investigation.</td></tr>
+                  <tr><th>Backup</th><td>Keep PLC/PAC project backups, HMI files, network drawings, and parameter lists.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="equipment-map" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>5. Typical Oil-Palm I/O And Actuator Map</h2>
+            <span>where analog modules, VFDs, sensors, and alarms appear</span>
+          </div>
+          <div class="map-grid">
+            <div class="mini-table">
+              <h3>Digital inputs</h3>
+              <table>
+                <tbody>
+                  <tr><th>DI</th><td>Motor running feedback</td><td>MCC auxiliary contact</td></tr>
+                  <tr><th>DI</th><td>Conveyor pull-cord trip</td><td>Safety chain input</td></tr>
+                  <tr><th>DI</th><td>Sterilizer door closed</td><td>Limit/proximity switch</td></tr>
+                  <tr><th>DI</th><td>Tank high level switch</td><td>Float or tuning fork</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mini-table">
+              <h3>Analog inputs</h3>
+              <table>
+                <tbody>
+                  <tr><th>AI</th><td>Sterilizer pressure</td><td>4-20mA transmitter</td></tr>
+                  <tr><th>AI</th><td>Clarifier temperature</td><td>RTD/transmitter</td></tr>
+                  <tr><th>AI</th><td>CPO tank level</td><td>Radar/ultrasonic</td></tr>
+                  <tr><th>AI</th><td>Press motor current</td><td>Drive feedback</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mini-table">
+              <h3>Outputs</h3>
+              <table>
+                <tbody>
+                  <tr><th>DO</th><td>Motor start command</td><td>Contactor or VFD run</td></tr>
+                  <tr><th>AO</th><td>VFD speed reference</td><td>0-10V, 4-20mA, or network</td></tr>
+                  <tr><th>DO</th><td>Valve open command</td><td>Solenoid or actuator</td></tr>
+                  <tr><th>DO</th><td>Alarm horn/light</td><td>Operator warning</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="scenarios" class="panel scenario-panel danger-scenario">
+          <div class="panel-heading">
+            <h2>6. Technician Fault Scenarios</h2>
+            <span>what to check before editing logic</span>
+          </div>
+          <div class="robust-grid">
+            <div class="robust-item">
+              <h3>Sterilizer pressure fault</h3>
+              <p>Check transmitter range, impulse line, steam supply, valve feedback, pressure relief status, and interlock permissives.</p>
+            </div>
+            <div class="robust-item">
+              <h3>Press overload</h3>
+              <p>Check jammed feed, screw wear, VFD current, motor bearing, phase loss, drive fault code, and upstream digester condition.</p>
+            </div>
+            <div class="robust-item">
+              <h3>Clarifier temperature low</h3>
+              <p>Check steam valve command, actual valve travel, temperature transmitter, condensate trap, and heating coil fouling.</p>
+            </div>
+            <div class="robust-item">
+              <h3>CPO tank high level</h3>
+              <p>Check pump availability, valve lineup, level transmitter scaling, high-high switch, transfer permissive, and dispatch status.</p>
+            </div>
+            <div class="robust-item">
+              <h3>Boiler low pressure</h3>
+              <p>Check fuel conveyor, fan VFD, feedwater control, steam demand, blowdown state, and boiler trip summary.</p>
+            </div>
+            <div class="robust-item">
+              <h3>Sensor wiring fault</h3>
+              <p>Check NPN/PNP match, input common, 24V supply, shield, terminal looseness, wrong channel, and forced bits.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="standards" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>7. Standards And Regulations Awareness</h2>
+            <span>what a learner should recognize, not certify alone</span>
+          </div>
+          <div class="compare-grid">
+            <div class="mini-table">
+              <h3>Automation and safety references</h3>
+              <table>
+                <tbody>
+                  <tr><th>IEC 61131-3</th><td>PLC language family such as Ladder, FBD, ST, and SFC.</td></tr>
+                  <tr><th>IEC 62443</th><td>Industrial automation cybersecurity, zones, conduits, and secure lifecycle thinking.</td></tr>
+                  <tr><th>ISO 13849-1:2023</th><td>Safety-related parts of machinery control systems and performance level thinking.</td></tr>
+                  <tr><th>IEC 61508 / 62061</th><td>Functional safety concepts and SIL-oriented safety control references.</td></tr>
+                  <tr><th>ISO 12100</th><td>Machinery risk assessment and risk reduction principles.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mini-table">
+              <h3>Plant and palm-oil context</h3>
+              <table>
+                <tbody>
+                  <tr><th>ISO 9001</th><td>Quality management system context for consistent production records.</td></tr>
+                  <tr><th>ISO 14001</th><td>Environmental management context for effluent, emissions, and waste records.</td></tr>
+                  <tr><th>ISO 45001</th><td>Occupational health and safety management context.</td></tr>
+                  <tr><th>MSPO / RSPO</th><td>Sustainability, traceability, and audit evidence context for palm oil.</td></tr>
+                  <tr><th>DOSH / DOE / MPOB</th><td>Malaysia-specific plant, boiler, environment, and palm-oil regulatory awareness.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="source-strip">
+            <span>Reference examples:</span>
+            <a href="https://www.we-con.com.cn/en/">WECON</a>
+            <a href="https://www.rockwellautomation.com/en-us/products/hardware/programmable-controllers.html">Rockwell PLC/PAC</a>
+            <a href="https://docs.arduino.cc/hardware/opta/">Arduino Opta</a>
+            <a href="https://docs.arduino.cc/hardware/portenta-machine-control/">Portenta Machine Control</a>
+            <a href="https://www.raspberrypi.com/products/compute-module-5/">Raspberry Pi CM5</a>
+            <a href="https://www.fao.org/4/y4355e/y4355e04.htm">FAO palm processing</a>
+            <a href="https://mspo.org.my/">MSPO</a>
+            <a href="https://rspo.org/">RSPO</a>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

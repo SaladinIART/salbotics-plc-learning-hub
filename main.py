@@ -63,6 +63,14 @@ def create_app(start_background: bool = True) -> FastAPI:
     def industrial_situations() -> FileResponse:
         return FileResponse(STATIC_DIR / "industrial-situations.html")
 
+    @app.get("/oil-palm-industrial-environment")
+    def oil_palm_industrial_environment() -> FileResponse:
+        return FileResponse(STATIC_DIR / "oil-palm-industrial-environment.html")
+
+    @app.get("/oil-palm-control-stack-analysis")
+    def oil_palm_control_stack_analysis() -> FileResponse:
+        return FileResponse(STATIC_DIR / "oil-palm-control-stack-analysis.html")
+
     @app.get("/api/state")
     def get_state(request: Request) -> dict:
         with request.app.state.lock:

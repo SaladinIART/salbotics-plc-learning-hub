@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PLC Trainer - Oil Palm Control Stack Analysis</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="stylesheet" href="/static/guide.css" />
+  </head>
+  <body>
+    <div class="app-shell guide-shell industrial-shell oil-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <strong>PLC TRAINER</strong>
+          <span>STACK ANALYSIS</span>
+        </div>
+        <div class="top-actions">
+          <a class="connection-pill guide-back" href="/static/oil-palm-industrial-environment.html">OIL PALM PLANT</a>
+          <a class="header-link" href="/">SIMULATOR PANEL</a>
+          <a class="header-link" href="/static/industrial-situations.html">INDUSTRIAL SITUATIONS</a>
+        </div>
+        <div class="status-strip guide-status-strip">
+          <div class="status-item">
+            <span>Stacks</span>
+            <strong>4</strong>
+          </div>
+          <div class="status-item">
+            <span>Scale</span>
+            <strong>H/S/M/L</strong>
+          </div>
+          <div class="status-item">
+            <span>Focus</span>
+            <strong>ROI</strong>
+          </div>
+          <div class="status-item">
+            <span>Risk</span>
+            <strong>SAFETY</strong>
+          </div>
+        </div>
+      </header>
+
+      <main class="guide-main">
+        <section class="panel lesson-panel intro-panel industrial-intro">
+          <div class="panel-heading">
+            <h1>Oil Palm Control Stack Analysis</h1>
+            <span>economy, reliability, installation, prototyping, edge AI, standards</span>
+          </div>
+          <div class="intro-grid industrial-intro-grid">
+            <div>
+              <h2>How to read this page</h2>
+              <p>
+                A factory can mix technologies. The hard part is not picking the most advanced device;
+                it is putting each device in the correct responsibility zone: control, safety, data,
+                edge AI, operator HMI, or fast experiment.
+              </p>
+            </div>
+            <div class="safety-note">
+              <h2>Decision rule</h2>
+              <p>
+                Use certified PLC/PAC/safety hardware for machine control and safety. Use Raspberry Pi
+                and Arduino-style systems for data, learning, gateway, prototype, or non-critical skid
+                work unless the final design is formally engineered and certified.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <nav class="scenario-nav industrial-nav oil-nav" aria-label="Stack analysis sections">
+          <a href="#matrix">Matrix</a>
+          <a href="#scale">Scale Guide</a>
+          <a href="#edge-ai">Edge AI</a>
+          <a href="#install">Install Speed</a>
+          <a href="#reliability">Reliability</a>
+          <a href="#cyber">Cybersecurity</a>
+          <a href="#standards-stack">Standards</a>
+          <a href="/static/oil-palm-industrial-environment.html">Plant Page</a>
+        </nav>
+
+        <section id="matrix" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>1. Technology Comparison Matrix</h2>
+            <span>pick by job, not by brand pride</span>
+          </div>
+          <div class="wide-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Factor</th>
+                  <th>WECON PLC/HMI/VFD</th>
+                  <th>PAC class control</th>
+                  <th>Raspberry Pi industrial</th>
+                  <th>Arduino Opta / Portenta</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Best role</th>
+                  <td>Affordable machine station, small panel, local HMI, VFD control.</td>
+                  <td>High-value process and plant-wide control with diagnostics and scale.</td>
+                  <td>Edge gateway, data collector, dashboard, computer vision, protocol bridge.</td>
+                  <td>Prototype skid, training PLC, small remote station, quick proof of concept.</td>
+                </tr>
+                <tr>
+                  <th>Economy</th>
+                  <td>Usually strong value for small and medium machine panels.</td>
+                  <td>Higher upfront cost, justified by uptime, support, and integration depth.</td>
+                  <td>Low hardware cost, but industrial carrier, enclosure, support, and engineering add cost.</td>
+                  <td>Low to moderate cost; strong for pilots and education.</td>
+                </tr>
+                <tr>
+                  <th>Reliability</th>
+                  <td>Good when applied inside rating, with correct cabinet design and spares.</td>
+                  <td>Strongest for critical plant control, redundancy, diagnostics, and lifecycle support.</td>
+                  <td>Good as edge computer; weaker as deterministic hard real-time controller.</td>
+                  <td>Good for simple industrial tasks; validate temperature, I/O, EMC, and duty cycle.</td>
+                </tr>
+                <tr>
+                  <th>Rapid prototyping</th>
+                  <td>Fast if electrician/PLC tech knows the product family.</td>
+                  <td>Slower but disciplined; excellent once templates and libraries exist.</td>
+                  <td>Very fast for dashboards, Python, databases, camera, AI, and MQTT.</td>
+                  <td>Very fast for lab control, Arduino sketches, and IEC 61131-3 learning.</td>
+                </tr>
+                <tr>
+                  <th>Installation</th>
+                  <td>Panel-friendly PLC/HMI/VFD package, simple for local machines.</td>
+                  <td>Best with engineered drawings, network design, I/O plan, FAT/SAT.</td>
+                  <td>Needs industrial power, watchdog, storage strategy, enclosure, UPS, and maintenance model.</td>
+                  <td>DIN-rail Opta is simple; Portenta Machine Control gives richer industrial I/O.</td>
+                </tr>
+                <tr>
+                  <th>Edge AI</th>
+                  <td>Usually via V-BOX/IIoT or external edge device, not the PLC logic itself.</td>
+                  <td>Possible through vendor ecosystem, historian, analytics, or connected edge servers.</td>
+                  <td>Strong fit for AI camera, anomaly detection, vibration features, and local dashboards.</td>
+                  <td>Good for small ML demos or predictive maintenance pilots, especially Portenta-class hardware.</td>
+                </tr>
+                <tr>
+                  <th>Safety suitability</th>
+                  <td>Normal PLC is not a safety PLC unless product and design are certified for it.</td>
+                  <td>Best path when paired with certified safety PLC/I/O and formal risk assessment.</td>
+                  <td>Do not use as the primary safety controller.</td>
+                  <td>Do not use as the primary safety controller without certified safety design.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="scale" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>2. Hobbyist, Small, Medium, Large Scale</h2>
+            <span>same plant idea, different engineering burden</span>
+          </div>
+          <div class="compare-grid language-grid">
+            <div class="language-card">
+              <h3>Hobbyist / learning</h3>
+              <p>Arduino Opta, Portenta Machine Control, or Raspberry Pi with simulator data. Focus on scan cycle, analog scaling, MQTT, dashboards, and safe low-voltage demos.</p>
+            </div>
+            <div class="language-card">
+              <h3>Small plant / skid</h3>
+              <p>WECON-style PLC/HMI/VFD station works well for conveyors, pumps, tank levels, and local alarm panels. Keep drawings and spare units simple.</p>
+            </div>
+            <div class="language-card">
+              <h3>Medium mill</h3>
+              <p>Mix WECON or similar machine PLCs with a stronger PAC/SCADA layer, historian, remote I/O, VFD networks, and edge gateway.</p>
+            </div>
+            <div class="language-card">
+              <h3>Large mill / group</h3>
+              <p>PAC/SCADA, segmented networks, historian, MES/ERP links, cybersecurity program, formal safety lifecycle, and sustainability traceability systems.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="edge-ai" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>3. AI At The Edge</h2>
+            <span>what AI should and should not do in a mill</span>
+          </div>
+          <div class="compare-grid">
+            <div class="mini-table">
+              <h3>Good edge AI jobs</h3>
+              <table>
+                <tbody>
+                  <tr><th>Vision</th><td>FFB quality estimate, smoke/steam visibility, belt spillage, PPE detection, gauge reading assistance.</td></tr>
+                  <tr><th>Predictive</th><td>Press current anomaly, pump vibration features, fan bearing temperature trend, valve cycle degradation.</td></tr>
+                  <tr><th>Energy</th><td>Steam per ton FFB, kWh per ton CPO, compressor losses, VFD energy trend.</td></tr>
+                  <tr><th>Operator aid</th><td>Alarm clustering, shift report drafting, maintenance checklist suggestion.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mini-table">
+              <h3>Bad edge AI jobs</h3>
+              <table>
+                <tbody>
+                  <tr><th>Safety trip</th><td>Do not let AI replace a certified emergency stop, guard interlock, pressure trip, or boiler safety chain.</td></tr>
+                  <tr><th>Hidden control</th><td>Do not let an opaque model directly command critical valves, drives, or steam without engineered limits.</td></tr>
+                  <tr><th>No audit</th><td>Do not use AI conclusions without timestamped data, model version, threshold, and operator confirmation.</td></tr>
+                  <tr><th>Cloud dependency</th><td>Do not make critical control depend on internet availability.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="install" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>4. Installation And Commissioning Speed</h2>
+            <span>where time is really spent</span>
+          </div>
+          <div class="decision-strip">
+            <div><b>1</b><span>Panel drawings</span><code>I/O, MCC, network</code></div>
+            <div><b>2</b><span>Tag naming</span><code>consistent plant labels</code></div>
+            <div><b>3</b><span>Device setup</span><code>IP, node, baud, drive params</code></div>
+            <div><b>4</b><span>Loop check</span><code>sensor to HMI</code></div>
+            <div><b>5</b><span>SAT</span><code>alarms, trends, reports</code></div>
+          </div>
+          <p class="lesson-callout">
+            Fast hardware is not the same as fast commissioning. Most time is spent on drawings,
+            wiring, addressing, scaling, VFD parameters, alarm wording, operator training, and fixing
+            field-device surprises.
+          </p>
+        </section>
+
+        <section id="reliability" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>5. Reliability Factors Beginners Often Miss</h2>
+            <span>the device is only one part of reliability</span>
+          </div>
+          <div class="robust-grid">
+            <div class="robust-item"><h3>Power quality</h3><p>Use proper 24V supplies, surge protection, earthing, UPS where needed, and separate noisy motor loads.</p></div>
+            <div class="robust-item"><h3>Heat and enclosure</h3><p>Panel temperature, dust, humidity, ventilation, IP rating, and cable glands matter in mill environments.</p></div>
+            <div class="robust-item"><h3>Spare strategy</h3><p>Keep spare PLC, HMI, VFD, memory card, power supply, analog module, and exported programs.</p></div>
+            <div class="robust-item"><h3>Version control</h3><p>Record project version, VFD parameter backup, HMI file, IP map, and who changed what.</p></div>
+            <div class="robust-item"><h3>Manual bypass</h3><p>Design manual modes carefully. Manual still needs safety and machine-damage interlocks.</p></div>
+            <div class="robust-item"><h3>Training</h3><p>A maintainable system has drawings and operators who can read alarms, trends, and permissive status.</p></div>
+          </div>
+        </section>
+
+        <section id="cyber" class="panel scenario-panel danger-scenario">
+          <div class="panel-heading">
+            <h2>6. Cybersecurity And Remote Access</h2>
+            <span>IIoT adds value and risk together</span>
+          </div>
+          <div class="compare-grid">
+            <div class="mini-table">
+              <h3>Good practice</h3>
+              <table>
+                <tbody>
+                  <tr><th>Zones</th><td>Separate PLC/PAC, edge gateway, office IT, and cloud/remote access paths.</td></tr>
+                  <tr><th>Accounts</th><td>Use named users, least privilege, strong passwords, and disable default credentials.</td></tr>
+                  <tr><th>Remote access</th><td>Use approved VPN/jump host/vendor gateway with logging and approval workflow.</td></tr>
+                  <tr><th>Backups</th><td>Keep offline copies of PLC projects, HMI files, historian config, and drive parameters.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mini-table">
+              <h3>Risk signs</h3>
+              <table>
+                <tbody>
+                  <tr><th>Flat network</th><td>Office PCs and PLCs on one open network with no firewall or zones.</td></tr>
+                  <tr><th>Unknown laptop</th><td>Technician laptop plugged into PLC network without antivirus, patching, or approval.</td></tr>
+                  <tr><th>Open ports</th><td>PLC/HMI directly exposed to internet or cloud without secure design.</td></tr>
+                  <tr><th>No audit trail</th><td>Nobody knows when the program or VFD parameters were changed.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="standards-stack" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>7. Standards Cheat Sheet</h2>
+            <span>recognize the family before reading the full standard</span>
+          </div>
+          <div class="wide-table">
+            <table>
+              <thead>
+                <tr><th>Area</th><th>Reference</th><th>Beginner meaning</th><th>Training action</th></tr>
+              </thead>
+              <tbody>
+                <tr><th>PLC programming</th><td>IEC 61131-3</td><td>Common PLC language family.</td><td>Learn Ladder first, then FBD, ST, SFC.</td></tr>
+                <tr><th>Machinery risk</th><td>ISO 12100</td><td>Find hazards, estimate risk, reduce risk.</td><td>List hazards before choosing controls.</td></tr>
+                <tr><th>Safety control</th><td>ISO 13849-1:2023</td><td>Safety-related parts of control systems.</td><td>Do not improvise safety logic in normal PLC code.</td></tr>
+                <tr><th>Functional safety</th><td>IEC 61508 / IEC 62061</td><td>Safety lifecycle and SIL-oriented machinery safety references.</td><td>Use qualified safety engineer for real plant projects.</td></tr>
+                <tr><th>Cybersecurity</th><td>IEC 62443</td><td>Industrial zones, conduits, requirements, and secure lifecycle.</td><td>Segment networks and manage remote access.</td></tr>
+                <tr><th>Quality/environment/OHS</th><td>ISO 9001 / 14001 / 45001</td><td>Management systems around quality, environment, and safety.</td><td>Use historian and reports as audit evidence.</td></tr>
+                <tr><th>Palm sustainability</th><td>MSPO / RSPO</td><td>Traceability and sustainability certification context.</td><td>Record batch, tank, production, and environmental data.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="source-strip">
+            <span>Protocol and standard references:</span>
+            <a href="https://opcfoundation.org/about/opc-technologies/opc-ua/">OPC UA</a>
+            <a href="https://mqtt.org/">MQTT</a>
+            <a href="https://sparkplug.eclipse.org/">Sparkplug</a>
+            <a href="https://www.iso.org/standard/73481.html">ISO 13849-1:2023</a>
+            <a href="https://www.iso.org/standard/51528.html">ISO 12100</a>
+            <a href="https://mspo.org.my/">MSPO</a>
+            <a href="https://rspo.org/">RSPO</a>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

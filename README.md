@@ -12,6 +12,7 @@ The app simulates one 4-way junction using a small PLC mental model: AutomationD
 - Industrial inputs: start, stop, pedestrian buttons, vehicle sensors, emergency, night mode.
 - Browser HMI basics: status bar, I/O address tables, timer/register tables, rung monitor, field view, alarms, and event log.
 - Industrial realism basics: Omron/Siemens examples, analog signals, VFD motor control, NPN/PNP sensors, and troubleshooting.
+- Oil-palm factory basics: FFB to CPO process flow, WECON/PAC/Raspberry Pi/Arduino stations, IIoT, edge AI, and safety/regulatory awareness.
 
 ## Run Locally
 
@@ -50,8 +51,10 @@ pytest
 2. Run the app.
 3. Open `http://127.0.0.1:8733/static/how-it-works.html` for scenario walkthroughs and ladder diagrams.
 4. Open `http://127.0.0.1:8733/static/industrial-situations.html` for realistic PLC brand, analog, VFD, and sensor troubleshooting situations.
-5. Press `START`.
-6. Watch the top status bar, I/O rack, timers, registers, rungs, outputs, and event log.
-7. Toggle vehicle sensors, pedestrian requests, emergency, night mode.
-8. Read `plc_engine.py` slowly from top to bottom.
-9. Compare code logic to Ladder concepts in the guide.
+5. Open `http://127.0.0.1:8733/static/oil-palm-industrial-environment.html` for a factory-scale oil-palm process and IIoT training module.
+6. Open `http://127.0.0.1:8733/static/oil-palm-control-stack-analysis.html` for WECON, PAC, Raspberry Pi industrial, and Arduino Opta/Portenta comparisons.
+7. Press `START`.
+8. Watch the top status bar, I/O rack, timers, registers, rungs, outputs, and event log.
+9. Toggle vehicle sensors, pedestrian requests, emergency, night mode.
+10. Read `plc_engine.py` slowly from top to bottom.
+11. Compare code logic to Ladder concepts in the guide.
