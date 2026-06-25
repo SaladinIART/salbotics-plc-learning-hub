@@ -226,6 +226,40 @@ h3 {
   font-size: 11px;
 }
 
+.override-panel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+  margin-top: 8px;
+  padding: 8px;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  background: #0b1220;
+}
+
+.override-title {
+  grid-column: 1 / -1;
+  color: #cbd5e1;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.override-panel button {
+  min-height: 30px;
+  border: 1px solid #475569;
+  border-radius: 5px;
+  background: #1e293b;
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.override-panel button:disabled {
+  cursor: not-allowed;
+  opacity: 0.75;
+}
+
 .command:hover {
   background: #cbd5e1;
 }
@@ -969,6 +1003,10 @@ h3 {
 
   .field-controls {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .override-panel {
+    grid-template-columns: 1fr;
   }
 
   .io-panel,
