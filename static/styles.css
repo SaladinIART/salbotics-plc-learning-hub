@@ -332,7 +332,7 @@ h3 {
 }
 
 .io-table {
-  overflow: hidden;
+  overflow-x: auto;
   border: 1px solid var(--line);
   border-radius: 6px;
   background: white;
@@ -478,7 +478,7 @@ h3 {
 }
 
 .data-table {
-  overflow: hidden;
+  overflow-x: auto;
   border: 1px solid var(--line);
   border-radius: 6px;
   background: white;
@@ -1093,6 +1093,24 @@ body[data-warning="true"] .alarm.empty::after {
     grid-template-columns: 1fr 1fr;
   }
 
+  .topbar {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .brand-block {
+    border-right: 0;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+  }
+
+  .connection-pill {
+    margin: 10px 14px;
+  }
+
+  .status-strip {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   .field-panel {
     grid-column: 1 / -1;
     min-height: auto;
@@ -1132,6 +1150,43 @@ body[data-warning="true"] .alarm.empty::after {
   .status-strip,
   .register-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .brand-block {
+    display: grid;
+    gap: 4px;
+    min-height: auto;
+    padding: 12px 14px;
+  }
+
+  .brand-block strong {
+    font-size: 19px;
+  }
+
+  .brand-block span {
+    font-size: 13px;
+    white-space: normal;
+  }
+
+  .io-row {
+    min-width: 350px;
+  }
+
+  .timer-data-row {
+    min-width: 430px;
+  }
+
+  .register-data-row {
+    min-width: 520px;
+  }
+
+  .rung-row {
+    grid-template-columns: 34px minmax(190px, 1fr) 1fr 38px;
+    min-width: 520px;
+  }
+
+  .event-row {
+    min-width: 720px;
   }
 
   .command-row {
