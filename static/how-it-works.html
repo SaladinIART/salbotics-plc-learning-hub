@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PLC Trainer - How It Works</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="stylesheet" href="/static/guide.css" />
+  </head>
+  <body>
+    <div class="app-shell guide-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <strong>PLC TRAINER</strong>
+          <span>HOW THE TRAFFIC-LIGHT LOGIC WORKS</span>
+        </div>
+        <div class="top-actions">
+          <a class="connection-pill guide-back" href="/">SIMULATOR PANEL</a>
+        </div>
+        <div class="status-strip guide-status-strip">
+          <div class="status-item">
+            <span>Model</span>
+            <strong>CLICK</strong>
+          </div>
+          <div class="status-item">
+            <span>Scan</span>
+            <strong>100ms</strong>
+          </div>
+          <div class="status-item">
+            <span>Scenarios</span>
+            <strong>7</strong>
+          </div>
+          <div class="status-item">
+            <span>View</span>
+            <strong>LADDER</strong>
+          </div>
+        </div>
+      </header>
+
+      <main class="guide-main">
+        <section class="panel lesson-panel intro-panel">
+          <div class="panel-heading">
+            <h1>How This PLC Trainer Works</h1>
+            <span>beginner ladder guide</span>
+          </div>
+          <div class="intro-grid">
+            <div>
+              <h2>One repeated scan</h2>
+              <p>
+                The simulator behaves like a small PLC. Every scan reads the input table, solves the
+                Ladder-style rules, updates timers/registers, then writes the output table. The browser
+                is only the HMI view of that live state.
+              </p>
+            </div>
+            <div class="scan-flow" aria-label="PLC scan cycle">
+              <div><b>1</b><span>Read inputs</span><code>I0.0-I0.7</code></div>
+              <div><b>2</b><span>Solve rungs</span><code>contacts -> coils</code></div>
+              <div><b>3</b><span>Update memory</span><code>T0-T6 / R0-R4</code></div>
+              <div><b>4</b><span>Write outputs</span><code>Q0.0-Q0.5</code></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel lesson-panel map-panel">
+          <div class="panel-heading">
+            <h2>Address Map Used By Every Scenario</h2>
+            <span>same names as simulator</span>
+          </div>
+          <div class="map-grid">
+            <div class="mini-table">
+              <h3>Inputs</h3>
+              <table>
+                <tbody>
+                  <tr><th>I0.0</th><td>START</td><td>start pushbutton</td></tr>
+                  <tr><th>I0.1</th><td>STOP</td><td>stop pushbutton</td></tr>
+                  <tr><th>I0.2</th><td>PED_NS</td><td>north/south pedestrian request</td></tr>
+                  <tr><th>I0.3</th><td>PED_EW</td><td>east/west pedestrian request</td></tr>
+                  <tr><th>I0.4</th><td>VEHICLE_NS</td><td>north/south vehicle sensor</td></tr>
+                  <tr><th>I0.5</th><td>VEHICLE_EW</td><td>east/west vehicle sensor</td></tr>
+                  <tr><th>I0.6</th><td>EMERGENCY</td><td>all-red override</td></tr>
+                  <tr><th>I0.7</th><td>NIGHT_MODE</td><td>red-flash selector</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mini-table">
+              <h3>Outputs</h3>
+              <table>
+                <tbody>
+                  <tr><th>Q0.0</th><td>NS_RED</td><td>north/south red lamp</td></tr>
+                  <tr><th>Q0.1</th><td>NS_YELLOW</td><td>north/south yellow lamp</td></tr>
+                  <tr><th>Q0.2</th><td>NS_GREEN</td><td>north/south green lamp</td></tr>
+                  <tr><th>Q0.3</th><td>EW_RED</td><td>east/west red lamp</td></tr>
+                  <tr><th>Q0.4</th><td>EW_YELLOW</td><td>east/west yellow lamp</td></tr>
+                  <tr><th>Q0.5</th><td>EW_GREEN</td><td>east/west green lamp</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mini-table">
+              <h3>Timers / Registers</h3>
+              <table>
+                <tbody>
+                  <tr><th>T0-T5</th><td>phase timers</td><td>green, yellow, all-red steps</td></tr>
+                  <tr><th>T6</th><td>NIGHT_FLASH</td><td>red lamp flash pulse</td></tr>
+                  <tr><th>R0</th><td>PHASE_STEP</td><td>current phase number</td></tr>
+                  <tr><th>R1</th><td>SYSTEM_MODE</td><td>stopped, auto, manual, emergency</td></tr>
+                  <tr><th>R2</th><td>PEDESTRIAN_REQ</td><td>pending pedestrian bitmask</td></tr>
+                  <tr><th>R3</th><td>VEHICLE_DEMAND</td><td>active vehicle sensor bitmask</td></tr>
+                  <tr><th>R4</th><td>ALARM_COUNT</td><td>active alarm count</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <nav class="scenario-nav" aria-label="Scenario list">
+          <a href="#auto-cycle">Auto Cycle</a>
+          <a href="#pedestrian">Pedestrian Request</a>
+          <a href="#vehicle">Vehicle Extension</a>
+          <a href="#emergency">Emergency All-Red</a>
+          <a href="#night">Night Flash</a>
+          <a href="#manual">Manual Safe-Step</a>
+          <a href="#fault">Fault / Reset</a>
+        </nav>
+
+        <section id="auto-cycle" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>Scenario 1: Auto Cycle</h2>
+            <span>normal running sequence</span>
+          </div>
+          <div class="scenario-layout">
+            <div class="scenario-notes">
+              <h3>What happens</h3>
+              <ol>
+                <li>Student presses <code>START</code>.</li>
+                <li><code>RUN_LATCH</code> seals in so the PLC keeps running after START is released.</li>
+                <li>Phase timer advances through green, yellow, all-red, then the opposite road.</li>
+                <li>Output interlocks prevent <code>NS_GREEN</code> and <code>EW_GREEN</code> from being on together.</li>
+              </ol>
+              <div class="phase-strip">
+                <span>NS_GREEN</span><span>NS_YELLOW</span><span>ALL_RED_1</span>
+                <span>EW_GREEN</span><span>EW_YELLOW</span><span>ALL_RED_2</span>
+              </div>
+            </div>
+            <div class="ladder-diagram" aria-label="Auto cycle ladder diagram">
+              <h3>Full Ladder View</h3>
+              <div class="ladder-row active">
+                <span class="rung-id">001</span>
+                <div class="ladder-track"><span class="ld-contact">START</span><span class="ld-contact nc">/STOP</span><span class="ld-contact nc">/FAULT</span><span class="ld-coil">RUN_LATCH</span></div>
+                <p>Start seals in the run memory bit.</p>
+              </div>
+              <div class="ladder-row active">
+                <span class="rung-id">010</span>
+                <div class="ladder-track"><span class="ld-contact">RUN_LATCH</span><span class="ld-contact">STEP 0</span><span class="ld-timer">T0 NS_GREEN 5s</span></div>
+                <p>North/south green timer runs.</p>
+              </div>
+              <div class="ladder-row">
+                <span class="rung-id">011</span>
+                <div class="ladder-track"><span class="ld-contact">T0.DN</span><span class="ld-coil">STEP 1</span></div>
+                <p>Timer done advances to yellow.</p>
+              </div>
+              <div class="ladder-row">
+                <span class="rung-id">012</span>
+                <div class="ladder-track"><span class="ld-contact">STEP 1</span><span class="ld-timer">T1 NS_YELLOW 2s</span><span class="ld-coil">STEP 2</span></div>
+                <p>Yellow gives warning before all-red.</p>
+              </div>
+              <div class="ladder-row">
+                <span class="rung-id">013</span>
+                <div class="ladder-track"><span class="ld-contact">STEP 2</span><span class="ld-timer">T2 ALL_RED_1 1s</span><span class="ld-coil">STEP 3</span></div>
+                <p>Clearance gap before east/west green.</p>
+              </div>
+              <div class="ladder-row">
+                <span class="rung-id">014</span>
+                <div class="ladder-track"><span class="ld-contact">STEP 3</span><span class="ld-timer">T3 EW_GREEN 5s</span><span class="ld-coil">STEP 4</span></div>
+                <p>East/west green timer runs.</p>
+              </div>
+              <div class="ladder-row">
+                <span class="rung-id">015</span>
+                <div class="ladder-track"><span class="ld-contact">STEP 4</span><span class="ld-timer">T4 EW_YELLOW 2s</span><span class="ld-coil">STEP 5</span></div>
+                <p>East/west yellow phase.</p>
+              </div>
+              <div class="ladder-row">
+                <span class="rung-id">016</span>
+                <div class="ladder-track"><span class="ld-contact">STEP 5</span><span class="ld-timer">T5 ALL_RED_2 1s</span><span class="ld-coil">STEP 0</span></div>
+                <p>Return to north/south green.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="pedestrian" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>Scenario 2: Pedestrian Request</h2>
+            <span>latched request</span>
+          </div>
+          <div class="scenario-layout">
+            <div class="scenario-notes">
+              <h3>What happens</h3>
+              <ol>
+                <li>Student toggles <code>PED_NS</code> or <code>PED_EW</code>.</li>
+                <li>The request latches into an internal memory bit.</li>
+                <li>The latch stays on until the matching road receives service.</li>
+                <li>The request clears only after the matching green phase is reached.</li>
+              </ol>
+              <p class="lesson-callout">Beginner rule: momentary field signals often need memory bits so the PLC does not miss them between scans.</p>
+            </div>
+            <div class="ladder-diagram" aria-label="Pedestrian request ladder diagram">
+              <h3>Full Ladder View</h3>
+              <div class="ladder-row">
+                <span class="rung-id">020</span>
+                <div class="ladder-track"><span class="ld-contact">PED_NS</span><span class="ld-contact nc">/PED_NS_SERVICE</span><span class="ld-coil">PED_NS_REQUEST</span></div>
+                <p>North/south request bit turns on.</p>
+              </div>
+              <div class="ladder-row">
+                <span class="rung-id">021</span>
+                <div class="ladder-track"><span class="ld-contact">PED_NS_REQUEST</span><span class="ld-contact">PHASE_NS_GREEN</span><span class="ld-coil">PED_NS_SERVICE</span></div>
+                <p>Request is serviced during north/south green.</p>
+              </div>
+              <div class="ladder-row">
+                <span class="rung-id">022</span>
+                <div class="ladder-track"><span class="ld-contact">PED_NS_SERVICE</span><span class="ld-coil reset">RST PED_NS_REQUEST</span></div>
+                <p>Service bit clears the request latch.</p>
+              </div>
+              <div class="ladder-row">
+                <span class="rung-id">023</span>
+                <div class="ladder-track"><span class="ld-contact">PED_EW</span><span class="ld-contact nc">/PED_EW_SERVICE</span><span class="ld-coil">PED_EW_REQUEST</span></div>
+                <p>East/west request bit turns on.</p>
+              </div>
+              <div class="ladder-row">
+                <span class="rung-id">024</span>
+                <div class="ladder-track"><span class="ld-contact">PED_EW_REQUEST</span><span class="ld-contact">PHASE_EW_GREEN</span><span class="ld-coil">PED_EW_SERVICE</span></div>
+                <p>Request is serviced during east/west green.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="vehicle" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>Scenario 3: Vehicle Demand Extension</h2>
+            <span>green can extend, but not forever</span>
+          </div>
+          <div class="scenario-layout">
+            <div class="scenario-notes">
+              <h3>What happens</h3>
+              <ol>
+                <li>Vehicle sensor turns on during that road's green phase.</li>
+                <li>Base green still has to complete.</li>
+                <li>If demand remains, green can extend until the maximum green limit.</li>
+                <li>When max time is done, phase must advance.</li>
+              </ol>
+              <p class="lesson-callout">This is demand logic plus a hard limit. Industrial control often allows flexibility, then enforces a maximum.</p>
+            </div>
+            <div class="ladder-diagram" aria-label="Vehicle extension ladder diagram">
+              <h3>Full Ladder View</h3>
+              <div class="ladder-row">
+                <span class="rung-id">030</span>
+                <div class="ladder-track"><span class="ld-contact">PHASE_NS_GREEN</span><span class="ld-contact">VEHICLE_NS</span><span class="ld-contact nc">/T0_MAX.DN</span><span class="ld-coil">VEHICLE_EXTENSION_ACTIVE</span></div>
+                <p>North/south green may extend while demand exists.</p>
+              </div>
+              <div class="ladder-row">
+                <span class="rung-id">031</span>
+                <div class="ladder-track"><span class="ld-contact">PHASE_EW_GREEN</span><span class="ld-contact">VEHICLE_EW</span><span class="ld-contact nc">/T3_MAX.DN</span><span class="ld-coil">VEHICLE_EXTENSION_ACTIVE</span></div>
+                <p>East/west green may extend while demand exists.</p>
+              </div>
+              <div class="ladder-row active">
+                <span class="rung-id">032</span>
+                <div class="ladder-track"><span class="ld-contact">GREEN_BASE.DN</span><span class="ld-contact nc">/VEHICLE_EXTENSION_ACTIVE</span><span class="ld-coil">ADVANCE_PHASE</span></div>
+                <p>No extension means normal phase advance.</p>
+              </div>
+              <div class="ladder-row">
+                <span class="rung-id">033</span>
+                <div class="ladder-track"><span class="ld-contact">GREEN_MAX.DN</span><span class="ld-coil">ADVANCE_PHASE</span></div>
+                <p>Maximum green always wins.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="emergency" class="panel scenario-panel danger-scenario">
+          <div class="panel-heading">
+            <h2>Scenario 4: Emergency All-Red</h2>
+            <span>highest priority override</span>
+          </div>
+          <div class="scenario-layout">
+            <div class="scenario-notes">
+              <h3>What happens</h3>
+              <ol>
+                <li><code>EMERGENCY</code> input turns on.</li>
+                <li>Normal phase outputs are ignored.</li>
+                <li>Both green outputs and both yellow outputs turn off.</li>
+                <li>Both red outputs turn on and an alarm is logged.</li>
+              </ol>
+            </div>
+            <div class="ladder-diagram" aria-label="Emergency all-red ladder diagram">
+              <h3>Full Ladder View</h3>
+              <div class="ladder-row active danger">
+                <span class="rung-id">040</span>
+                <div class="ladder-track"><span class="ld-contact">EMERGENCY</span><span class="ld-coil danger">EMERGENCY_MODE</span></div>
+                <p>Emergency mode latches while input is active.</p>
+              </div>
+              <div class="ladder-row active danger">
+                <span class="rung-id">041</span>
+                <div class="ladder-track"><span class="ld-contact">EMERGENCY_MODE</span><span class="ld-coil danger">NS_RED</span><span class="ld-coil danger">EW_RED</span></div>
+                <p>Red lamps energize.</p>
+              </div>
+              <div class="ladder-row active danger">
+                <span class="rung-id">042</span>
+                <div class="ladder-track"><span class="ld-contact">EMERGENCY_MODE</span><span class="ld-coil reset">RST NS_GREEN</span><span class="ld-coil reset">RST EW_GREEN</span></div>
+                <p>Green lamps are forced off.</p>
+              </div>
+              <div class="ladder-row active danger">
+                <span class="rung-id">043</span>
+                <div class="ladder-track"><span class="ld-contact">EMERGENCY_MODE</span><span class="ld-coil danger">ALARM_COUNT</span><span class="ld-coil">EVENT_LOG</span></div>
+                <p>Alarm summary and event log update.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="night" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>Scenario 5: Night Red Flash</h2>
+            <span>normal sequence paused</span>
+          </div>
+          <div class="scenario-layout">
+            <div class="scenario-notes">
+              <h3>What happens</h3>
+              <ol>
+                <li><code>NIGHT_MODE</code> selector turns on.</li>
+                <li>Normal green/yellow sequence pauses.</li>
+                <li>Flash timer <code>T6</code> toggles <code>NIGHT_FLASH_ON</code>.</li>
+                <li>Red lamps blink together; greens stay off.</li>
+              </ol>
+            </div>
+            <div class="ladder-diagram" aria-label="Night flash ladder diagram">
+              <h3>Full Ladder View</h3>
+              <div class="ladder-row active">
+                <span class="rung-id">050</span>
+                <div class="ladder-track"><span class="ld-contact">NIGHT_MODE</span><span class="ld-timer">T6 0.5s</span><span class="ld-coil">NIGHT_FLASH_ON</span></div>
+                <p>Repeating timer creates flash pulse.</p>
+              </div>
+              <div class="ladder-row active">
+                <span class="rung-id">051</span>
+                <div class="ladder-track"><span class="ld-contact">NIGHT_MODE</span><span class="ld-contact">NIGHT_FLASH_ON</span><span class="ld-coil danger">NS_RED</span><span class="ld-coil danger">EW_RED</span></div>
+                <p>Red outputs flash together.</p>
+              </div>
+              <div class="ladder-row">
+                <span class="rung-id">052</span>
+                <div class="ladder-track"><span class="ld-contact">NIGHT_MODE</span><span class="ld-coil reset">RST NS_GREEN</span><span class="ld-coil reset">RST EW_GREEN</span></div>
+                <p>Green outputs inhibited while night mode is active.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="manual" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>Scenario 6: Manual Safe-Step</h2>
+            <span>one safe phase at a time</span>
+          </div>
+          <div class="scenario-layout">
+            <div class="scenario-notes">
+              <h3>What happens</h3>
+              <ol>
+                <li>Student presses <code>MANUAL STEP</code>.</li>
+                <li>The controller changes only to the next allowed phase.</li>
+                <li>All-red steps remain in the sequence.</li>
+                <li>Green conflict interlock still protects the outputs.</li>
+              </ol>
+            </div>
+            <div class="ladder-diagram" aria-label="Manual safe-step ladder diagram">
+              <h3>Full Ladder View</h3>
+              <div class="ladder-row">
+                <span class="rung-id">060</span>
+                <div class="ladder-track"><span class="ld-contact">MANUAL_STEP</span><span class="ld-contact nc">/EMERGENCY</span><span class="ld-contact nc">/FAULT</span><span class="ld-coil">MANUAL_PULSE</span></div>
+                <p>Manual command becomes one pulse.</p>
+              </div>
+              <div class="ladder-row">
+                <span class="rung-id">061</span>
+                <div class="ladder-track"><span class="ld-contact">MANUAL_PULSE</span><span class="ld-contact">CURRENT_STEP</span><span class="ld-coil">NEXT_SAFE_STEP</span></div>
+                <p>Step changes to the next safe phase.</p>
+              </div>
+              <div class="ladder-row active">
+                <span class="rung-id">062</span>
+                <div class="ladder-track"><span class="ld-contact">NEXT_SAFE_STEP</span><span class="ld-contact nc">/GREEN_CONFLICT</span><span class="ld-coil">PHASE_STEP</span></div>
+                <p>Interlock remains active in manual mode.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="fault" class="panel scenario-panel danger-scenario">
+          <div class="panel-heading">
+            <h2>Scenario 7: Fault And Reset</h2>
+            <span>stuck pushbutton training fault</span>
+          </div>
+          <div class="scenario-layout">
+            <div class="scenario-notes">
+              <h3>What happens</h3>
+              <ol>
+                <li><code>START</code> and <code>STOP</code> are both on at the same time.</li>
+                <li>PLC treats that as an impossible pushbutton state.</li>
+                <li><code>FAULT_ACTIVE</code> turns on and outputs go safe all-red.</li>
+                <li>Student clears the bad input, then presses <code>RESET FAULT</code>.</li>
+              </ol>
+            </div>
+            <div class="ladder-diagram" aria-label="Fault reset ladder diagram">
+              <h3>Full Ladder View</h3>
+              <div class="ladder-row active danger">
+                <span class="rung-id">070</span>
+                <div class="ladder-track"><span class="ld-contact">START</span><span class="ld-contact">STOP</span><span class="ld-coil danger">FAULT_ACTIVE</span></div>
+                <p>Conflicting pushbuttons create fault.</p>
+              </div>
+              <div class="ladder-row active danger">
+                <span class="rung-id">071</span>
+                <div class="ladder-track"><span class="ld-contact">FAULT_ACTIVE</span><span class="ld-coil danger">NS_RED</span><span class="ld-coil danger">EW_RED</span></div>
+                <p>Fault sends junction to all-red.</p>
+              </div>
+              <div class="ladder-row">
+                <span class="rung-id">072</span>
+                <div class="ladder-track"><span class="ld-contact">RESET_FAULT</span><span class="ld-contact nc">/START_STOP_CONFLICT</span><span class="ld-coil reset">RST FAULT_ACTIVE</span></div>
+                <p>Reset works only after the bad input is cleared.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

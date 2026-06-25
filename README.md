@@ -47,8 +47,9 @@ pytest
 
 1. Read `docs/PLC_TRAINING_GUIDE.md`.
 2. Run the app.
-3. Press `START`.
-4. Watch the top status bar, I/O rack, timers, registers, rungs, outputs, and event log.
-5. Toggle vehicle sensors, pedestrian requests, emergency, night mode.
-6. Read `plc_engine.py` slowly from top to bottom.
-7. Compare code logic to Ladder concepts in the guide.
+3. Open `http://127.0.0.1:8733/static/how-it-works.html` for scenario walkthroughs and ladder diagrams.
+4. Press `START`.
+5. Watch the top status bar, I/O rack, timers, registers, rungs, outputs, and event log.
+6. Toggle vehicle sensors, pedestrian requests, emergency, night mode.
+7. Read `plc_engine.py` slowly from top to bottom.
+8. Compare code logic to Ladder concepts in the guide.

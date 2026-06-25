@@ -15,6 +15,24 @@ def test_root_serves_industrial_trainer_ui() -> None:
     assert "timer-table" in html
     assert "alarm-summary" in html
     assert "data-field-lamp" in html
+    assert "/static/how-it-works.html" in html
+
+
+def test_how_it_works_page_serves_ladder_scenarios() -> None:
+    app = create_app(start_background=False)
+    with TestClient(app) as client:
+        response = client.get("/how-it-works")
+        static_response = client.get("/static/how-it-works.html")
+
+    assert response.status_code == 200
+    html = response.text
+    assert "How This PLC Trainer Works" in html
+    assert "Scenario 1: Auto Cycle" in html
+    assert "Scenario 4: Emergency All-Red" in html
+    assert "Full Ladder View" in html
+    assert "ladder-diagram" in html
+    assert static_response.status_code == 200
+    assert "How This PLC Trainer Works" in static_response.text
 
 
 def test_static_assets_are_served() -> None:
@@ -22,9 +40,11 @@ def test_static_assets_are_served() -> None:
     with TestClient(app) as client:
         app_js = client.get("/static/app.js")
         styles = client.get("/static/styles.css")
+        guide_styles = client.get("/static/guide.css")
 
     assert app_js.status_code == 200
     assert "renderTimerRows" in app_js.text
     assert styles.status_code == 200
     assert "field-controls" in styles.text
-
+    assert guide_styles.status_code == 200
+    assert "ladder-diagram" in guide_styles.text
