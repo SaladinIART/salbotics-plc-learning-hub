@@ -107,6 +107,68 @@ function renderRegisters(registers) {
   });
 }
 
+function renderRegisterRows(rows, fallbackRegisters) {
+  if (!rows) {
+    renderRegisters(fallbackRegisters);
+    return;
+  }
+  const container = qs("#register-list");
+  container.innerHTML = `
+    <div class="data-row data-head register-data-row">
+      <span>Addr</span>
+      <span>Name</span>
+      <span>Type</span>
+      <span>Dec</span>
+      <span>Hex</span>
+      <span>Description</span>
+    </div>
+  `;
+  rows.forEach((register) => {
+    const row = document.createElement("div");
+    row.className = "data-row register-data-row";
+    row.innerHTML = `
+      <span class="data-address">${register.address}</span>
+      <span class="data-name">${register.name}</span>
+      <span>${register.type}</span>
+      <span>${register.value_dec}</span>
+      <span>${register.value_hex}</span>
+      <span class="data-desc">${register.description}</span>
+    `;
+    container.append(row);
+  });
+}
+
+function renderTimerRows(rows) {
+  const container = qs("#timer-table");
+  if (!rows) {
+    container.innerHTML = "";
+    return;
+  }
+  container.innerHTML = `
+    <div class="data-row data-head timer-data-row">
+      <span>Addr</span>
+      <span>Name</span>
+      <span>Type</span>
+      <span>Preset</span>
+      <span>Accum</span>
+      <span>Status</span>
+    </div>
+  `;
+  rows.forEach((timer) => {
+    const row = document.createElement("div");
+    row.className = `data-row timer-data-row ${timer.status !== "-" ? "active" : ""}`;
+    row.innerHTML = `
+      <span class="data-address">${timer.address}</span>
+      <span class="data-name">${timer.name}</span>
+      <span>${timer.type}</span>
+      <span>${timer.preset_s.toFixed(1)}</span>
+      <span>${timer.accum_s.toFixed(1)}</span>
+      <span class="status-chip ${timer.status === "DN" ? "done" : timer.status === "EN" ? "enabled" : ""}">${timer.status}</span>
+    `;
+    container.append(row);
+  });
+}
+
 function renderRungs(rungs) {
   const container = qs("#rung-list");
   container.innerHTML = "";
@@ -172,10 +234,6 @@ function renderEvents(events) {
 }
 
 function renderTimers(timers) {
-  qs("#elapsed-value").textContent = `${timers.phase_elapsed_s.toFixed(1)}s`;
-  qs("#target-value").textContent = `${timers.phase_target_s.toFixed(1)}s`;
-  qs("#remaining-value").textContent = `${timers.phase_remaining_s.toFixed(1)}s`;
-  qs("#scan-time-value").textContent = `${timers.scan_interval_ms}ms`;
   qs("#scan-time-header").textContent = `${timers.scan_interval_ms}ms`;
   qs("#scan-value").textContent = String(timers.scan_count);
 }
@@ -198,9 +256,10 @@ function render(state) {
   qs("#plc-status").textContent = state.registers.FAULT_ACTIVE ? "PLC FAULT" : "PLC CONNECTED";
   renderClock();
   renderTimers(state.timers);
+  renderTimerRows(state.timer_rows);
   renderIoRows(state.input_rows || fallbackRows(state.inputs), "#input-list", true);
   renderIoRows(state.output_rows || fallbackRows(state.outputs), "#output-list", false);
-  renderRegisters(state.registers);
+  renderRegisterRows(state.register_rows, state.registers);
   renderRungs(state.ladder_rungs);
   renderField(state.outputs);
   renderAlarms(state.alarms);

@@ -117,7 +117,6 @@ body[data-mode="emergency"] .connection-pill {
 }
 
 .status-item span,
-.timer-grid span,
 .panel-heading span {
   display: block;
   color: var(--muted);
@@ -377,31 +376,91 @@ h3 {
   border-color: #15803d;
 }
 
-.timer-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  margin-top: 14px;
-}
-
-.timer-grid div {
-  min-height: 62px;
-  padding: 8px 10px;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  background: var(--panel-2);
-}
-
-.timer-grid strong {
-  display: block;
-  margin-top: 8px;
-  font-size: 20px;
-}
-
 .register-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 8px;
+}
+
+.data-table {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: white;
+}
+
+.data-row {
+  display: grid;
+  align-items: center;
+  min-height: 30px;
+  border-bottom: 1px solid #dbe3ee;
+  font-size: 11px;
+}
+
+.data-row:last-child {
+  border-bottom: 0;
+}
+
+.data-head {
+  min-height: 28px;
+  background: #e7ecf3;
+  color: #334155;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.timer-data-row {
+  grid-template-columns: 50px minmax(112px, 1fr) 44px 58px 58px 56px;
+}
+
+.register-data-row {
+  grid-template-columns: 50px minmax(108px, 1fr) 44px 48px 58px minmax(150px, 1.1fr);
+}
+
+.data-row > span {
+  min-width: 0;
+  margin: 0 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.data-address {
+  color: #1d4ed8;
+  font-family: Consolas, "Courier New", monospace;
+  font-weight: 800;
+}
+
+.data-name {
+  color: #0f172a;
+  font-weight: 900;
+}
+
+.data-desc {
+  color: var(--muted);
+}
+
+.status-chip {
+  justify-self: start;
+  min-width: 34px;
+  padding: 3px 7px;
+  border-radius: 4px;
+  background: #e2e8f0;
+  color: #475569;
+  font-size: 10px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.status-chip.enabled {
+  background: #cffafe;
+  color: #0e7490;
+}
+
+.status-chip.done {
+  background: #dcfce7;
+  color: #166534;
 }
 
 .register-row {
@@ -659,7 +718,6 @@ h3 {
   }
 
   .status-strip,
-  .timer-grid,
   .register-grid {
     grid-template-columns: 1fr 1fr;
   }
