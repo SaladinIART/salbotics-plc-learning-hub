@@ -142,6 +142,34 @@ body[data-mode="emergency"] .connection-pill {
   white-space: nowrap;
 }
 
+#mode-value,
+#phase-value {
+  font-size: 14px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+body[data-mode="auto"] #mode-value {
+  color: #86efac;
+}
+
+body[data-mode="manual"] #mode-value,
+body[data-mode="night"] #mode-value,
+body[data-warning="true"] #phase-value {
+  color: #fcd34d;
+}
+
+body[data-mode="stopped"] #mode-value {
+  color: #cbd5e1;
+}
+
+body[data-mode="emergency"] #mode-value,
+body[data-mode="fault"] #mode-value,
+body[data-mode="emergency"] #phase-value,
+body[data-mode="fault"] #phase-value {
+  color: #fca5a5;
+}
+
 .dashboard-grid {
   display: grid;
   grid-template-columns: minmax(350px, 1.05fr) minmax(440px, 1.3fr) minmax(330px, 0.95fr);
@@ -156,6 +184,17 @@ body[data-mode="emergency"] .connection-pill {
   box-shadow: var(--shadow);
   border: 1px solid #223448;
   overflow: hidden;
+}
+
+body[data-mode="emergency"] .topbar,
+body[data-mode="fault"] .topbar {
+  border-color: rgba(248, 113, 113, 0.75);
+  box-shadow: 0 0 0 2px rgba(248, 113, 113, 0.14), var(--shadow);
+}
+
+body[data-mode="night"] .topbar {
+  border-color: rgba(251, 191, 36, 0.75);
+  box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.14), var(--shadow);
 }
 
 .io-panel,
@@ -308,6 +347,10 @@ h3 {
   font-size: 11px;
 }
 
+.io-row.on {
+  background: #f8fff9;
+}
+
 .io-row:last-child {
   border-bottom: 0;
 }
@@ -447,6 +490,10 @@ h3 {
   min-height: 30px;
   border-bottom: 1px solid #dbe3ee;
   font-size: 11px;
+}
+
+.data-row.active {
+  background: #ecfeff;
 }
 
 .data-row:last-child {
@@ -917,10 +964,27 @@ h3 {
   font-weight: 800;
 }
 
+body[data-mode="emergency"] .alarm,
+body[data-mode="fault"] .alarm {
+  border-color: #f87171;
+  background: #fef2f2;
+  color: #991b1b;
+}
+
 .alarm.empty {
   border-color: #bbf7d0;
   background: #f0fdf4;
   color: #166534;
+}
+
+body[data-warning="true"] .alarm.empty {
+  border-color: #fbbf24;
+  background: #fffbeb;
+  color: #92400e;
+}
+
+body[data-warning="true"] .alarm.empty::after {
+  content: " - vehicle extension active";
 }
 
 .event-panel {

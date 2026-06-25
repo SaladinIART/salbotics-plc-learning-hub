@@ -328,6 +328,8 @@ function renderClock() {
 function render(state) {
   latestState = state;
   document.body.dataset.mode = state.mode;
+  document.body.dataset.phase = state.phase;
+  document.body.dataset.warning = state.registers.VEHICLE_EXTENSION_ACTIVE ? "true" : "false";
   qs("#mode-value").textContent = state.mode.toUpperCase();
   qs("#phase-value").textContent = state.phase;
   qs("#night-value").textContent = state.inputs.NIGHT_MODE ? "ON" : "OFF";
