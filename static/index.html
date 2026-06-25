@@ -93,24 +93,55 @@
           <div class="intersection" aria-label="Traffic-light intersection simulator">
             <div class="road vertical"></div>
             <div class="road horizontal"></div>
+            <div class="crosswalk crosswalk-north"></div>
+            <div class="crosswalk crosswalk-south"></div>
+            <div class="crosswalk crosswalk-east"></div>
+            <div class="crosswalk crosswalk-west"></div>
             <div class="lane-label north">N</div>
             <div class="lane-label south">S</div>
             <div class="lane-label east">E</div>
             <div class="lane-label west">W</div>
 
-            <div class="signal signal-ns">
-              <span id="field-ns-red" class="lamp red"></span>
-              <span id="field-ns-yellow" class="lamp yellow"></span>
-              <span id="field-ns-green" class="lamp green"></span>
-              <b>NS</b>
+            <div class="signal signal-north">
+              <b>NORTH</b>
+              <div class="signal-head">
+                <span data-field-lamp="NS_RED" class="lamp red"></span>
+                <span data-field-lamp="NS_YELLOW" class="lamp yellow"></span>
+                <span data-field-lamp="NS_GREEN" class="lamp green"></span>
+              </div>
             </div>
 
-            <div class="signal signal-ew">
-              <span id="field-ew-red" class="lamp red"></span>
-              <span id="field-ew-yellow" class="lamp yellow"></span>
-              <span id="field-ew-green" class="lamp green"></span>
-              <b>EW</b>
+            <div class="signal signal-south">
+              <b>SOUTH</b>
+              <div class="signal-head">
+                <span data-field-lamp="NS_RED" class="lamp red"></span>
+                <span data-field-lamp="NS_YELLOW" class="lamp yellow"></span>
+                <span data-field-lamp="NS_GREEN" class="lamp green"></span>
+              </div>
             </div>
+
+            <div class="signal signal-west">
+              <b>WEST</b>
+              <div class="signal-head">
+                <span data-field-lamp="EW_RED" class="lamp red"></span>
+                <span data-field-lamp="EW_YELLOW" class="lamp yellow"></span>
+                <span data-field-lamp="EW_GREEN" class="lamp green"></span>
+              </div>
+            </div>
+
+            <div class="signal signal-east">
+              <b>EAST</b>
+              <div class="signal-head">
+                <span data-field-lamp="EW_RED" class="lamp red"></span>
+                <span data-field-lamp="EW_YELLOW" class="lamp yellow"></span>
+                <span data-field-lamp="EW_GREEN" class="lamp green"></span>
+              </div>
+            </div>
+
+            <div class="field-marker sensor-ns" data-field-input="VEHICLE_NS">VEH NS</div>
+            <div class="field-marker sensor-ew" data-field-input="VEHICLE_EW">VEH EW</div>
+            <div class="field-marker ped-ns" data-field-input="PED_NS">PED NS</div>
+            <div class="field-marker ped-ew" data-field-input="PED_EW">PED EW</div>
           </div>
 
           <div id="alarm-list" class="alarm-list"></div>

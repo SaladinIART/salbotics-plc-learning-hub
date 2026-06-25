@@ -245,17 +245,12 @@ function rungCircuit(title) {
   return circuits[title] || { contacts: [{ label: "LOGIC", closed: false }], coil: title };
 }
 
-function renderField(outputs) {
-  const map = {
-    "field-ns-red": outputs.NS_RED,
-    "field-ns-yellow": outputs.NS_YELLOW,
-    "field-ns-green": outputs.NS_GREEN,
-    "field-ew-red": outputs.EW_RED,
-    "field-ew-yellow": outputs.EW_YELLOW,
-    "field-ew-green": outputs.EW_GREEN,
-  };
-  Object.entries(map).forEach(([id, value]) => {
-    qs(`#${id}`).classList.toggle("on", Boolean(value));
+function renderField(outputs, inputs) {
+  document.querySelectorAll("[data-field-lamp]").forEach((lamp) => {
+    lamp.classList.toggle("on", Boolean(outputs[lamp.dataset.fieldLamp]));
+  });
+  document.querySelectorAll("[data-field-input]").forEach((marker) => {
+    marker.classList.toggle("active", Boolean(inputs[marker.dataset.fieldInput]));
   });
 }
 
@@ -320,7 +315,7 @@ function render(state) {
   renderIoRows(state.output_rows || fallbackRows(state.outputs), "#output-list", false);
   renderRegisterRows(state.register_rows, state.registers);
   renderRungs(state.ladder_rungs);
-  renderField(state.outputs);
+  renderField(state.outputs, state.inputs);
   renderAlarms(state.alarms);
   renderEvents(state.event_log);
 }

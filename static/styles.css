@@ -638,7 +638,10 @@ h3 {
   border: 1px solid #94a3b8;
   border-radius: var(--radius);
   overflow: hidden;
-  background: #1f2937;
+  background:
+    linear-gradient(90deg, rgba(22, 101, 52, 0.7) 0 28%, transparent 28% 72%, rgba(22, 101, 52, 0.7) 72%),
+    linear-gradient(0deg, rgba(22, 101, 52, 0.65) 0 28%, transparent 28% 72%, rgba(22, 101, 52, 0.65) 72%),
+    #1f2937;
 }
 
 .road {
@@ -647,11 +650,11 @@ h3 {
 }
 
 .road.vertical {
-  inset: 0 40%;
+  inset: 0 41%;
 }
 
 .road.horizontal {
-  inset: 40% 0;
+  inset: 41% 0;
 }
 
 .road::after {
@@ -680,6 +683,44 @@ h3 {
   font-weight: 900;
 }
 
+.crosswalk {
+  position: absolute;
+  z-index: 2;
+  opacity: 0.8;
+}
+
+.crosswalk-north,
+.crosswalk-south {
+  left: 42%;
+  width: 16%;
+  height: 5%;
+  background: repeating-linear-gradient(90deg, #dbeafe 0 6px, transparent 6px 11px);
+}
+
+.crosswalk-north {
+  top: 31%;
+}
+
+.crosswalk-south {
+  bottom: 31%;
+}
+
+.crosswalk-east,
+.crosswalk-west {
+  top: 42%;
+  width: 5%;
+  height: 16%;
+  background: repeating-linear-gradient(0deg, #dbeafe 0 6px, transparent 6px 11px);
+}
+
+.crosswalk-east {
+  right: 31%;
+}
+
+.crosswalk-west {
+  left: 31%;
+}
+
 .north {
   top: 12px;
   left: calc(50% - 14px);
@@ -702,34 +743,95 @@ h3 {
 
 .signal {
   position: absolute;
-  display: grid;
-  grid-template-columns: repeat(3, 22px) auto;
+  z-index: 3;
+  display: inline-grid;
   align-items: center;
-  gap: 6px;
-  padding: 8px;
+  justify-items: center;
+  gap: 4px;
+  padding: 6px;
   border-radius: 6px;
   background: rgba(15, 23, 42, 0.88);
   color: white;
-  font-size: 12px;
+  font-size: 10px;
+  font-weight: 900;
+  box-shadow: 0 8px 18px rgba(2, 8, 23, 0.26);
 }
 
-.signal-ns {
+.signal-head {
+  display: grid;
+  gap: 4px;
+  padding: 5px;
+  border-radius: 5px;
+  background: #020617;
+}
+
+.signal-north {
+  top: 8%;
+  left: 58%;
+}
+
+.signal-south {
+  bottom: 8%;
+  left: 34%;
+}
+
+.signal-west {
   left: 10%;
-  top: 12%;
+  top: 55%;
 }
 
-.signal-ew {
-  right: 8%;
-  bottom: 12%;
+.signal-east {
+  right: 10%;
+  top: 28%;
 }
 
 .lamp {
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background: #111827;
   border: 2px solid #475569;
+}
+
+.field-marker {
+  position: absolute;
+  z-index: 4;
+  padding: 4px 6px;
+  border: 1px solid #64748b;
+  border-radius: 4px;
+  background: rgba(15, 23, 42, 0.85);
+  color: #cbd5e1;
+  font-size: 9px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.field-marker.active {
+  border-color: #38bdf8;
+  background: rgba(8, 47, 73, 0.92);
+  color: #cffafe;
+  box-shadow: 0 0 12px rgba(14, 165, 233, 0.38);
+}
+
+.sensor-ns {
+  top: 18%;
+  left: 30%;
+}
+
+.sensor-ew {
+  right: 22%;
+  bottom: 30%;
+}
+
+.ped-ns {
+  right: 24%;
+  top: 23%;
+}
+
+.ped-ew {
+  left: 20%;
+  bottom: 28%;
 }
 
 .lamp.red.on {
