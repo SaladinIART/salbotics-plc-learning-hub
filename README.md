@@ -18,14 +18,21 @@ This repo is built to be useful for learners and visible for recruiters: it show
 
 ## Screenshots
 
-Screenshots are prepared in the publishing checkpoint and should show:
+PLC/HMI dashboard:
 
-- PLC/HMI dashboard with I/O rack, timers, registers, rungs, field view, alarms, and event log.
-- How-it-works Ladder scenario guide.
-- Oil-palm industrial environment page.
-- Programming methods / flowchart page.
+![Salbotics PLC Learning Hub dashboard](docs/screenshots/dashboard.png)
 
-Until the static demo assets are generated, run the local app and open `http://127.0.0.1:8733`.
+Ladder scenario guide:
+
+![How-it-works Ladder guide](docs/screenshots/how-it-works.png)
+
+Oil-palm industrial environment:
+
+![Oil-palm industrial environment page](docs/screenshots/oil-palm.png)
+
+Programming methods and flowcharts:
+
+![Programming methods page](docs/screenshots/programming-methods.png)
 
 ## What You Can Learn
 
