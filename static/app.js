@@ -316,6 +316,10 @@ function renderTimers(timers) {
   qs("#scan-value").textContent = String(timers.scan_count);
 }
 
+function formatStatusLabel(value) {
+  return String(value).replaceAll("_", " ");
+}
+
 function renderClock() {
   const now = new Date();
   qs("#clock-value").textContent = now.toLocaleTimeString([], {
@@ -330,8 +334,8 @@ function render(state) {
   document.body.dataset.mode = state.mode;
   document.body.dataset.phase = state.phase;
   document.body.dataset.warning = state.registers.VEHICLE_EXTENSION_ACTIVE ? "true" : "false";
-  qs("#mode-value").textContent = state.mode.toUpperCase();
-  qs("#phase-value").textContent = state.phase;
+  qs("#mode-value").textContent = formatStatusLabel(state.mode).toUpperCase();
+  qs("#phase-value").textContent = formatStatusLabel(state.phase);
   qs("#night-value").textContent = state.inputs.NIGHT_MODE ? "ON" : "OFF";
   qs("#plc-status").textContent = state.registers.FAULT_ACTIVE ? "PLC FAULT" : "PLC CONNECTED";
   renderClock();

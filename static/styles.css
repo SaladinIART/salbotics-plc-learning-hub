@@ -31,10 +31,17 @@ body {
     var(--bg);
   color: var(--dark-text);
   font-family: Arial, Helvetica, sans-serif;
+  text-rendering: geometricPrecision;
 }
 
 button {
   font: inherit;
+}
+
+button:focus-visible,
+.bit-toggle:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
 }
 
 .app-shell {
@@ -59,7 +66,8 @@ button {
 .brand-block {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
+  min-width: 0;
   min-height: 62px;
   padding: 0 18px;
   border-right: 1px solid rgba(148, 163, 184, 0.25);
@@ -69,13 +77,15 @@ button {
   color: white;
   font-size: 22px;
   letter-spacing: 0;
+  line-height: 1;
   white-space: nowrap;
 }
 
 .brand-block span {
   color: var(--dark-text);
-  font-size: 17px;
+  font-size: 14px;
   font-weight: 800;
+  line-height: 1.15;
   white-space: nowrap;
 }
 
@@ -100,7 +110,7 @@ body[data-mode="emergency"] .connection-pill {
 
 .status-strip {
   display: grid;
-  grid-template-columns: repeat(6, minmax(92px, 1fr));
+  grid-template-columns: minmax(92px, 0.85fr) minmax(130px, 1.3fr) repeat(4, minmax(84px, 1fr));
   align-self: stretch;
   gap: 0;
 }
@@ -138,15 +148,18 @@ body[data-mode="emergency"] .connection-pill {
   margin-top: 4px;
   color: white;
   font-size: 16px;
-  line-height: 1.1;
+  line-height: 1.15;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 #mode-value,
 #phase-value {
-  font-size: 14px;
+  font-size: 13px;
   white-space: normal;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 body[data-mode="auto"] #mode-value {
@@ -220,6 +233,9 @@ body[data-mode="night"] .topbar {
   margin: 0;
   font-size: 17px;
   line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 h3 {
@@ -256,6 +272,11 @@ h3 {
   font-size: 12px;
   font-weight: 800;
   cursor: pointer;
+  line-height: 1.1;
+  transition:
+    background 120ms ease,
+    border-color 120ms ease,
+    transform 120ms ease;
 }
 
 .field-controls .command {
@@ -303,6 +324,10 @@ h3 {
   background: #cbd5e1;
 }
 
+.command:active {
+  transform: translateY(1px);
+}
+
 .command.start {
   background: #dcfce7;
   border-color: #86efac;
@@ -336,15 +361,18 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 6px;
   background: white;
+  scrollbar-color: #94a3b8 #e2e8f0;
+  scrollbar-width: thin;
 }
 
 .io-row {
   display: grid;
   grid-template-columns: 50px 112px minmax(58px, 1fr) 50px;
   align-items: center;
-  min-height: 32px;
+  min-height: 31px;
   border-bottom: 1px solid #dbe3ee;
   font-size: 11px;
+  line-height: 1.15;
 }
 
 .io-row.on {
@@ -388,6 +416,7 @@ h3 {
   gap: 8px;
   min-width: 0;
   overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
@@ -434,6 +463,7 @@ h3 {
   font-size: 11px;
   font-weight: 800;
   cursor: pointer;
+  line-height: 1;
 }
 
 .bit-toggle.on {
@@ -443,6 +473,7 @@ h3 {
 }
 
 .pilot {
+  flex: 0 0 auto;
   width: 14px;
   height: 14px;
   border-radius: 50%;
@@ -482,6 +513,8 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 6px;
   background: white;
+  scrollbar-color: #94a3b8 #e2e8f0;
+  scrollbar-width: thin;
 }
 
 .data-row {
@@ -490,6 +523,7 @@ h3 {
   min-height: 30px;
   border-bottom: 1px solid #dbe3ee;
   font-size: 11px;
+  line-height: 1.15;
 }
 
 .data-row.active {
@@ -586,7 +620,7 @@ h3 {
 
 .rung-row {
   grid-template-columns: 34px minmax(210px, 0.95fr) minmax(120px, 0.8fr) 38px;
-  min-height: 58px;
+  min-height: 56px;
   padding: 7px 8px;
 }
 
@@ -695,6 +729,7 @@ h3 {
 .coil {
   position: relative;
   z-index: 1;
+  flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -950,8 +985,8 @@ h3 {
 
 .alarm-list {
   display: grid;
-  gap: 8px;
-  margin-top: 14px;
+  gap: 7px;
+  margin-top: 12px;
 }
 
 .alarm {
@@ -999,6 +1034,8 @@ body[data-warning="true"] .alarm.empty::after {
   border: 1px solid var(--line);
   border-radius: 6px;
   background: white;
+  scrollbar-color: #94a3b8 #e2e8f0;
+  scrollbar-width: thin;
 }
 
 .event-row {
@@ -1009,6 +1046,7 @@ body[data-warning="true"] .alarm.empty::after {
   border-bottom: 1px solid #dbe3ee;
   border-radius: 0;
   font-size: 12px;
+  line-height: 1.15;
 }
 
 .event-row:last-child {
@@ -1065,11 +1103,34 @@ body[data-warning="true"] .alarm.empty::after {
 
 .summary-card span {
   font-size: 11px;
+  line-height: 1;
   text-transform: uppercase;
 }
 
 .summary-card strong {
   font-size: 20px;
+  line-height: 1;
+}
+
+.io-table::-webkit-scrollbar,
+.data-table::-webkit-scrollbar,
+.event-log::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+.io-table::-webkit-scrollbar-track,
+.data-table::-webkit-scrollbar-track,
+.event-log::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+
+.io-table::-webkit-scrollbar-thumb,
+.data-table::-webkit-scrollbar-thumb,
+.event-log::-webkit-scrollbar-thumb {
+  border: 2px solid #e2e8f0;
+  border-radius: 999px;
+  background: #94a3b8;
 }
 
 .alarm-count {
