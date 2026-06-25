@@ -55,3 +55,30 @@ Visual checkpoints should also verify:
 
 Each checkpoint must be committed before the next checkpoint starts.
 
+## CP20 Final QA Notes
+
+Date: 2026-06-25.
+
+Rendered QA used `http://127.0.0.1:8740/` because that was the current-code test server during the Codex run. The committed launcher and docs still use `127.0.0.1:8733`.
+
+Verification completed:
+
+- `.\.venv\Scripts\python.exe -m pytest -q` passed: 17 tests.
+- Browser page identity passed: title `PLC Traffic-Light Trainer`.
+- Blank-screen check passed: app shell, I/O rack, ladder monitor, and junction rendered.
+- Framework overlay check passed: no framework error overlay.
+- Console health passed: no browser errors or warnings.
+- Interaction check passed:
+  - `STOP` moved the controller to stopped/all-red.
+  - `START` returned the controller to auto mode.
+  - `EMERGENCY` forced emergency all-red, turned both red directions on, turned both greens off, and displayed an active alarm.
+- Desktop viewport `1440x900` passed: no page horizontal overflow, no topbar overflow, no control text clipping, no I/O tag clipping.
+- Mobile viewport `390x844` passed: no page horizontal overflow; wide I/O tables scroll inside the rack so PLC tag names stay readable.
+
+Concept comparison result:
+
+- Matches target mood: dark SCADA shell, compact light data surfaces, section headers, PLC address rows, timer/register tables, ladder-style rung monitor, field controls, alarm state colors, and event/alarm area.
+- Intentional deviation: the junction is code-native instead of raster/photorealistic, per the project assumption.
+- Intentional deviation: the trainer uses the CLICK-style 8 input / 6 output teaching model, so it has fewer I/O points than the broader concept image.
+- Intentional deviation: scan time displays the simulator interval (`100ms`) rather than a measured hardware scan time.
+- Intentional deviation: manual override controls are visible disabled training placeholders until backend override logic is added.

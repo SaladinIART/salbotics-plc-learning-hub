@@ -367,7 +367,7 @@ h3 {
 
 .io-row {
   display: grid;
-  grid-template-columns: 50px 112px minmax(58px, 1fr) 50px;
+  grid-template-columns: 50px 126px minmax(88px, 1fr) 50px;
   align-items: center;
   min-height: 31px;
   border-bottom: 1px solid #dbe3ee;
@@ -1230,7 +1230,8 @@ body[data-warning="true"] .alarm.empty::after {
   }
 
   .io-row {
-    min-width: 350px;
+    min-width: 440px;
+    grid-template-columns: 50px 126px minmax(150px, 1fr) 54px;
   }
 
   .timer-data-row {
