@@ -173,17 +173,76 @@ function renderRungs(rungs) {
   const container = qs("#rung-list");
   container.innerHTML = "";
   rungs.forEach((rung) => {
+    const match = rung.name.match(/^RUNG\s+(\d+)\s+(.+)$/);
+    const number = match ? match[1] : "---";
+    const title = match ? match[2] : rung.name;
+    const circuit = rungCircuit(title);
     const row = document.createElement("div");
-    row.className = "rung-row";
+    row.className = `rung-row ${rung.energized ? "on" : ""}`;
     row.innerHTML = `
-      <span class="rung-power ${rung.energized ? "on" : ""}">${rung.energized ? "TRUE" : "FALSE"}</span>
+      <span class="rung-number">${number}</span>
+      <div class="rung-circuit">
+        <span class="rail"></span>
+        ${circuit.contacts.map((contact) => `<span class="contact ${contact.closed ? "closed" : ""}">${contact.label}</span>`).join("")}
+        <span class="coil ${rung.energized ? "on" : ""}">${circuit.coil}</span>
+      </div>
       <div>
-        <div class="rung-title">${rung.name}</div>
+        <div class="rung-title">${title}</div>
         <div class="rung-desc">${rung.description}</div>
       </div>
+      <span class="rung-power ${rung.energized ? "on" : ""}">${rung.energized ? "EN" : "OFF"}</span>
     `;
     container.append(row);
   });
+}
+
+function rungCircuit(title) {
+  const circuits = {
+    "RUN LATCH": {
+      contacts: [
+        { label: "START", closed: Boolean(latestState?.inputs?.START) },
+        { label: "/STOP", closed: !latestState?.inputs?.STOP },
+        { label: "/FAULT", closed: !latestState?.registers?.FAULT_ACTIVE },
+      ],
+      coil: "RUN_LATCH",
+    },
+    "STOP SAFE": {
+      contacts: [
+        { label: "STOP", closed: Boolean(latestState?.inputs?.STOP) },
+        { label: "/RUN", closed: !latestState?.registers?.RUN_LATCH },
+      ],
+      coil: "ALL_RED",
+    },
+    EMERGENCY: {
+      contacts: [{ label: "EMERGENCY", closed: Boolean(latestState?.inputs?.EMERGENCY) }],
+      coil: "ALL_RED",
+    },
+    "NIGHT FLASH": {
+      contacts: [{ label: "NIGHT_MODE", closed: Boolean(latestState?.inputs?.NIGHT_MODE) }],
+      coil: "FLASH_RED",
+    },
+    "NS GREEN": {
+      contacts: [
+        { label: "PHASE_NS", closed: latestState?.phase === "NS_GREEN" },
+        { label: "/EW_GREEN", closed: !latestState?.outputs?.EW_GREEN },
+      ],
+      coil: "NS_GREEN",
+    },
+    "EW GREEN": {
+      contacts: [
+        { label: "PHASE_EW", closed: latestState?.phase === "EW_GREEN" },
+        { label: "/NS_GREEN", closed: !latestState?.outputs?.NS_GREEN },
+      ],
+      coil: "EW_GREEN",
+    },
+    "GREEN CONFLICT CHECK": {
+      contacts: [
+        { label: "/GREEN_PAIR", closed: !(latestState?.outputs?.NS_GREEN && latestState?.outputs?.EW_GREEN) },
+      ],
+      coil: "OK",
+    },
+  };
+  return circuits[title] || { contacts: [{ label: "LOGIC", closed: false }], coil: title };
 }
 
 function renderField(outputs) {
