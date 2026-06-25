@@ -49,60 +49,51 @@ async function runCommand(command) {
   render(latestState);
 }
 
-function ensureBitRow(container, name, writable) {
-  let row = container.querySelector(`[data-bit-row="${name}"]`);
-  if (row) return row;
-
-  row = document.createElement("div");
-  row.className = "bit-row";
-  row.dataset.bitRow = name;
-
-  const pilot = document.createElement("span");
-  pilot.className = `pilot ${OUTPUT_COLORS[name] || ""}`;
-  pilot.dataset.pilot = name;
-
-  const label = document.createElement("div");
-  label.innerHTML = `<div class="bit-name">${name}</div><div class="bit-desc">${INPUT_DESCRIPTIONS[name] || "PLC output coil"}</div>`;
-
-  row.append(pilot, label);
-
-  if (writable) {
-    const button = document.createElement("button");
-    button.className = "bit-toggle";
-    button.type = "button";
-    button.dataset.input = name;
-    button.addEventListener("click", () => {
-      const current = Boolean(latestState?.inputs?.[name]);
-      setInput(name, !current).catch(showError);
-    });
-    row.append(button);
-  } else {
-    const state = document.createElement("strong");
-    state.className = "bit-desc";
-    state.dataset.outputState = name;
-    row.append(state);
-  }
-
-  container.append(row);
-  return row;
+function fallbackRows(bits) {
+  return Object.entries(bits).map(([name, value]) => ({
+    address: name,
+    name,
+    description: INPUT_DESCRIPTIONS[name] || "PLC output coil",
+    state: value,
+    state_text: value ? "1" : "0",
+  }));
 }
 
-function renderBits(bits, containerId, writable) {
+function renderIoRows(rows, containerId, writable) {
   const container = qs(containerId);
-  Object.entries(bits).forEach(([name, value]) => {
-    const row = ensureBitRow(container, name, writable);
-    row.querySelector("[data-pilot]").classList.toggle("on", value);
-    const button = row.querySelector("[data-input]");
-    if (button) {
-      button.classList.toggle("on", value);
-      button.textContent = value ? "ON" : "OFF";
-      button.setAttribute("aria-pressed", String(value));
-    }
-    const state = row.querySelector("[data-output-state]");
-    if (state) {
-      state.textContent = value ? "ENERGIZED" : "OFF";
-    }
+  container.innerHTML = `
+    <div class="io-row io-head">
+      <span>Address</span>
+      <span>Name</span>
+      <span>Description</span>
+      <span>State</span>
+    </div>
+  `;
+  rows.forEach((bit) => {
+    const row = document.createElement("div");
+    row.className = `io-row ${bit.state ? "on" : ""}`;
+    const pilotColor = OUTPUT_COLORS[bit.name] || "";
+    const stateControl = writable
+      ? `<button class="bit-toggle ${bit.state ? "on" : ""}" type="button" data-input="${bit.name}" aria-pressed="${bit.state}">${bit.state ? "1 / ON" : "0 / OFF"}</button>`
+      : `<span class="io-state ${bit.state ? "on" : ""}">${bit.state ? "1" : "0"}</span>`;
+    row.innerHTML = `
+      <span class="io-address">${bit.address}</span>
+      <span class="io-name"><i class="pilot ${pilotColor} ${bit.state ? "on" : ""}"></i>${bit.name}</span>
+      <span class="io-desc">${bit.description}</span>
+      ${stateControl}
+    `;
+    container.append(row);
   });
+
+  if (writable) {
+    container.querySelectorAll("[data-input]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const name = button.dataset.input;
+        const current = Boolean(latestState?.inputs?.[name]);
+        setInput(name, !current).catch(showError);
+      });
+    });
+  }
 }
 
 function renderRegisters(registers) {
@@ -193,8 +184,8 @@ function render(state) {
   qs("#mode-value").textContent = state.mode.toUpperCase();
   qs("#phase-value").textContent = state.phase;
   renderTimers(state.timers);
-  renderBits(state.inputs, "#input-list", true);
-  renderBits(state.outputs, "#output-list", false);
+  renderIoRows(state.input_rows || fallbackRows(state.inputs), "#input-list", true);
+  renderIoRows(state.output_rows || fallbackRows(state.outputs), "#output-list", false);
   renderRegisters(state.registers);
   renderRungs(state.ladder_rungs);
   renderField(state.outputs);
@@ -232,4 +223,3 @@ pollHandle = window.setInterval(poll, 500);
 window.addEventListener("beforeunload", () => {
   if (pollHandle) window.clearInterval(pollHandle);
 });
-

@@ -176,14 +176,13 @@ h3 {
   border-color: #fca5a5;
 }
 
-.bit-list,
+.io-table,
 .rung-list,
 .event-log {
   display: grid;
-  gap: 8px;
+  gap: 0;
 }
 
-.bit-row,
 .rung-row,
 .register-row,
 .event-row {
@@ -195,24 +194,88 @@ h3 {
   background: white;
 }
 
-.bit-row {
-  grid-template-columns: 22px 1fr auto;
-  min-height: 42px;
-  padding: 8px 10px;
+.io-table {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: white;
 }
 
-.bit-name,
+.io-row {
+  display: grid;
+  grid-template-columns: 42px 72px minmax(90px, 1fr) 52px;
+  align-items: center;
+  min-height: 34px;
+  border-bottom: 1px solid #dbe3ee;
+  font-size: 11px;
+}
+
+.io-row:last-child {
+  border-bottom: 0;
+}
+
+.io-head {
+  min-height: 30px;
+  background: #e7ecf3;
+  color: #334155;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.io-row > span,
+.io-row > button {
+  margin: 0 4px;
+}
+
+.io-address,
+.io-name,
 .register-row b,
 .rung-title {
   font-size: 13px;
   font-weight: 800;
 }
 
-.bit-desc,
+.io-address {
+  color: #1d4ed8;
+  font-family: Consolas, "Courier New", monospace;
+}
+
+.io-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.io-desc,
 .rung-desc,
 .event-kind {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 11px;
+}
+
+.io-table .bit-toggle {
+  min-width: 44px;
+  min-height: 24px;
+  font-size: 10px;
+}
+
+.io-state {
+  justify-self: end;
+  min-width: 30px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.io-state.on {
+  background: #dcfce7;
+  color: #166534;
 }
 
 .bit-toggle {
@@ -551,4 +614,3 @@ h3 {
     grid-template-columns: 52px 72px 1fr;
   }
 }
-
