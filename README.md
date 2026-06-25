@@ -15,6 +15,7 @@ The app simulates one 4-way junction using a small PLC mental model: AutomationD
 - Oil-palm factory basics: FFB to CPO process flow, WECON/PAC/Raspberry Pi/Arduino stations, IIoT, edge AI, and safety/regulatory awareness.
 - Plant operation modes: manual, semi-auto, auto, conveyor handling, and Ladder-style process control.
 - Reliable PLC programming method: flowcharts, LAD structure, ST/FBD/SFC comparisons, and case-study implementation choices.
+- Machinery safety learning path: risk-assessment qualification meaning, certification options, timing, cost ranges, and deliverables.
 
 ## Run Locally
 
@@ -56,8 +57,9 @@ pytest
 5. Open `http://127.0.0.1:8733/static/oil-palm-industrial-environment.html` for a factory-scale oil-palm process, conveyor handling, operating modes, LAD examples, and IIoT training module.
 6. Open `http://127.0.0.1:8733/static/oil-palm-control-stack-analysis.html` for WECON, PAC, Raspberry Pi industrial, and Arduino Opta/Portenta comparisons.
 7. Open `http://127.0.0.1:8733/static/plc-programming-methods.html` for reliable PLC programming workflow, flowcharts, language comparisons, and case studies.
-8. Press `START`.
-9. Watch the top status bar, I/O rack, timers, registers, rungs, outputs, and event log.
-10. Toggle vehicle sensors, pedestrian requests, emergency, night mode.
-11. Read `plc_engine.py` slowly from top to bottom.
-12. Compare code logic to Ladder concepts in the guide.
+8. Open `http://127.0.0.1:8733/static/risk-assessment-certification.html` for machinery risk-assessment certification paths and budget ranges.
+9. Press `START`.
+10. Watch the top status bar, I/O rack, timers, registers, rungs, outputs, and event log.
+11. Toggle vehicle sensors, pedestrian requests, emergency, night mode.
+12. Read `plc_engine.py` slowly from top to bottom.
+13. Compare code logic to Ladder concepts in the guide.

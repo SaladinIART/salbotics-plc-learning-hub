@@ -19,6 +19,7 @@ def test_root_serves_industrial_trainer_ui() -> None:
     assert "/static/industrial-situations.html" in html
     assert "/static/oil-palm-industrial-environment.html" in html
     assert "/static/plc-programming-methods.html" in html
+    assert "/static/risk-assessment-certification.html" in html
 
 
 def test_how_it_works_page_serves_ladder_scenarios() -> None:
@@ -139,6 +140,30 @@ def test_plc_programming_methods_page_serves_reliable_programming_guide() -> Non
     assert "scan time" in html.lower()
     assert "<svg" in html
     assert "<pre><code>" in html
+    assert "/static/risk-assessment-certification.html" in html
+
+
+def test_risk_assessment_certification_page_serves_training_path() -> None:
+    app = create_app(start_background=False)
+    with TestClient(app) as client:
+        response = client.get("/risk-assessment-certification")
+        static_response = client.get("/static/risk-assessment-certification.html")
+
+    assert response.status_code == 200
+    assert static_response.status_code == 200
+    html = response.text
+    assert "How To Become Qualified For Machinery Risk Assessment" in html
+    assert "ISO 12100" in html
+    assert "ISO 13849" in html
+    assert "IEC 62061" in html
+    assert "IEC 61508" in html
+    assert "CMSE" in html
+    assert "TUV SUD" in html
+    assert "TUV Rheinland" in html
+    assert "exida" in html
+    assert "Cost Planning" in html
+    assert "Malaysia" in html
+    assert "DOSH" in html
 
 
 def test_static_assets_are_served() -> None:
@@ -158,3 +183,4 @@ def test_static_assets_are_served() -> None:
     assert "process-svg" in guide_styles.text
     assert "process-lad-grid" in guide_styles.text
     assert "method-nav" in guide_styles.text
+    assert "cert-path-grid" in guide_styles.text

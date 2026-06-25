@@ -75,6 +75,10 @@ def create_app(start_background: bool = True) -> FastAPI:
     def plc_programming_methods() -> FileResponse:
         return FileResponse(STATIC_DIR / "plc-programming-methods.html")
 
+    @app.get("/risk-assessment-certification")
+    def risk_assessment_certification() -> FileResponse:
+        return FileResponse(STATIC_DIR / "risk-assessment-certification.html")
+
     @app.get("/api/state")
     def get_state(request: Request) -> dict:
         with request.app.state.lock:

@@ -468,6 +468,13 @@
   line-height: 1.45;
 }
 
+.safety-note a {
+  color: #1d4ed8;
+  font-weight: 900;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
 .industrial-nav {
   grid-template-columns: repeat(8, minmax(126px, 1fr));
 }
@@ -1016,12 +1023,39 @@
   width: min(1660px, calc(100vw - 16px));
 }
 
+.method-shell .panel-heading h1 {
+  font-size: 17px;
+}
+
 .method-shell .brand-block span {
   font-size: 12px;
 }
 
 .method-nav {
   grid-template-columns: repeat(auto-fit, minmax(126px, 1fr));
+}
+
+.method-shell .method-svg {
+  min-width: 980px;
+}
+
+.method-shell .mini-flow-svg {
+  min-width: 640px;
+}
+
+.method-shell .flow-node text,
+.method-shell .svg-center {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.method-shell .flow-node text:nth-of-type(n + 2) {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.method-shell .mini-flow-svg .svg-center {
+  font-size: 13px;
 }
 
 .method-grid,
@@ -1122,6 +1156,102 @@
 
 .fbd-panel {
   overflow-x: auto;
+}
+
+.cert-shell {
+  width: min(1540px, calc(100vw - 16px));
+}
+
+.cert-nav {
+  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+}
+
+.cert-path-grid,
+.cert-step-grid,
+.cert-cost-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.cert-path-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.cert-step-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cert-cost-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cert-card,
+.cert-step,
+.cost-card {
+  padding: 12px;
+  border: 1px solid #b8c5d6;
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.cert-card h3,
+.cert-step h3,
+.cost-card h3 {
+  margin: 0 0 8px;
+  color: #1e293b;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.cert-card p,
+.cert-step p,
+.cost-card p,
+.cert-card li,
+.cert-step li,
+.cost-card li {
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.cert-card p,
+.cert-step p,
+.cost-card p {
+  margin: 0;
+}
+
+.cert-card ul,
+.cert-step ul,
+.cost-card ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.cost-card strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #0f172a;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.cert-warning {
+  border-left: 5px solid #f59e0b;
+  background: #fffbeb;
+}
+
+.cert-warning h3,
+.cert-warning strong {
+  color: #78350f;
+}
+
+.cert-source-note {
+  color: #475569;
+  font-size: 12px;
+  line-height: 1.45;
 }
 
 .mode-grid,
@@ -1250,6 +1380,12 @@
   .method-nav {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   }
+
+  .cert-path-grid,
+  .cert-step-grid,
+  .cert-cost-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 760px) {
@@ -1276,6 +1412,28 @@
 
   .method-nav {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .method-shell .method-svg {
+    min-width: 880px;
+  }
+
+  .method-shell .mini-flow-svg {
+    min-width: 620px;
+  }
+
+  .cert-shell {
+    width: min(100vw - 20px, 720px);
+  }
+
+  .cert-nav {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cert-path-grid,
+  .cert-step-grid,
+  .cert-cost-grid {
+    grid-template-columns: 1fr;
   }
 
   .compact-lad .ladder-row {
