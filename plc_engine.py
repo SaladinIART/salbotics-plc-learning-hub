@@ -57,6 +57,28 @@ AUTO_SEQUENCE = (
 
 MANUAL_SEQUENCE = AUTO_SEQUENCE
 
+PHASE_STEPS = {
+    "STOPPED": 0,
+    "NS_GREEN": 1,
+    "NS_YELLOW": 2,
+    "ALL_RED_TO_EW": 3,
+    "EW_GREEN": 4,
+    "EW_YELLOW": 5,
+    "ALL_RED_TO_NS": 6,
+    "EMERGENCY_ALL_RED": 90,
+    "FAULT_ALL_RED": 91,
+    "NIGHT_FLASH": 92,
+}
+
+MODE_CODES = {
+    "stopped": 0,
+    "auto": 1,
+    "manual": 2,
+    "emergency": 3,
+    "night": 4,
+    "fault": 5,
+}
+
 
 @dataclass(frozen=True)
 class TimerConfig:
@@ -195,6 +217,7 @@ class PLCEngine:
                 "all_red_s": self.timers.all_red_s,
                 "scan_count": self.scan_count,
             },
+            "timer_rows": self._timer_rows(),
             "registers": {
                 "RUN_LATCH": self.running,
                 "MANUAL_MODE": self.manual_mode,
@@ -206,6 +229,7 @@ class PLCEngine:
                 "VEHICLE_EXTENSION_ACTIVE": self._vehicle_extension_active(),
                 "NIGHT_FLASH_ON": self.night_flash_on,
             },
+            "register_rows": self._register_rows(),
             "alarms": self._alarms(),
             "ladder_rungs": self._ladder_rungs(),
             "event_log": list(self.event_log),
@@ -428,6 +452,58 @@ class PLCEngine:
                 "description": "Faults if both green coils are energized together.",
                 "energized": not (self.outputs["NS_GREEN"] and self.outputs["EW_GREEN"]),
             },
+        ]
+
+    def _timer_rows(self) -> list[dict[str, Any]]:
+        rows = [
+            ("T0", "NS_GREEN", "TON", self.timers.green_base_s, self.phase == "NS_GREEN"),
+            ("T1", "NS_YELLOW", "TON", self.timers.yellow_s, self.phase == "NS_YELLOW"),
+            ("T2", "ALL_RED_1", "TON", self.timers.all_red_s, self.phase == "ALL_RED_TO_EW"),
+            ("T3", "EW_GREEN", "TON", self.timers.green_base_s, self.phase == "EW_GREEN"),
+            ("T4", "EW_YELLOW", "TON", self.timers.yellow_s, self.phase == "EW_YELLOW"),
+            ("T5", "ALL_RED_2", "TON", self.timers.all_red_s, self.phase == "ALL_RED_TO_NS"),
+            ("T6", "NIGHT_FLASH", "TON", self.timers.flash_half_period_s, self.phase == "NIGHT_FLASH"),
+        ]
+        timer_rows = []
+        for address, name, timer_type, preset, enabled in rows:
+            accum = min(self.phase_elapsed_s, preset) if enabled else 0.0
+            done = enabled and self.phase_elapsed_s + 1e-9 >= preset
+            timer_rows.append(
+                {
+                    "address": address,
+                    "name": name,
+                    "type": timer_type,
+                    "preset_s": round(preset, 1),
+                    "accum_s": round(accum, 1),
+                    "value": round(accum, 1),
+                    "status": "DN" if done else ("EN" if enabled else "-"),
+                }
+            )
+        return timer_rows
+
+    def _register_rows(self) -> list[dict[str, Any]]:
+        phase_step = PHASE_STEPS.get(self.phase, -1)
+        mode_code = MODE_CODES.get(self.mode, -1)
+        pedestrian_mask = int(self.ped_request_ns) + (int(self.ped_request_ew) << 1)
+        vehicle_mask = int(self.inputs["VEHICLE_NS"]) + (int(self.inputs["VEHICLE_EW"]) << 1)
+        alarm_count = len(self._alarms())
+        rows = [
+            ("R0", "PHASE_STEP", "INT", phase_step, "Current phase step"),
+            ("R1", "SYSTEM_MODE", "INT", mode_code, f"Mode code for {self.mode}"),
+            ("R2", "PEDESTRIAN_REQ", "INT", pedestrian_mask, "Bitmask of pending pedestrian requests"),
+            ("R3", "VEHICLE_DEMAND", "INT", vehicle_mask, "Bitmask of active vehicle sensors"),
+            ("R4", "ALARM_COUNT", "INT", alarm_count, "Active alarm count"),
+        ]
+        return [
+            {
+                "address": address,
+                "name": name,
+                "type": row_type,
+                "value_dec": value,
+                "value_hex": f"{value & 0xFFFF:04X}",
+                "description": description,
+            }
+            for address, name, row_type, value, description in rows
         ]
 
     def _raise_fault(self, message: str) -> None:
