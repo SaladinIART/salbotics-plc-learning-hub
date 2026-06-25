@@ -84,6 +84,16 @@ def test_oil_palm_pages_serve_process_and_stack_training() -> None:
     assert "Arduino Opta" in plant_html
     assert "IIoT" in plant_html
     assert "VFD" in plant_html
+    assert "Operating Modes" in plant_html
+    assert "Manual" in plant_html
+    assert "Semi-Auto" in plant_html
+    assert "Auto" in plant_html
+    assert "Conveyor And Handling Systems" in plant_html
+    assert "Process LAD Examples By Stage" in plant_html
+    assert "Mode Selection LAD" in plant_html
+    assert "Handling LAD" in plant_html
+    assert "Screw Press" in plant_html
+    assert "Boiler / Steam / POME Support" in plant_html
     assert "<svg" in plant_html
     assert "/static/oil-palm-control-stack-analysis.html" in plant_html
 
@@ -115,3 +125,4 @@ def test_static_assets_are_served() -> None:
     assert "ladder-diagram" in guide_styles.text
     assert "industrial-nav" in guide_styles.text
     assert "process-svg" in guide_styles.text
+    assert "process-lad-grid" in guide_styles.text

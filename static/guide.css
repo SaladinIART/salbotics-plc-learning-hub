@@ -826,7 +826,7 @@
 }
 
 .oil-nav {
-  grid-template-columns: repeat(8, minmax(126px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(126px, 1fr));
 }
 
 .diagram-panel,
@@ -1012,6 +1012,105 @@
   align-items: start;
 }
 
+.mode-grid,
+.process-lad-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.mode-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 10px;
+}
+
+.mode-card,
+.lad-stage {
+  padding: 12px;
+  border: 1px solid #b8c5d6;
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.mode-card h3,
+.stage-head h3 {
+  margin: 0 0 8px;
+  color: #1e293b;
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.mode-card p,
+.mode-card li,
+.lad-stage p {
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.mode-card p,
+.lad-stage p {
+  margin: 0 0 10px;
+}
+
+.mode-card ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.manual-mode {
+  border-left: 5px solid #64748b;
+}
+
+.semi-mode {
+  border-left: 5px solid #f59e0b;
+}
+
+.auto-mode {
+  border-left: 5px solid #16a34a;
+}
+
+.mode-lad {
+  margin-top: 10px;
+}
+
+.compact-lad {
+  padding: 8px;
+}
+
+.compact-lad .ladder-row {
+  grid-template-columns: 44px minmax(580px, 1fr) minmax(220px, 0.38fr);
+  min-width: 860px;
+  min-height: 50px;
+}
+
+.process-lad-grid {
+  grid-template-columns: 1fr;
+}
+
+.lad-stage {
+  display: grid;
+  gap: 10px;
+}
+
+.stage-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px solid #dbe3ee;
+}
+
+.stage-head span {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 900;
+  text-align: right;
+  text-transform: uppercase;
+}
+
 @media (max-width: 1240px) {
   .industrial-nav {
     grid-template-columns: repeat(4, minmax(120px, 1fr));
@@ -1020,6 +1119,7 @@
   .industrial-intro-grid,
   .brand-grid,
   .compare-grid,
+  .mode-grid,
   .robust-grid,
   .language-grid {
     grid-template-columns: 1fr;
@@ -1030,7 +1130,7 @@
   }
 
   .oil-nav {
-    grid-template-columns: repeat(4, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   }
 }
 
@@ -1050,6 +1150,11 @@
 
   .oil-nav {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .compact-lad .ladder-row {
+    min-width: 820px;
+    grid-template-columns: 42px minmax(560px, 1fr) minmax(190px, 0.35fr);
   }
 
   .brand-title {

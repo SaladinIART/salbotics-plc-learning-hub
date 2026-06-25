@@ -66,7 +66,10 @@
         </section>
 
         <nav class="scenario-nav industrial-nav oil-nav" aria-label="Oil palm lesson sections">
+          <a href="#operating-modes">Modes</a>
           <a href="#process-flow">Process Flow</a>
+          <a href="#handling-systems">Handling</a>
+          <a href="#process-lad">Process LAD</a>
           <a href="#station-map">Stations</a>
           <a href="#utilities">Utilities</a>
           <a href="#control-network">Control Network</a>
@@ -76,9 +79,81 @@
           <a href="/static/oil-palm-control-stack-analysis.html">Analysis Page</a>
         </nav>
 
+        <section id="operating-modes" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>1. Operating Modes: Manual, Semi-Auto, Auto</h2>
+            <span>the same machine behaves differently depending on mode ownership</span>
+          </div>
+          <div class="mode-grid">
+            <article class="mode-card manual-mode">
+              <h3>Manual</h3>
+              <p>
+                Operator or technician commands one device at a time: jog conveyor, open valve, start
+                pump, inch press, or pulse a feeder. Manual is for testing, clearing, setup, and
+                maintenance support. Safety, permissives, overloads, pull-cords, pressure limits, and
+                machine-damage interlocks must still block unsafe movement.
+              </p>
+              <ul>
+                <li>Example: jog FFB conveyor only while pull-cord healthy and downstream chute clear.</li>
+                <li>Operator chooses device; PLC checks if it is allowed.</li>
+                <li>Never use manual mode to bypass lockout/tagout or certified safety circuits.</li>
+              </ul>
+            </article>
+            <article class="mode-card semi-mode">
+              <h3>Semi-Auto</h3>
+              <p>
+                Operator starts one station or one recipe step, then the PLC finishes that step using
+                timers, sensors, and permissives. Semi-auto is common during commissioning, batch
+                cycles, sterilizer cycle start, transfer pump cycle, and station-by-station training.
+              </p>
+              <ul>
+                <li>Example: press START CYCLE and sterilizer runs fill steam, hold, exhaust, drain.</li>
+                <li>Operator confirms the next step or next batch.</li>
+                <li>Good for learning because the PLC sequence is visible and bounded.</li>
+              </ul>
+            </article>
+            <article class="mode-card auto-mode">
+              <h3>Auto</h3>
+              <p>
+                The PLC or PAC coordinates a full station or line automatically. Upstream equipment
+                waits for downstream ready. Conveyors start downstream first, feeders start last, and
+                faults stop only the affected area unless a plant-wide trip is required.
+              </p>
+              <ul>
+                <li>Example: empty fruit conveyor, thresher, fruit elevator, digester feed run as one train.</li>
+                <li>SCADA shows request, ready, running, fault, hold, and alarm states.</li>
+                <li>Auto needs good naming, handshakes, and alarms or troubleshooting becomes painful.</li>
+              </ul>
+            </article>
+          </div>
+          <div class="ladder-diagram mode-lad" aria-label="Operating mode selection ladder diagram">
+            <h3>Mode Selection LAD</h3>
+            <div class="ladder-row active">
+              <span class="rung-id">M001</span>
+              <div class="ladder-track"><span class="ld-contact">HMI_MANUAL_SEL</span><span class="ld-contact nc">/SAFETY_TRIP</span><span class="ld-coil">MANUAL_MODE</span></div>
+              <p>Manual mode is allowed only when the safety chain is healthy.</p>
+            </div>
+            <div class="ladder-row">
+              <span class="rung-id">M002</span>
+              <div class="ladder-track"><span class="ld-contact">HMI_SEMI_SEL</span><span class="ld-contact">STATION_READY</span><span class="ld-contact nc">/FAULT_ACTIVE</span><span class="ld-coil">SEMI_AUTO_MODE</span></div>
+              <p>Semi-auto owns one station/cycle after readiness is proven.</p>
+            </div>
+            <div class="ladder-row">
+              <span class="rung-id">M003</span>
+              <div class="ladder-track"><span class="ld-contact">HMI_AUTO_SEL</span><span class="ld-contact">LINE_READY</span><span class="ld-contact">DOWNSTREAM_READY</span><span class="ld-contact nc">/FAULT_ACTIVE</span><span class="ld-coil">AUTO_MODE</span></div>
+              <p>Auto mode needs line readiness and downstream permissive.</p>
+            </div>
+            <div class="ladder-row danger">
+              <span class="rung-id">M004</span>
+              <div class="ladder-track"><span class="ld-contact">SAFETY_TRIP</span><span class="ld-coil reset">RST MANUAL_MODE</span><span class="ld-coil reset">RST SEMI_AUTO_MODE</span><span class="ld-coil reset">RST AUTO_MODE</span></div>
+              <p>A real safety trip removes mode ownership and stops related commands.</p>
+            </div>
+          </div>
+        </section>
+
         <section id="process-flow" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>1. Main Process Flow</h2>
+            <h2>2. Main Process Flow</h2>
             <span>fresh fruit bunches to crude palm oil</span>
           </div>
           <div class="diagram-panel" aria-label="FFB to CPO process flow diagram">
@@ -161,9 +236,189 @@
           </div>
         </section>
 
+        <section id="handling-systems" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>3. Conveyor And Handling Systems</h2>
+            <span>where many real plant faults begin</span>
+          </div>
+          <div class="diagram-panel">
+            <svg class="process-svg handling-svg" viewBox="0 0 1180 390" role="img" aria-labelledby="handling-title">
+              <title id="handling-title">Oil palm conveyor and material handling system</title>
+              <defs>
+                <marker id="arrow-handling" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"></path>
+                </marker>
+              </defs>
+              <rect x="18" y="24" width="1144" height="320" rx="12" class="svg-bg"></rect>
+              <g class="flow-node raw" transform="translate(50 80)"><rect width="150" height="88" rx="8"></rect><text x="75" y="34">Truck</text><text x="75" y="60">FFB dump</text></g>
+              <g class="flow-node motor" transform="translate(238 80)"><rect width="150" height="88" rx="8"></rect><text x="75" y="34">Hopper</text><text x="75" y="60">feeder</text></g>
+              <g class="flow-node mech" transform="translate(426 80)"><rect width="150" height="88" rx="8"></rect><text x="75" y="34">Incline</text><text x="75" y="60">conveyor</text></g>
+              <g class="flow-node steam" transform="translate(614 80)"><rect width="150" height="88" rx="8"></rect><text x="75" y="34">Loading</text><text x="75" y="60">ramp / cage</text></g>
+              <g class="flow-node heat" transform="translate(802 80)"><rect width="150" height="88" rx="8"></rect><text x="75" y="34">Sterilizer</text><text x="75" y="60">feed</text></g>
+              <g class="flow-node clean" transform="translate(990 80)"><rect width="130" height="88" rx="8"></rect><text x="65" y="34">Thresher</text><text x="65" y="60">feed</text></g>
+              <line x1="200" y1="124" x2="238" y2="124" class="flow-branch" marker-end="url(#arrow-handling)"></line>
+              <line x1="388" y1="124" x2="426" y2="124" class="flow-branch" marker-end="url(#arrow-handling)"></line>
+              <line x1="576" y1="124" x2="614" y2="124" class="flow-branch" marker-end="url(#arrow-handling)"></line>
+              <line x1="764" y1="124" x2="802" y2="124" class="flow-branch" marker-end="url(#arrow-handling)"></line>
+              <line x1="952" y1="124" x2="990" y2="124" class="flow-branch" marker-end="url(#arrow-handling)"></line>
+              <g class="byproduct" transform="translate(144 238)"><rect width="150" height="64" rx="8"></rect><text x="75" y="26">Zero speed</text><text x="75" y="46">rotation sensor</text></g>
+              <g class="byproduct" transform="translate(334 238)"><rect width="150" height="64" rx="8"></rect><text x="75" y="26">Pull cord</text><text x="75" y="46">both sides</text></g>
+              <g class="byproduct" transform="translate(524 238)"><rect width="150" height="64" rx="8"></rect><text x="75" y="26">Blocked chute</text><text x="75" y="46">level switch</text></g>
+              <g class="byproduct" transform="translate(714 238)"><rect width="150" height="64" rx="8"></rect><text x="75" y="26">Belt drift</text><text x="75" y="46">misalignment</text></g>
+              <g class="byproduct" transform="translate(904 238)"><rect width="150" height="64" rx="8"></rect><text x="75" y="26">VFD feedback</text><text x="75" y="46">speed/current</text></g>
+            </svg>
+          </div>
+          <div class="compare-grid">
+            <div class="mini-table">
+              <h3>Conveyor start/stop rule</h3>
+              <table>
+                <tbody>
+                  <tr><th>Start</th><td>Start downstream first, then upstream. This prevents feeding material into a stopped conveyor or blocked chute.</td></tr>
+                  <tr><th>Stop</th><td>Stop upstream first, then let downstream run for a cleanout delay.</td></tr>
+                  <tr><th>Trip</th><td>Pull-cord, belt drift, zero-speed, blocked chute, overload, and E-stop must stop related upstream equipment.</td></tr>
+                  <tr><th>Restart</th><td>Require fault reset, local inspection, and downstream-ready confirmation before restarting.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="ladder-diagram compact-lad" aria-label="Conveyor handling ladder diagram">
+              <h3>Handling LAD</h3>
+              <div class="ladder-row active">
+                <span class="rung-id">H001</span>
+                <div class="ladder-track"><span class="ld-contact">AUTO_MODE</span><span class="ld-contact">DOWNSTREAM_RUN</span><span class="ld-contact">CHUTE_CLEAR</span><span class="ld-contact nc">/PULL_CORD</span><span class="ld-coil">CV_FEED_RUN</span></div>
+                <p>Feed conveyor can run only after downstream is already running.</p>
+              </div>
+              <div class="ladder-row">
+                <span class="rung-id">H002</span>
+                <div class="ladder-track"><span class="ld-contact">CV_FEED_RUN</span><span class="ld-contact nc">/ZERO_SPEED_OK</span><span class="ld-timer">T_ZS 3s</span><span class="ld-coil danger">CV_FAULT</span></div>
+                <p>If the motor command is on but belt rotation is missing, fault after delay.</p>
+              </div>
+              <div class="ladder-row danger">
+                <span class="rung-id">H003</span>
+                <div class="ladder-track"><span class="ld-contact">PULL_CORD</span><span class="ld-coil reset">RST CV_FEED_RUN</span><span class="ld-coil danger">ALM_PULL_CORD</span></div>
+                <p>Pull-cord removes conveyor command and raises a visible alarm.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="process-lad" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>4. Process LAD Examples By Stage</h2>
+            <span>Ladder-style control narratives for each major oil-palm process</span>
+          </div>
+          <p class="lesson-callout">
+            These LAD examples are training patterns, not certified plant code. In real projects,
+            every rung must match the machine drawing, hazard analysis, device manual, and site
+            operating procedure.
+          </p>
+          <div class="process-lad-grid">
+            <article class="lad-stage">
+              <div class="stage-head"><h3>FFB Reception / Weighbridge</h3><span>material entry</span></div>
+              <p>Goal: accept a truck, capture weight/ticket, release the dump gate only when the ramp and conveyor train are ready.</p>
+              <div class="ladder-diagram compact-lad">
+                <div class="ladder-row active"><span class="rung-id">R001</span><div class="ladder-track"><span class="ld-contact">TRUCK_ON_SCALE</span><span class="ld-contact">TICKET_OK</span><span class="ld-contact">RAMP_READY</span><span class="ld-coil">RECEPTION_READY</span></div><p>Weighbridge handshake becomes reception permissive.</p></div>
+                <div class="ladder-row"><span class="rung-id">R002</span><div class="ladder-track"><span class="ld-contact">RECEPTION_READY</span><span class="ld-contact">DOWNSTREAM_READY</span><span class="ld-contact">HMI_DUMP_REQ</span><span class="ld-coil">DUMP_GATE_OPEN</span></div><p>Dump gate opens only after downstream accepts material.</p></div>
+                <div class="ladder-row danger"><span class="rung-id">R003</span><div class="ladder-track"><span class="ld-contact">SCALE_FAULT</span><span class="ld-coil danger">ALM_TICKET_HOLD</span><span class="ld-coil reset">RST DUMP_GATE_OPEN</span></div><p>Bad weight/ticket holds the truck and blocks dumping.</p></div>
+              </div>
+            </article>
+
+            <article class="lad-stage">
+              <div class="stage-head"><h3>Loading Ramp / Conveyor Train</h3><span>handling system</span></div>
+              <p>Goal: feed FFB smoothly without overloading the ramp, blocking the chute, or feeding into a stopped downstream machine.</p>
+              <div class="ladder-diagram compact-lad">
+                <div class="ladder-row active"><span class="rung-id">C001</span><div class="ladder-track"><span class="ld-contact">AUTO_MODE</span><span class="ld-contact">STERILIZER_FEED_READY</span><span class="ld-contact nc">/CHUTE_HIGH</span><span class="ld-coil">RAMP_FEED_ENABLE</span></div><p>Auto feed waits for sterilizer/feed path availability.</p></div>
+                <div class="ladder-row"><span class="rung-id">C002</span><div class="ladder-track"><span class="ld-contact">RAMP_FEED_ENABLE</span><span class="ld-contact">CV_DOWNSTREAM_RUN</span><span class="ld-coil">CV_RAMP_RUN</span></div><p>Start sequence proves downstream before upstream.</p></div>
+                <div class="ladder-row danger"><span class="rung-id">C003</span><div class="ladder-track"><span class="ld-contact">CHUTE_HIGH</span><span class="ld-coil reset">RST CV_RAMP_RUN</span><span class="ld-coil danger">ALM_CHUTE_BLOCKED</span></div><p>Blocked chute stops upstream feed and tells the operator why.</p></div>
+              </div>
+            </article>
+
+            <article class="lad-stage">
+              <div class="stage-head"><h3>Sterilizer Cycle</h3><span>steam pressure sequence</span></div>
+              <p>Goal: lock doors, admit steam, hold pressure/temperature, exhaust, drain condensate, then release only when pressure is safe.</p>
+              <div class="ladder-diagram compact-lad">
+                <div class="ladder-row active"><span class="rung-id">S001</span><div class="ladder-track"><span class="ld-contact">SEMI_AUTO_MODE</span><span class="ld-contact">DOOR_CLOSED</span><span class="ld-contact">DOOR_LOCKED</span><span class="ld-contact nc">/PRESSURE_HIGH_HH</span><span class="ld-coil">STER_CYCLE_RUN</span></div><p>Cycle starts after door and high-pressure permissives are healthy.</p></div>
+                <div class="ladder-row"><span class="rung-id">S002</span><div class="ladder-track"><span class="ld-contact">STER_CYCLE_RUN</span><span class="ld-contact">PRESSURE_BELOW_SP</span><span class="ld-coil">STEAM_INLET_OPEN</span></div><p>Steam inlet modulates or pulses until pressure target is met.</p></div>
+                <div class="ladder-row"><span class="rung-id">S003</span><div class="ladder-track"><span class="ld-contact">PRESSURE_AT_SP</span><span class="ld-timer">T_HOLD 60m</span><span class="ld-coil">STER_HOLD_DONE</span></div><p>Hold timer represents the sterilization dwell step.</p></div>
+                <div class="ladder-row danger"><span class="rung-id">S004</span><div class="ladder-track"><span class="ld-contact">PRESSURE_HIGH_HH</span><span class="ld-coil reset">RST STEAM_INLET_OPEN</span><span class="ld-coil danger">ALM_STER_PRESSURE</span></div><p>High-high pressure immediately closes inlet and alarms.</p></div>
+              </div>
+            </article>
+
+            <article class="lad-stage">
+              <div class="stage-head"><h3>Thresher / EFB Conveyor</h3><span>separation</span></div>
+              <p>Goal: separate fruitlets from empty bunches, keep discharge conveyors clear, and stop feed if the thresher or EFB path faults.</p>
+              <div class="ladder-diagram compact-lad">
+                <div class="ladder-row active"><span class="rung-id">T001</span><div class="ladder-track"><span class="ld-contact">AUTO_MODE</span><span class="ld-contact">EFB_CONV_RUN</span><span class="ld-contact nc">/THRESHER_OVERLOAD</span><span class="ld-coil">THRESHER_RUN</span></div><p>Thresher starts only after the EFB takeaway path is running.</p></div>
+                <div class="ladder-row"><span class="rung-id">T002</span><div class="ladder-track"><span class="ld-contact">THRESHER_RUN</span><span class="ld-contact">FRUIT_ELEVATOR_RUN</span><span class="ld-coil">STERILIZED_BUNCH_FEED</span></div><p>Feed starts last, after both product paths are ready.</p></div>
+                <div class="ladder-row danger"><span class="rung-id">T003</span><div class="ladder-track"><span class="ld-contact">EFB_CHUTE_HIGH</span><span class="ld-coil reset">RST STERILIZED_BUNCH_FEED</span><span class="ld-coil danger">ALM_EFB_BLOCK</span></div><p>Blocked EFB path stops upstream feed, not the whole plant.</p></div>
+              </div>
+            </article>
+
+            <article class="lad-stage">
+              <div class="stage-head"><h3>Digester</h3><span>heat and mash</span></div>
+              <p>Goal: keep fruit mash hot and mixed, prevent low-level dry running, and avoid overfilling the discharge to the press.</p>
+              <div class="ladder-diagram compact-lad">
+                <div class="ladder-row active"><span class="rung-id">D001</span><div class="ladder-track"><span class="ld-contact">DIG_LEVEL_OK</span><span class="ld-contact">TEMP_OK</span><span class="ld-contact nc">/MOTOR_OVERLOAD</span><span class="ld-coil">DIGESTER_RUN</span></div><p>Agitator runs when level, temperature, and overload are healthy.</p></div>
+                <div class="ladder-row"><span class="rung-id">D002</span><div class="ladder-track"><span class="ld-contact">DIG_TEMP_LOW</span><span class="ld-contact">STEAM_AVAILABLE</span><span class="ld-coil">DIG_STEAM_VALVE</span></div><p>Heat valve opens when mash temperature is below target.</p></div>
+                <div class="ladder-row danger"><span class="rung-id">D003</span><div class="ladder-track"><span class="ld-contact">DIG_LEVEL_LOW</span><span class="ld-coil reset">RST DIGESTER_RUN</span><span class="ld-coil danger">ALM_DIG_LOW_LEVEL</span></div><p>Low level protects the agitator and prevents dry running.</p></div>
+              </div>
+            </article>
+
+            <article class="lad-stage">
+              <div class="stage-head"><h3>Screw Press</h3><span>extraction</span></div>
+              <p>Goal: run the press only with lubrication, discharge path, and current limits healthy; regulate feed so the press does not choke.</p>
+              <div class="ladder-diagram compact-lad">
+                <div class="ladder-row active"><span class="rung-id">P001</span><div class="ladder-track"><span class="ld-contact">PRESS_LUBE_OK</span><span class="ld-contact">PRESS_DISCHARGE_READY</span><span class="ld-contact nc">/PRESS_FAULT</span><span class="ld-coil">PRESS_RUN</span></div><p>Press permissive includes lubrication and discharge readiness.</p></div>
+                <div class="ladder-row"><span class="rung-id">P002</span><div class="ladder-track"><span class="ld-contact">PRESS_RUN</span><span class="ld-contact nc">/PRESS_CURRENT_HIGH</span><span class="ld-coil">DIGESTER_FEED_RUN</span></div><p>Feeder runs only while press current is not high.</p></div>
+                <div class="ladder-row danger"><span class="rung-id">P003</span><div class="ladder-track"><span class="ld-contact">PRESS_CURRENT_HIGH</span><span class="ld-timer">T_PRESS 5s</span><span class="ld-coil danger">ALM_PRESS_OVERLOAD</span></div><p>High current for too long becomes overload/jam alarm.</p></div>
+              </div>
+            </article>
+
+            <article class="lad-stage">
+              <div class="stage-head"><h3>Clarification</h3><span>oil/water/solids separation</span></div>
+              <p>Goal: control dilution, temperature, transfer pump, sludge discharge, and high-level protection in the clarification tank.</p>
+              <div class="ladder-diagram compact-lad">
+                <div class="ladder-row active"><span class="rung-id">CL001</span><div class="ladder-track"><span class="ld-contact">CLARIFIER_LEVEL_OK</span><span class="ld-contact">CLARIFIER_TEMP_OK</span><span class="ld-contact nc">/TANK_HH</span><span class="ld-coil">CLARIFIER_READY</span></div><p>Ready bit means the tank can accept press liquor.</p></div>
+                <div class="ladder-row"><span class="rung-id">CL002</span><div class="ladder-track"><span class="ld-contact">CLARIFIER_READY</span><span class="ld-contact">PRESS_RUN</span><span class="ld-coil">PRESS_LIQUOR_PUMP</span></div><p>Pump runs when the press is producing and clarifier can receive.</p></div>
+                <div class="ladder-row"><span class="rung-id">CL003</span><div class="ladder-track"><span class="ld-contact">CLARIFIER_TEMP_LOW</span><span class="ld-contact">STEAM_AVAILABLE</span><span class="ld-coil">CLARIFIER_STEAM_VALVE</span></div><p>Temperature control helps separation.</p></div>
+                <div class="ladder-row danger"><span class="rung-id">CL004</span><div class="ladder-track"><span class="ld-contact">TANK_HH</span><span class="ld-coil reset">RST PRESS_LIQUOR_PUMP</span><span class="ld-coil danger">ALM_CLARIFIER_HH</span></div><p>High-high level blocks inlet pump and alarms.</p></div>
+              </div>
+            </article>
+
+            <article class="lad-stage">
+              <div class="stage-head"><h3>Purifier / Vacuum Dryer</h3><span>clean and dry oil</span></div>
+              <p>Goal: remove remaining water/solids, maintain vacuum or dryer temperature, and prevent sending wet oil to storage.</p>
+              <div class="ladder-diagram compact-lad">
+                <div class="ladder-row active"><span class="rung-id">V001</span><div class="ladder-track"><span class="ld-contact">OIL_FEED_AVAILABLE</span><span class="ld-contact">VACUUM_OK</span><span class="ld-contact">DRYER_TEMP_OK</span><span class="ld-coil">PURIFIER_RUN</span></div><p>Purifier/dryer runs only when vacuum and temperature are ready.</p></div>
+                <div class="ladder-row"><span class="rung-id">V002</span><div class="ladder-track"><span class="ld-contact">PURIFIER_RUN</span><span class="ld-contact">MOISTURE_OK</span><span class="ld-coil">CPO_TRANSFER_ENABLE</span></div><p>Only good oil is allowed to transfer to the CPO tank.</p></div>
+                <div class="ladder-row danger"><span class="rung-id">V003</span><div class="ladder-track"><span class="ld-contact nc">/VACUUM_OK</span><span class="ld-coil reset">RST CPO_TRANSFER_ENABLE</span><span class="ld-coil danger">ALM_VACUUM_LOSS</span></div><p>Vacuum loss blocks transfer and alerts operator.</p></div>
+              </div>
+            </article>
+
+            <article class="lad-stage">
+              <div class="stage-head"><h3>CPO Tank / Dispatch</h3><span>storage and transfer</span></div>
+              <p>Goal: store oil safely, prevent overfill, keep heating/recirculation healthy, and require correct valve lineup before dispatch.</p>
+              <div class="ladder-diagram compact-lad">
+                <div class="ladder-row active"><span class="rung-id">TK001</span><div class="ladder-track"><span class="ld-contact">CPO_TANK_LEVEL_OK</span><span class="ld-contact">TRANSFER_VALVE_OPEN</span><span class="ld-contact nc">/TANK_HH</span><span class="ld-coil">CPO_INLET_ENABLE</span></div><p>Tank inlet is allowed until high-high level or wrong valve lineup.</p></div>
+                <div class="ladder-row"><span class="rung-id">TK002</span><div class="ladder-track"><span class="ld-contact">DISPATCH_REQ</span><span class="ld-contact">TRUCK_CONNECTED</span><span class="ld-contact">SAMPLE_RELEASED</span><span class="ld-coil">DISPATCH_PUMP_RUN</span></div><p>Dispatch pump needs truck and quality release.</p></div>
+                <div class="ladder-row danger"><span class="rung-id">TK003</span><div class="ladder-track"><span class="ld-contact">TANK_HH</span><span class="ld-coil reset">RST CPO_INLET_ENABLE</span><span class="ld-coil danger">ALM_CPO_TANK_HH</span></div><p>High-high tank level blocks transfer to prevent overflow.</p></div>
+              </div>
+            </article>
+
+            <article class="lad-stage">
+              <div class="stage-head"><h3>Boiler / Steam / POME Support</h3><span>utility dependency</span></div>
+              <p>Goal: support the process with steam and effluent handling while recording environmental and energy data.</p>
+              <div class="ladder-diagram compact-lad">
+                <div class="ladder-row active"><span class="rung-id">U001</span><div class="ladder-track"><span class="ld-contact">BOILER_READY</span><span class="ld-contact">STEAM_PRESSURE_OK</span><span class="ld-contact nc">/LOW_WATER_TRIP</span><span class="ld-coil">STEAM_AVAILABLE</span></div><p>Process steam is a permissive created by boiler readiness.</p></div>
+                <div class="ladder-row"><span class="rung-id">U002</span><div class="ladder-track"><span class="ld-contact">POME_POND_LEVEL_HIGH</span><span class="ld-contact">POME_PUMP_AVAILABLE</span><span class="ld-coil">POME_TRANSFER_PUMP</span></div><p>Effluent transfer runs by level and pump availability.</p></div>
+                <div class="ladder-row danger"><span class="rung-id">U003</span><div class="ladder-track"><span class="ld-contact">LOW_WATER_TRIP</span><span class="ld-coil reset">RST STEAM_AVAILABLE</span><span class="ld-coil danger">ALM_BOILER_TRIP</span></div><p>Boiler trip removes steam permissive and affects sterilizer/digester/clarifier.</p></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
         <section id="station-map" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>2. Four Mixed Control Stations</h2>
+            <h2>5. Four Mixed Control Stations</h2>
             <span>economy PLC, PAC, Raspberry Pi industrial edge, Arduino industrial PLC</span>
           </div>
           <div class="diagram-panel">
@@ -240,7 +495,7 @@
 
         <section id="utilities" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>3. Utility And Byproduct Loop</h2>
+            <h2>6. Utility And Byproduct Loop</h2>
             <span>steam, fiber/shell fuel, POME, and environmental monitoring</span>
           </div>
           <div class="diagram-panel">
@@ -293,7 +548,7 @@
 
         <section id="control-network" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>4. PAC And IIoT Control Network</h2>
+            <h2>7. PAC And IIoT Control Network</h2>
             <span>keep control, safety, edge, and cloud roles separated</span>
           </div>
           <div class="diagram-panel">
@@ -350,7 +605,7 @@
 
         <section id="equipment-map" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>5. Typical Oil-Palm I/O And Actuator Map</h2>
+            <h2>8. Typical Oil-Palm I/O And Actuator Map</h2>
             <span>where analog modules, VFDs, sensors, and alarms appear</span>
           </div>
           <div class="map-grid">
@@ -392,7 +647,7 @@
 
         <section id="scenarios" class="panel scenario-panel danger-scenario">
           <div class="panel-heading">
-            <h2>6. Technician Fault Scenarios</h2>
+            <h2>9. Technician Fault Scenarios</h2>
             <span>what to check before editing logic</span>
           </div>
           <div class="robust-grid">
@@ -425,7 +680,7 @@
 
         <section id="standards" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>7. Standards And Regulations Awareness</h2>
+            <h2>10. Standards And Regulations Awareness</h2>
             <span>what a learner should recognize, not certify alone</span>
           </div>
           <div class="compare-grid">

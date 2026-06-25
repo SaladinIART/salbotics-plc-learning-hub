@@ -13,6 +13,7 @@ The app simulates one 4-way junction using a small PLC mental model: AutomationD
 - Browser HMI basics: status bar, I/O address tables, timer/register tables, rung monitor, field view, alarms, and event log.
 - Industrial realism basics: Omron/Siemens examples, analog signals, VFD motor control, NPN/PNP sensors, and troubleshooting.
 - Oil-palm factory basics: FFB to CPO process flow, WECON/PAC/Raspberry Pi/Arduino stations, IIoT, edge AI, and safety/regulatory awareness.
+- Plant operation modes: manual, semi-auto, auto, conveyor handling, and Ladder-style process control.
 
 ## Run Locally
 
@@ -51,7 +52,7 @@ pytest
 2. Run the app.
 3. Open `http://127.0.0.1:8733/static/how-it-works.html` for scenario walkthroughs and ladder diagrams.
 4. Open `http://127.0.0.1:8733/static/industrial-situations.html` for realistic PLC brand, analog, VFD, and sensor troubleshooting situations.
-5. Open `http://127.0.0.1:8733/static/oil-palm-industrial-environment.html` for a factory-scale oil-palm process and IIoT training module.
+5. Open `http://127.0.0.1:8733/static/oil-palm-industrial-environment.html` for a factory-scale oil-palm process, conveyor handling, operating modes, LAD examples, and IIoT training module.
 6. Open `http://127.0.0.1:8733/static/oil-palm-control-stack-analysis.html` for WECON, PAC, Raspberry Pi industrial, and Arduino Opta/Portenta comparisons.
 7. Press `START`.
 8. Watch the top status bar, I/O rack, timers, registers, rungs, outputs, and event log.
