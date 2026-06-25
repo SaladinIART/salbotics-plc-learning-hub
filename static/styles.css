@@ -1,12 +1,12 @@
 :root {
   color-scheme: dark;
-  --bg: #111827;
-  --shell: #162033;
-  --panel: #f8fafc;
-  --panel-2: #eef2f7;
+  --bg: #07111d;
+  --shell: #0d1826;
+  --panel: #f4f7fb;
+  --panel-2: #e7edf5;
   --text: #0f172a;
   --muted: #64748b;
-  --line: #cbd5e1;
+  --line: #b8c5d6;
   --dark-text: #e5edf8;
   --dark-muted: #8aa0bc;
   --blue: #1d4ed8;
@@ -16,7 +16,7 @@
   --green: #16a34a;
   --amber: #d97706;
   --radius: 8px;
-  --shadow: 0 18px 45px rgba(2, 8, 23, 0.28);
+  --shadow: 0 16px 38px rgba(2, 8, 23, 0.34);
 }
 
 * {
@@ -26,7 +26,9 @@
 body {
   margin: 0;
   min-width: 320px;
-  background: var(--bg);
+  background:
+    linear-gradient(180deg, rgba(17, 30, 47, 0.72), rgba(7, 17, 29, 0.98) 160px),
+    var(--bg);
   color: var(--dark-text);
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -36,9 +38,9 @@ button {
 }
 
 .app-shell {
-  width: min(1600px, calc(100vw - 32px));
+  width: min(1660px, calc(100vw - 16px));
   margin: 0 auto;
-  padding: 18px 0 24px;
+  padding: 10px 0 16px;
 }
 
 .topbar {
@@ -128,6 +130,10 @@ body[data-mode="emergency"] .connection-pill {
   color: var(--dark-muted);
 }
 
+.panel-heading span {
+  color: #a9b8ca;
+}
+
 .status-item strong {
   display: block;
   margin-top: 4px;
@@ -139,9 +145,9 @@ body[data-mode="emergency"] .connection-pill {
 
 .dashboard-grid {
   display: grid;
-  grid-template-columns: minmax(300px, 0.95fr) minmax(380px, 1.25fr) minmax(320px, 0.95fr);
-  gap: 14px;
-  margin-top: 14px;
+  grid-template-columns: minmax(350px, 1.05fr) minmax(440px, 1.3fr) minmax(330px, 0.95fr);
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .panel {
@@ -149,14 +155,15 @@ body[data-mode="emergency"] .connection-pill {
   background: var(--panel);
   color: var(--text);
   box-shadow: var(--shadow);
-  border: 1px solid var(--line);
+  border: 1px solid #223448;
+  overflow: hidden;
 }
 
 .io-panel,
 .logic-panel,
 .field-panel {
   min-height: 620px;
-  padding: 16px;
+  padding: 12px;
 }
 
 .panel-heading {
@@ -164,19 +171,22 @@ body[data-mode="emergency"] .connection-pill {
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--line);
+  margin: -12px -12px 12px;
+  padding: 9px 12px;
+  border-bottom: 1px solid #24384d;
+  background: linear-gradient(180deg, #1a2838, #111c2a);
+  color: white;
 }
 
 .panel-heading h2 {
   margin: 0;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.2;
 }
 
 h3 {
-  margin: 18px 0 10px;
-  font-size: 13px;
+  margin: 14px 0 8px;
+  font-size: 12px;
   color: #334155;
   text-transform: uppercase;
 }
@@ -184,12 +194,12 @@ h3 {
 .command-row {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
-  margin-top: 14px;
+  gap: 7px;
+  margin-top: 10px;
 }
 
 .command {
-  min-height: 40px;
+  min-height: 36px;
   border: 1px solid #94a3b8;
   border-radius: 6px;
   background: #e2e8f0;
@@ -240,9 +250,9 @@ h3 {
 
 .io-row {
   display: grid;
-  grid-template-columns: 48px 88px minmax(78px, 1fr) 48px;
+  grid-template-columns: 50px 112px minmax(58px, 1fr) 50px;
   align-items: center;
-  min-height: 34px;
+  min-height: 32px;
   border-bottom: 1px solid #dbe3ee;
   font-size: 11px;
 }
@@ -375,8 +385,8 @@ h3 {
 }
 
 .timer-grid div {
-  min-height: 72px;
-  padding: 10px;
+  min-height: 62px;
+  padding: 8px 10px;
   border: 1px solid var(--line);
   border-radius: 6px;
   background: var(--panel-2);
@@ -385,7 +395,7 @@ h3 {
 .timer-grid strong {
   display: block;
   margin-top: 8px;
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .register-grid {
@@ -580,8 +590,8 @@ h3 {
 }
 
 .event-panel {
-  margin-top: 14px;
-  padding: 16px;
+  margin-top: 10px;
+  padding: 12px;
 }
 
 .event-log {
