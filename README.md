@@ -88,6 +88,18 @@ http://127.0.0.1:8733
 .\.venv\Scripts\python.exe -m pytest -q
 ```
 
+## Frontend Spike
+
+Phase 1 keeps the FastAPI simulator as the local runtime and adds an isolated Astro spike under `frontend/` for the future public learning hub.
+
+```powershell
+cd frontend
+npm install
+npm run build
+```
+
+The Astro build is static and is not a replacement for the local simulator yet.
+
 ## Learning Order
 
 1. Read `docs/PLC_TRAINING_GUIDE.md`.

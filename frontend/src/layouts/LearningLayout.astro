@@ -1,0 +1,40 @@
+---
+import "../styles/global.css";
+
+const {
+  title = "Salbotics PLC Learning Hub",
+  eyebrow = "Portable PLC Learning Platform",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">
+          <strong>Salbotics PLC Learning Hub</strong>
+          <span>{eyebrow}</span>
+        </div>
+        <nav class="nav" aria-label="Learning hub navigation">
+          <a href="./">Hub</a>
+          <a href="./how-it-works/">Guide Spike</a>
+          <a href="https://github.com/SaladinIART/salbotics-plc-learning-hub">GitHub</a>
+          <a href="https://salbotics.uk/">Salbotics.uk</a>
+        </nav>
+      </header>
+
+      <slot />
+
+      <footer class="footer">
+        Salbotics PLC Learning Hub is an open educational product by Salbotics Solutions.
+        It is not certified safety, traffic-control, or industrial-control software.
+      </footer>
+    </div>
+  </body>
+</html>

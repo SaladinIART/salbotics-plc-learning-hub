@@ -1,0 +1,41 @@
+---
+import LearningLayout from "../layouts/LearningLayout.astro";
+import ScanCycleIsland from "../components/ScanCycleIsland.astro";
+---
+
+<LearningLayout
+  title="Salbotics PLC Learning Hub - How It Works"
+  eyebrow="Migrated guide page spike"
+>
+  <main>
+    <section class="hero">
+      <div>
+        <h1>How the PLC scan-cycle lesson works.</h1>
+        <p>
+          This is the first migrated guide-page spike. It proves Astro can share
+          layout, navigation, footer, and interactive SVG teaching components
+          before the full static page set is migrated.
+        </p>
+      </div>
+      <ScanCycleIsland />
+    </section>
+
+    <section class="panel">
+      <h2>Guide structure preserved</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Inputs</h3>
+          <p>Students read start, stop, pedestrian, vehicle, emergency, and night-mode inputs before logic is solved.</p>
+        </article>
+        <article class="card">
+          <h3>Logic</h3>
+          <p>The local Python engine remains the source of truth for the scan cycle, timers, registers, and alarms.</p>
+        </article>
+        <article class="card">
+          <h3>Outputs</h3>
+          <p>The HMI shows red, yellow, green, all-red gaps, alarms, event history, and rung-monitor status.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+</LearningLayout>

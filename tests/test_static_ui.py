@@ -1,4 +1,5 @@
 from fastapi.testclient import TestClient
+from pathlib import Path
 
 from main import create_app
 
@@ -185,3 +186,16 @@ def test_static_assets_are_served() -> None:
     assert "process-lad-grid" in guide_styles.text
     assert "method-nav" in guide_styles.text
     assert "cert-path-grid" in guide_styles.text
+
+
+def test_frontend_astro_spike_files_are_present() -> None:
+    root = Path(__file__).resolve().parents[1]
+    package_json = (root / "frontend" / "package.json").read_text()
+    layout = (root / "frontend" / "src" / "layouts" / "LearningLayout.astro").read_text()
+    guide_page = (root / "frontend" / "src" / "pages" / "how-it-works.astro").read_text()
+    island = (root / "frontend" / "src" / "components" / "ScanCycleIsland.astro").read_text()
+
+    assert '"astro": "^7.0.3"' in package_json
+    assert "Salbotics PLC Learning Hub" in layout
+    assert "Migrated guide page spike" in guide_page
+    assert "Interactive Scan-Cycle SVG Island" in island
