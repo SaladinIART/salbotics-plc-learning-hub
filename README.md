@@ -4,6 +4,14 @@ An open educational product by Salbotics Solutions: one portable place to learn 
 
 The app simulates one 4-way junction using a small PLC mental model: AutomationDirect CLICK `C0-00DR-D`. It is educational software, not a safety controller.
 
+## License, Attribution, And Safety Boundary
+
+- Licensed under the MIT License. See `LICENSE`.
+- Original product and training concept by **Salbotics Solutions**. See `NOTICE`.
+- Please credit **Salbotics PLC Learning Hub by Salbotics Solutions** when teaching from, demonstrating, or publishing derived work based on this project.
+- Contributions should preserve the educational boundary: this project is not certified traffic-control, machinery-safety, process-safety, or industrial-control software.
+- Phase 2 communication layers such as pySerial, Modbus, OpenPLC runtime, MQTT, and OPC UA are intentionally on hold while Phase 1 is polished for public learning.
+
 ## What You Will Learn
 
 - PLC scan cycle: read inputs, solve logic, write outputs.
