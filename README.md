@@ -14,6 +14,16 @@ The app simulates one 4-way junction using a small PLC mental model: AutomationD
 
 ## Run Locally
 
+Windows single-click launcher:
+
+```text
+start-plc-trainer.bat
+```
+
+It uses port `8733` to avoid Salbotics port collisions.
+
+Manual run:
+
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
@@ -42,4 +52,3 @@ pytest
 5. Toggle vehicle sensors, pedestrian requests, emergency, night mode.
 6. Read `plc_engine.py` slowly from top to bottom.
 7. Compare code logic to Ladder concepts in the guide.
-
