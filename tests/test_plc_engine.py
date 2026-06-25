@@ -19,6 +19,22 @@ def test_startup_defaults_to_safe_all_red() -> None:
     assert state["outputs"]["EW_GREEN"] is False
 
 
+def test_snapshot_includes_plc_io_address_rows() -> None:
+    engine = PLCEngine()
+    state = engine.snapshot()
+
+    assert state["input_rows"][0] == {
+        "address": "I0.0",
+        "name": "START",
+        "description": "Start pushbutton contact",
+        "state": False,
+        "state_text": "0",
+    }
+    assert state["output_rows"][0]["address"] == "Q0.0"
+    assert state["output_rows"][0]["name"] == "NS_RED"
+    assert state["output_rows"][0]["state"] is True
+
+
 def test_auto_sequence_moves_through_safe_phases() -> None:
     engine = PLCEngine()
     engine.command("start")

@@ -26,6 +26,26 @@ OUTPUT_NAMES = (
     "EW_GREEN",
 )
 
+INPUT_METADATA = {
+    "START": {"address": "I0.0", "description": "Start pushbutton contact"},
+    "STOP": {"address": "I0.1", "description": "Stop pushbutton contact"},
+    "PED_NS": {"address": "I0.2", "description": "North/South pedestrian request"},
+    "PED_EW": {"address": "I0.3", "description": "East/West pedestrian request"},
+    "VEHICLE_NS": {"address": "I0.4", "description": "North/South vehicle sensor"},
+    "VEHICLE_EW": {"address": "I0.5", "description": "East/West vehicle sensor"},
+    "EMERGENCY": {"address": "I0.6", "description": "Emergency stop / all-red override"},
+    "NIGHT_MODE": {"address": "I0.7", "description": "Night red-flash selector"},
+}
+
+OUTPUT_METADATA = {
+    "NS_RED": {"address": "Q0.0", "description": "North/South red lamp"},
+    "NS_YELLOW": {"address": "Q0.1", "description": "North/South yellow lamp"},
+    "NS_GREEN": {"address": "Q0.2", "description": "North/South green lamp"},
+    "EW_RED": {"address": "Q0.3", "description": "East/West red lamp"},
+    "EW_YELLOW": {"address": "Q0.4", "description": "East/West yellow lamp"},
+    "EW_GREEN": {"address": "Q0.5", "description": "East/West green lamp"},
+}
+
 AUTO_SEQUENCE = (
     "NS_GREEN",
     "NS_YELLOW",
@@ -160,6 +180,8 @@ class PLCEngine:
         return {
             "inputs": dict(self.inputs),
             "outputs": dict(self.outputs),
+            "input_rows": self._io_rows(INPUT_NAMES, INPUT_METADATA, self.inputs),
+            "output_rows": self._io_rows(OUTPUT_NAMES, OUTPUT_METADATA, self.outputs),
             "mode": self.mode,
             "phase": self.phase,
             "timers": {
@@ -430,3 +452,19 @@ class PLCEngine:
     def _validate_input(name: str) -> None:
         if name not in INPUT_NAMES:
             raise ValueError(f"Unknown input: {name}")
+
+    @staticmethod
+    def _io_rows(names: tuple[str, ...], metadata: dict[str, dict[str, str]], states: dict[str, bool]) -> list[dict[str, Any]]:
+        rows = []
+        for name in names:
+            row_metadata = metadata[name]
+            rows.append(
+                {
+                    "address": row_metadata["address"],
+                    "name": name,
+                    "description": row_metadata["description"],
+                    "state": bool(states[name]),
+                    "state_text": "1" if states[name] else "0",
+                }
+            )
+        return rows
