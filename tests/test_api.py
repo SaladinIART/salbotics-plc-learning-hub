@@ -29,6 +29,21 @@ def test_state_endpoint_returns_timer_and_register_rows() -> None:
     assert payload["register_rows"][0]["value_dec"] == 0
 
 
+def test_state_endpoint_returns_alarm_summary() -> None:
+    app = create_app(start_background=False)
+    with TestClient(app) as client:
+        response = client.get("/api/state")
+
+    payload = response.json()
+    assert response.status_code == 200
+    assert payload["alarm_summary"] == {
+        "alarms": 0,
+        "warnings": 0,
+        "events": 1,
+        "total": 1,
+    }
+
+
 def test_input_endpoint_sets_input_bit() -> None:
     app = create_app(start_background=False)
     with TestClient(app) as client:

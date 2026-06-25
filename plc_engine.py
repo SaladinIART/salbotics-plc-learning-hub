@@ -231,6 +231,7 @@ class PLCEngine:
             },
             "register_rows": self._register_rows(),
             "alarms": self._alarms(),
+            "alarm_summary": self._alarm_summary(),
             "ladder_rungs": self._ladder_rungs(),
             "event_log": list(self.event_log),
             "plc": {
@@ -414,6 +415,18 @@ class PLCEngine:
         if self.inputs["START"] and self.inputs["STOP"]:
             alarms.append("START and STOP both active")
         return alarms
+
+    def _alarm_summary(self) -> dict[str, int]:
+        active_alarm_count = len(self._alarms())
+        logged_alarm_count = sum(1 for entry in self.event_log if entry["kind"] in ("alarm", "fault"))
+        warning_count = sum(1 for entry in self.event_log if entry["kind"] == "warning")
+        event_count = sum(1 for entry in self.event_log if entry["kind"] not in ("alarm", "fault", "warning"))
+        return {
+            "alarms": active_alarm_count + logged_alarm_count,
+            "warnings": warning_count,
+            "events": event_count,
+            "total": active_alarm_count + logged_alarm_count + warning_count + event_count,
+        }
 
     def _ladder_rungs(self) -> list[dict[str, Any]]:
         return [
