@@ -59,6 +59,10 @@ def create_app(start_background: bool = True) -> FastAPI:
     def how_it_works() -> FileResponse:
         return FileResponse(STATIC_DIR / "how-it-works.html")
 
+    @app.get("/industrial-situations")
+    def industrial_situations() -> FileResponse:
+        return FileResponse(STATIC_DIR / "industrial-situations.html")
+
     @app.get("/api/state")
     def get_state(request: Request) -> dict:
         with request.app.state.lock:

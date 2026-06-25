@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PLC Trainer - Industrial Situations</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="stylesheet" href="/static/guide.css" />
+  </head>
+  <body>
+    <div class="app-shell guide-shell industrial-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <strong>PLC TRAINER</strong>
+          <span>REAL INDUSTRIAL SITUATIONS</span>
+        </div>
+        <div class="top-actions">
+          <a class="connection-pill guide-back" href="/">SIMULATOR PANEL</a>
+          <a class="header-link" href="/static/how-it-works.html">HOW IT WORKS</a>
+        </div>
+        <div class="status-strip guide-status-strip">
+          <div class="status-item">
+            <span>Brands</span>
+            <strong>2</strong>
+          </div>
+          <div class="status-item">
+            <span>Signals</span>
+            <strong>AI/AO</strong>
+          </div>
+          <div class="status-item">
+            <span>Drive</span>
+            <strong>VFD</strong>
+          </div>
+          <div class="status-item">
+            <span>Faults</span>
+            <strong>NPN/PNP</strong>
+          </div>
+        </div>
+      </header>
+
+      <main class="guide-main">
+        <section class="panel lesson-panel intro-panel industrial-intro">
+          <div class="panel-heading">
+            <h1>Industrial Situations</h1>
+            <span>from beginner PLC panel to factory troubleshooting</span>
+          </div>
+          <div class="intro-grid industrial-intro-grid">
+            <div>
+              <h2>Why this page exists</h2>
+              <p>
+                The traffic-light trainer teaches the PLC scan cycle using simple digital inputs and
+                outputs. Real machines add brand ecosystems, remote I/O, analog signals, drives,
+                mixed sensor wiring, and maintenance pressure. This page gives you the practical map
+                before you touch a live cabinet.
+              </p>
+            </div>
+            <div class="safety-note" role="note" aria-label="Safety note">
+              <h2>Safety note</h2>
+              <p>
+                This is training material, not a wiring certificate. Isolate power, follow the machine
+                drawings, verify voltage and common terminals with a meter, and never connect sensors
+                or VFD terminals by guessing.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <nav class="scenario-nav industrial-nav" aria-label="Industrial situations list">
+          <a href="#brand-reality">Brand Reality</a>
+          <a href="#lower-higher">PLC Size</a>
+          <a href="#master-device">Master / Device</a>
+          <a href="#analog">Analog</a>
+          <a href="#vfd">VFD Motor</a>
+          <a href="#npn-pnp">NPN / PNP</a>
+          <a href="#robust-design">Robust Design</a>
+          <a href="#future-languages">Languages</a>
+        </nav>
+
+        <section id="brand-reality" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>Situation 1: PLC Brand Reality</h2>
+            <span>Omron and Siemens are both common, but the habits differ</span>
+          </div>
+          <div class="brand-grid">
+            <article class="brand-card">
+              <div class="brand-title">
+                <strong>Omron</strong>
+                <span>Japan ecosystem example</span>
+              </div>
+              <p>
+                Omron is common around compact machines, sensors, motion, safety, and Sysmac-style
+                machine automation. A beginner may see CP-series style PLCs on simpler machines and
+                NX/NJ/NX102 style controllers on modern networked machines.
+              </p>
+              <table>
+                <tbody>
+                  <tr><th>Software habit</th><td>Think in symbols, I/O maps, device variables, and controller tags depending on generation.</td></tr>
+                  <tr><th>Cabinet clue</th><td>Omron PLC, Omron sensors, compact remote I/O, servo or inverter devices.</td></tr>
+                  <tr><th>Diagnostic habit</th><td>Check controller status, I/O unit health, network node status, then field device wiring.</td></tr>
+                </tbody>
+              </table>
+            </article>
+            <article class="brand-card">
+              <div class="brand-title">
+                <strong>Siemens</strong>
+                <span>Germany ecosystem example</span>
+              </div>
+              <p>
+                Siemens is common in larger factory lines, panels using SIMATIC controllers, TIA
+                Portal projects, PROFINET networks, distributed I/O, drives, HMI panels, and strong
+                diagnostic tooling.
+              </p>
+              <table>
+                <tbody>
+                  <tr><th>Software habit</th><td>Think in device configuration, tags, blocks, networks, data blocks, and diagnostics buffers.</td></tr>
+                  <tr><th>Cabinet clue</th><td>S7-1200 or S7-1500 CPU, ET200 remote I/O, PROFINET switches, SINAMICS drive family.</td></tr>
+                  <tr><th>Diagnostic habit</th><td>Check online device view, module diagnostics, network names/IP addresses, then field wiring.</td></tr>
+                </tbody>
+              </table>
+            </article>
+          </div>
+          <p class="lesson-callout">
+            Beginner concept: brand matters because the software, addressing language, cable, and
+            diagnostic workflow change. The control idea stays the same: inputs are read, logic is
+            solved, outputs are written, and faults must be handled safely.
+          </p>
+        </section>
+
+        <section id="lower-higher" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>Situation 2: Lower PLC Or Higher PLC?</h2>
+            <span>choose by machine risk, I/O count, network needs, diagnostics, and motion</span>
+          </div>
+          <div class="compare-grid">
+            <div class="mini-table">
+              <h3>Small / lower PLC use case</h3>
+              <table>
+                <tbody>
+                  <tr><th>Example</th><td>Omron CP1E / CP-series style, Siemens S7-1200 style</td></tr>
+                  <tr><th>Good for</th><td>Standalone machines, small conveyors, pumps, simple traffic trainer logic, local I/O.</td></tr>
+                  <tr><th>Why use it</th><td>Lower cost, simpler panel, easier training, enough I/O for a compact machine.</td></tr>
+                  <tr><th>Limit signs</th><td>Too many analog points, many network devices, complex motion, detailed diagnostics, safety integration.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mini-table">
+              <h3>Higher / modern PLC use case</h3>
+              <table>
+                <tbody>
+                  <tr><th>Example</th><td>Omron NX/NJ/NX102 style, Siemens S7-1500 style</td></tr>
+                  <tr><th>Good for</th><td>Networked cells, high I/O count, motion axes, traceability, remote I/O, richer diagnostics.</td></tr>
+                  <tr><th>Why use it</th><td>More performance, better modular expansion, stronger online diagnostics, modern communication.</td></tr>
+                  <tr><th>Tradeoff</th><td>Higher cost, more configuration, more software learning, more design discipline needed.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="decision-strip" aria-label="PLC selection decision flow">
+            <div><b>1</b><span>Count I/O</span><code>digital + analog + spare</code></div>
+            <div><b>2</b><span>Check networks</span><code>remote I/O, VFD, HMI</code></div>
+            <div><b>3</b><span>Check motion</span><code>servo, encoder, VFD</code></div>
+            <div><b>4</b><span>Check safety</span><code>risk assessment required</code></div>
+            <div><b>5</b><span>Check service</span><code>diagnostics and spares</code></div>
+          </div>
+        </section>
+
+        <section id="master-device" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>Situation 3: Master / Device Roles</h2>
+            <span>learn modern terms, but understand old manuals</span>
+          </div>
+          <div class="scenario-layout">
+            <div class="scenario-notes">
+              <h3>Words you will see</h3>
+              <ol>
+                <li><code>Controller</code> or <code>scanner</code> is the newer wording for the device that asks for data or commands another device.</li>
+                <li><code>Device</code> or <code>adapter</code> is the newer wording for the unit being commanded or read.</li>
+                <li><code>Master</code> and <code>slave</code> still appear in older manuals, especially RS-232, RS-485, and Modbus documents.</li>
+                <li>Mixed Omron and Siemens lines do not have a permanent brand winner. The architecture decides which PLC coordinates the cell.</li>
+              </ol>
+            </div>
+            <div class="industrial-diagram" aria-label="PLC controller and device examples">
+              <h3>Example topologies</h3>
+              <div class="topology-row">
+                <span class="node plc-node">PLC controller</span>
+                <span class="link-line">run, speed, reset</span>
+                <span class="node drive-node">VFD device</span>
+                <span class="link-line">ready, running, fault</span>
+                <span class="node motor-node">Motor</span>
+              </div>
+              <div class="topology-row">
+                <span class="node plc-node">PLC controller</span>
+                <span class="link-line">fieldbus scan</span>
+                <span class="node io-node">Remote I/O device</span>
+                <span class="link-line">wired points</span>
+                <span class="node sensor-node">Sensors</span>
+              </div>
+              <div class="topology-row">
+                <span class="node plc-node">Line controller</span>
+                <span class="link-line">handshake</span>
+                <span class="node io-node">Omron machine PLC</span>
+                <span class="link-line">handshake</span>
+                <span class="node drive-node">Siemens machine PLC</span>
+              </div>
+              <p>
+                Each machine PLC should keep local interlocks and safety behavior. A line controller
+                may coordinate recipes, permissives, production counts, and start/stop sequencing.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="analog" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>Situation 4: Analog Modules</h2>
+            <span>not just on/off: voltage, current, scaling, and failure clues</span>
+          </div>
+          <div class="compare-grid">
+            <div class="mini-table">
+              <h3>Common analog signals</h3>
+              <table>
+                <tbody>
+                  <tr><th>0-10V</th><td>Voltage signal often used for speed reference, level, position, or pressure.</td></tr>
+                  <tr><th>4-20mA</th><td>Current loop common in industry because wire loss and broken wire detection are easier.</td></tr>
+                  <tr><th>AI</th><td>Analog input module reads a changing value from a transmitter or sensor.</td></tr>
+                  <tr><th>AO</th><td>Analog output module commands a value such as VFD speed reference.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="industrial-diagram">
+              <h3>Scaling idea</h3>
+              <div class="scale-flow">
+                <div><b>Sensor</b><span>4-20mA</span></div>
+                <div><b>Analog input</b><span>raw count</span></div>
+                <div><b>PLC math</b><span>engineering units</span></div>
+                <div><b>HMI</b><span>bar, alarm, trend</span></div>
+              </div>
+              <code class="formula">engineering_value = (raw - raw_min) * span / raw_span + eng_min</code>
+              <p>
+                Example: a 4-20mA pressure transmitter may represent 0-10 bar. The PLC should show
+                pressure in bar, not just raw counts.
+              </p>
+            </div>
+          </div>
+          <div class="mini-table">
+            <h3>Analog troubleshooting clues</h3>
+            <table>
+              <tbody>
+                <tr><th>Always zero</th><td>Broken loop, no sensor power, wrong input type, open common, or raw scaling set wrong.</td></tr>
+                <tr><th>Always maximum</th><td>Short, wrong voltage/current mode, saturated transmitter, or bad scaling limits.</td></tr>
+                <tr><th>Jumpy value</th><td>Noise, poor shielding, bad ground, loose terminal, unstable process, or no filtering.</td></tr>
+                <tr><th>Slow value</th><td>Sensor damping, PLC filter, HMI trend delay, or real process lag.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="vfd" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>Situation 5: VFD / PWM Motor Control</h2>
+            <span>the PLC commands speed; the drive creates motor power</span>
+          </div>
+          <div class="scenario-layout">
+            <div class="scenario-notes">
+              <h3>What the PLC usually does</h3>
+              <ol>
+                <li>Sends a <code>RUN</code> command after guards, E-stop chain, overloads, and permissives are healthy.</li>
+                <li>Sends direction if the machine allows forward and reverse.</li>
+                <li>Sends a speed reference by analog output, network command, or preset speed bits.</li>
+                <li>Reads <code>READY</code>, <code>RUNNING</code>, <code>AT_SPEED</code>, and <code>FAULT</code> feedback.</li>
+                <li>Logs a drive fault and requires a correct reset sequence.</li>
+              </ol>
+              <p class="lesson-callout">
+                A VFD often uses PWM internally to drive the motor. The beginner should not think the
+                PLC directly makes the motor PWM waveform.
+              </p>
+            </div>
+            <div class="ladder-diagram" aria-label="VFD control ladder diagram">
+              <h3>Training Ladder View</h3>
+              <div class="ladder-row active">
+                <span class="rung-id">100</span>
+                <div class="ladder-track"><span class="ld-contact">AUTO_RUN</span><span class="ld-contact">GUARD_OK</span><span class="ld-contact">DRIVE_READY</span><span class="ld-contact nc">/DRIVE_FAULT</span><span class="ld-coil">VFD_RUN_CMD</span></div>
+                <p>PLC only runs the drive when permissives are healthy.</p>
+              </div>
+              <div class="ladder-row">
+                <span class="rung-id">101</span>
+                <div class="ladder-track"><span class="ld-contact">SPEED_REQUEST</span><span class="ld-coil">AO_SPEED_REF</span></div>
+                <p>Analog output or network command sends speed reference.</p>
+              </div>
+              <div class="ladder-row danger">
+                <span class="rung-id">102</span>
+                <div class="ladder-track"><span class="ld-contact">DRIVE_FAULT</span><span class="ld-coil danger">ALARM_VFD_FAULT</span><span class="ld-coil reset">RST VFD_RUN_CMD</span></div>
+                <p>Fault removes run command and alerts the operator.</p>
+              </div>
+              <div class="ladder-row">
+                <span class="rung-id">103</span>
+                <div class="ladder-track"><span class="ld-contact">RESET_REQ</span><span class="ld-contact nc">/RUN_CMD</span><span class="ld-coil">VFD_FAULT_RESET</span></div>
+                <p>Reset should not be spammed while run is still demanded.</p>
+              </div>
+            </div>
+          </div>
+          <div class="mini-table">
+            <h3>Typical VFD I/O points</h3>
+            <table>
+              <tbody>
+                <tr><th>PLC to VFD</th><td>Run command, reverse command, speed reference, fault reset, enable/permissive.</td></tr>
+                <tr><th>VFD to PLC</th><td>Ready, running, at speed, fault active, speed feedback, current feedback.</td></tr>
+                <tr><th>Never skip</th><td>Drive manual, safe stop wiring, overload protection, motor nameplate data, and machine risk assessment.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="npn-pnp" class="panel scenario-panel danger-scenario">
+          <div class="panel-heading">
+            <h2>Situation 6: NPN / PNP Sensor Troubleshooting</h2>
+            <span>sourcing and sinking mistakes are common cabinet faults</span>
+          </div>
+          <div class="compare-grid">
+            <div class="sensor-card">
+              <h3>PNP sensor</h3>
+              <div class="sensor-wire">
+                <span>Brown +24V</span>
+                <span>Blue 0V</span>
+                <span>Black signal sources +24V to PLC input</span>
+              </div>
+              <p>
+                PNP is often described as sourcing. When the sensor turns on, the input sees positive
+                voltage. Many modern DC input modules are wired this way.
+              </p>
+            </div>
+            <div class="sensor-card">
+              <h3>NPN sensor</h3>
+              <div class="sensor-wire">
+                <span>Brown +24V</span>
+                <span>Blue 0V</span>
+                <span>Black signal sinks to 0V from PLC input</span>
+              </div>
+              <p>
+                NPN is often described as sinking. When the sensor turns on, it pulls the input toward
+                0V. It only works correctly if the PLC input common is wired for that style.
+              </p>
+            </div>
+          </div>
+          <div class="scenario-layout">
+            <div class="scenario-notes">
+              <h3>Meter checklist</h3>
+              <ol>
+                <li>Find the PLC input common terminal and confirm whether it is tied to 0V or +24V.</li>
+                <li>Measure sensor supply between brown and blue before blaming logic.</li>
+                <li>Measure black signal wire to 0V with sensor off and on.</li>
+                <li>Compare the meter reading with the PLC input LED and the HMI input bit.</li>
+                <li>Check if the sensor is 2-wire or 3-wire, AC or DC, NPN or PNP.</li>
+              </ol>
+            </div>
+            <div class="mini-table">
+              <h3>Symptoms and likely causes</h3>
+              <table>
+                <tbody>
+                  <tr><th>LED on sensor, PLC input off</th><td>Wrong input common, broken signal wire, wrong NPN/PNP type, or failed input channel.</td></tr>
+                  <tr><th>PLC input always on</th><td>Shorted signal wire, wrong common, leaking 2-wire sensor current, forced input, or bad module.</td></tr>
+                  <tr><th>Input flickers</th><td>Loose terminal, vibration, bad target alignment, noise, missing shield, or weak supply.</td></tr>
+                  <tr><th>Works on meter, not in PLC</th><td>Input filter, scan timing, wrong address, disabled module, or program using a different bit.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="robust-design" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>Situation 7: Robust System Design</h2>
+            <span>make the machine easier to diagnose before it fails</span>
+          </div>
+          <div class="robust-grid">
+            <div class="robust-item">
+              <h3>Interlocks</h3>
+              <p>Do not energize an output unless all required permissives are true. Show the missing permissive on the HMI.</p>
+            </div>
+            <div class="robust-item">
+              <h3>Handshakes</h3>
+              <p>Use request, acknowledge, busy, done, and fault bits between machines instead of one vague start signal.</p>
+            </div>
+            <div class="robust-item">
+              <h3>Alarms</h3>
+              <p>Write alarms as operator sentences: source, condition, action. Avoid only saying "fault".</p>
+            </div>
+            <div class="robust-item">
+              <h3>Signal naming</h3>
+              <p>Use names that tell location, device, and meaning, such as <code>CNV01_PE_ENTRY</code>.</p>
+            </div>
+            <div class="robust-item">
+              <h3>Isolation</h3>
+              <p>Separate noisy motor wiring from signal wiring. Respect shielding, grounding, and panel layout rules.</p>
+            </div>
+            <div class="robust-item">
+              <h3>Manual mode</h3>
+              <p>Manual controls should still obey safety and machine-damage interlocks. Manual does not mean reckless.</p>
+            </div>
+          </div>
+          <div class="industrial-diagram">
+            <h3>Good machine handshake</h3>
+            <div class="handshake-lanes">
+              <div><b>Upstream PLC</b><span>PART_READY</span><span>TRANSFER_REQ</span><span>FAULT_CLEAR</span></div>
+              <div><b>Downstream PLC</b><span>READY_TO_RECEIVE</span><span>TRANSFER_ACK</span><span>TRANSFER_DONE</span></div>
+              <div><b>HMI / maintenance</b><span>which side is waiting?</span><span>which permissive is missing?</span><span>what should operator check?</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="future-languages" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>Situation 8: Future PLC Languages</h2>
+            <span>ladder first, then compare other IEC styles later</span>
+          </div>
+          <div class="compare-grid language-grid">
+            <div class="language-card">
+              <h3>Ladder</h3>
+              <p>Best first language for relay logic, permissives, interlocks, simple timers, and maintenance visibility.</p>
+            </div>
+            <div class="language-card">
+              <h3>FBD</h3>
+              <p>Function Block Diagram is useful when signals flow through reusable blocks, especially analog processing.</p>
+            </div>
+            <div class="language-card">
+              <h3>ST</h3>
+              <p>Structured Text is useful for math, scaling, recipes, loops, arrays, and compact logic.</p>
+            </div>
+            <div class="language-card">
+              <h3>SFC</h3>
+              <p>Sequential Function Chart is useful for step-based machines, phases, transitions, and batch sequences.</p>
+            </div>
+          </div>
+          <p class="lesson-callout">
+            Training order: understand the scan cycle and Ladder first. After that, ST, FBD, and SFC
+            become different ways to express the same control problem.
+          </p>
+          <div class="source-strip">
+            <span>Vendor reference examples:</span>
+            <a href="https://automation.omron.com/en/us/products/family/CP1E">Omron CP1E</a>
+            <a href="https://automation.omron.com/en/us/products/family/NX102">Omron NX102</a>
+            <a href="https://www.siemens.com/en-us/products/simatic/">Siemens SIMATIC</a>
+            <a href="https://www.siemens.com/global/en/products/automation/systems/industrial/plc/simatic-s7-1500.html">Siemens S7-1500</a>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

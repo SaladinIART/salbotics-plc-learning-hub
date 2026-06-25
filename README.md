@@ -11,6 +11,7 @@ The app simulates one 4-way junction using a small PLC mental model: AutomationD
 - Safe traffic phases: green, yellow, all-red.
 - Industrial inputs: start, stop, pedestrian buttons, vehicle sensors, emergency, night mode.
 - Browser HMI basics: status bar, I/O address tables, timer/register tables, rung monitor, field view, alarms, and event log.
+- Industrial realism basics: Omron/Siemens examples, analog signals, VFD motor control, NPN/PNP sensors, and troubleshooting.
 
 ## Run Locally
 
@@ -48,8 +49,9 @@ pytest
 1. Read `docs/PLC_TRAINING_GUIDE.md`.
 2. Run the app.
 3. Open `http://127.0.0.1:8733/static/how-it-works.html` for scenario walkthroughs and ladder diagrams.
-4. Press `START`.
-5. Watch the top status bar, I/O rack, timers, registers, rungs, outputs, and event log.
-6. Toggle vehicle sensors, pedestrian requests, emergency, night mode.
-7. Read `plc_engine.py` slowly from top to bottom.
-8. Compare code logic to Ladder concepts in the guide.
+4. Open `http://127.0.0.1:8733/static/industrial-situations.html` for realistic PLC brand, analog, VFD, and sensor troubleshooting situations.
+5. Press `START`.
+6. Watch the top status bar, I/O rack, timers, registers, rungs, outputs, and event log.
+7. Toggle vehicle sensors, pedestrian requests, emergency, night mode.
+8. Read `plc_engine.py` slowly from top to bottom.
+9. Compare code logic to Ladder concepts in the guide.
