@@ -1,6 +1,6 @@
-# PLC Traffic-Light Trainer
+# Salbotics PLC Learning Hub
 
-Beginner training project for PLC logic, Ladder thinking, and industrial-style traffic-light control.
+An open educational product by Salbotics Solutions: one portable place to learn PLC logic, Ladder thinking, industrial HMI basics, oil-palm automation context, and safety-awareness basics.
 
 The app simulates one 4-way junction using a small PLC mental model: AutomationDirect CLICK `C0-00DR-D`. It is educational software, not a safety controller.
 

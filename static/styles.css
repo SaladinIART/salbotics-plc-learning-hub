@@ -50,6 +50,26 @@ button:focus-visible,
   padding: 10px 0 16px;
 }
 
+.product-footer {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: var(--radius);
+  background: #0b1220;
+  color: var(--dark-muted);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.product-footer a {
+  color: #bfdbfe;
+  font-weight: 900;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
 .topbar {
   display: grid;
   grid-template-columns: auto auto 1fr;

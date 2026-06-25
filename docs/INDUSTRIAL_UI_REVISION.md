@@ -64,7 +64,7 @@ Rendered QA used `http://127.0.0.1:8740/` because that was the current-code test
 Verification completed:
 
 - `.\.venv\Scripts\python.exe -m pytest -q` passed: 17 tests.
-- Browser page identity passed: title `PLC Traffic-Light Trainer`.
+- Browser page identity passed: title now aligns with `Salbotics PLC Learning Hub`.
 - Blank-screen check passed: app shell, I/O rack, ladder monitor, and junction rendered.
 - Framework overlay check passed: no framework error overlay.
 - Console health passed: no browser errors or warnings.

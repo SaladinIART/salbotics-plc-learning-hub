@@ -49,7 +49,7 @@ def create_app(start_background: bool = True) -> FastAPI:
                 except asyncio.CancelledError:
                     pass
 
-    app = FastAPI(title="PLC Traffic-Light Trainer", lifespan=lifespan)
+    app = FastAPI(title="Salbotics PLC Learning Hub", lifespan=lifespan)
 
     @app.get("/")
     def index() -> FileResponse:

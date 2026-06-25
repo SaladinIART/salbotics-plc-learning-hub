@@ -90,7 +90,7 @@ class TimerConfig:
 
 
 class PLCEngine:
-    """Small educational PLC scan-cycle model for a traffic-light trainer."""
+    """Small educational PLC scan-cycle model for Salbotics PLC Learning Hub."""
 
     def __init__(self, timers: TimerConfig | None = None) -> None:
         self.timers = timers or TimerConfig()

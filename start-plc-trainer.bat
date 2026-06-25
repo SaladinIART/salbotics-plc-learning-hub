@@ -8,8 +8,8 @@ set "PORT=8733"
 set "URL=http://%HOST%:%PORT%"
 
 echo.
-echo PLC Traffic-Light Trainer
-echo =========================
+echo Salbotics PLC Learning Hub
+echo ==========================
 echo Project: %CD%
 echo URL:     %URL%
 echo.
@@ -44,7 +44,7 @@ if %ERRORLEVEL% NEQ 0 (
 
 echo.
 echo Starting server in a new window...
-start "PLC Traffic-Light Trainer Server" cmd /k ""%CD%\.venv\Scripts\python.exe" -m uvicorn main:app --host %HOST% --port %PORT%"
+start "Salbotics PLC Learning Hub Server" cmd /k ""%CD%\.venv\Scripts\python.exe" -m uvicorn main:app --host %HOST% --port %PORT%"
 
 echo Waiting for server...
 timeout /t 3 /nobreak >nul
@@ -55,4 +55,3 @@ start "" "%URL%"
 echo.
 echo Launcher done. Keep the server window open while using the trainer.
 timeout /t 2 /nobreak >nul
-

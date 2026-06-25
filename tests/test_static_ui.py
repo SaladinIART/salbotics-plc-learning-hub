@@ -10,8 +10,9 @@ def test_root_serves_industrial_trainer_ui() -> None:
 
     assert response.status_code == 200
     html = response.text
-    assert "PLC TRAINER" in html
-    assert "4-WAY TRAFFIC LIGHT CONTROLLER" in html
+    assert "SALBOTICS PLC HUB" in html
+    assert "PORTABLE PLC LEARNING PLATFORM" in html
+    assert "Salbotics Solutions" in html
     assert "timer-table" in html
     assert "alarm-summary" in html
     assert "data-field-lamp" in html
@@ -30,7 +31,7 @@ def test_how_it_works_page_serves_ladder_scenarios() -> None:
 
     assert response.status_code == 200
     html = response.text
-    assert "How This PLC Trainer Works" in html
+    assert "How This PLC Learning Hub Works" in html
     assert "Scenario 1: Auto Cycle" in html
     assert "Scenario 4: Emergency All-Red" in html
     assert "Full Ladder View" in html
@@ -38,7 +39,7 @@ def test_how_it_works_page_serves_ladder_scenarios() -> None:
     assert "/static/industrial-situations.html" in html
     assert "/static/plc-programming-methods.html" in html
     assert static_response.status_code == 200
-    assert "How This PLC Trainer Works" in static_response.text
+    assert "How This PLC Learning Hub Works" in static_response.text
 
 
 def test_industrial_situations_page_serves_realistic_training_scenarios() -> None:
