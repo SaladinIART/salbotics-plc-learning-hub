@@ -274,17 +274,41 @@ function renderAlarms(alarms) {
 
 function renderEvents(events) {
   const container = qs("#event-log");
-  container.innerHTML = "";
+  container.innerHTML = `
+    <div class="event-row event-head">
+      <span>Time</span>
+      <span>Type</span>
+      <span>Source</span>
+      <span>Message</span>
+      <span>Details</span>
+    </div>
+  `;
   events.slice(0, 40).forEach((event) => {
     const row = document.createElement("div");
     row.className = "event-row";
     row.innerHTML = `
       <span class="event-time">${event.time_s.toFixed(1)}s</span>
       <span class="event-kind">${event.kind}</span>
+      <span>${event.kind.toUpperCase()}</span>
       <span>${event.message}</span>
+      <span>${latestState?.phase || "--"}</span>
     `;
     container.append(row);
   });
+}
+
+function renderAlarmSummary(summary) {
+  const container = qs("#alarm-summary");
+  if (!summary) {
+    container.innerHTML = "";
+    return;
+  }
+  container.innerHTML = `
+    <div class="summary-card alarm-count"><span>Alarms</span><strong>${summary.alarms}</strong></div>
+    <div class="summary-card warning-count"><span>Warnings</span><strong>${summary.warnings}</strong></div>
+    <div class="summary-card event-count"><span>Events</span><strong>${summary.events}</strong></div>
+    <div class="summary-card total-count"><span>Total</span><strong>${summary.total}</strong></div>
+  `;
 }
 
 function renderTimers(timers) {
@@ -317,6 +341,7 @@ function render(state) {
   renderRungs(state.ladder_rungs);
   renderField(state.outputs, state.inputs);
   renderAlarms(state.alarms);
+  renderAlarmSummary(state.alarm_summary);
   renderEvents(state.event_log);
 }
 
