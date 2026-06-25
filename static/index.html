@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PLC Traffic-Light Trainer</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <h1>PLC Traffic-Light Trainer</h1>
+          <p>CLICK C0-00DR-D training model - Ladder-first scan-cycle simulator</p>
+        </div>
+        <div class="status-strip">
+          <div class="status-item">
+            <span>Mode</span>
+            <strong id="mode-value">--</strong>
+          </div>
+          <div class="status-item">
+            <span>Phase</span>
+            <strong id="phase-value">--</strong>
+          </div>
+          <div class="status-item">
+            <span>Scan</span>
+            <strong id="scan-value">0</strong>
+          </div>
+        </div>
+      </header>
+
+      <main class="dashboard-grid">
+        <section class="panel io-panel">
+          <div class="panel-heading">
+            <h2>PLC I/O Rack</h2>
+            <span>8 inputs / 6 outputs</span>
+          </div>
+
+          <div class="command-row">
+            <button class="command start" data-command="start">START</button>
+            <button class="command stop" data-command="stop">STOP</button>
+            <button class="command" data-command="manual_step">MANUAL STEP</button>
+            <button class="command" data-command="reset_fault">RESET FAULT</button>
+          </div>
+
+          <h3>Inputs</h3>
+          <div id="input-list" class="bit-list"></div>
+
+          <h3>Outputs</h3>
+          <div id="output-list" class="bit-list"></div>
+        </section>
+
+        <section class="panel logic-panel">
+          <div class="panel-heading">
+            <h2>Ladder Monitor</h2>
+            <span>contacts, coils, timers</span>
+          </div>
+
+          <div class="timer-grid">
+            <div>
+              <span>Elapsed</span>
+              <strong id="elapsed-value">0.0s</strong>
+            </div>
+            <div>
+              <span>Target</span>
+              <strong id="target-value">0.0s</strong>
+            </div>
+            <div>
+              <span>Remaining</span>
+              <strong id="remaining-value">0.0s</strong>
+            </div>
+            <div>
+              <span>Scan time</span>
+              <strong id="scan-time-value">100ms</strong>
+            </div>
+          </div>
+
+          <h3>Registers</h3>
+          <div id="register-list" class="register-grid"></div>
+
+          <h3>Rungs</h3>
+          <div id="rung-list" class="rung-list"></div>
+        </section>
+
+        <section class="panel field-panel">
+          <div class="panel-heading">
+            <h2>4-Way Junction</h2>
+            <span>field output view</span>
+          </div>
+
+          <div class="intersection" aria-label="Traffic-light intersection simulator">
+            <div class="road vertical"></div>
+            <div class="road horizontal"></div>
+            <div class="lane-label north">N</div>
+            <div class="lane-label south">S</div>
+            <div class="lane-label east">E</div>
+            <div class="lane-label west">W</div>
+
+            <div class="signal signal-ns">
+              <span id="field-ns-red" class="lamp red"></span>
+              <span id="field-ns-yellow" class="lamp yellow"></span>
+              <span id="field-ns-green" class="lamp green"></span>
+              <b>NS</b>
+            </div>
+
+            <div class="signal signal-ew">
+              <span id="field-ew-red" class="lamp red"></span>
+              <span id="field-ew-yellow" class="lamp yellow"></span>
+              <span id="field-ew-green" class="lamp green"></span>
+              <b>EW</b>
+            </div>
+          </div>
+
+          <div id="alarm-list" class="alarm-list"></div>
+        </section>
+      </main>
+
+      <section class="panel event-panel">
+        <div class="panel-heading">
+          <h2>Event / Alarm Log</h2>
+          <span>newest first</span>
+        </div>
+        <div id="event-log" class="event-log"></div>
+      </section>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
+
