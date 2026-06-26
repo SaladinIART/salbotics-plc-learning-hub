@@ -1125,6 +1125,11 @@
   border-top-color: #dc2626;
 }
 
+.analytics-wide-card {
+  grid-column: 1 / -1;
+  min-height: auto;
+}
+
 .analytics-kpi-card span,
 .trend-head span,
 .press-deep-dive span {
@@ -1157,6 +1162,11 @@
   color: #475569;
   font-size: 12px;
   line-height: 1.4;
+}
+
+.analytics-error-detail {
+  color: #7f1d1d;
+  font-weight: 900;
 }
 
 .trend-card {
@@ -1199,6 +1209,27 @@
   stroke-width: 4;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.trend-placeholder {
+  margin-top: 18px;
+  min-height: 96px;
+  display: grid;
+  place-items: center;
+  padding: 14px;
+  color: #7f1d1d;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.45;
+  text-align: center;
+  background: #fff7ed;
+  border: 1px dashed #f97316;
+}
+
+.event-error-row td {
+  color: #7f1d1d;
+  font-weight: 900;
+  background: #fff7ed;
 }
 
 .station-state-list {

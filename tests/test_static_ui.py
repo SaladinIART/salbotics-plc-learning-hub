@@ -230,6 +230,7 @@ def test_phase_3_data_analytics_page_serves_management_dashboard() -> None:
     assert "MES" in html
     assert "ERP" in html
     assert "phase3-analytics.js" in html
+    assert "phase3-analytics-fallback-20260626" in html
     assert "<svg" in html
     assert "/static/phase-2-start-here.html" in html
 
@@ -246,6 +247,8 @@ def test_static_assets_are_served() -> None:
     assert "renderTimerRows" in app_js.text
     assert phase3_js.status_code == 200
     assert "refreshDashboard" in phase3_js.text
+    assert "renderApiError" in phase3_js.text
+    assert "ANALYTICS API UNAVAILABLE" in phase3_js.text
     assert styles.status_code == 200
     assert "field-controls" in styles.text
     assert guide_styles.status_code == 200

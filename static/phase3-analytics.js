@@ -6,11 +6,42 @@ const metrics = [
   { id: "tank_level_percent", title: "CPO Tank Level", unit: "%" },
 ];
 
+const fallbackArchitectureLayers = [
+  {
+    layer: "OT",
+    meaning: "PLC, VFD, HMI, SCADA, sensors, actuators, and local machine control.",
+    dashboard_value: "Shows what the plant is doing now.",
+  },
+  {
+    layer: "IT",
+    meaning: "Server, database, backup, browser access, and user accounts.",
+    dashboard_value: "Keeps data available after the machine event has passed.",
+  },
+  {
+    layer: "MES",
+    meaning: "Shift, batch, production order, downtime reason, and performance tracking.",
+    dashboard_value: "Turns plant data into production context.",
+  },
+  {
+    layer: "ERP",
+    meaning: "Inventory, costing, purchasing, sales, and management reporting.",
+    dashboard_value: "Connects production reality to business decisions.",
+  },
+];
+
 function formatValue(value) {
   if (typeof value !== "number") {
     return value;
   }
   return Number.isInteger(value) ? value.toString() : value.toFixed(1);
+}
+
+async function loadJson(url, options) {
+  const response = await fetch(url, options);
+  if (!response.ok) {
+    throw new Error(`${url} returned HTTP ${response.status}`);
+  }
+  return response.json();
 }
 
 function renderCards(cards) {
@@ -67,6 +98,15 @@ function renderArchitecture(layers) {
 }
 
 function renderEvents(events) {
+  if (!events.length) {
+    qs("#event-table").innerHTML = `
+      <tr>
+        <td colspan="5">No historian events yet. The collector will add events as simulated plant time advances.</td>
+      </tr>
+    `;
+    return;
+  }
+
   qs("#event-table").innerHTML = events
     .map(
       (event) => `
@@ -100,8 +140,7 @@ function pointsToPolyline(points, width, height) {
 }
 
 async function renderTrend(metric) {
-  const response = await fetch(`/api/analytics/trends?metric=${metric.id}&minutes=60`);
-  const trend = await response.json();
+  const trend = await loadJson(`/api/analytics/trends?metric=${metric.id}&minutes=60`);
   const latest = trend.points.at(-1)?.value ?? 0;
   const polyline = pointsToPolyline(trend.points, 300, 96);
   qs(`#trend-${metric.id}`).innerHTML = `
@@ -116,32 +155,94 @@ async function renderTrend(metric) {
   `;
 }
 
-async function refreshDashboard() {
-  const [summaryResponse, eventsResponse] = await Promise.all([
-    fetch("/api/analytics/summary"),
-    fetch("/api/analytics/events?limit=12"),
-  ]);
-  const summary = await summaryResponse.json();
-  const events = await eventsResponse.json();
+function renderTrendFallback(metric) {
+  qs(`#trend-${metric.id}`).innerHTML = `
+    <div class="trend-head">
+      <span>${metric.title}</span>
+      <strong>NO DATA</strong>
+    </div>
+    <div class="trend-placeholder">
+      Restart the local FastAPI server so the Phase 3 analytics endpoints can feed this chart.
+    </div>
+  `;
+}
 
-  qs("#storage-status").textContent = `${summary.storage.engine} historian - ${summary.storage.sample_count} samples`;
-  qs("#generated-at").textContent = new Date(summary.generated_at).toLocaleTimeString();
-  renderCards(summary.management_cards);
-  renderStations(summary.station_states);
-  renderPress(summary.screw_press);
-  renderArchitecture(summary.architecture_layers);
-  renderEvents(events.events);
-  await Promise.all(metrics.map(renderTrend));
+function renderApiError(error) {
+  const detail = error instanceof Error ? error.message : "Unknown analytics API error";
+  console.error("Phase 3 analytics failed to load:", error);
+
+  qs("#storage-status").textContent = "ANALYTICS API UNAVAILABLE";
+  qs("#generated-at").textContent = "restart server";
+  qs("#management-cards").innerHTML = `
+    <article class="analytics-kpi-card alarm analytics-wide-card">
+      <span>Dashboard data not loaded</span>
+      <strong>NO DATA</strong>
+      <b>API OFFLINE</b>
+      <p>
+        The page loaded, but the running server did not answer the Phase 3 API.
+        Close the old launcher/server and start it again so /api/analytics/* routes are active.
+      </p>
+      <p class="analytics-error-detail">${detail}</p>
+    </article>
+  `;
+  metrics.forEach(renderTrendFallback);
+  qs("#event-table").innerHTML = `
+    <tr class="event-error-row">
+      <td>--</td>
+      <td>ERROR</td>
+      <td>Phase 3 API</td>
+      <td>No analytics data returned</td>
+      <td>${detail}</td>
+    </tr>
+  `;
+  qs("#station-states").innerHTML = `
+    <div class="station-state-row">
+      <strong>No live station data</strong>
+      <span>API OFFLINE</span>
+      <p>Restart the local app to load simulated oil-palm station states.</p>
+    </div>
+  `;
+  qs("#press-deep-dive").innerHTML = `
+    <p class="analytics-error-detail">
+      Screw press values come from the local SQLite historian API. They will appear after the current server is restarted.
+    </p>
+  `;
+  renderArchitecture(fallbackArchitectureLayers);
+}
+
+async function refreshDashboard() {
+  try {
+    const [summary, events] = await Promise.all([
+      loadJson("/api/analytics/summary"),
+      loadJson("/api/analytics/events?limit=12"),
+    ]);
+
+    qs("#storage-status").textContent = `${summary.storage.engine} historian - ${summary.storage.sample_count} samples`;
+    qs("#generated-at").textContent = new Date(summary.generated_at).toLocaleTimeString();
+    renderCards(summary.management_cards);
+    renderStations(summary.station_states);
+    renderPress(summary.screw_press);
+    renderArchitecture(summary.architecture_layers);
+    renderEvents(events.events);
+    await Promise.all(metrics.map(renderTrend));
+  } catch (error) {
+    renderApiError(error);
+  }
 }
 
 async function resetDashboard() {
   const button = qs("#reset-analytics");
   button.disabled = true;
   button.textContent = "RESETTING";
-  await fetch("/api/analytics/reset", { method: "POST" });
-  await refreshDashboard();
-  button.textContent = "RESET DEMO DATA";
-  button.disabled = false;
+  try {
+    await loadJson("/api/analytics/reset", { method: "POST" });
+    await refreshDashboard();
+  } catch (error) {
+    renderApiError(error);
+  } finally {
+    button.textContent = "RESET DEMO DATA";
+    button.disabled = false;
+  }
 }
 
 qs("#reset-analytics").addEventListener("click", resetDashboard);
