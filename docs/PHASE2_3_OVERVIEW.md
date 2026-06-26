@@ -35,17 +35,18 @@ Ladder shows what the PLC logic is doing. HMI shows what the operator should do 
 Oil-palm mill examples should keep using reception, sterilizer, thresher, digester, screw press, clarification, tank farm, boiler, POME, conveyors, pumps, VFDs, alarms, trends, and station handshakes.
 
 ## Phase 3 Direction
-Phase 3 starts with virtual Modbus TCP because it teaches PLC registers/tags and Python polling without requiring real hardware.
+Phase 3 starts with a simulated local data pipeline because learners should understand why historians and dashboards matter before protocol runtime becomes the hard part. Virtual Modbus TCP comes next because it teaches PLC registers/tags and Python polling without requiring real hardware.
 
 Recommended sequence:
 
-1. Virtual Modbus TCP simulator.
-2. Python collector polling registers.
-3. Local data storage.
-4. Local historian/trend page.
-5. Production counters, alarm statistics, and simple analytics.
-6. OPC UA/MQTT after students understand tags and polling.
-7. pySerial/RS-232 later as a focused legacy machinery track.
+1. Simulated oil-palm collector.
+2. SQLite local historian.
+3. Management dashboard with FFB, CPO, OER, downtime, alarms, station states, and trends.
+4. OT, IT, MES, and ERP beginner architecture lesson.
+5. Virtual Modbus TCP simulator.
+6. Python collector polling registers.
+7. OPC UA/MQTT after students understand tags and polling.
+8. pySerial/RS-232 later as a focused legacy machinery track.
 
 ## Success Criteria
 - A beginner can choose a path without reading every page.

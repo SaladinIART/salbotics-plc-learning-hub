@@ -1033,6 +1033,250 @@
   background: linear-gradient(180deg, #38bdf8, #0f3f66);
 }
 
+.phase3-shell {
+  width: min(1660px, calc(100vw - 16px));
+}
+
+.phase3-shell .brand-block span {
+  font-size: 12px;
+}
+
+.phase3-nav {
+  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+}
+
+.analytics-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #b8c5d6;
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.analytics-toolbar span,
+.analytics-toolbar strong {
+  color: #334155;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.analytics-toolbar button {
+  min-height: 34px;
+  padding: 8px 12px;
+  border: 1px solid #0ea5e9;
+  border-radius: 5px;
+  background: #082f49;
+  color: #ecfeff;
+  font-size: 11px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.analytics-toolbar button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.analytics-kpi-grid,
+.analytics-trend-grid,
+.station-deep-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.analytics-kpi-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.analytics-trend-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.station-deep-grid {
+  grid-template-columns: minmax(320px, 0.95fr) minmax(360px, 1.05fr);
+}
+
+.analytics-kpi-card,
+.trend-card,
+.station-state-list,
+.press-deep-dive {
+  padding: 12px;
+  border: 1px solid #b8c5d6;
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.analytics-kpi-card {
+  min-height: 164px;
+  border-top: 4px solid #16a34a;
+}
+
+.analytics-kpi-card.watch {
+  border-top-color: #f59e0b;
+}
+
+.analytics-kpi-card.alarm {
+  border-top-color: #dc2626;
+}
+
+.analytics-kpi-card span,
+.trend-head span,
+.press-deep-dive span {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.analytics-kpi-card strong {
+  display: block;
+  margin-top: 10px;
+  color: #0f172a;
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.analytics-kpi-card b {
+  display: block;
+  margin-top: 5px;
+  color: #1d4ed8;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.analytics-kpi-card p {
+  margin: 10px 0 0;
+  color: #475569;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.trend-card {
+  min-height: 180px;
+}
+
+.trend-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.trend-head strong {
+  color: #0f172a;
+  font-size: 16px;
+  font-weight: 900;
+  text-align: right;
+}
+
+.trend-card svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 124px;
+  border: 1px solid #dbe3ee;
+  border-radius: 6px;
+  background: #f8fafc;
+}
+
+.trend-card line {
+  stroke: #cbd5e1;
+  stroke-width: 1;
+}
+
+.trend-card polyline {
+  fill: none;
+  stroke: #0891b2;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.station-state-list {
+  display: grid;
+  gap: 8px;
+}
+
+.station-state-row {
+  display: grid;
+  grid-template-columns: minmax(110px, 0.55fr) minmax(80px, 0.45fr) minmax(180px, 1fr);
+  gap: 8px;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #dbe3ee;
+  border-radius: 5px;
+  background: #f8fafc;
+}
+
+.station-state-row strong,
+.station-state-row span {
+  color: #0f172a;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.station-state-row span {
+  display: inline-flex;
+  justify-content: center;
+  padding: 5px 7px;
+  border-radius: 999px;
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.station-state-row p {
+  margin: 0;
+  color: #475569;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.press-deep-dive {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.press-deep-dive div {
+  padding: 10px;
+  border: 1px solid #dbe3ee;
+  border-radius: 5px;
+  background: #f8fafc;
+}
+
+.press-deep-dive strong {
+  display: block;
+  margin-top: 7px;
+  color: #0f172a;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.press-deep-dive p {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 10px;
+  border-left: 4px solid #0891b2;
+  background: #ecfeff;
+  color: #155e75;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.phase3-svg {
+  min-width: 980px;
+}
+
 .oil-shell {
   width: min(1660px, calc(100vw - 16px));
 }
@@ -1577,13 +1821,17 @@ rect.clean,
   .comm-card-grid,
   .scada-screen-grid,
   .phase2-answer-grid,
+  .analytics-kpi-grid,
+  .analytics-trend-grid,
+  .station-deep-grid,
   .mode-grid,
   .robust-grid,
   .language-grid {
     grid-template-columns: 1fr;
   }
 
-  .phase2-roadmap {
+  .phase2-roadmap,
+  .press-deep-dive {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
@@ -1637,6 +1885,26 @@ rect.clean,
   }
 
   .phase2-svg {
+    min-width: 900px;
+  }
+
+  .phase3-shell {
+    width: min(100vw - 20px, 720px);
+  }
+
+  .phase3-nav {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .press-deep-dive {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .station-state-row {
+    grid-template-columns: 1fr;
+  }
+
+  .phase3-svg {
     min-width: 900px;
   }
 

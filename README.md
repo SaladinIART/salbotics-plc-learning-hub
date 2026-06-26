@@ -43,6 +43,7 @@ Programming methods and flowcharts:
 - Industrial realism: Omron/Siemens examples, analog modules, VFD motor control, NPN/PNP sensors, and troubleshooting.
 - Oil-palm factory context: FFB to CPO process flow, conveyor handling, WECON/PAC/Raspberry Pi/Arduino station comparisons, IIoT, and safety/regulatory awareness.
 - Phase 2 communications overview: SCADA/HMI roles, RS-232/RS-485/Ethernet, Modbus RTU/TCP, OPC UA, MQTT/Sparkplug, local server basics, and oil-palm SCADA screen design.
+- Phase 3 local analytics: simulated oil-palm data collection, SQLite historian, management KPIs, trends, events, OT/IT/MES/ERP concepts, and screw press station deep dive.
 - Reliable PLC programming method: flowcharts first, LAD first, then compare ST/FBD/SFC.
 - Machinery safety-awareness path: risk-assessment qualification meaning, certification options, timing, cost ranges, and deliverables.
 
@@ -110,9 +111,10 @@ The Astro build is static and is not a replacement for the local simulator yet.
 5. Open `/static/oil-palm-industrial-environment.html` for the oil-palm process, conveyor handling, operating modes, LAD examples, and IIoT module.
 6. Open `/static/oil-palm-control-stack-analysis.html` for WECON, PAC, Raspberry Pi industrial, and Arduino Opta/Portenta comparisons.
 7. Open `/static/phase-2-start-here.html` for communications, SCADA/HMI, local server, and Phase 3 analytics overview.
-8. Open `/static/plc-programming-methods.html` for reliable PLC programming workflow, flowcharts, language comparisons, and case studies.
-9. Open `/static/risk-assessment-certification.html` for machinery risk-assessment certification paths and budget ranges.
-10. Return to `/`, press `START`, and observe the scan-cycle state changes.
+8. Open `/static/phase-3-data-analytics.html` for local data collection, historian, management dashboard, OT/IT/MES/ERP, and analytics.
+9. Open `/static/plc-programming-methods.html` for reliable PLC programming workflow, flowcharts, language comparisons, and case studies.
+10. Open `/static/risk-assessment-certification.html` for machinery risk-assessment certification paths and budget ranges.
+11. Return to `/`, press `START`, and observe the scan-cycle state changes.
 
 ## Phase Roadmap
 
@@ -143,8 +145,9 @@ Phase 2: communications, SCADA/HMI, and local-server learning, simulated first.
 
 Phase 3: Python data extraction and analytics.
 
-- Start with virtual Modbus TCP.
-- Add Python polling, local data storage, historian/trend views, production counters, alarm statistics, and simple analytics.
+- Start with simulated oil-palm collection, SQLite local storage, historian/trend views, production counters, alarm statistics, OT/IT/MES/ERP concepts, and simple analytics.
+- Use the management dashboard to explain why production, downtime, OER, alarms, energy, and repeated faults matter to business decisions.
+- Add virtual Modbus TCP after learners understand local historian/dashboard value.
 - Add OPC UA/MQTT after learners understand tags/registers.
 - Add pySerial / RS-232 later as a focused legacy machinery track.
 

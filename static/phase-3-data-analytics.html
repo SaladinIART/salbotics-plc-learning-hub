@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Salbotics PLC Learning Hub - Phase 3 Data Analytics</title>
+    <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
+    <link rel="stylesheet" href="/static/guide.css?v=phase3-analytics-20260626" />
+  </head>
+  <body>
+    <div class="app-shell guide-shell industrial-shell phase3-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <strong>SALBOTICS PLC HUB</strong>
+          <span>PHASE 3 ANALYTICS</span>
+        </div>
+        <div class="top-actions">
+          <a class="connection-pill guide-back" href="/">SIMULATOR</a>
+          <a class="header-link" href="/static/phase-2-start-here.html">PHASE 2</a>
+          <a class="header-link" href="/static/oil-palm-industrial-environment.html">OIL MILL</a>
+          <a class="header-link" href="/static/plc-programming-methods.html">METHODS</a>
+        </div>
+        <div class="status-strip guide-status-strip">
+          <div class="status-item"><span>Source</span><strong>Sim</strong></div>
+          <div class="status-item"><span>Historian</span><strong>SQLite</strong></div>
+          <div class="status-item"><span>Layer</span><strong>OT/IT</strong></div>
+          <div class="status-item"><span>View</span><strong>Mgmt</strong></div>
+        </div>
+      </header>
+
+      <main class="guide-main">
+        <section class="panel lesson-panel intro-panel industrial-intro">
+          <div class="panel-heading">
+            <h1>Phase 3: Local Data Collection, Historian, Analytics, And Management Dashboard</h1>
+            <span>simulated oil-palm plant data, persistent SQLite storage, and management KPIs</span>
+          </div>
+          <div class="intro-grid industrial-intro-grid">
+            <div>
+              <h2>Why dashboard matters</h2>
+              <p>
+                Ladder helps engineers debug logic, but management needs production truth: FFB
+                processed, CPO output, OER, downtime, alarm frequency, energy, quality, and repeated
+                bottlenecks. A dashboard turns OT signals into decisions without asking managers to
+                read PLC rungs.
+              </p>
+            </div>
+            <div class="safety-note" role="note" aria-label="Phase 3 boundary note">
+              <h2>Boundary</h2>
+              <p>
+                This is still simulated. The local historian uses SQLite and seeded oil palm samples.
+                Real Modbus TCP, OPC UA, MQTT, ERP, MES, and pySerial/RS-232 connections come after
+                this local analytics foundation.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <nav class="scenario-nav industrial-nav phase3-nav" aria-label="Phase 3 lesson sections">
+          <a href="#management">Management</a>
+          <a href="#trends">Trends</a>
+          <a href="#events">Events</a>
+          <a href="#station">Screw Press</a>
+          <a href="#architecture">OT IT MES ERP</a>
+          <a href="#pipeline">Pipeline</a>
+        </nav>
+
+        <section id="management" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>1. Management Dashboard</h2>
+            <span id="storage-status">SQLite historian</span>
+          </div>
+          <div class="analytics-toolbar">
+            <span>Last refresh: <strong id="generated-at">--</strong></span>
+            <button id="reset-analytics" type="button">RESET DEMO DATA</button>
+          </div>
+          <div id="management-cards" class="analytics-kpi-grid" aria-live="polite"></div>
+        </section>
+
+        <section id="trends" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>2. Historian Trends</h2>
+            <span>one sample every 2 seconds represents 1 minute of plant time</span>
+          </div>
+          <div class="analytics-trend-grid">
+            <article id="trend-oer_percent" class="trend-card"></article>
+            <article id="trend-press_current_a" class="trend-card"></article>
+            <article id="trend-tank_level_percent" class="trend-card"></article>
+          </div>
+        </section>
+
+        <section id="events" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>3. Alarm, Downtime, And Production Events</h2>
+            <span>events explain why KPI numbers moved</span>
+          </div>
+          <div class="wide-table">
+            <table>
+              <thead>
+                <tr><th>Time</th><th>Severity</th><th>Source</th><th>Message</th><th>Detail</th></tr>
+              </thead>
+              <tbody id="event-table"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="station" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>4. Station Deep Dive: Screw Press</h2>
+            <span>one realistic station example behind the management summary</span>
+          </div>
+          <div class="station-deep-grid">
+            <div id="station-states" class="station-state-list"></div>
+            <div id="press-deep-dive" class="press-deep-dive"></div>
+          </div>
+        </section>
+
+        <section id="architecture" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>5. OT, IT, MES, ERP: Where Dashboard Data Goes</h2>
+            <span>plant signals become business decisions through layers</span>
+          </div>
+          <div class="diagram-panel">
+            <svg class="process-svg phase3-svg" viewBox="0 0 1180 330" role="img" aria-labelledby="phase3-architecture-title">
+              <title id="phase3-architecture-title">OT IT MES ERP analytics data flow</title>
+              <defs>
+                <marker id="arrow-phase3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"></path>
+                </marker>
+              </defs>
+              <rect x="40" y="70" width="220" height="100" rx="8" class="phase2-svg-field"></rect>
+              <text x="150" y="110" class="svg-center">OT</text>
+              <text x="150" y="140" class="svg-center small">PLC, VFD, HMI, SCADA</text>
+              <rect x="330" y="70" width="220" height="100" rx="8" class="phase2-svg-hmi"></rect>
+              <text x="440" y="110" class="svg-center">IT</text>
+              <text x="440" y="140" class="svg-center small">server, SQLite, backup</text>
+              <rect x="620" y="70" width="220" height="100" rx="8" class="phase2-svg-scada"></rect>
+              <text x="730" y="110" class="svg-center">MES</text>
+              <text x="730" y="140" class="svg-center small">shift, order, downtime</text>
+              <rect x="910" y="70" width="220" height="100" rx="8" class="phase2-svg-analytics"></rect>
+              <text x="1020" y="110" class="svg-center">ERP</text>
+              <text x="1020" y="140" class="svg-center small">cost, inventory, sales</text>
+              <line x1="260" y1="120" x2="330" y2="120" class="flow-branch" marker-end="url(#arrow-phase3)"></line>
+              <line x1="550" y1="120" x2="620" y2="120" class="flow-branch" marker-end="url(#arrow-phase3)"></line>
+              <line x1="840" y1="120" x2="910" y2="120" class="flow-branch" marker-end="url(#arrow-phase3)"></line>
+              <rect x="250" y="235" width="680" height="58" rx="8" class="svg-historian"></rect>
+              <text x="590" y="270" class="svg-center">Management dashboard reads summarized data; it does not directly command PLC outputs.</text>
+            </svg>
+          </div>
+          <div class="wide-table">
+            <table>
+              <thead>
+                <tr><th>Layer</th><th>Meaning</th><th>Dashboard value</th></tr>
+              </thead>
+              <tbody id="architecture-table"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="pipeline" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>6. Local Data Pipeline In This Demo</h2>
+            <span>Phase 3 V1 uses simulated data before virtual Modbus TCP runtime</span>
+          </div>
+          <div class="code-panel">
+            <h3>Current local analytics flow</h3>
+            <pre><code>Simulated oil-palm collector
+  writes one sample every 2 seconds
+SQLite local historian
+  stores samples and events across restarts
+FastAPI analytics API
+  serves summary, trends, events, and reset
+Browser management dashboard
+  shows FFB, CPO, OER, downtime, alarms, trends, and OT/IT/MES/ERP meaning</code></pre>
+          </div>
+          <div class="source-strip">
+            <span>Next layers</span>
+            <a href="/static/phase-2-start-here.html">Phase 2 Concepts</a>
+            <a href="/static/oil-palm-industrial-environment.html">Oil Palm Plant</a>
+            <a href="/static/oil-palm-control-stack-analysis.html">Stack Analysis</a>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="/static/phase3-analytics.js?v=phase3-analytics-20260626"></script>
+  </body>
+</html>
