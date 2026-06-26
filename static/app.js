@@ -337,7 +337,7 @@ function render(state) {
   qs("#mode-value").textContent = formatStatusLabel(state.mode).toUpperCase();
   qs("#phase-value").textContent = formatStatusLabel(state.phase);
   qs("#night-value").textContent = state.inputs.NIGHT_MODE ? "ON" : "OFF";
-  qs("#plc-status").textContent = state.registers.FAULT_ACTIVE ? "PLC FAULT" : "PLC CONNECTED";
+  qs("#plc-status").textContent = state.registers.FAULT_ACTIVE ? "FAULT" : "ONLINE";
   renderClock();
   renderTimers(state.timers);
   renderTimerRows(state.timer_rows);
