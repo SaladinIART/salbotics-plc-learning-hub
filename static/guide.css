@@ -824,6 +824,215 @@
   background: #ecfeff;
 }
 
+.phase2-shell {
+  width: min(1660px, calc(100vw - 16px));
+}
+
+.phase2-shell .brand-block span {
+  font-size: 12px;
+}
+
+.phase2-nav {
+  grid-template-columns: repeat(auto-fit, minmax(126px, 1fr));
+}
+
+.learning-path-grid,
+.comm-card-grid,
+.scada-screen-grid,
+.phase2-answer-grid,
+.phase2-roadmap {
+  display: grid;
+  gap: 10px;
+}
+
+.learning-path-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.comm-card-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.scada-screen-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.phase2-answer-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.phase2-roadmap {
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  margin-bottom: 10px;
+}
+
+.path-card,
+.comm-card,
+.scada-screen,
+.phase2-answer-grid div,
+.phase2-roadmap div {
+  padding: 12px;
+  border: 1px solid #b8c5d6;
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.path-card h3,
+.comm-card h3,
+.scada-screen h3 {
+  margin: 0 0 8px;
+  color: #1e293b;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.path-card p,
+.path-card li,
+.comm-card p,
+.scada-screen p {
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.path-card p,
+.comm-card p,
+.scada-screen p {
+  margin: 0;
+}
+
+.path-card ol {
+  display: grid;
+  gap: 6px;
+  margin: 10px 0 0;
+  padding-left: 20px;
+}
+
+.operator-path {
+  border-top: 4px solid #16a34a;
+}
+
+.technician-path {
+  border-top: 4px solid #0891b2;
+}
+
+.developer-path {
+  border-top: 4px solid #d97706;
+}
+
+.phase2-answer-grid b,
+.phase2-answer-grid span,
+.phase2-roadmap b,
+.phase2-roadmap span,
+.phase2-roadmap code {
+  display: block;
+}
+
+.phase2-answer-grid b,
+.phase2-roadmap b {
+  color: #0f172a;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.phase2-answer-grid span,
+.phase2-roadmap span {
+  margin-top: 5px;
+  color: #475569;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.phase2-roadmap b {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  margin-bottom: 8px;
+  border-radius: 50%;
+  background: #0f3f66;
+  color: #ffffff;
+}
+
+.phase2-roadmap code {
+  margin-top: 7px;
+  color: #1d4ed8;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.phase2-svg {
+  min-width: 980px;
+}
+
+.phase2-svg-field {
+  fill: #f0fdf4;
+  stroke: #16a34a;
+  stroke-width: 2;
+}
+
+.phase2-svg-plc {
+  fill: #eef2ff;
+  stroke: #4f46e5;
+  stroke-width: 2;
+}
+
+.phase2-svg-hmi {
+  fill: #ecfeff;
+  stroke: #0891b2;
+  stroke-width: 2;
+}
+
+.phase2-svg-scada {
+  fill: #fffbeb;
+  stroke: #d97706;
+  stroke-width: 2;
+}
+
+.phase2-svg-analytics {
+  fill: #f8fafc;
+  stroke: #64748b;
+  stroke-width: 2;
+}
+
+.screen-strip {
+  display: grid;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.screen-strip span {
+  padding: 7px 8px;
+  border: 1px solid #dbe3ee;
+  border-radius: 5px;
+  background: #f8fafc;
+  color: #0f172a;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.mini-trend {
+  display: flex;
+  align-items: end;
+  gap: 7px;
+  height: 82px;
+  margin-top: 10px;
+  padding: 8px;
+  border: 1px solid #dbe3ee;
+  border-radius: 5px;
+  background: #f8fafc;
+}
+
+.mini-trend i {
+  flex: 1;
+  min-width: 14px;
+  border-radius: 4px 4px 0 0;
+  background: linear-gradient(180deg, #38bdf8, #0f3f66);
+}
+
 .oil-shell {
   width: min(1660px, calc(100vw - 16px));
 }
@@ -1363,10 +1572,18 @@
   .compare-grid,
   .method-grid,
   .case-grid,
+  .learning-path-grid,
+  .comm-card-grid,
+  .scada-screen-grid,
+  .phase2-answer-grid,
   .mode-grid,
   .robust-grid,
   .language-grid {
     grid-template-columns: 1fr;
+  }
+
+  .phase2-roadmap {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .decision-strip {
@@ -1404,6 +1621,22 @@
 
   .oil-nav {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .phase2-shell {
+    width: min(100vw - 20px, 720px);
+  }
+
+  .phase2-nav {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .phase2-roadmap {
+    grid-template-columns: 1fr;
+  }
+
+  .phase2-svg {
+    min-width: 900px;
   }
 
   .method-shell {

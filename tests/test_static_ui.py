@@ -20,6 +20,7 @@ def test_root_serves_industrial_trainer_ui() -> None:
     assert "/static/how-it-works.html" in html
     assert "/static/industrial-situations.html" in html
     assert "/static/oil-palm-industrial-environment.html" in html
+    assert "/static/phase-2-start-here.html" in html
     assert "/static/plc-programming-methods.html" in html
     assert "/static/risk-assessment-certification.html" in html
 
@@ -60,6 +61,7 @@ def test_industrial_situations_page_serves_realistic_training_scenarios() -> Non
     assert "Robust System Design" in html
     assert "troubleshooting" in html.lower()
     assert "/static/oil-palm-industrial-environment.html" in html
+    assert "/static/phase-2-start-here.html" in html
     assert "/static/plc-programming-methods.html" in html
     assert static_response.status_code == 200
     assert "Industrial Situations" in static_response.text
@@ -101,6 +103,7 @@ def test_oil_palm_pages_serve_process_and_stack_training() -> None:
     assert "Screw Press" in plant_html
     assert "Boiler / Steam / POME Support" in plant_html
     assert "/static/plc-programming-methods.html" in plant_html
+    assert "/static/phase-2-start-here.html" in plant_html
     assert "<svg" in plant_html
     assert "/static/oil-palm-control-stack-analysis.html" in plant_html
 
@@ -168,6 +171,40 @@ def test_risk_assessment_certification_page_serves_training_path() -> None:
     assert "DOSH" in html
 
 
+def test_phase_2_start_here_page_serves_scada_and_communications_overview() -> None:
+    app = create_app(start_background=False)
+    with TestClient(app) as client:
+        response = client.get("/phase-2-start-here")
+        static_response = client.get("/static/phase-2-start-here.html")
+
+    assert response.status_code == 200
+    assert static_response.status_code == 200
+    html = response.text
+    assert "Phase 2 Start Here" in html
+    assert "Operator Path" in html
+    assert "Technician Path" in html
+    assert "Developer Path" in html
+    assert "SCADA" in html
+    assert "HMI" in html
+    assert "Modbus TCP" in html
+    assert "OPC UA" in html
+    assert "MQTT" in html
+    assert "Sparkplug" in html
+    assert "RS-232" in html
+    assert "RS-485" in html
+    assert "localhost" in html
+    assert "127.0.0.1" in html
+    assert "LAN IP" in html
+    assert "oil palm" in html.lower()
+    assert "alarms" in html
+    assert "trends" in html
+    assert "Virtual Modbus TCP" in html
+    assert "Python collector" in html
+    assert "local historian" in html.lower()
+    assert "<svg" in html
+    assert "/static/oil-palm-industrial-environment.html" in html
+
+
 def test_static_assets_are_served() -> None:
     app = create_app(start_background=False)
     with TestClient(app) as client:
@@ -186,6 +223,7 @@ def test_static_assets_are_served() -> None:
     assert "process-lad-grid" in guide_styles.text
     assert "method-nav" in guide_styles.text
     assert "cert-path-grid" in guide_styles.text
+    assert "phase2-roadmap" in guide_styles.text
 
 
 def test_frontend_astro_spike_files_are_present() -> None:

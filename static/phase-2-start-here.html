@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Salbotics PLC Learning Hub - Phase 2 Start Here</title>
+    <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
+    <link rel="stylesheet" href="/static/guide.css" />
+  </head>
+  <body>
+    <div class="app-shell guide-shell industrial-shell phase2-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <strong>SALBOTICS PLC HUB</strong>
+          <span>PHASE 2 START HERE</span>
+        </div>
+        <div class="top-actions">
+          <a class="connection-pill guide-back" href="/">SIMULATOR</a>
+          <a class="header-link" href="/static/oil-palm-industrial-environment.html">OIL MILL</a>
+          <a class="header-link" href="/static/industrial-situations.html">INDUSTRY</a>
+          <a class="header-link" href="/static/plc-programming-methods.html">METHODS</a>
+          <a class="header-link" href="/static/risk-assessment-certification.html">SAFETY</a>
+        </div>
+        <div class="status-strip guide-status-strip">
+          <div class="status-item">
+            <span>Layer</span>
+            <strong>SCADA</strong>
+          </div>
+          <div class="status-item">
+            <span>Runtime</span>
+            <strong>Sim</strong>
+          </div>
+          <div class="status-item">
+            <span>Server</span>
+            <strong>Local</strong>
+          </div>
+          <div class="status-item">
+            <span>Phase 3</span>
+            <strong>Modbus</strong>
+          </div>
+        </div>
+      </header>
+
+      <main class="guide-main">
+        <section class="panel lesson-panel intro-panel industrial-intro">
+          <div class="panel-heading">
+            <h1>Phase 2 Start Here: Communications, SCADA, Local Server, And Analytics</h1>
+            <span>learn the plant data story before touching real PLC protocol drivers</span>
+          </div>
+          <div class="intro-grid industrial-intro-grid">
+            <div>
+              <h2>Do not panic</h2>
+              <p>
+                Phase 1 taught a single PLC scan cycle. Phase 2 teaches how that same state becomes
+                useful to operators, technicians, engineers, and managers. You do not need real
+                hardware yet. This page uses a simulated oil palm plant so you can understand the
+                words before handling drivers, ports, cables, databases, or real machines.
+              </p>
+            </div>
+            <div class="safety-note" role="note" aria-label="Phase 2 boundary note">
+              <h2>Boundary</h2>
+              <p>
+                Phase 2 is still simulated. No real PLC, pySerial, Modbus driver, MQTT broker,
+                OPC UA server, historian database, or internet-exposed HMI control is added here.
+                Real data extraction starts in Phase 3.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <nav class="scenario-nav industrial-nav phase2-nav" aria-label="Phase 2 lesson sections">
+          <a href="#paths">Start Paths</a>
+          <a href="#data-story">Data Story</a>
+          <a href="#communications">Comms Notes</a>
+          <a href="#local-server">Local Server</a>
+          <a href="#scada-design">SCADA/HMI</a>
+          <a href="#hmi-challenges">HMI Challenges</a>
+          <a href="#phase3-preview">Phase 3</a>
+          <a href="#glossary">Glossary</a>
+        </nav>
+
+        <section id="paths" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>1. Choose Your Learning Path First</h2>
+            <span>three doors into the same plant</span>
+          </div>
+          <div class="learning-path-grid">
+            <article class="path-card operator-path">
+              <h3>Operator Path</h3>
+              <p>
+                Start here if you want to read the screen without worrying about Python or wiring.
+                Focus on plant overview, station state, manual/semi-auto/auto mode, active alarms,
+                trends, and what action the screen suggests.
+              </p>
+              <ol>
+                <li>Open plant overview.</li>
+                <li>Check which station is stopped, running, waiting, or faulted.</li>
+                <li>Read alarm wording and recovery hint.</li>
+                <li>Use trends to decide if the issue is new, old, or repeating.</li>
+              </ol>
+            </article>
+            <article class="path-card technician-path">
+              <h3>Technician Path</h3>
+              <p>
+                Start here if you troubleshoot panels, sensors, VFDs, and networks. Focus on I/O,
+                field feedback, communication status, trip causes, permissives, and the difference
+                between a process fault and a network fault.
+              </p>
+              <ol>
+                <li>Check PLC run and network health.</li>
+                <li>Compare sensor/VFD status with HMI status.</li>
+                <li>Trace controller/device, polling, timeout, and retry behavior.</li>
+                <li>Record the fix so the next shift can recover faster.</li>
+              </ol>
+            </article>
+            <article class="path-card developer-path">
+              <h3>Developer Path</h3>
+              <p>
+                Start here if you want to build data collection later. Focus on Browser -> FastAPI
+                -> simulator state now, then Python collector -> virtual Modbus TCP -> local
+                historian -> analytics in Phase 3.
+              </p>
+              <ol>
+                <li>Understand the local server first.</li>
+                <li>Map simulated PLC tags to registers.</li>
+                <li>Poll data with Python in Phase 3.</li>
+                <li>Store, trend, count, and analyze production events.</li>
+              </ol>
+            </article>
+          </div>
+        </section>
+
+        <section id="data-story" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>2. The Industrial Data Story</h2>
+            <span>Ladder, HMI, SCADA, and analytics answer different questions</span>
+          </div>
+          <div class="diagram-panel">
+            <svg class="process-svg phase2-svg" viewBox="0 0 1180 360" role="img" aria-labelledby="phase2-data-title">
+              <title id="phase2-data-title">PLC data path from field devices to analytics</title>
+              <defs>
+                <marker id="arrow-phase2-data" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"></path>
+                </marker>
+              </defs>
+              <rect x="24" y="42" width="164" height="86" rx="8" class="phase2-svg-field"></rect>
+              <text x="106" y="76" class="svg-center">Field</text>
+              <text x="106" y="104" class="svg-center small">sensors, VFDs</text>
+
+              <rect x="258" y="42" width="164" height="86" rx="8" class="phase2-svg-plc"></rect>
+              <text x="340" y="76" class="svg-center">PLC / PAC</text>
+              <text x="340" y="104" class="svg-center small">logic and scan</text>
+
+              <rect x="492" y="42" width="164" height="86" rx="8" class="phase2-svg-hmi"></rect>
+              <text x="574" y="76" class="svg-center">HMI</text>
+              <text x="574" y="104" class="svg-center small">operator action</text>
+
+              <rect x="726" y="42" width="164" height="86" rx="8" class="phase2-svg-scada"></rect>
+              <text x="808" y="76" class="svg-center">SCADA</text>
+              <text x="808" y="104" class="svg-center small">plant overview</text>
+
+              <rect x="960" y="42" width="164" height="86" rx="8" class="phase2-svg-analytics"></rect>
+              <text x="1042" y="76" class="svg-center">Analytics</text>
+              <text x="1042" y="104" class="svg-center small">patterns</text>
+
+              <line x1="188" y1="85" x2="258" y2="85" class="flow-branch" marker-end="url(#arrow-phase2-data)"></line>
+              <line x1="422" y1="85" x2="492" y2="85" class="flow-branch" marker-end="url(#arrow-phase2-data)"></line>
+              <line x1="656" y1="85" x2="726" y2="85" class="flow-branch" marker-end="url(#arrow-phase2-data)"></line>
+              <line x1="890" y1="85" x2="960" y2="85" class="flow-branch" marker-end="url(#arrow-phase2-data)"></line>
+
+              <rect x="258" y="208" width="164" height="74" rx="8" class="clean"></rect>
+              <text x="340" y="238" class="svg-center">Ladder</text>
+              <text x="340" y="262" class="svg-center small">What is logic doing?</text>
+              <line x1="340" y1="128" x2="340" y2="208" class="flow-branch" marker-end="url(#arrow-phase2-data)"></line>
+
+              <rect x="492" y="208" width="164" height="74" rx="8" class="clean"></rect>
+              <text x="574" y="238" class="svg-center">HMI</text>
+              <text x="574" y="262" class="svg-center small">What now?</text>
+              <line x1="574" y1="128" x2="574" y2="208" class="flow-branch" marker-end="url(#arrow-phase2-data)"></line>
+
+              <rect x="726" y="208" width="164" height="74" rx="8" class="clean"></rect>
+              <text x="808" y="238" class="svg-center">SCADA</text>
+              <text x="808" y="262" class="svg-center small">Whole plant?</text>
+              <line x1="808" y1="128" x2="808" y2="208" class="flow-branch" marker-end="url(#arrow-phase2-data)"></line>
+
+              <rect x="960" y="208" width="164" height="74" rx="8" class="clean"></rect>
+              <text x="1042" y="238" class="svg-center">Analytics</text>
+              <text x="1042" y="262" class="svg-center small">Why repeating?</text>
+              <line x1="1042" y1="128" x2="1042" y2="208" class="flow-branch" marker-end="url(#arrow-phase2-data)"></line>
+            </svg>
+          </div>
+          <div class="phase2-answer-grid">
+            <div><b>Ladder diagram</b><span>What is the PLC logic doing?</span></div>
+            <div><b>HMI</b><span>What should the operator do now?</span></div>
+            <div><b>SCADA</b><span>What is the whole plant doing over time?</span></div>
+            <div><b>Analytics</b><span>What patterns, losses, faults, and performance trends can we learn?</span></div>
+          </div>
+        </section>
+
+        <section id="communications" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>3. Industrial Communications Notes</h2>
+            <span>names you will see before touching real drivers</span>
+          </div>
+          <div class="comm-card-grid">
+            <article class="comm-card">
+              <h3>RS-232</h3>
+              <p>Point-to-point serial communication. Common on older machinery, weighing systems, barcode readers, and legacy devices. Phase 3 treats this as a focused legacy track after Modbus TCP.</p>
+            </article>
+            <article class="comm-card">
+              <h3>RS-485</h3>
+              <p>Multi-drop serial wiring used by many Modbus RTU devices. Good for drives and instruments, but wiring polarity, termination, baud rate, parity, and address conflicts matter.</p>
+            </article>
+            <article class="comm-card">
+              <h3>Ethernet</h3>
+              <p>The usual plant network base for modern PLCs, HMIs, SCADA servers, engineering laptops, cameras, historians, and edge gateways.</p>
+            </article>
+            <article class="comm-card">
+              <h3>Modbus RTU/TCP</h3>
+              <p>Register-based data exchange. Modbus RTU usually runs on serial links. Modbus TCP runs over Ethernet and is the first Phase 3 hands-on protocol.</p>
+            </article>
+            <article class="comm-card">
+              <h3>OPC UA</h3>
+              <p>Structured industrial tag model for SCADA, historian, and enterprise clients. Better semantics than raw registers, but learners should understand tags/registers first.</p>
+            </article>
+            <article class="comm-card">
+              <h3>MQTT / Sparkplug</h3>
+              <p>Publish/subscribe messaging for IIoT. Sparkplug adds industrial state awareness, tag discovery, and birth/death messages on top of MQTT.</p>
+            </article>
+          </div>
+          <div class="wide-table">
+            <table>
+              <thead>
+                <tr><th>Concept</th><th>Beginner meaning</th><th>What can go wrong</th><th>HMI/SCADA clue</th></tr>
+              </thead>
+              <tbody>
+                <tr><th>Controller/device</th><td>One side asks or commands; the other side responds.</td><td>Wrong role, wrong address, or wrong device map.</td><td>Node offline, stale value, command rejected.</td></tr>
+                <tr><th>Polling</th><td>Software asks for values repeatedly.</td><td>Polling too fast overloads devices; too slow makes screens feel late.</td><td>Slow update rate or frozen timestamp.</td></tr>
+                <tr><th>Registers/tags</th><td>Named values such as level, pressure, motor current, status, or alarm.</td><td>Wrong scale, wrong data type, wrong address, swapped words.</td><td>Impossible value or trend jumps.</td></tr>
+                <tr><th>Timeout</th><td>No reply arrived in the allowed time.</td><td>Power loss, cable issue, firewall, IP conflict, overloaded device.</td><td>Communication fault alarm.</td></tr>
+                <tr><th>Retry</th><td>Try again before declaring failure.</td><td>Too many retries hide faults; too few create nuisance alarms.</td><td>Intermittent device offline alarms.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="local-server" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>4. Computer Network And Locally Hosted Server</h2>
+            <span>why the browser can see the simulator</span>
+          </div>
+          <div class="diagram-panel">
+            <svg class="process-svg phase2-svg" viewBox="0 0 1180 360" role="img" aria-labelledby="phase2-server-title">
+              <title id="phase2-server-title">Local server and LAN learning boundary</title>
+              <defs>
+                <marker id="arrow-phase2-server" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"></path>
+                </marker>
+              </defs>
+              <rect x="64" y="62" width="220" height="92" rx="8" class="phase2-svg-hmi"></rect>
+              <text x="174" y="98" class="svg-center">Browser</text>
+              <text x="174" y="126" class="svg-center small">HMI screen</text>
+
+              <rect x="480" y="62" width="220" height="92" rx="8" class="phase2-svg-scada"></rect>
+              <text x="590" y="98" class="svg-center">FastAPI server</text>
+              <text x="590" y="126" class="svg-center small">localhost:8733</text>
+
+              <rect x="896" y="62" width="220" height="92" rx="8" class="phase2-svg-plc"></rect>
+              <text x="1006" y="98" class="svg-center">PLC simulator</text>
+              <text x="1006" y="126" class="svg-center small">scan-cycle state</text>
+
+              <line x1="284" y1="108" x2="480" y2="108" class="flow-branch" marker-end="url(#arrow-phase2-server)"></line>
+              <line x1="700" y1="108" x2="896" y2="108" class="flow-branch" marker-end="url(#arrow-phase2-server)"></line>
+
+              <rect x="64" y="224" width="220" height="74" rx="8" class="clean"></rect>
+              <text x="174" y="254" class="svg-center">127.0.0.1</text>
+              <text x="174" y="278" class="svg-center small">this computer only</text>
+
+              <rect x="480" y="224" width="220" height="74" rx="8" class="clean"></rect>
+              <text x="590" y="254" class="svg-center">LAN IP</text>
+              <text x="590" y="278" class="svg-center small">same network lesson</text>
+
+              <rect x="896" y="224" width="220" height="74" rx="8" class="net-zone safety"></rect>
+              <text x="1006" y="254" class="svg-center">Firewall</text>
+              <text x="1006" y="278" class="svg-center small">do not expose blindly</text>
+            </svg>
+          </div>
+          <div class="method-grid">
+            <article class="method-card">
+              <h3>localhost and 127.0.0.1</h3>
+              <p>The browser and FastAPI run on the same computer. This is the safe default for learning because another laptop cannot control the HMI just by being nearby.</p>
+            </article>
+            <article class="method-card">
+              <h3>LAN IP</h3>
+              <p>A LAN IP lets another device on the same network reach the server if the app binds to that address and the firewall allows the port. Treat this as a lesson, not the default.</p>
+            </article>
+            <article class="method-card">
+              <h3>Why not public HMI controls?</h3>
+              <p>Even a simulator can teach bad habits. HMI write commands should not be exposed to unknown networks without authentication, authorization, logging, and clear safety boundaries.</p>
+            </article>
+          </div>
+          <div class="code-panel">
+            <h3>Current local data flow</h3>
+            <pre><code>Browser HMI
+  fetches /api/state
+  sends /api/inputs/{name} or /api/commands/{command}
+FastAPI local server at 127.0.0.1:8733
+  reads and updates the Python PLC simulator
+PLC simulator
+  runs the scan cycle and returns inputs, outputs, timers, alarms, and event log</code></pre>
+          </div>
+        </section>
+
+        <section id="scada-design" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>5. Oil-Palm SCADA And HMI Design</h2>
+            <span>why engineers design screens instead of showing only Ladder</span>
+          </div>
+          <div class="scada-screen-grid">
+            <article class="scada-screen plant-screen">
+              <h3>Plant Overview</h3>
+              <p>Reception, sterilizer, thresher, digester, press, clarification, tank farm, boiler, and POME status in one scan-friendly display.</p>
+              <div class="screen-strip"><span>Reception RUN</span><span>Sterilizer HOLD</span><span>Press LOAD HIGH</span><span>CPO Tank 72%</span></div>
+            </article>
+            <article class="scada-screen station-screen">
+              <h3>Station Screen</h3>
+              <p>One station in detail: mode, permissives, interlocks, motor/VFD feedback, valve state, sequence step, and operator commands.</p>
+              <div class="screen-strip"><span>AUTO</span><span>Step 04</span><span>Steam OK</span><span>Door Locked</span></div>
+            </article>
+            <article class="scada-screen alarm-screen">
+              <h3>Alarm Page</h3>
+              <p>Time, priority, source, message, cause, response, acknowledge state, and whether the alarm is active or returned to normal.</p>
+              <div class="screen-strip"><span>High current</span><span>Comm timeout</span><span>Low level</span><span>Trip reset needed</span></div>
+            </article>
+            <article class="scada-screen trend-screen">
+              <h3>Trend Page</h3>
+              <p>Temperature, pressure, level, current, flow, and production counters over time. Trends turn guesses into evidence.</p>
+              <div class="mini-trend" aria-label="Mock trend bars"><i style="height:28%"></i><i style="height:42%"></i><i style="height:64%"></i><i style="height:52%"></i><i style="height:76%"></i><i style="height:70%"></i></div>
+            </article>
+            <article class="scada-screen maintenance-screen">
+              <h3>Maintenance Page</h3>
+              <p>I/O forcing awareness, device health, VFD fault code, last trip, run hours, calibration date, backups, and network node state.</p>
+              <div class="screen-strip"><span>VFD 03 OK</span><span>Node 12 Online</span><span>Run 1482h</span><span>Backup v1.8</span></div>
+            </article>
+          </div>
+        </section>
+
+        <section id="hmi-challenges" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>6. HMI Design Challenges Engineers Face</h2>
+            <span>good screens reduce panic during faults</span>
+          </div>
+          <div class="wide-table">
+            <table>
+              <thead>
+                <tr><th>Bad design</th><th>Why it hurts</th><th>Better Phase 2 teaching pattern</th></tr>
+              </thead>
+              <tbody>
+                <tr><th>Too much information</th><td>Operator cannot find the fault quickly.</td><td>Overview first, station details second, maintenance details third.</td></tr>
+                <tr><th>Bad alarm wording</th><td>"Fault 43" does not teach cause or response.</td><td>Use source, condition, likely cause, and safe next action.</td></tr>
+                <tr><th>Hidden permissives</th><td>Machine will not start but nobody knows what is missing.</td><td>Show missing ready bits and interlocks near the command.</td></tr>
+                <tr><th>No trend/history</th><td>Every fault feels new.</td><td>Use trends and event logs so repeated problems become visible.</td></tr>
+                <tr><th>Weak mode visibility</th><td>Manual, semi-auto, and auto ownership becomes confusing.</td><td>Show who owns the command and which actions are blocked.</td></tr>
+                <tr><th>No role separation</th><td>Operator screens become crowded with engineer-only data.</td><td>Separate operator, technician, and developer views.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="phase3-preview" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>7. Phase 3 Preview: Python Data Extraction And Analytics</h2>
+            <span>virtual Modbus TCP first, then OPC UA/MQTT, then pySerial/RS-232</span>
+          </div>
+          <div class="phase2-roadmap">
+            <div><b>1</b><span>Virtual Modbus TCP</span><code>simulated registers</code></div>
+            <div><b>2</b><span>Python collector</span><code>poll, timeout, retry</code></div>
+            <div><b>3</b><span>Local storage</span><code>events and samples</code></div>
+            <div><b>4</b><span>Historian/trends</span><code>time-series view</code></div>
+            <div><b>5</b><span>Analytics</span><code>losses, counts, alarms</code></div>
+            <div><b>6</b><span>OPC UA / MQTT</span><code>modern IIoT layer</code></div>
+            <div><b>7</b><span>pySerial / RS-232</span><code>legacy machinery path</code></div>
+          </div>
+          <div class="code-panel">
+            <h3>Phase 3 mental model</h3>
+            <pre><code>Virtual PLC / Modbus TCP server
+  exposes registers such as level, motor current, state, alarms
+Python collector
+  polls registers, handles timeout/retry, timestamps samples
+Local historian
+  stores samples and events
+Analytics page
+  shows trends, production counters, alarm frequency, downtime hints</code></pre>
+          </div>
+        </section>
+
+        <section id="glossary" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>8. Tiny Glossary For Newcomers</h2>
+            <span>words that stop being scary after one sentence</span>
+          </div>
+          <div class="wide-table">
+            <table>
+              <tbody>
+                <tr><th>HMI</th><td>Human-machine interface: the operator screen for one machine or station.</td></tr>
+                <tr><th>SCADA</th><td>Supervisory control and data acquisition: plant-wide monitoring, alarms, trends, and sometimes supervisory commands.</td></tr>
+                <tr><th>Historian</th><td>Database-style system that stores time-stamped process values and events.</td></tr>
+                <tr><th>Tag</th><td>Named process value such as `STER_TEMP`, `PRESS_CURRENT`, or `CPO_TANK_LEVEL`.</td></tr>
+                <tr><th>Register</th><td>Numbered data location often used by protocols such as Modbus TCP.</td></tr>
+                <tr><th>Gateway</th><td>Device or software that bridges one system/protocol to another.</td></tr>
+                <tr><th>Edge</th><td>Computer near the machine that collects, filters, analyzes, or forwards plant data.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="source-strip">
+            <span>Continue</span>
+            <a href="/static/oil-palm-industrial-environment.html">Oil Palm Plant</a>
+            <a href="/static/oil-palm-control-stack-analysis.html">Stack Analysis</a>
+            <a href="/static/industrial-situations.html">Industrial Situations</a>
+            <a href="/static/plc-programming-methods.html">PLC Methods</a>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

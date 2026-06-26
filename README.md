@@ -42,6 +42,7 @@ Programming methods and flowcharts:
 - Browser HMI basics: I/O address tables, timer/register tables, rung monitor, field view, alarms, and event log.
 - Industrial realism: Omron/Siemens examples, analog modules, VFD motor control, NPN/PNP sensors, and troubleshooting.
 - Oil-palm factory context: FFB to CPO process flow, conveyor handling, WECON/PAC/Raspberry Pi/Arduino station comparisons, IIoT, and safety/regulatory awareness.
+- Phase 2 communications overview: SCADA/HMI roles, RS-232/RS-485/Ethernet, Modbus RTU/TCP, OPC UA, MQTT/Sparkplug, local server basics, and oil-palm SCADA screen design.
 - Reliable PLC programming method: flowcharts first, LAD first, then compare ST/FBD/SFC.
 - Machinery safety-awareness path: risk-assessment qualification meaning, certification options, timing, cost ranges, and deliverables.
 
@@ -108,9 +109,10 @@ The Astro build is static and is not a replacement for the local simulator yet.
 4. Open `/static/industrial-situations.html` for realistic PLC brand, analog, VFD, and sensor troubleshooting situations.
 5. Open `/static/oil-palm-industrial-environment.html` for the oil-palm process, conveyor handling, operating modes, LAD examples, and IIoT module.
 6. Open `/static/oil-palm-control-stack-analysis.html` for WECON, PAC, Raspberry Pi industrial, and Arduino Opta/Portenta comparisons.
-7. Open `/static/plc-programming-methods.html` for reliable PLC programming workflow, flowcharts, language comparisons, and case studies.
-8. Open `/static/risk-assessment-certification.html` for machinery risk-assessment certification paths and budget ranges.
-9. Return to `/`, press `START`, and observe the scan-cycle state changes.
+7. Open `/static/phase-2-start-here.html` for communications, SCADA/HMI, local server, and Phase 3 analytics overview.
+8. Open `/static/plc-programming-methods.html` for reliable PLC programming workflow, flowcharts, language comparisons, and case studies.
+9. Open `/static/risk-assessment-certification.html` for machinery risk-assessment certification paths and budget ranges.
+10. Return to `/`, press `START`, and observe the scan-cycle state changes.
 
 ## Phase Roadmap
 
@@ -131,12 +133,20 @@ Phase 1C: interactive SVG learning islands.
 - Add fluid SVG diagrams, guided scenarios, and interactive lessons where they improve understanding.
 - Avoid heavy framework migration until the educational value is proven.
 
-Phase 2: communications and hardware learning, intentionally on hold.
+Phase 2: communications, SCADA/HMI, and local-server learning, simulated first.
 
-- pySerial / virtual COM lessons.
-- Modbus RTU/TCP.
-- OpenPLC runtime bridge.
-- MQTT / OPC UA / IIoT gateway lessons.
+- Add guided learning paths for operator, technician, and developer readers.
+- Teach RS-232, RS-485, Ethernet, Modbus RTU/TCP, OPC UA, MQTT/Sparkplug, polling, registers/tags, timeouts, retries, and communication faults.
+- Teach `127.0.0.1`, localhost, LAN IP, ports, firewall basics, and why live HMI controls stay local by default.
+- Use the oil-palm factory case to explain plant overview, station, alarm, trend, maintenance, and network screens.
+- Keep all protocol runtime simulated; no real PLC connection yet.
+
+Phase 3: Python data extraction and analytics.
+
+- Start with virtual Modbus TCP.
+- Add Python polling, local data storage, historian/trend views, production counters, alarm statistics, and simple analytics.
+- Add OPC UA/MQTT after learners understand tags/registers.
+- Add pySerial / RS-232 later as a focused legacy machinery track.
 
 ## Safety Boundary
 

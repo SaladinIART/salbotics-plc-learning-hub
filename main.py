@@ -79,6 +79,10 @@ def create_app(start_background: bool = True) -> FastAPI:
     def risk_assessment_certification() -> FileResponse:
         return FileResponse(STATIC_DIR / "risk-assessment-certification.html")
 
+    @app.get("/phase-2-start-here")
+    def phase_2_start_here() -> FileResponse:
+        return FileResponse(STATIC_DIR / "phase-2-start-here.html")
+
     @app.get("/api/state")
     def get_state(request: Request) -> dict:
         with request.app.state.lock:
