@@ -14,6 +14,7 @@ This repo is built to be useful for learners and visible for recruiters: it show
 - Product / company site: [salbotics.uk](https://salbotics.uk/)
 - GitHub repo target: [SaladinIART/salbotics-plc-learning-hub](https://github.com/SaladinIART/salbotics-plc-learning-hub)
 - Static demo target: [GitHub Pages demo](https://saladiniart.github.io/salbotics-plc-learning-hub/)
+- Wiki mirror: [docs/wiki/Home.md](docs/wiki/Home.md)
 - Portfolio: `TODO: add portfolio URL before public launch`
 
 ## Screenshots
