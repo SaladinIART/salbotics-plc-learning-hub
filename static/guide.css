@@ -1130,6 +1130,7 @@
 }
 
 .clean rect,
+rect.clean,
 .product rect {
   fill: #f8fafc;
   stroke: #64748b;
