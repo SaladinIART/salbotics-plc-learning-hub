@@ -35,7 +35,7 @@ Ladder shows what the PLC logic is doing. HMI shows what the operator should do 
 Oil-palm mill examples should keep using reception, sterilizer, thresher, digester, screw press, clarification, tank farm, boiler, POME, conveyors, pumps, VFDs, alarms, trends, and station handshakes.
 
 ## Phase 3 Direction
-Phase 3 starts with a simulated local data pipeline because learners should understand why historians and dashboards matter before protocol runtime becomes the hard part. Virtual Modbus TCP comes next because it teaches PLC registers/tags and Python polling without requiring real hardware.
+Phase 3 starts with a simulated local data pipeline because learners should understand why historians and dashboards matter before protocol runtime becomes the hard part.
 
 Recommended sequence:
 
@@ -43,10 +43,15 @@ Recommended sequence:
 2. SQLite local historian.
 3. Management dashboard with FFB, CPO, OER, downtime, alarms, station states, and trends.
 4. OT, IT, MES, and ERP beginner architecture lesson.
-5. Virtual Modbus TCP simulator.
-6. Python collector polling registers.
-7. OPC UA/MQTT after students understand tags and polling.
-8. pySerial/RS-232 later as a focused legacy machinery track.
+5. Phase 4 legacy OT recovery with a read-only virtual register bridge.
+6. Simulated RS-232 / pySerial lesson.
+7. Virtual Modbus TCP and real adapter labs only after learners understand read-only boundaries.
+8. OPC UA/MQTT after students understand tags and polling.
+
+## Phase 4 Direction
+Phase 4 teaches obsolete PLC and Windows XP/7 HMI situations through a simulated screw press legacy station. It introduces safe recovery habits: inventory, backup/image, isolate, observe, reconstruct, bridge, and migrate later.
+
+The Phase 4 runtime remains local and simulated. It exposes `/api/legacy/*` read-only endpoints, SQLite demo storage, and a virtual Modbus TCP-style register map. It intentionally does not expose write, force, reset, or real machine command endpoints.
 
 ## Success Criteria
 - A beginner can choose a path without reading every page.

@@ -36,16 +36,29 @@ Topics:
 - OT, IT, MES, ERP concepts.
 - Why management dashboards matter.
 
-## Future Phase 4 Suggestion
+## Phase 4: Legacy OT Recovery And Read-Only Data Bridging
 
-Recommended Phase 4 topic: **real industrial connectivity, cybersecurity, and deployment readiness**.
+Goal: teach how engineers stabilize and monitor obsolete machines without disturbing production.
 
-Possible modules:
+Topics:
 
-- Virtual Modbus TCP first.
-- OPC UA and MQTT after tags/registers are understood.
-- pySerial/RS-232 for legacy machinery.
-- Authentication and role-based screens.
-- Network segmentation and firewall practice.
-- Backup, restore, audit log, and release packaging.
-- Data quality checks before analytics decisions.
+- Obsolete PLC and Windows XP/7 HMI situations.
+- Missing installer, missing license, and lost backup risk.
+- Disk image, isolation, inventory, and read-only observation.
+- Virtual Modbus TCP-style register map.
+- SQLite local bridge evidence.
+- Simulated RS-232 / pySerial framing lesson.
+- No write, force, reset, or real PLC command endpoint.
+
+## Phase 5: Modernization And Migration Strategy
+
+Goal: replace the risk after the plant understands the current machine.
+
+Topics:
+
+- Rebuild HMI screens.
+- Reconstruct Ladder/state logic from extracted diagrams and observed behavior.
+- Select PLC/PAC and I/O.
+- Perform FAT and SAT.
+- Plan cutover and rollback.
+- Harden network, users, backup, and release process.

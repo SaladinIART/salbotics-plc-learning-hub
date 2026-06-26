@@ -24,6 +24,7 @@ For LinkedIn, recruiter review, portfolio pages, and GitHub Pages:
 - Do not expose live `/api/inputs`, `/api/commands`, or `/api/analytics/reset`.
 - Do not run with `--host 0.0.0.0` unless authentication, firewall rules, and engineering review are added.
 - Do not add real plant credentials, private IP addresses, customer data, or production recipes.
+- Do not use Phase 4 material to bypass software licenses, defeat vendor protections, or command real machinery.
 
 ## Security Checks Used
 

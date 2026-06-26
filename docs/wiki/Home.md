@@ -17,7 +17,8 @@ Mission: one portable place where beginners, technicians, and recruiters can see
 1. [Windows Download And Launch](Windows-Download-And-Launch.md)
 2. [Learning Roadmap](Learning-Roadmap.md)
 3. [Phase 3 Analytics](Phase-3-Analytics.md)
-4. [Security And Safety Boundary](Security-And-Safety-Boundary.md)
+4. [Phase 4 Legacy OT Recovery](Phase-4-Legacy-OT-Recovery.md)
+5. [Security And Safety Boundary](Security-And-Safety-Boundary.md)
 
 ## What The Project Teaches
 
@@ -28,6 +29,7 @@ Mission: one portable place where beginners, technicians, and recruiters can see
 - Oil-palm process learning: FFB reception, sterilizer, thresher, digester, screw press, clarifier, purifier, CPO tank, POME, boiler/utility loop, and conveyor handling.
 - Communications overview: RS-232, RS-485, Ethernet, Modbus, OPC UA, MQTT, localhost, LAN IP, and local server basics.
 - Phase 3 local analytics: SQLite historian, simulated oil-palm KPIs, trends, events, OT/IT/MES/ERP concepts, and management dashboard value.
+- Phase 4 legacy OT recovery: obsolete PLCs, Windows XP/7 HMIs, missing software/license situations, read-only bridges, virtual registers, and simulated RS-232 lessons.
 
 ## Important Boundary
 

@@ -22,6 +22,7 @@ def test_root_serves_industrial_trainer_ui() -> None:
     assert "/static/oil-palm-industrial-environment.html" in html
     assert "/static/phase-2-start-here.html" in html
     assert "/static/phase-3-data-analytics.html" in html
+    assert "/static/phase-4-legacy-ot-recovery.html" in html
     assert "/static/plc-programming-methods.html" in html
     assert "/static/risk-assessment-certification.html" in html
 
@@ -105,6 +106,7 @@ def test_oil_palm_pages_serve_process_and_stack_training() -> None:
     assert "Boiler / Steam / POME Support" in plant_html
     assert "/static/plc-programming-methods.html" in plant_html
     assert "/static/phase-2-start-here.html" in plant_html
+    assert "/static/phase-4-legacy-ot-recovery.html" in plant_html
     assert "<svg" in plant_html
     assert "/static/oil-palm-control-stack-analysis.html" in plant_html
 
@@ -205,6 +207,7 @@ def test_phase_2_start_here_page_serves_scada_and_communications_overview() -> N
     assert "<svg" in html
     assert "/static/oil-palm-industrial-environment.html" in html
     assert "/static/phase-3-data-analytics.html" in html
+    assert "/static/phase-4-legacy-ot-recovery.html" in html
 
 
 def test_phase_3_data_analytics_page_serves_management_dashboard() -> None:
@@ -233,6 +236,32 @@ def test_phase_3_data_analytics_page_serves_management_dashboard() -> None:
     assert "phase3-diagram-note-20260626" in html
     assert "<svg" in html
     assert "/static/phase-2-start-here.html" in html
+    assert "/static/phase-4-legacy-ot-recovery.html" in html
+
+
+def test_phase_4_legacy_ot_page_serves_recovery_and_bridge_training() -> None:
+    app = create_app(start_background=False)
+    with TestClient(app) as client:
+        response = client.get("/phase-4-legacy-ot-recovery")
+        static_response = client.get("/static/phase-4-legacy-ot-recovery.html")
+
+    assert response.status_code == 200
+    assert static_response.status_code == 200
+    html = response.text
+    assert "Phase 4: Legacy OT Recovery" in html
+    assert "read-only" in html.lower()
+    assert "obsolete PLC" in html
+    assert "Windows XP/7" in html
+    assert "missing installer" in html
+    assert "missing software" in html
+    assert "license" in html
+    assert "Virtual Modbus TCP" in html
+    assert "RS-232" in html
+    assert "pySerial" in html
+    assert "Do not write" in html or "does not expose write" in html
+    assert "Phase 5 Preview" in html
+    assert "phase4-legacy.js" in html
+    assert "<svg" in html
 
 
 def test_static_assets_are_served() -> None:
@@ -240,6 +269,7 @@ def test_static_assets_are_served() -> None:
     with TestClient(app) as client:
         app_js = client.get("/static/app.js")
         phase3_js = client.get("/static/phase3-analytics.js")
+        phase4_js = client.get("/static/phase4-legacy.js")
         styles = client.get("/static/styles.css")
         guide_styles = client.get("/static/guide.css")
 
@@ -249,6 +279,9 @@ def test_static_assets_are_served() -> None:
     assert "refreshDashboard" in phase3_js.text
     assert "renderApiError" in phase3_js.text
     assert "ANALYTICS API UNAVAILABLE" in phase3_js.text
+    assert phase4_js.status_code == 200
+    assert "refreshLegacy" in phase4_js.text
+    assert "api/legacy/registers" in phase4_js.text
     assert styles.status_code == 200
     assert "field-controls" in styles.text
     assert guide_styles.status_code == 200
@@ -260,6 +293,7 @@ def test_static_assets_are_served() -> None:
     assert "cert-path-grid" in guide_styles.text
     assert "phase2-roadmap" in guide_styles.text
     assert "analytics-kpi-grid" in guide_styles.text
+    assert "legacy-workflow-grid" in guide_styles.text
 
 
 def test_frontend_astro_spike_files_are_present() -> None:

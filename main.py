@@ -11,13 +11,15 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from analytics_historian import AnalyticsHistorian
+from legacy_ot_bridge import LegacyOTBridge
 from plc_engine import INPUT_NAMES, PLCEngine, SCAN_INTERVAL_SECONDS
 
 
 BASE_DIR = Path(__file__).resolve().parent
 STATIC_DIR = BASE_DIR / "static"
 DEFAULT_ANALYTICS_DB = BASE_DIR / "local_data" / "phase3_analytics.sqlite3"
-APP_VERSION = "2026.06.26-phase3-analytics"
+DEFAULT_LEGACY_DB = BASE_DIR / "local_data" / "phase4_legacy.sqlite3"
+APP_VERSION = "2026.06.26-phase4-legacy-ot"
 
 
 class InputPayload(BaseModel):
@@ -37,20 +39,33 @@ async def analytics_loop(historian: AnalyticsHistorian) -> None:
         historian.collect_sample()
 
 
-def create_app(start_background: bool = True, analytics_db_path: Path | None = None) -> FastAPI:
+async def legacy_loop(bridge: LegacyOTBridge) -> None:
+    while True:
+        await asyncio.sleep(3)
+        bridge.collect_sample()
+
+
+def create_app(
+    start_background: bool = True,
+    analytics_db_path: Path | None = None,
+    legacy_db_path: Path | None = None,
+) -> FastAPI:
     engine = PLCEngine()
     lock = Lock()
     historian = AnalyticsHistorian(analytics_db_path or DEFAULT_ANALYTICS_DB)
+    legacy_bridge = LegacyOTBridge(legacy_db_path or DEFAULT_LEGACY_DB)
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
         app.state.engine = engine
         app.state.lock = lock
         app.state.analytics = historian
+        app.state.legacy = legacy_bridge
         tasks: list[asyncio.Task[None]] = []
         if start_background:
             tasks.append(asyncio.create_task(scan_loop(engine, lock)))
             tasks.append(asyncio.create_task(analytics_loop(historian)))
+            tasks.append(asyncio.create_task(legacy_loop(legacy_bridge)))
         try:
             yield
         finally:
@@ -100,12 +115,17 @@ def create_app(start_background: bool = True, analytics_db_path: Path | None = N
     def phase_3_data_analytics() -> FileResponse:
         return FileResponse(STATIC_DIR / "phase-3-data-analytics.html")
 
+    @app.get("/phase-4-legacy-ot-recovery")
+    def phase_4_legacy_ot_recovery() -> FileResponse:
+        return FileResponse(STATIC_DIR / "phase-4-legacy-ot-recovery.html")
+
     @app.get("/api/version")
     def api_version() -> dict:
         return {
             "product": "Salbotics PLC Learning Hub",
             "version": APP_VERSION,
             "phase_3_analytics": True,
+            "phase_4_legacy_ot": True,
             "localhost_only_default": True,
         }
 
@@ -132,6 +152,22 @@ def create_app(start_background: bool = True, analytics_db_path: Path | None = N
     @app.post("/api/analytics/reset")
     def analytics_reset(request: Request) -> dict:
         return request.app.state.analytics.reset()
+
+    @app.get("/api/legacy/summary")
+    def legacy_summary(request: Request) -> dict:
+        return request.app.state.legacy.summary()
+
+    @app.get("/api/legacy/registers")
+    def legacy_registers(request: Request) -> dict:
+        return request.app.state.legacy.registers()
+
+    @app.get("/api/legacy/events")
+    def legacy_events(request: Request, limit: int = 20) -> dict:
+        return request.app.state.legacy.events(limit)
+
+    @app.post("/api/legacy/reset")
+    def legacy_reset(request: Request) -> dict:
+        return request.app.state.legacy.reset()
 
     @app.post("/api/inputs/{name}")
     def set_input(name: str, payload: InputPayload, request: Request) -> dict:

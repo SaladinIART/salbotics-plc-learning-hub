@@ -71,6 +71,7 @@ def test_version_endpoint_identifies_phase_3_capable_build(tmp_path: Path) -> No
     payload = response.json()
     assert payload["product"] == "Salbotics PLC Learning Hub"
     assert payload["phase_3_analytics"] is True
+    assert payload["phase_4_legacy_ot"] is True
     assert payload["localhost_only_default"] is True
 
 

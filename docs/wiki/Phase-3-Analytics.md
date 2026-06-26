@@ -31,4 +31,4 @@ Management does not want to read PLC rungs every morning. A dashboard summarizes
 
 ## Boundary
 
-Phase 3 is still simulated. Real Modbus TCP, OPC UA, MQTT, ERP, MES, and pySerial/RS-232 connections come after this local analytics foundation.
+Phase 3 is still simulated. Phase 4 adds a simulated read-only legacy bridge before any real Modbus TCP, OPC UA, MQTT, ERP, MES, or pySerial/RS-232 deployment.

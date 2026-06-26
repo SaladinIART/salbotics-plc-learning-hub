@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Salbotics PLC Learning Hub - Phase 4 Legacy OT Recovery</title>
+    <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
+    <link rel="stylesheet" href="/static/guide.css?v=phase4-legacy-ot-20260626" />
+  </head>
+  <body>
+    <div class="app-shell guide-shell industrial-shell phase4-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <strong>SALBOTICS PLC HUB</strong>
+          <span>PHASE 4 LEGACY OT</span>
+        </div>
+        <div class="top-actions">
+          <a class="connection-pill guide-back" href="/">SIMULATOR</a>
+          <a class="header-link" href="/static/phase-3-data-analytics.html">PHASE 3</a>
+          <a class="header-link" href="/static/phase-2-start-here.html">PHASE 2</a>
+          <a class="header-link" href="/static/oil-palm-industrial-environment.html">OIL MILL</a>
+          <a class="header-link" href="/static/plc-programming-methods.html">METHODS</a>
+        </div>
+        <div class="status-strip guide-status-strip">
+          <div class="status-item"><span>Mode</span><strong>Read Only</strong></div>
+          <div class="status-item"><span>Host</span><strong>127.0.0.1</strong></div>
+          <div class="status-item"><span>Protocol</span><strong>Modbus</strong></div>
+          <div class="status-item"><span>Legacy</span><strong>XP/7</strong></div>
+        </div>
+      </header>
+
+      <main class="guide-main">
+        <section class="panel lesson-panel intro-panel industrial-intro">
+          <div class="panel-heading">
+            <h1>Phase 4: Legacy OT Recovery And Read-Only Data Bridging</h1>
+            <span>obsolete PLCs, XP/7 HMIs, missing software, fragile production, safe shadow monitoring</span>
+          </div>
+          <div class="intro-grid industrial-intro-grid">
+            <div>
+              <h2>The real plant problem</h2>
+              <p>
+                A profitable machine may still depend on an obsolete PLC and a Windows XP/7 HMI.
+                The installer is gone, the license dongle is lost, the vendor is unavailable, and
+                production cannot stop. Phase 4 teaches the professional response: recover evidence,
+                isolate risk, observe read-only, build a bridge, and plan migration later.
+              </p>
+            </div>
+            <div class="safety-note" role="note" aria-label="Phase 4 boundary note">
+              <h2>Boundary</h2>
+              <p>
+                This module is authorized recovery training, not offensive hacking or license
+                bypassing. The demo uses simulated registers on localhost. It does not connect to a
+                real PLC and does not expose write, force, or reset commands for legacy equipment.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <nav class="scenario-nav industrial-nav phase4-nav" aria-label="Phase 4 lesson sections">
+          <a href="#summary">Bridge</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#registers">Registers</a>
+          <a href="#isolation">Isolation</a>
+          <a href="#situations">Situations</a>
+          <a href="#events">Events</a>
+          <a href="#rs232">RS-232</a>
+          <a href="#phase5">Phase 5</a>
+        </nav>
+
+        <section id="summary" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>1. Read-Only Bridge Summary</h2>
+            <span id="legacy-health">virtual legacy bridge</span>
+          </div>
+          <div class="analytics-toolbar">
+            <span>Last refresh: <strong id="legacy-generated-at">--</strong></span>
+            <button id="reset-legacy" type="button">RESET LEGACY DEMO</button>
+          </div>
+          <div id="legacy-cards" class="analytics-kpi-grid" aria-live="polite"></div>
+          <div id="legacy-station" class="legacy-station-strip"></div>
+        </section>
+
+        <section id="workflow" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>2. Recovery Workflow</h2>
+            <span>stabilize first, migrate later</span>
+          </div>
+          <div id="legacy-workflow" class="legacy-workflow-grid"></div>
+        </section>
+
+        <section id="registers" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>3. Read-Only Register Map</h2>
+            <span>Virtual Modbus TCP register view, no writes</span>
+          </div>
+          <div class="wide-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Address</th><th>Name</th><th>Raw</th><th>Engineering</th><th>Unit</th><th>Meaning</th><th>Write?</th>
+                </tr>
+              </thead>
+              <tbody id="legacy-register-table"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="isolation" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>4. XP/7 Risk Isolation Diagram</h2>
+            <span>old assets stay protected while modern systems read summaries</span>
+          </div>
+          <div class="diagram-panel">
+            <svg class="process-svg phase4-svg" viewBox="0 0 1180 430" role="img" aria-labelledby="phase4-isolation-title">
+              <title id="phase4-isolation-title">Legacy OT isolation and read-only bridge topology</title>
+              <defs>
+                <marker id="arrow-phase4" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"></path>
+                </marker>
+              </defs>
+              <rect x="35" y="45" width="330" height="300" rx="10" class="legacy-zone legacy-zone-risk"></rect>
+              <text x="200" y="82" class="svg-center">Legacy Cell Zone</text>
+              <rect x="80" y="118" width="240" height="72" rx="8" class="phase2-svg-scada"></rect>
+              <text x="200" y="148" class="svg-center">Windows XP/7 HMI</text>
+              <text x="200" y="174" class="svg-center small">missing installer / license risk</text>
+              <rect x="80" y="225" width="240" height="72" rx="8" class="phase2-svg-field"></rect>
+              <text x="200" y="254" class="svg-center">Obsolete PLC</text>
+              <text x="200" y="280" class="svg-center small">keeps machine control</text>
+
+              <rect x="435" y="80" width="300" height="230" rx="10" class="legacy-zone legacy-zone-bridge"></rect>
+              <text x="585" y="118" class="svg-center">Read-Only Bridge</text>
+              <rect x="480" y="155" width="210" height="70" rx="8" class="phase2-svg-hmi"></rect>
+              <text x="585" y="184" class="svg-center">Python Collector</text>
+              <text x="585" y="208" class="svg-center small">polls localhost simulator</text>
+              <text x="585" y="262" class="svg-center small">No write / force / reset command path</text>
+
+              <rect x="810" y="45" width="330" height="300" rx="10" class="legacy-zone legacy-zone-it"></rect>
+              <text x="975" y="82" class="svg-center">Modern OT/IT View</text>
+              <rect x="855" y="118" width="240" height="72" rx="8" class="phase2-svg-analytics"></rect>
+              <text x="975" y="148" class="svg-center">Historian / Dashboard</text>
+              <text x="975" y="174" class="svg-center small">management and maintenance</text>
+              <rect x="855" y="225" width="240" height="72" rx="8" class="phase2-svg-field"></rect>
+              <text x="975" y="254" class="svg-center">Phase 5 Migration</text>
+              <text x="975" y="280" class="svg-center small">FAT / SAT / cutover later</text>
+
+              <line x1="320" y1="260" x2="480" y2="190" class="flow-branch" marker-end="url(#arrow-phase4)"></line>
+              <line x1="690" y1="190" x2="855" y2="154" class="flow-branch" marker-end="url(#arrow-phase4)"></line>
+              <rect x="310" y="365" width="560" height="45" rx="8" class="svg-dashboard-note"></rect>
+              <text x="590" y="394" class="svg-center svg-note-text small">Data flows out for evidence; control authority stays with the existing PLC.</text>
+            </svg>
+          </div>
+        </section>
+
+        <section id="situations" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>5. Real Situations Engineers Face</h2>
+            <span>what companies usually do before replacement</span>
+          </div>
+          <div id="legacy-situations" class="legacy-situation-grid"></div>
+        </section>
+
+        <section id="events" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>6. Bridge Events</h2>
+            <span>faults and communication clues without touching PLC outputs</span>
+          </div>
+          <div class="wide-table">
+            <table>
+              <thead>
+                <tr><th>Time</th><th>Type</th><th>Severity</th><th>Source</th><th>Message</th><th>Detail</th></tr>
+              </thead>
+              <tbody id="legacy-event-table"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="rs232" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>7. Simulated RS-232 / pySerial Lesson</h2>
+            <span>legacy COM-port thinking without opening a real COM port</span>
+          </div>
+          <div class="legacy-rs232-grid">
+            <div id="legacy-rs232-card" class="code-panel"></div>
+            <div class="code-panel">
+              <h3>Reader pattern</h3>
+              <pre><code>serial_for_url("loop://", baudrate=9600, timeout=1)
+write request frame
+read response frame
+decode register value
+store sample
+show dashboard
+
+Real plant rule:
+observe first, command never, until an approved test plan exists.</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section id="phase5" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>8. Phase 5 Preview: Modernization And Migration Strategy</h2>
+            <span>replace the risk only after evidence, testing, and rollback planning</span>
+          </div>
+          <div class="phase2-roadmap phase4-roadmap">
+            <div><b>1</b><span>Rebuild HMI</span><code>screens + alarms</code></div>
+            <div><b>2</b><span>Reconstruct Logic</span><code>Ladder + states</code></div>
+            <div><b>3</b><span>Select PLC/PAC</span><code>I/O + comms</code></div>
+            <div><b>4</b><span>FAT</span><code>offline tests</code></div>
+            <div><b>5</b><span>SAT</span><code>site tests</code></div>
+            <div><b>6</b><span>Cutover</span><code>rollback ready</code></div>
+          </div>
+          <div class="source-strip">
+            <span>Supporting lessons</span>
+            <a href="/static/phase-3-data-analytics.html">Phase 3 Analytics</a>
+            <a href="/static/phase-2-start-here.html">Phase 2 Communications</a>
+            <a href="/static/risk-assessment-certification.html">Safety Cert</a>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="/static/phase4-legacy.js?v=phase4-legacy-20260626"></script>
+  </body>
+</html>

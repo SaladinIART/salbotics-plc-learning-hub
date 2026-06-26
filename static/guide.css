@@ -1308,6 +1308,138 @@
   min-width: 980px;
 }
 
+.phase4-shell {
+  width: min(1660px, calc(100vw - 16px));
+}
+
+.phase4-shell .brand-block span {
+  font-size: 12px;
+}
+
+.phase4-nav {
+  grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
+}
+
+.phase4-svg {
+  min-width: 1080px;
+}
+
+.legacy-station-strip,
+.legacy-workflow-grid,
+.legacy-situation-grid,
+.legacy-rs232-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.legacy-station-strip {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  margin-top: 10px;
+}
+
+.legacy-station-strip div,
+.legacy-workflow-card,
+.legacy-situation-card {
+  padding: 12px;
+  border: 1px solid #b8c5d6;
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.legacy-station-strip span,
+.legacy-workflow-card b {
+  display: block;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.legacy-station-strip strong {
+  display: block;
+  margin-top: 6px;
+  color: #0f172a;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.legacy-workflow-grid {
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.legacy-workflow-card {
+  border-top: 4px solid #0891b2;
+}
+
+.legacy-workflow-card b {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #082f49;
+  color: #ecfeff;
+}
+
+.legacy-workflow-card h3,
+.legacy-situation-card h3 {
+  margin: 10px 0 6px;
+  color: #0f172a;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.legacy-workflow-card p,
+.legacy-situation-card p {
+  margin: 0;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.legacy-situation-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.legacy-situation-card {
+  border-left: 4px solid #f59e0b;
+}
+
+.legacy-rs232-grid {
+  grid-template-columns: minmax(360px, 1fr) minmax(360px, 1fr);
+}
+
+.legacy-readonly {
+  display: inline-flex;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #dcfce7;
+  color: #166534;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.legacy-zone {
+  stroke-width: 2;
+}
+
+.legacy-zone-risk {
+  fill: #fff7ed;
+  stroke: #f97316;
+}
+
+.legacy-zone-bridge {
+  fill: #ecfeff;
+  stroke: #0891b2;
+}
+
+.legacy-zone-it {
+  fill: #f8fafc;
+  stroke: #64748b;
+}
+
 .svg-dashboard-note {
   fill: #f8fafc;
   stroke: #0369a1;
@@ -1866,6 +1998,10 @@ rect.clean,
   .analytics-kpi-grid,
   .analytics-trend-grid,
   .station-deep-grid,
+  .legacy-station-strip,
+  .legacy-workflow-grid,
+  .legacy-situation-grid,
+  .legacy-rs232-grid,
   .mode-grid,
   .robust-grid,
   .language-grid {
@@ -1936,6 +2072,18 @@ rect.clean,
 
   .phase3-nav {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .phase4-shell {
+    width: min(100vw - 20px, 720px);
+  }
+
+  .phase4-nav {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .phase4-svg {
+    min-width: 980px;
   }
 
   .press-deep-dive {
