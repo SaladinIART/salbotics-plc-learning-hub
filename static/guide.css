@@ -1308,6 +1308,17 @@
   min-width: 980px;
 }
 
+.svg-dashboard-note {
+  fill: #f8fafc;
+  stroke: #0369a1;
+  stroke-width: 2;
+}
+
+.svg-note-text {
+  fill: #0f172a;
+  font-weight: 900;
+}
+
 .oil-shell {
   width: min(1660px, calc(100vw - 16px));
 }

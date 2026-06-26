@@ -230,7 +230,7 @@ def test_phase_3_data_analytics_page_serves_management_dashboard() -> None:
     assert "MES" in html
     assert "ERP" in html
     assert "phase3-analytics.js" in html
-    assert "phase3-analytics-fallback-20260626" in html
+    assert "phase3-diagram-note-20260626" in html
     assert "<svg" in html
     assert "/static/phase-2-start-here.html" in html
 
