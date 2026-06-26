@@ -62,6 +62,18 @@ def test_analytics_api_returns_management_summary(tmp_path: Path) -> None:
     assert payload["architecture_layers"][3]["layer"] == "ERP"
 
 
+def test_version_endpoint_identifies_phase_3_capable_build(tmp_path: Path) -> None:
+    app = create_app(start_background=False, analytics_db_path=tmp_path / "phase3.sqlite3")
+    with TestClient(app) as client:
+        response = client.get("/api/version")
+
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["product"] == "Salbotics PLC Learning Hub"
+    assert payload["phase_3_analytics"] is True
+    assert payload["localhost_only_default"] is True
+
+
 def test_analytics_api_returns_trends_events_and_reset(tmp_path: Path) -> None:
     app = create_app(start_background=False, analytics_db_path=tmp_path / "phase3.sqlite3")
     with TestClient(app) as client:

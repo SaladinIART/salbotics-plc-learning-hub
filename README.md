@@ -61,6 +61,33 @@ flowchart LR
 
 The live simulator runs locally. The static demo is for browsing learning content without exposing live PLC-control endpoints on the public web.
 
+## Download And Open On Windows
+
+Use this path if you are not cloning with Git yet.
+
+1. Open the GitHub repository page.
+2. Click the green **Code** button.
+3. Click **Download ZIP**.
+4. Right-click the downloaded ZIP file and choose **Extract All...**.
+5. Open the extracted folder.
+6. Double-click `start-plc-trainer.bat`.
+7. Wait while the launcher creates `.venv` and installs Python dependencies.
+8. Your browser should open `http://127.0.0.1:8733`.
+9. Keep the server window open while using the trainer.
+
+If Phase 3 analytics says **NO DATA** and the server window shows `404` for `/api/analytics/*`, an old server is probably still running on port `8733`. Run `start-plc-trainer.bat` again and choose `Y` when it asks whether to stop the existing process and restart this trainer.
+
+## Current Platform And Hardware Limits
+
+- Designed and tested first for **Windows 10/11**.
+- Requires **Python 3.11 or newer** and a modern browser.
+- First launch needs internet access to install `requirements.txt`.
+- The one-click launcher is currently Windows `.bat` only.
+- Linux/macOS launch scripts are not included yet.
+- No PLC, relay, VFD, sensor, COM port, RS-232 adapter, Arduino, Raspberry Pi, or industrial hardware is required.
+- Phase 3 analytics uses local simulated oil-palm data stored in SQLite under `local_data/`.
+- This project is educational and local-first; it is not a certified industrial controller, safety system, public SCADA server, or production historian.
+
 ## Run Locally
 
 Windows single-click launcher:
@@ -83,6 +110,8 @@ Open:
 ```text
 http://127.0.0.1:8733
 ```
+
+Keep the host as `127.0.0.1` for normal learning. Do not change it to `0.0.0.0` or expose port `8733` to the internet unless you fully understand the security implications and have added proper authentication, firewall rules, and review.
 
 ## Test
 
@@ -156,6 +185,15 @@ Phase 3: Python data extraction and analytics.
 This is educational software. It is not certified traffic-control, machinery-safety, process-safety, boiler, pressure-protection, or industrial-control software.
 
 Use qualified engineering review, applicable standards, site procedures, certified components, and local authority requirements before changing real machinery or control systems.
+
+## Security Notes For Public Users
+
+- The default launcher binds to `127.0.0.1`, meaning this computer only.
+- API buttons can change simulator state, so the live FastAPI app should stay local.
+- The app does not include authentication because it is not intended to be hosted as a public control panel.
+- The SQLite historian is local demo data and is ignored by Git.
+- Do not put credentials, real plant IP addresses, production recipes, or customer data into this repo.
+- Public demos should prefer static pages/screenshots instead of exposing live `/api/inputs`, `/api/commands`, or analytics reset endpoints.
 
 ## License And Attribution
 

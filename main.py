@@ -17,6 +17,7 @@ from plc_engine import INPUT_NAMES, PLCEngine, SCAN_INTERVAL_SECONDS
 BASE_DIR = Path(__file__).resolve().parent
 STATIC_DIR = BASE_DIR / "static"
 DEFAULT_ANALYTICS_DB = BASE_DIR / "local_data" / "phase3_analytics.sqlite3"
+APP_VERSION = "2026.06.26-phase3-analytics"
 
 
 class InputPayload(BaseModel):
@@ -98,6 +99,15 @@ def create_app(start_background: bool = True, analytics_db_path: Path | None = N
     @app.get("/phase-3-data-analytics")
     def phase_3_data_analytics() -> FileResponse:
         return FileResponse(STATIC_DIR / "phase-3-data-analytics.html")
+
+    @app.get("/api/version")
+    def api_version() -> dict:
+        return {
+            "product": "Salbotics PLC Learning Hub",
+            "version": APP_VERSION,
+            "phase_3_analytics": True,
+            "localhost_only_default": True,
+        }
 
     @app.get("/api/state")
     def get_state(request: Request) -> dict:
