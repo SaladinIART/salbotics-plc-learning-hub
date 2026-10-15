@@ -1378,3 +1378,46 @@ body[data-warning="true"] .alarm.empty::after {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* Phone top bar: MENU button collapses the page links (see mobile-nav.js) */
+.menu-toggle {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .js-nav .brand-block {
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 12px;
+  }
+
+  .js-nav .brand-block > strong,
+  .js-nav .brand-block > span {
+    grid-column: 1;
+  }
+
+  .js-nav .menu-toggle {
+    display: inline-flex;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    min-width: 72px;
+    min-height: 40px;
+    padding: 0 12px;
+    border: 1px solid rgba(148, 163, 184, 0.45);
+    border-radius: 6px;
+    background: #111c2e;
+    color: #e2e8f0;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+  }
+
+  .js-nav .topbar:not(.menu-open) .top-actions,
+  .js-nav .topbar:not(.menu-open) .guide-status-strip {
+    display: none;
+  }
+}

@@ -405,3 +405,17 @@ def test_beginner_guide_covers_everyday_examples_and_short_sentences() -> None:
     # Plain-language wording check: technical terms are glossed, not left bare.
     for term in ("Hysteresis", "Setpoint", "interlock", "latch"):
         assert term.lower() in page.lower()
+
+
+def test_every_page_loads_mobile_nav_and_css_collapses_menu() -> None:
+    from pathlib import Path
+
+    static = Path(__file__).resolve().parent.parent / "static"
+    for page in sorted(static.glob("*.html")):
+        assert "/static/mobile-nav.js" in page.read_text(encoding="utf-8"), page.name
+    script = (static / "mobile-nav.js").read_text(encoding="utf-8")
+    assert "aria-expanded" in script and "js-nav" in script
+    css = (static / "styles.css").read_text(encoding="utf-8")
+    assert ".js-nav .topbar:not(.menu-open) .top-actions" in css
+    # Live simulator status (index.html) must stay visible; only guide strips collapse.
+    assert ".topbar:not(.menu-open) .status-strip," not in css
