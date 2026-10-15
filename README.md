@@ -38,7 +38,13 @@ Details: [docs/STATIC_DEMO_PUBLISHING.md](docs/STATIC_DEMO_PUBLISHING.md).
 
 ## Screenshots
 
-PLC/HMI dashboard:
+Screenshots refreshed 15 October 2026.
+
+Beginner guide (start page of the live site):
+
+![Beginner guide start page](docs/screenshots/beginner-guide.png)
+
+PLC/HMI dashboard (local simulator):
 
 ![Salbotics PLC Learning Hub dashboard](docs/screenshots/dashboard.png)
 
@@ -53,6 +59,10 @@ Oil-palm industrial environment:
 Programming methods and flowcharts:
 
 ![Programming methods page](docs/screenshots/programming-methods.png)
+
+On a phone: MENU button, calmer text and collapsed sections with a Jump to section menu:
+
+<img src="docs/screenshots/mobile.png" alt="Oil-palm page on a phone with MENU button and collapsed sections" width="320">
 
 ## What You Can Learn
 

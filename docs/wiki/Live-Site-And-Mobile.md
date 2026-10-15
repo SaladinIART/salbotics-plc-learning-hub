@@ -25,6 +25,8 @@ python -m http.server 8080 --directory site-preview
 
 ## On Phones
 
+<img src="https://raw.githubusercontent.com/SaladinIART/salbotics-plc-learning-hub/main/docs/screenshots/mobile.png" alt="Oil-palm page on a phone" width="320">
+
 On screens under about 760 px (desktop is unchanged):
 
 - **MENU button** replaces the full link bar.
