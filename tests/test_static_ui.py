@@ -431,3 +431,20 @@ def test_calmer_phone_typography_is_scoped_to_guide_pages_on_phones() -> None:
     assert "text-transform: none" in block and "font-size: 15px" in block
     # The live simulator page does not load guide.css, so it is unaffected.
     assert "guide.css" not in (static / "index.html").read_text(encoding="utf-8")
+
+
+def test_long_guide_pages_opt_in_to_collapsible_sections_on_phones() -> None:
+    from pathlib import Path
+
+    static = Path(__file__).resolve().parent.parent / "static"
+    opted = {"oil-palm-industrial-environment.html", "industrial-situations.html",
+             "phase-2-start-here.html", "plc-programming-methods.html"}
+    for page in static.glob("*.html"):
+        html = page.read_text(encoding="utf-8")
+        assert ("data-collapsible-sections" in html) == (page.name in opted), page.name
+    script = (static / "mobile-nav.js").read_text(encoding="utf-8")
+    assert "main[data-collapsible-sections]" in script and "Jump to section" in script
+    css = (static / "guide.css").read_text(encoding="utf-8")
+    block = css[css.index("/* M-4:"):]
+    assert "@media (max-width: 760px)" in block
+    assert "section.section-collapsed > :not(.panel-heading)" in block

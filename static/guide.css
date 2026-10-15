@@ -2254,3 +2254,70 @@ rect.clean,
     font-weight: 700;
   }
 }
+
+/* M-4: collapsible sections and jump menu on long guide pages (phones only) */
+.section-jump {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .js-sections .section-jump {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: grid;
+    gap: 4px;
+    margin: 0 0 10px;
+    padding: 8px 10px;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 6px;
+    background: #0b1220;
+    color: #e2e8f0;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .js-sections .section-jump select {
+    min-height: 40px;
+    padding: 0 8px;
+    border-radius: 6px;
+    font: inherit;
+    font-weight: 600;
+  }
+
+  .js-sections main[data-collapsible-sections] > nav.scenario-nav {
+    display: none;
+  }
+
+  .js-sections section[id] > .panel-heading[role="button"] {
+    cursor: pointer;
+    position: relative;
+    padding-right: 36px;
+  }
+
+  .js-sections section[id] > .panel-heading[role="button"]::after {
+    content: "2";
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .js-sections section.section-collapsed > .panel-heading[role="button"]::after {
+    content: "+";
+  }
+
+  .js-sections section.section-collapsed > :not(.panel-heading) {
+    display: none;
+  }
+
+  .js-sections section.section-collapsed {
+    padding-bottom: 0;
+  }
+
+  .js-sections section.section-collapsed > .panel-heading {
+    margin-bottom: 0;
+  }
+}
