@@ -307,3 +307,56 @@ def test_frontend_astro_spike_files_are_present() -> None:
     assert "Salbotics PLC Learning Hub" in layout
     assert "Migrated guide page spike" in guide_page
     assert "Interactive Scan-Cycle SVG Island" in island
+
+
+def test_beginner_guide_page_serves_layman_explanations() -> None:
+    app = create_app(start_background=False)
+    with TestClient(app) as client:
+        response = client.get("/beginner-guide")
+        static_response = client.get("/static/beginner-guide.html")
+
+    assert response.status_code == 200
+    assert static_response.status_code == 200
+    html = response.text
+    for phrase in ("New to automation? Start here.", "Washing machine", "Lift (elevator)",
+                   "Automatic gate", "Escalator", "Scan cycle", "Interlock", "fail-safe",
+                   "not certified"):
+        assert phrase in html, phrase
+
+
+def test_every_static_page_links_to_the_beginner_guide() -> None:
+    from pathlib import Path
+
+    pages = sorted((Path(__file__).resolve().parent.parent / "static").glob("*.html"))
+    assert len(pages) >= 10
+    for page in pages:
+        if page.name == "beginner-guide.html":
+            continue
+        assert "/static/beginner-guide.html" in page.read_text(encoding="utf-8"), page.name
+
+
+def test_pages_site_build_has_relative_links_and_landing_page(tmp_path) -> None:
+    import importlib.util
+    from pathlib import Path
+
+    script = Path(__file__).resolve().parent.parent / "scripts" / "build_pages_site.py"
+    spec = importlib.util.spec_from_file_location("build_pages_site", script)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+
+    out = module.build(tmp_path / "site")
+    assert module.check(out) == []
+    assert (out / "index.html").read_text(encoding="utf-8") == \
+        (out / "beginner-guide.html").read_text(encoding="utf-8")
+    assert (out / ".nojekyll").exists()
+    for page in out.glob("*.html"):
+        text = page.read_text(encoding="utf-8")
+        assert 'href="/static/' not in text and 'src="/static/' not in text
+    # The live simulator panel must not be published as a static page.
+    assert "simulator-panel" not in (out / "how-it-works.html").read_text(encoding="utf-8")
+    try:
+        module.build(out)
+    except FileExistsError:
+        pass
+    else:
+        raise AssertionError("existing output directory must be refused")
