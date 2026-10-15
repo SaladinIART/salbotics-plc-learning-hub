@@ -53,7 +53,7 @@ Programming methods and flowcharts:
 
 ```mermaid
 flowchart LR
-  Student["Student / Recruiter"] --> Browser["Browser HMI and learning pages"]
+  User["User"] --> Browser["Browser HMI and learning pages"]
   Browser --> FastAPI["FastAPI local app"]
   FastAPI --> Engine["Python PLC scan-cycle engine"]
   Engine --> State["Inputs, outputs, timers, registers, alarms"]
