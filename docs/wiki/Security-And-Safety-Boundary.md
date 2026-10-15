@@ -37,3 +37,8 @@ Recent public-prep checks:
 - simple secret-pattern scan
 
 No known dependency vulnerabilities were found after the latest dependency update.
+
+## Live Site
+
+The public site (https://salbotics.uk/salbotics-plc-learning-hub/) contains static learning pages only. It has no simulator controls,
+no `/api` endpoints and no authentication, by design. Keep the interactive FastAPI trainer local.

@@ -13,9 +13,28 @@ This repo is built to be useful for learners and visible for recruiters: it show
 
 - Product / company site: [salbotics.uk](https://salbotics.uk/)
 - GitHub repo target: [SaladinIART/salbotics-plc-learning-hub](https://github.com/SaladinIART/salbotics-plc-learning-hub)
-- Static demo target: [GitHub Pages demo](https://saladiniart.github.io/salbotics-plc-learning-hub/)
-- Wiki mirror: [docs/wiki/Home.md](docs/wiki/Home.md)
+- Live learning site: [https://salbotics.uk/salbotics-plc-learning-hub/](https://salbotics.uk/salbotics-plc-learning-hub/) (opens on the Beginner guide)
+- Project wiki: [GitHub wiki](https://github.com/SaladinIART/salbotics-plc-learning-hub/wiki) (mirrored in [docs/wiki](docs/wiki/Home.md))
 - Portfolio: `TODO: add portfolio URL before public launch`
+
+## Live Learning Site
+
+The public site at [https://salbotics.uk/salbotics-plc-learning-hub/](https://salbotics.uk/salbotics-plc-learning-hub/) is a read-only copy of the learning pages,
+published automatically from `main` by GitHub Actions:
+
+- **Start page: Beginner guide** - PLC basics in plain language using a washing machine, lift,
+  automatic gate, escalator, rice cooker, car-park barrier and the trainer's own traffic light,
+  with the technical term beside each idea, two diagrams, "Try it" questions and a glossary.
+- **Phone friendly** - on screens under about 760 px: a MENU button instead of the full link bar,
+  calmer text, readable stacked diagrams, collapsible sections with a "Jump to section" menu on
+  the longest pages, and "swipe sideways" hints on wide diagrams and tables. Desktop is unchanged.
+- **No live controls** - the interactive PLC/HMI simulator needs the local FastAPI backend, so it is
+  not published. Use [Run Locally](#run-locally) for the full trainer.
+
+How it is built: `scripts/build_pages_site.py` copies `static/`, rewrites links to work under
+`/salbotics-plc-learning-hub/`, makes the Beginner guide the landing page and fails on any broken
+link; `.github/workflows/pages.yml` runs that build on pull requests and deploys from `main`.
+Details: [docs/STATIC_DEMO_PUBLISHING.md](docs/STATIC_DEMO_PUBLISHING.md).
 
 ## Screenshots
 
@@ -37,6 +56,7 @@ Programming methods and flowcharts:
 
 ## What You Can Learn
 
+- Absolute-beginner start: what a PLC is, the read-decide-act scan loop, inputs/outputs, sequences, latches, interlocks, timers, setpoint/hysteresis and fail-safe wiring, explained with everyday machines.
 - PLC scan cycle: read inputs, solve logic, write outputs.
 - Ladder basics: contacts, coils, run latch, timers, interlocks.
 - Safe traffic-light phase sequencing with all-red gaps.
@@ -122,6 +142,15 @@ Keep the host as `127.0.0.1` for normal learning. Do not change it to `0.0.0.0` 
 .\.venv\Scripts\python.exe -m pytest -q
 ```
 
+Check the public static site build (no extra packages needed; fails on broken links):
+
+```powershell
+python scripts/build_pages_site.py --output site-preview
+python -m http.server 8080 --directory site-preview
+```
+
+The output directory must be new; existing directories are refused.
+
 ## Frontend Spike
 
 Phase 1 keeps the FastAPI simulator as the local runtime and adds an isolated Astro spike under `frontend/` for the future public learning hub.
@@ -135,6 +164,8 @@ npm run build
 The Astro build is static and is not a replacement for the local simulator yet.
 
 ## Learning Order
+
+New to automation? Start with the Beginner guide (`/static/beginner-guide.html` locally, or the [live site](https://salbotics.uk/salbotics-plc-learning-hub/)).
 
 1. Read `docs/PLC_TRAINING_GUIDE.md`.
 2. Run the app.
@@ -156,6 +187,7 @@ Phase 1A: polish and publish the current static/FastAPI trainer.
 - Rebrand as Salbotics PLC Learning Hub.
 - Add license, attribution, public README, and static demo publishing notes.
 - Keep simulator local and safe by default.
+- Done (October 2026): Beginner guide tab, automatic GitHub Pages deployment of the learning pages, and a phone-friendly layout.
 
 Phase 1B: staged frontend migration.
 

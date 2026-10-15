@@ -8,12 +8,15 @@ Mission: one portable place where beginners, technicians, and recruiters can see
 
 - Public repo: https://github.com/SaladinIART/salbotics-plc-learning-hub
 - Product site: https://salbotics.uk
-- Current public focus: Phase 1-3 learning hub
-- Runtime: Windows local FastAPI simulator
+- Live learning site (read-only, phone friendly): https://salbotics.uk/salbotics-plc-learning-hub/
+- Current public focus: Phase 1-4 learning hub, plus a Beginner guide
+- Full interactive trainer: Windows local FastAPI simulator
 - Default URL: `http://127.0.0.1:8733`
 
 ## Start Here
 
+1. [Beginner Guide](Beginner-Guide.md) - new to automation? start here
+1. [Live Site And Mobile](Live-Site-And-Mobile.md)
 1. [Windows Download And Launch](Windows-Download-And-Launch.md)
 2. [Learning Roadmap](Learning-Roadmap.md)
 3. [Phase 3 Analytics](Phase-3-Analytics.md)
@@ -22,6 +25,7 @@ Mission: one portable place where beginners, technicians, and recruiters can see
 
 ## What The Project Teaches
 
+- Absolute-beginner introduction using everyday machines: washing machine, lift, automatic gate, escalator, rice cooker and car-park barrier.
 - PLC scan cycle and Ladder-first thinking.
 - Industrial HMI panels and SCADA-style reading.
 - Traffic-light trainer with I/O, timers, alarms, and event log.
