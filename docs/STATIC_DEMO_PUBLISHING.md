@@ -53,3 +53,24 @@ Regenerate these after major visual changes and verify desktop/mobile layout bef
 - No live control endpoint is advertised as a hosted public control surface.
 - `docs/PROJECT_SWOT_ANALYSIS.md` remains private/untracked unless intentionally rewritten as a public roadmap.
 
+
+## Why the public URL returned 404 (fixed in this branch)
+
+Two causes: (1) the repository had no Pages deployment, so
+`salbotics.uk/salbotics-plc-learning-hub/` (served from the Pages project of this
+repo) had nothing to show and fell through to the portfolio's 404 page; and
+(2) the pages use absolute `/static/...` paths that break under the
+`/salbotics-plc-learning-hub/` sub-path.
+
+Fix: `scripts/build_pages_site.py` builds a relative-link copy of `static/` (the
+beginner guide is the landing page; the live simulator panel is left out because it
+needs the local backend), and `.github/workflows/pages.yml` deploys it.
+
+One-time step that only the repository owner can do: GitHub -> repository
+Settings -> Pages -> Build and deployment -> Source: **GitHub Actions**, then merge
+this branch to `main` (or run the workflow manually). Local check:
+
+```powershell
+python scripts/build_pages_site.py --output site-preview
+python -m http.server 8080 --directory site-preview
+```

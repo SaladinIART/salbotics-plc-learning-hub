@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Salbotics PLC Learning Hub - Beginner Start Here</title>
+    <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
+    <link rel="stylesheet" href="/static/guide.css?v=phase2-clean-svg-20260626" />
+  </head>
+  <body>
+    <div class="app-shell guide-shell industrial-shell beginner-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <strong>SALBOTICS PLC HUB</strong>
+          <span>BEGINNER START HERE</span>
+        </div>
+        <div class="top-actions">
+          <a class="connection-pill guide-back" href="/">SIMULATOR</a>
+          <a class="header-link" href="/static/how-it-works.html">HOW</a>
+          <a class="header-link" href="/static/industrial-situations.html">INDUSTRY</a>
+          <a class="header-link" href="/static/oil-palm-industrial-environment.html">OIL MILL</a>
+          <a class="header-link" href="/static/phase-2-start-here.html">PHASE 2</a>
+          <a class="header-link" href="/static/plc-programming-methods.html">METHODS</a>
+          <a class="header-link" href="/static/risk-assessment-certification.html">SAFETY</a>
+        </div>
+      </header>
+
+      <main class="guide-main">
+        <section class="panel lesson-panel intro-panel industrial-intro">
+          <div class="panel-heading">
+            <h1>New to automation? Start here.</h1>
+            <span>no engineering background needed</span>
+          </div>
+          <div class="intro-grid industrial-intro-grid">
+            <div>
+              <h2>The one-sentence version</h2>
+              <p>
+                A <strong>PLC</strong> (Programmable Logic Controller) is a tough little computer
+                that watches <em>switches and sensors</em>, follows a <em>written set of rules</em>,
+                and then turns <em>motors, lamps and valves</em> on or off. It does this over and
+                over, many times a second, and it is built to keep running for years in dusty,
+                hot, noisy factories.
+              </p>
+              <p>
+                You already meet PLC-style logic every day: lifts, escalators, automatic gates,
+                washing machines and traffic lights. This page uses those to explain the words you
+                will meet in the rest of the hub.
+              </p>
+            </div>
+            <div class="safety-note" role="note" aria-label="Beginner boundary note">
+              <h2>Read this first</h2>
+              <p>
+                The examples are <strong>simplified</strong> to teach the idea. Real lifts, gates
+                and escalators use certified safety circuits and follow national rules, and their
+                exact behaviour differs by maker. This hub is a simulated teaching tool, not
+                certified control software.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <nav class="scenario-nav industrial-nav" aria-label="Beginner lesson sections">
+          <a href="#loop">The 3-step loop</a>
+          <a href="#parts">Inputs &amp; outputs</a>
+          <a href="#washer">Washing machine</a>
+          <a href="#lift">Lift</a>
+          <a href="#gate">Auto gate</a>
+          <a href="#escalator">Escalator</a>
+          <a href="#words">Key words</a>
+          <a href="#trainer">Use the trainer</a>
+        </nav>
+
+        <section id="loop" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>1. The 3-step loop every PLC repeats</h2>
+            <span>read, decide, act</span>
+          </div>
+          <div class="learning-path-grid">
+            <article class="path-card operator-path">
+              <h3>Step 1 - Read the inputs</h3>
+              <p>
+                <strong>Everyday idea:</strong> you look around before you cross the road.
+                The PLC looks at every button, switch and sensor and writes down what each one says
+                right now: pressed or not, door closed or open, water high or low.
+              </p>
+              <p><strong>Technical term:</strong> input scan.</p>
+            </article>
+            <article class="path-card technician-path">
+              <h3>Step 2 - Decide using the rules</h3>
+              <p>
+                <strong>Everyday idea:</strong> a checklist. "If the lid is closed <em>and</em>
+                Start is pressed <em>and</em> there is no emergency, then run." The PLC works
+                through its rules from top to bottom, using only the snapshot it just took.
+              </p>
+              <p><strong>Technical term:</strong> program execution (logic solve).</p>
+            </article>
+            <article class="path-card developer-path">
+              <h3>Step 3 - Act on the outputs</h3>
+              <p>
+                <strong>Everyday idea:</strong> you take the step. The PLC switches the motor,
+                lamp or valve to match the decision. Then it starts again at step 1.
+              </p>
+              <p>
+                <strong>Technical term:</strong> output update. One full lap is a
+                <strong>scan cycle</strong>. In this trainer a scan is 0.1 second.
+              </p>
+            </article>
+          </div>
+          <p>
+            Why does this matter? Because the PLC only "knows" what it saw at the start of the lap.
+            If you press a button for less than one lap it can be missed - which is why real
+            systems choose sensors and timing carefully.
+          </p>
+        </section>
+
+        <section id="parts" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>2. Inputs and outputs in everyday machines</h2>
+            <span>what the PLC listens to, and what it controls</span>
+          </div>
+          <div class="learning-path-grid">
+            <article class="path-card operator-path">
+              <h3>Inputs (the "senses")</h3>
+              <ul>
+                <li><strong>Push buttons</strong> - the floor button in a lift, Start on a washer.</li>
+                <li><strong>Limit switches</strong> - "the gate has reached its end".</li>
+                <li><strong>Photo-eyes</strong> - the invisible beam that detects a person or car.</li>
+                <li><strong>Level / pressure sensors</strong> - "enough water in the drum".</li>
+              </ul>
+            </article>
+            <article class="path-card technician-path">
+              <h3>Outputs (the "muscles")</h3>
+              <ul>
+                <li><strong>Motors</strong> - lift cable drive, escalator steps, gate opener, drum.</li>
+                <li><strong>Valves / pumps</strong> - water in and drain in a washer.</li>
+                <li><strong>Lamps / buzzers</strong> - floor indicator, "door closing" chime.</li>
+                <li><strong>Brakes / door locks</strong> - hold something still, keep a lid shut.</li>
+              </ul>
+            </article>
+            <article class="path-card developer-path">
+              <h3>On / off versus "how much"</h3>
+              <p>
+                Many signals are simply <strong>on or off</strong> (<em>digital</em>): a button is
+                pressed or not. Others vary smoothly (<em>analog</em>): temperature, water level,
+                speed. Start with on/off - it is enough to understand almost every example below.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="washer" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>3. Washing machine: a sequence with timers</h2>
+            <span>one step after another, each waiting for a condition</span>
+          </div>
+          <div class="diagram-panel">
+            <ol>
+              <li><strong>Check the lid</strong> - lid sensor says closed? If not, do nothing.</li>
+              <li><strong>Fill</strong> - open the water valve until the level sensor says "full".</li>
+              <li><strong>Wash</strong> - run the drum back and forth for a set time.</li>
+              <li><strong>Drain</strong> - run the pump until the level sensor says "empty".</li>
+              <li><strong>Spin</strong> - spin fast for a set time, then stop and unlock the lid.</li>
+            </ol>
+          </div>
+          <p>
+            <strong>Layman point:</strong> it is a recipe. The PLC will not move to the next line
+            until the current one is finished.
+          </p>
+          <p>
+            <strong>Technical terms:</strong> this is a <em>sequence</em> (a "state machine"):
+            the machine is always in exactly one step. The "wash for 10 minutes" part is a
+            <em>timer</em>. "Do nothing if the lid is open" is an <em>interlock</em>: one
+            condition that must be true before something else is allowed.
+          </p>
+        </section>
+
+        <section id="lift" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>4. Lift (elevator): remembering requests and staying safe</h2>
+            <span>latching, interlocks and priorities</span>
+          </div>
+          <div class="learning-path-grid">
+            <article class="path-card operator-path">
+              <h3>What you see</h3>
+              <p>
+                You press the "5" button and it lights up. You let go, but it stays lit until the
+                lift arrives. The doors close first, then the lift moves, then the lamp goes out.
+              </p>
+            </article>
+            <article class="path-card technician-path">
+              <h3>What the PLC is doing</h3>
+              <ul>
+                <li><strong>Latch:</strong> the button press is remembered even after you let go.</li>
+                <li><strong>Interlock:</strong> do not move unless the door sensor says "closed".</li>
+                <li><strong>Limit switch:</strong> the floor sensor tells it "you are at floor 5, stop".</li>
+                <li><strong>Priority:</strong> overload or emergency stop beats every button.</li>
+              </ul>
+            </article>
+            <article class="path-card developer-path">
+              <h3>The same pattern in this trainer</h3>
+              <p>
+                The trainer's <code>PED_NS</code> pedestrian request is a latch too: press once and
+                the request is remembered until that direction gets its green. Likewise its
+                <code>EMERGENCY</code> input beats the normal cycle.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="gate" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>5. Automatic gate: inputs from the world, safety first</h2>
+            <span>limit switches, a safety beam and a timer</span>
+          </div>
+          <ol>
+            <li>Remote is pressed (<em>input</em>) - the gate motor starts opening (<em>output</em>).</li>
+            <li>The "fully open" limit switch fires - the motor stops.</li>
+            <li>A timer waits, for example 20 seconds, then starts closing.</li>
+            <li>If the safety beam is blocked while closing, the gate stops and reopens.</li>
+          </ol>
+          <p>
+            <strong>Layman point:</strong> the gate does not "know" a car is there - it just reacts
+            to a beam being broken. <strong>Technical point:</strong> the safety beam is a
+            high-priority input that overrides the closing sequence. On real gates this safety
+            function is handled by certified safety devices, not by ordinary program logic alone.
+          </p>
+        </section>
+
+        <section id="escalator" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>6. Escalator: run on demand, stop on danger</h2>
+            <span>start conditions, run timer and emergency stop</span>
+          </div>
+          <ol>
+            <li>A sensor at the entrance sees a person (<em>input</em>).</li>
+            <li>The motor runs the steps (<em>output</em>) and a run-timer starts.</li>
+            <li>Each new person restarts the timer; with nobody for a while it stops (or slows).</li>
+            <li>Pressing the red emergency stop cuts the motor and applies the brake at once.</li>
+          </ol>
+          <p>
+            <strong>Technical idea:</strong> the emergency stop is wired so that "no signal" means
+            "stop" (<em>fail-safe</em>): if a wire breaks, the machine stops instead of carrying on.
+          </p>
+        </section>
+
+        <section id="words" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>7. Key words in plain language</h2>
+            <span>keep this list nearby</span>
+          </div>
+          <table>
+            <thead>
+              <tr><th>Word</th><th>In plain language</th><th>Everyday example</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Scan cycle</td><td>One lap of read, decide, act</td><td>Looking, thinking, stepping</td></tr>
+              <tr><td>Input</td><td>Something the PLC listens to</td><td>Lift floor button</td></tr>
+              <tr><td>Output</td><td>Something the PLC controls</td><td>Gate motor</td></tr>
+              <tr><td>Latch (seal-in)</td><td>Remember a press after release</td><td>Lift button stays lit</td></tr>
+              <tr><td>Interlock</td><td>"Only if this is also true"</td><td>Washer lid must be closed</td></tr>
+              <tr><td>Timer</td><td>Wait a set time, then act</td><td>Gate closes after 20 s</td></tr>
+              <tr><td>Sequence / state</td><td>Do steps in order, one at a time</td><td>Fill, wash, drain, spin</td></tr>
+              <tr><td>Fail-safe</td><td>If something breaks, go to the safe state</td><td>Emergency stop wiring</td></tr>
+              <tr><td>Fault</td><td>The controller found something wrong</td><td>Both greens on together</td></tr>
+              <tr><td>HMI / SCADA</td><td>The screen people use to watch and command it</td><td>Lift control panel</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="trainer" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>8. Now use the trainer</h2>
+            <span>a traffic light is the same ideas in one small package</span>
+          </div>
+          <ol>
+            <li><strong>Press START.</strong> It runs one direction green, then yellow, then both red, then the other direction green. That is a <em>sequence with timers</em>.</li>
+            <li><strong>Turn on a pedestrian request.</strong> It is remembered (<em>latch</em>) and served during that direction's green.</li>
+            <li><strong>Turn on EMERGENCY.</strong> Everything goes red at once: the highest-priority input wins.</li>
+            <li><strong>Turn START and STOP on together.</strong> The controller declares a <em>fault</em> and stays all-red until you reset it. That is a safe, deliberate reaction to contradictory inputs.</li>
+          </ol>
+          <p>
+            Ready for more? Continue with
+            <a href="/static/how-it-works.html">How It Works</a>, then
+            <a href="/static/plc-programming-methods.html">PLC Methods</a>, then
+            <a href="/static/phase-2-start-here.html">Phase 2</a>.
+          </p>
+        </section>
+
+        <section class="panel scenario-panel">
+          <div class="safety-note" role="note" aria-label="Educational use note">
+            <h2>Educational use</h2>
+            <p>
+              Simplified teaching material from
+              <a href="https://salbotics.uk/">Salbotics</a>. It is not certified safety or
+              machinery-control software and must not be used to design or modify real lifts,
+              gates, escalators or other safety-related equipment.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

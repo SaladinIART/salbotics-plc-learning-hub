@@ -1,0 +1,61 @@
+name: Build and deploy static learning site (GitHub Pages)
+
+# What this does
+#   - Pull requests and manual runs: build the static site and fail on any
+#     broken link or absolute /static path. Nothing is deployed from a PR.
+#   - Push to main (or a manual run on main): build, then deploy to
+#     https://saladiniart.github.io/salbotics-plc-learning-hub/
+#     (served at salbotics.uk/salbotics-plc-learning-hub/ via the custom domain).
+#
+# One-time owner step if the deploy job reports "Pages not enabled":
+#   Settings -> Pages -> Build and deployment -> Source: GitHub Actions.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Build static site (standard library only; fails on link problems)
+        run: python scripts/build_pages_site.py --output site
+
+      - name: Show built files
+        run: ls -la site
+
+      - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
