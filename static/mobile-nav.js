@@ -111,3 +111,45 @@
   window.addEventListener("hashchange", openFromHash);
   openFromHash();
 })();
+
+// Wide diagrams and tables: on phones, show a "swipe sideways" hint above any
+// box that scrolls horizontally, and hide it once the reader has swiped.
+(function () {
+  var phone = window.matchMedia("(max-width: 760px)");
+
+  function scrollsSideways(el) {
+    var overflow = getComputedStyle(el).overflowX;
+    // Ignore boxes that overflow by only a few pixels.
+    return (overflow === "auto" || overflow === "scroll") && el.scrollWidth > el.clientWidth + 32;
+  }
+
+  function addHints() {
+    if (!phone.matches) return;
+    var candidates = document.querySelectorAll("main *");
+    Array.prototype.forEach.call(candidates, function (el) {
+      if (el.dataset.swipeHint || !scrollsSideways(el)) return;
+      if (el.parentElement && el.parentElement.closest("[data-swipe-hint]")) return;
+      el.dataset.swipeHint = "1";
+      el.classList.add("has-swipe");
+      var hint = document.createElement("p");
+      hint.className = "swipe-hint";
+      hint.setAttribute("aria-hidden", "true");
+      hint.textContent = "Swipe sideways to see more \u2192";
+      el.parentNode.insertBefore(hint, el);
+      el.addEventListener("scroll", function onScroll() {
+        if (el.scrollLeft > Math.min(24, (el.scrollWidth - el.clientWidth) / 2)) {
+          hint.classList.add("swipe-hint-done");
+          el.classList.add("swipe-seen");
+          el.removeEventListener("scroll", onScroll);
+        }
+      }, { passive: true });
+    });
+  }
+
+  if (document.readyState === "complete") addHints();
+  else window.addEventListener("load", addHints);
+  // Collapsed sections (M-4) only become measurable when opened.
+  document.addEventListener("click", function () { setTimeout(addHints, 50); });
+  window.addEventListener("hashchange", function () { setTimeout(addHints, 50); });
+  if (phone.addEventListener) phone.addEventListener("change", addHints);
+})();
