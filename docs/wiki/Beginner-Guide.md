@@ -6,6 +6,8 @@ gives the technical name beside each idea.
 - Live: https://salbotics.uk/salbotics-plc-learning-hub/
 - Source: `static/beginner-guide.html`
 
+![Beginner guide start page](https://raw.githubusercontent.com/SaladinIART/salbotics-plc-learning-hub/main/docs/screenshots/beginner-guide.png)
+
 ## What It Covers
 
 | Section | Everyday example | Technical idea |
