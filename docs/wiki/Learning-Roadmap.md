@@ -1,5 +1,17 @@
 # Learning Roadmap
 
+## Start Here: Beginner Guide
+
+Goal: understand what a PLC does before any wiring, protocols or software.
+
+Topics:
+
+- The read-decide-act scan loop.
+- Inputs (buttons, sensors) and outputs (motors, valves, lamps); on/off versus analog.
+- Sequences and timers (washing machine), latches and interlocks (lift), safety inputs (automatic gate), fail-safe wiring (escalator), setpoint and hysteresis (rice cooker), interlock with a road sensor (car-park barrier).
+
+Read it on the [live site](https://salbotics.uk/salbotics-plc-learning-hub/) or see [Beginner Guide](Beginner-Guide.md).
+
 ## Phase 1: PLC And HMI Basics
 
 Goal: learn how PLC scan-cycle logic becomes a visible browser HMI.
