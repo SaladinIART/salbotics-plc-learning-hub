@@ -367,9 +367,13 @@ def test_beginner_guide_has_diagrams_and_try_it_boxes() -> None:
 
     html = (Path(__file__).resolve().parent.parent / "static" / "beginner-guide.html").read_text(
         encoding="utf-8")
-    assert html.count("<svg") == 2
-    assert html.count('role="img"') == 2
-    for title_id in ("beginner-loop-title", "beginner-washer-title"):
+    # Each diagram has a wide (desktop) and a stacked (phone) version.
+    assert html.count("<svg") == 4
+    assert html.count('role="img"') == 4
+    assert html.count("beginner-svg-wide") == 2
+    assert html.count("beginner-svg-tall") == 2
+    for title_id in ("beginner-loop-title", "beginner-washer-title",
+                     "beginner-loop-title-m", "beginner-washer-title-m"):
         assert f'aria-labelledby="{title_id}"' in html
         assert f'<title id="{title_id}">' in html
     # One "try it" question per example: loop, washer, lift, gate, escalator, cooker, barrier.
