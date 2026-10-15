@@ -2175,3 +2175,20 @@ rect.clean,
 .try-it-term {
   color: #475569;
 }
+
+/* Beginner diagrams: wide layout on desktop, stacked layout on phones */
+.beginner-svg-tall {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .beginner-svg-wide {
+    display: none;
+  }
+
+  .beginner-svg-tall {
+    display: block;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
