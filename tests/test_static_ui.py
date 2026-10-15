@@ -419,3 +419,15 @@ def test_every_page_loads_mobile_nav_and_css_collapses_menu() -> None:
     assert ".js-nav .topbar:not(.menu-open) .top-actions" in css
     # Live simulator status (index.html) must stay visible; only guide strips collapse.
     assert ".topbar:not(.menu-open) .status-strip," not in css
+
+
+def test_calmer_phone_typography_is_scoped_to_guide_pages_on_phones() -> None:
+    from pathlib import Path
+
+    static = Path(__file__).resolve().parent.parent / "static"
+    css = (static / "guide.css").read_text(encoding="utf-8")
+    block = css[css.index("/* M-3:"):]
+    assert "@media (max-width: 760px)" in block.split("{", 1)[0]
+    assert "text-transform: none" in block and "font-size: 15px" in block
+    # The live simulator page does not load guide.css, so it is unaffected.
+    assert "guide.css" not in (static / "index.html").read_text(encoding="utf-8")
