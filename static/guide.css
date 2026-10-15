@@ -2142,3 +2142,36 @@ rect.clean,
     text-align: left;
   }
 }
+
+
+/* Beginner guide: responsive diagrams and "try it" boxes */
+.beginner-svg {
+  min-width: 0;
+}
+
+.try-it {
+  margin: 12px 0;
+  padding: 10px 14px;
+  border: 1px solid #38bdf8;
+  border-left-width: 5px;
+  border-radius: 6px;
+  background: #f0f9ff;
+}
+
+.try-it summary {
+  cursor: pointer;
+  color: #0c4a6e;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.try-it p {
+  margin: 8px 0 0;
+  color: #1e293b;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.try-it-term {
+  color: #475569;
+}

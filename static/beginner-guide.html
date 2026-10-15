@@ -35,11 +35,10 @@
             <div>
               <h2>The one-sentence version</h2>
               <p>
-                A <strong>PLC</strong> (Programmable Logic Controller) is a tough little computer
-                that watches <em>switches and sensors</em>, follows a <em>written set of rules</em>,
-                and then turns <em>motors, lamps and valves</em> on or off. It does this over and
-                over, many times a second, and it is built to keep running for years in dusty,
-                hot, noisy factories.
+                A <strong>PLC</strong> (Programmable Logic Controller) is a tough little computer.
+                It watches <em>switches and sensors</em> and follows a <em>written set of rules</em>.
+                Then it turns <em>motors, lamps and valves</em> on or off. It repeats this many times
+                a second. It is built to run for years in dusty, hot, noisy factories.
               </p>
               <p>
                 You already meet PLC-style logic every day: lifts, escalators, automatic gates,
@@ -66,6 +65,8 @@
           <a href="#lift">Lift</a>
           <a href="#gate">Auto gate</a>
           <a href="#escalator">Escalator</a>
+          <a href="#cooker">Rice cooker</a>
+          <a href="#barrier">Barrier</a>
           <a href="#words">Key words</a>
           <a href="#trainer">Use the trainer</a>
         </nav>
@@ -80,7 +81,7 @@
               <h3>Step 1 - Read the inputs</h3>
               <p>
                 <strong>Everyday idea:</strong> you look around before you cross the road.
-                The PLC looks at every button, switch and sensor and writes down what each one says
+                The PLC checks every button, switch and sensor. It writes down what each one says
                 right now: pressed or not, door closed or open, water high or low.
               </p>
               <p><strong>Technical term:</strong> input scan.</p>
@@ -89,8 +90,9 @@
               <h3>Step 2 - Decide using the rules</h3>
               <p>
                 <strong>Everyday idea:</strong> a checklist. "If the lid is closed <em>and</em>
-                Start is pressed <em>and</em> there is no emergency, then run." The PLC works
-                through its rules from top to bottom, using only the snapshot it just took.
+                Start is pressed <em>and</em> there is no emergency, then run".
+                The PLC goes through
+                its rules from top to bottom. It uses only the snapshot it just took.
               </p>
               <p><strong>Technical term:</strong> program execution (logic solve).</p>
             </article>
@@ -106,10 +108,43 @@
               </p>
             </article>
           </div>
+          <div class="diagram-panel">
+            <svg class="process-svg beginner-svg" viewBox="0 0 900 250" role="img" aria-labelledby="beginner-loop-title">
+              <title id="beginner-loop-title">The PLC scan loop: read inputs, decide, act, then repeat</title>
+              <defs>
+                <marker id="arrow-beginner" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"></path>
+                </marker>
+              </defs>
+              <rect x="30" y="30" width="250" height="120" rx="8" class="phase2-svg-field"></rect>
+              <text x="155" y="64" class="svg-center">1. READ INPUTS</text>
+              <text x="155" y="92" class="svg-center small">buttons and sensors</text>
+              <text x="155" y="120" class="svg-center small">lid closed? water level?</text>
+
+              <rect x="325" y="30" width="250" height="120" rx="8" class="phase2-svg-plc"></rect>
+              <text x="450" y="64" class="svg-center">2. DECIDE</text>
+              <text x="450" y="92" class="svg-center small">follow the written rules</text>
+              <text x="450" y="120" class="svg-center small">lid closed + Start: run</text>
+
+              <rect x="620" y="30" width="250" height="120" rx="8" class="phase2-svg-hmi"></rect>
+              <text x="745" y="64" class="svg-center">3. ACT</text>
+              <text x="745" y="92" class="svg-center small">motors, lamps, valves</text>
+              <text x="745" y="120" class="svg-center small">valve ON, drum motor ON</text>
+
+              <line x1="280" y1="90" x2="325" y2="90" class="flow-branch" marker-end="url(#arrow-beginner)"></line>
+              <line x1="575" y1="90" x2="620" y2="90" class="flow-branch" marker-end="url(#arrow-beginner)"></line>
+              <path d="M745,150 V210 H155 V152" class="flow-branch" marker-end="url(#arrow-beginner)"></path>
+              <text x="450" y="238" class="svg-center small">...and straight back to step 1. One lap = one scan cycle (0.1 s in this trainer).</text>
+            </svg>
+          </div>
+          <details class="try-it">
+            <summary>Try it: you tap a button for only 0.01 s but the PLC looks at its inputs once every 0.1 s. What might happen?</summary>
+            <p>It can miss the tap completely. The PLC only looks once per lap, and the press was over before the next look. That is why real systems use sensors and wiring that hold the signal long enough, or a latch that remembers the press.</p>
+            <p class="try-it-term"><strong>Technical term:</strong> scan time / input sampling; latch (seal-in)</p>
+          </details>
           <p>
             Why does this matter? Because the PLC only "knows" what it saw at the start of the lap.
-            If you press a button for less than one lap it can be missed - which is why real
-            systems choose sensors and timing carefully.
+            A press shorter than one lap can be missed. That is why real systems choose sensors and timing carefully.
           </p>
         </section>
 
@@ -154,6 +189,48 @@
             <span>one step after another, each waiting for a condition</span>
           </div>
           <div class="diagram-panel">
+            <svg class="process-svg beginner-svg" viewBox="0 0 1000 230" role="img" aria-labelledby="beginner-washer-title">
+              <title id="beginner-washer-title">Washing machine sequence with the condition that moves it to the next step</title>
+              <defs>
+                <marker id="arrow-beginner-w" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"></path>
+                </marker>
+              </defs>
+              <rect x="10" y="30" width="170" height="80" rx="8" class="phase2-svg-field"></rect>
+              <text x="95" y="64" class="svg-center">CHECK LID</text>
+              <text x="95" y="90" class="svg-center small">step 1</text>
+              <rect x="210" y="30" width="170" height="80" rx="8" class="phase2-svg-plc"></rect>
+              <text x="295" y="64" class="svg-center">FILL</text>
+              <text x="295" y="90" class="svg-center small">step 2</text>
+              <rect x="410" y="30" width="170" height="80" rx="8" class="phase2-svg-hmi"></rect>
+              <text x="495" y="64" class="svg-center">WASH</text>
+              <text x="495" y="90" class="svg-center small">step 3</text>
+              <rect x="610" y="30" width="170" height="80" rx="8" class="phase2-svg-plc"></rect>
+              <text x="695" y="64" class="svg-center">DRAIN</text>
+              <text x="695" y="90" class="svg-center small">step 4</text>
+              <rect x="810" y="30" width="170" height="80" rx="8" class="phase2-svg-field"></rect>
+              <text x="895" y="64" class="svg-center">SPIN</text>
+              <text x="895" y="90" class="svg-center small">step 5</text>
+
+              <line x1="180" y1="70" x2="210" y2="70" class="flow-branch" marker-end="url(#arrow-beginner-w)"></line>
+              <line x1="380" y1="70" x2="410" y2="70" class="flow-branch" marker-end="url(#arrow-beginner-w)"></line>
+              <line x1="580" y1="70" x2="610" y2="70" class="flow-branch" marker-end="url(#arrow-beginner-w)"></line>
+              <line x1="780" y1="70" x2="810" y2="70" class="flow-branch" marker-end="url(#arrow-beginner-w)"></line>
+
+              <text x="95" y="150" class="svg-center small">moves on when</text>
+              <text x="95" y="172" class="svg-center small">lid sensor = closed</text>
+              <text x="295" y="150" class="svg-center small">moves on when</text>
+              <text x="295" y="172" class="svg-center small">level sensor = full</text>
+              <text x="495" y="150" class="svg-center small">moves on when</text>
+              <text x="495" y="172" class="svg-center small">timer finishes</text>
+              <text x="695" y="150" class="svg-center small">moves on when</text>
+              <text x="695" y="172" class="svg-center small">level sensor = empty</text>
+              <text x="895" y="150" class="svg-center small">finishes when</text>
+              <text x="895" y="172" class="svg-center small">timer finishes</text>
+              <text x="500" y="214" class="svg-center small">The machine is always in exactly ONE step. Opening the lid mid-cycle stops the motor (interlock).</text>
+            </svg>
+          </div>
+          <div class="diagram-panel">
             <ol>
               <li><strong>Check the lid</strong> - lid sensor says closed? If not, do nothing.</li>
               <li><strong>Fill</strong> - open the water valve until the level sensor says "full".</li>
@@ -172,6 +249,11 @@
             <em>timer</em>. "Do nothing if the lid is open" is an <em>interlock</em>: one
             condition that must be true before something else is allowed.
           </p>
+          <details class="try-it">
+            <summary>Try it: the lid is opened in the middle of the spin. What should the machine do?</summary>
+            <p>Cut power to the drum motor straight away and keep the lid locked until the drum has stopped. The lid sensor is a higher-priority condition than the spin step.</p>
+            <p class="try-it-term"><strong>Technical term:</strong> interlock; priority of a safety input</p>
+          </details>
         </section>
 
         <section id="lift" class="panel scenario-panel">
@@ -205,6 +287,11 @@
               </p>
             </article>
           </div>
+          <details class="try-it">
+            <summary>Try it: the lift is at floor 1 and two people press floors 3 and 5 within a second. Why doesn't it forget the second press?</summary>
+            <p>Each press is stored (the button lamp stays lit) until that floor has been served. The PLC does not rely on you holding the button down.</p>
+            <p class="try-it-term"><strong>Technical term:</strong> latch (seal-in) / request memory</p>
+          </details>
         </section>
 
         <section id="gate" class="panel scenario-panel">
@@ -224,6 +311,11 @@
             high-priority input that overrides the closing sequence. On real gates this safety
             function is handled by certified safety devices, not by ordinary program logic alone.
           </p>
+          <details class="try-it">
+            <summary>Try it: a cat walks through the safety beam while the gate is closing. What should happen?</summary>
+            <p>The gate stops immediately and reopens. The beam is a high-priority input, so it overrides the closing step and its timer.</p>
+            <p class="try-it-term"><strong>Technical term:</strong> safety input overriding a sequence; input priority</p>
+          </details>
         </section>
 
         <section id="escalator" class="panel scenario-panel">
@@ -239,13 +331,70 @@
           </ol>
           <p>
             <strong>Technical idea:</strong> the emergency stop is wired so that "no signal" means
-            "stop" (<em>fail-safe</em>): if a wire breaks, the machine stops instead of carrying on.
+            "stop" (<em>fail-safe</em>). If a wire breaks, the machine stops instead of carrying on.
           </p>
+          <details class="try-it">
+            <summary>Try it: the wire to the red emergency-stop button is cut by accident. Does the escalator keep running?</summary>
+            <p>No. A healthy, unpressed button sends a signal all the time. If that signal disappears, the escalator stops. It does not matter whether the button was pressed or the wire was cut. Failing into the safe state is deliberate.</p>
+            <p class="try-it-term"><strong>Technical term:</strong> fail-safe wiring (normally-closed contact)</p>
+          </details>
+        </section>
+
+        <section id="cooker" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>7. Rice cooker: keeping something at the right temperature</h2>
+            <span>on/off control with a safe gap</span>
+          </div>
+          <ol>
+            <li>You press "Cook". The heater switches on (<em>output</em>).</li>
+            <li>A temperature sensor watches the pot (<em>input</em>).</li>
+            <li>While water is boiling, the pot stays near 100&nbsp;&deg;C. When the water is gone, the temperature rises.</li>
+            <li>The cooker sees that rise, switches the heater off and changes to "Keep warm".</li>
+            <li>In "Keep warm" the heater clicks on when the rice cools a little, and off when it is warm enough.</li>
+          </ol>
+          <p>
+            <strong>Layman point:</strong> it is like turning a kettle on and off by hand to keep
+            tea warm, but automatic. <strong>Technical idea:</strong> the target temperature is the
+            <em>setpoint</em>. Switching fully on or off around it is <em>on/off control</em>.
+            The small gap between "switch on" and "switch off" temperatures is called
+            <em>hysteresis</em>. Many simple cookers do this with a mechanical thermostat. Smarter
+            ones use a small controller doing the same logic.
+          </p>
+          <details class="try-it">
+            <summary>Try it: the lid is lifted for a second and the temperature dips slightly. Why doesn't the heater flick on and off every second?</summary>
+            <p>Because of the gap. The heater switches on only below a lower limit. It switches off only above an upper limit. Without that gap it would chatter and wear out.</p>
+            <p class="try-it-term"><strong>Technical term:</strong> hysteresis; setpoint</p>
+          </details>
+        </section>
+
+        <section id="barrier" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>8. Car-park barrier: never lower on a car</h2>
+            <span>a road sensor, a timer and an interlock</span>
+          </div>
+          <ol>
+            <li>A driver takes a ticket or presses a button (<em>input</em>).</li>
+            <li>The barrier arm motor raises the arm until the "up" limit switch fires.</li>
+            <li>A coil buried in the road senses the metal of the car sitting over it.</li>
+            <li>When the road sensor shows the car has gone, a short timer runs. Then the arm lowers.</li>
+          </ol>
+          <p>
+            <strong>Layman point:</strong> the barrier does not "see" the car. It only knows
+            whether the road sensor is occupied. <strong>Technical idea:</strong> the road sensor is an
+            <em>inductive loop</em>. "Never lower while the loop is occupied" is an
+            <em>interlock</em>. The timer only starts after the loop is clear. Real barriers add
+            extra safety devices, such as a safety edge on the arm.
+          </p>
+          <details class="try-it">
+            <summary>Try it: a second car follows closely behind the first. Why doesn't the arm come down on it?</summary>
+            <p>The road sensor is still occupied, so the interlock blocks lowering. The timer only starts once the sensor is clear, so a close follower keeps the arm up.</p>
+            <p class="try-it-term"><strong>Technical term:</strong> interlock; inductive loop sensor</p>
+          </details>
         </section>
 
         <section id="words" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>7. Key words in plain language</h2>
+            <h2>9. Key words in plain language</h2>
             <span>keep this list nearby</span>
           </div>
           <table>
@@ -260,6 +409,8 @@
               <tr><td>Interlock</td><td>"Only if this is also true"</td><td>Washer lid must be closed</td></tr>
               <tr><td>Timer</td><td>Wait a set time, then act</td><td>Gate closes after 20 s</td></tr>
               <tr><td>Sequence / state</td><td>Do steps in order, one at a time</td><td>Fill, wash, drain, spin</td></tr>
+              <tr><td>Setpoint</td><td>The target value you want</td><td>Rice kept at "warm"</td></tr>
+              <tr><td>Hysteresis</td><td>A small gap so it does not flicker on and off</td><td>Cooker heater clicks on after a dip</td></tr>
               <tr><td>Fail-safe</td><td>If something breaks, go to the safe state</td><td>Emergency stop wiring</td></tr>
               <tr><td>Fault</td><td>The controller found something wrong</td><td>Both greens on together</td></tr>
               <tr><td>HMI / SCADA</td><td>The screen people use to watch and command it</td><td>Lift control panel</td></tr>
@@ -269,7 +420,7 @@
 
         <section id="trainer" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>8. Now use the trainer</h2>
+            <h2>10. Now use the trainer</h2>
             <span>a traffic light is the same ideas in one small package</span>
           </div>
           <ol>
@@ -291,9 +442,7 @@
             <h2>Educational use</h2>
             <p>
               Simplified teaching material from
-              <a href="https://salbotics.uk/">Salbotics</a>. It is not certified safety or
-              machinery-control software and must not be used to design or modify real lifts,
-              gates, escalators or other safety-related equipment.
+              <a href="https://salbotics.uk/">Salbotics</a>. It is not certified safety software. Do not use it to design or change real lifts, gates, escalators or other safety equipment.
             </p>
           </div>
         </section>

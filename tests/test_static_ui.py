@@ -360,3 +360,44 @@ def test_pages_site_build_has_relative_links_and_landing_page(tmp_path) -> None:
         pass
     else:
         raise AssertionError("existing output directory must be refused")
+
+
+def test_beginner_guide_has_diagrams_and_try_it_boxes() -> None:
+    from pathlib import Path
+
+    html = (Path(__file__).resolve().parent.parent / "static" / "beginner-guide.html").read_text(
+        encoding="utf-8")
+    assert html.count("<svg") == 2
+    assert html.count('role="img"') == 2
+    for title_id in ("beginner-loop-title", "beginner-washer-title"):
+        assert f'aria-labelledby="{title_id}"' in html
+        assert f'<title id="{title_id}">' in html
+    # One "try it" question per example: loop, washer, lift, gate, escalator, cooker, barrier.
+    assert html.count('<details class="try-it">') == 7
+    assert html.count("</details>") == 7
+    for term in ("Technical term:",):
+        assert html.count(term) >= 7 + 3  # 7 try-it boxes + the 3 loop cards
+
+
+def test_beginner_guide_covers_everyday_examples_and_short_sentences() -> None:
+    import html as html_lib
+    import re
+    from pathlib import Path
+
+    page = (Path(__file__).resolve().parent.parent / "static" / "beginner-guide.html").read_text(
+        encoding="utf-8")
+    for section in ("loop", "parts", "washer", "lift", "gate", "escalator", "cooker", "barrier",
+                    "words", "trainer"):
+        assert f'id="{section}"' in page, section
+        assert f'href="#{section}"' in page, section
+    main = re.sub(r"<svg.*?</svg>", "", page[page.index("<main"):], flags=re.S)
+    long_sentences = []
+    for block in re.findall(r"<(?:p|li|summary)[^>]*>(.*?)</(?:p|li|summary)>", main, flags=re.S):
+        text = re.sub(r"\s+", " ", html_lib.unescape(re.sub(r"<[^>]+>", "", block))).strip()
+        for sentence in re.split(r"(?<=[.?!])\s+", text):
+            if len(sentence.split()) > 22:
+                long_sentences.append(sentence)
+    assert long_sentences == []
+    # Plain-language wording check: technical terms are glossed, not left bare.
+    for term in ("Hysteresis", "Setpoint", "interlock", "latch"):
+        assert term.lower() in page.lower()
