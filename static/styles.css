@@ -1421,3 +1421,28 @@ body[data-warning="true"] .alarm.empty::after {
     display: none;
   }
 }
+
+/* M-5: swipe hint and edge fade for sideways-scrolling boxes (phones) */
+.swipe-hint {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .swipe-hint {
+    display: block;
+    margin: 6px 0 4px;
+    color: #0369a1;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .swipe-hint.swipe-hint-done {
+    display: none;
+  }
+
+  .has-swipe:not(.swipe-seen) {
+    -webkit-mask-image: linear-gradient(to right, #000 85%, transparent);
+    mask-image: linear-gradient(to right, #000 85%, transparent);
+  }
+}

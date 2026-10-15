@@ -448,3 +448,16 @@ def test_long_guide_pages_opt_in_to_collapsible_sections_on_phones() -> None:
     block = css[css.index("/* M-4:"):]
     assert "@media (max-width: 760px)" in block
     assert "section.section-collapsed > :not(.panel-heading)" in block
+
+
+def test_swipe_hint_for_sideways_scrolling_boxes_on_phones() -> None:
+    from pathlib import Path
+
+    static = Path(__file__).resolve().parent.parent / "static"
+    script = (static / "mobile-nav.js").read_text(encoding="utf-8")
+    assert "Swipe sideways to see more" in script and "scrollWidth" in script
+    css = (static / "styles.css").read_text(encoding="utf-8")
+    block = css[css.index("/* M-5:"):]
+    assert "@media (max-width: 760px)" in block and ".swipe-hint-done" in block
+    for page in static.glob("*.html"):
+        assert "mobile-nav.js?v=m5-" in page.read_text(encoding="utf-8"), page.name
