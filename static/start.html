@@ -7,7 +7,7 @@
     <title>Salbotics PLC Learning Hub - What Is This?</title>
     <meta name="description" content="Learn how factory machines think, for free, in your browser. No equipment needed." />
     <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
-    <link rel="stylesheet" href="/static/start.css?v=flow-20261020" />
+    <link rel="stylesheet" href="/static/start.css?v=home-20261021" />
     <link rel="stylesheet" href="/static/scenes.css?v=flow-20261020" />
   </head>
   <body class="start-page">
@@ -50,6 +50,13 @@
               <a class="sp-button sp-button-main" href="/static/beginner-guide.html">Start learning &rarr;</a>
               <a class="sp-button" href="#picture">See how it works</a>
             </div>
+            <div class="sp-continue" id="continue" hidden></div>
+            <div class="sp-search" id="search" role="search" hidden>
+              <label for="hub-search-input">Search lessons and words</label>
+              <input id="hub-search-input" type="search" autocomplete="off" spellcheck="false"
+                     placeholder="Try: sensor, VFD, conveyor, safety" aria-controls="hub-search-results" />
+              <ul id="hub-search-results" class="sp-search-results" aria-live="polite"></ul>
+            </div>
           </div>
 
           <aside class="sp-card sp-hero-card" aria-label="The idea in three parts">
@@ -73,15 +80,64 @@
         </ul>
 
         <nav class="sp-pills sp-jump" aria-label="Page sections">
+          <a href="#who">What do you want?</a>
           <a href="#why">Why it exists</a>
           <a href="#picture">The big picture</a>
           <a href="#action">See it move</a>
           <a href="#io">Inputs &amp; outputs</a>
           <a href="#steps">3 steps</a>
-          <a href="#who">Who it is for</a>
           <a href="#path">Your path</a>
           <a href="#roadmap">Roadmap</a>
         </nav>
+
+        <!-- 0. What do you want to do? -->
+        <section id="who" class="sp-section">
+          <p class="sp-eyebrow">Start where you are</p>
+          <h2>What do you want to do?</h2>
+          <p class="sp-intro">Pick a goal and we will open the right lesson.</p>
+          <div class="sp-goals">
+            <a class="sp-goal" href="/static/beginner-guide.html">
+              <span class="sp-badge sp-badge-in" aria-hidden="true">1</span>
+              <strong>Understand what a PLC is</strong>
+              <small>Beginners and students</small>
+            </a>
+            <a class="sp-goal" href="/static/industrial-situations.html">
+              <span class="sp-badge sp-badge-out" aria-hidden="true">2</span>
+              <strong>Fix real machines</strong>
+              <small>Technicians and operators</small>
+            </a>
+            <a class="sp-goal" href="/static/oil-palm-industrial-environment.html">
+              <span class="sp-badge" aria-hidden="true">3</span>
+              <strong>See inside a palm-oil mill</strong>
+              <small>Anyone curious about factories</small>
+            </a>
+            <a class="sp-goal" href="/static/plc-programming-methods.html">
+              <span class="sp-badge sp-badge-plc" aria-hidden="true">4</span>
+              <strong>Write a PLC program</strong>
+              <small>Future programmers</small>
+            </a>
+            <a class="sp-goal" href="/static/phase-2-start-here.html">
+              <span class="sp-badge sp-badge-in" aria-hidden="true">5</span>
+              <strong>Work with factory data</strong>
+              <small>Engineers and IT staff</small>
+            </a>
+            <a class="sp-goal" href="/static/risk-assessment-certification.html">
+              <span class="sp-badge sp-badge-out" aria-hidden="true">6</span>
+              <strong>Become safety qualified</strong>
+              <small>Technicians and engineers</small>
+            </a>
+            <a class="sp-goal" href="https://github.com/SaladinIART/salbotics-plc-learning-hub">
+              <span class="sp-badge" aria-hidden="true">7</span>
+              <strong>Check practical skills</strong>
+              <small>Employers and recruiters</small>
+            </a>
+            <a class="sp-goal" href="#search">
+              <span class="sp-badge sp-badge-plc" aria-hidden="true">?</span>
+              <strong>Look something up</strong>
+              <small>Search lessons and words</small>
+            </a>
+          </div>
+        </section>
 
         <!-- 1. Why -->
         <section id="why" class="sp-section">
@@ -445,31 +501,6 @@
           </p>
         </section>
 
-        <!-- 5. Who -->
-        <section id="who" class="sp-section">
-          <p class="sp-eyebrow">Who it is for</p>
-          <h2>Pick the card that sounds like you.</h2>
-          <div class="sp-grid">
-            <article class="sp-card">
-              <span class="sp-badge sp-badge-in" aria-hidden="true">A</span>
-              <h3>Beginners and students</h3>
-              <p>Curious how machines work, or thinking about a career in automation?</p>
-              <a class="sp-card-link" href="/static/beginner-guide.html">Start with the Beginner guide &rarr;</a>
-            </article>
-            <article class="sp-card">
-              <span class="sp-badge sp-badge-plc" aria-hidden="true">B</span>
-              <h3>Technicians and operators</h3>
-              <p>Already work near machines? See real factory situations, sensor faults and motor control.</p>
-              <a class="sp-card-link" href="/static/industrial-situations.html">See industry situations &rarr;</a>
-            </article>
-            <article class="sp-card">
-              <span class="sp-badge sp-badge-out" aria-hidden="true">C</span>
-              <h3>Employers and recruiters</h3>
-              <p>Want to see practical automation skills? Look at the simulator, tests and roadmap.</p>
-              <a class="sp-card-link" href="https://github.com/SaladinIART/salbotics-plc-learning-hub">View the project on GitHub &rarr;</a>
-            </article>
-          </div>
-        </section>
 
         <!-- 6. Path -->
         <section id="path" class="sp-section">
@@ -587,5 +618,7 @@
     </main>
       <script src="/static/mobile-nav.js?v=m5-20261015" defer></script>
       <script src="/static/start.js?v=anim-20261020" defer></script>
+      <script src="/static/search-index.js?v=home-20261021" defer></script>
+      <script src="/static/hub-home.js?v=home-20261021" defer></script>
   </body>
 </html>

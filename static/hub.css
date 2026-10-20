@@ -399,8 +399,13 @@ body.hub-page {
   color: var(--hp-muted);
 }
 
-.hub-page .hub-map-link {
+.hub-progress-links {
+  display: flex;
+  gap: 14px;
   margin-left: auto;
+}
+
+.hub-page .hub-map-link {
   font-weight: 700;
   text-decoration: none;
 }
@@ -424,8 +429,9 @@ body.hub-page {
   background: var(--hp-line);
 }
 
+/* Green = finished (remembered in this browser), blue ring = this lesson */
 .hub-progress-bar .is-done a {
-  background: color-mix(in srgb, var(--hp-brand) 55%, var(--hp-surface));
+  background: var(--hp-ok);
 }
 
 .hub-progress-bar .is-current a {
@@ -445,6 +451,20 @@ body.hub-page {
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
+}
+
+.hub-page .guide-main .hub-finished {
+  margin: 0 0 12px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--hp-ok-soft);
+  color: var(--hp-ok);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.hub-page .guide-main .hub-finished[hidden] {
+  display: none;
 }
 
 /* ---------- Offline note (Phase 3 / 4 dashboards) ---------- */
@@ -1020,7 +1040,7 @@ body.hub-page {
     padding: 18px;
   }
 
-  .hub-page .hub-map-link {
+  .hub-progress-links {
     margin-left: 0;
   }
 

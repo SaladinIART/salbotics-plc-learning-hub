@@ -10,13 +10,13 @@ function legacyFormat(value) {
   return value;
 }
 
-async function legacyJson(url, options) {
+let legacyJson = async function (url, options) {
   const response = await fetch(url, options);
   if (!response.ok) {
     throw new Error(`${url} returned HTTP ${response.status}`);
   }
   return response.json();
-}
+};
 
 function renderLegacyCards(cards) {
   legacyQs("#legacy-cards").innerHTML = cards
@@ -215,9 +215,27 @@ function renderLegacyWebsitePreview() {
 }
 
 legacyQs("#reset-legacy").addEventListener("click", resetLegacy);
+// On the website, draw a sample recorded from the trainer (see
+// scripts/build_dashboard_samples.py) with the same rendering code.
+async function showLegacyWebsiteSample() {
+  try {
+    const sample = await (await fetch("sample-legacy.json")).json();
+    legacyJson = async (url) => {
+      if (!(url in sample)) throw new Error(`no sample for ${url}`);
+      return sample[url];
+    };
+    await refreshLegacy();
+    legacyQs("#legacy-health").textContent = "Sample data recorded from the trainer";
+    legacyQs("#legacy-generated-at").textContent = "sample, not live";
+    legacyQs("#reset-legacy").hidden = true;
+  } catch (error) {
+    renderLegacyWebsitePreview();
+  }
+}
+
 if (onTrainerPage()) {
   refreshLegacy();
   setInterval(refreshLegacy, 5000);
 } else {
-  renderLegacyWebsitePreview();
+  showLegacyWebsiteSample();
 }

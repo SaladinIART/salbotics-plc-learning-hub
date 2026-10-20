@@ -1,0 +1,298 @@
+{
+ "/api/legacy/events?limit=10": {
+  "events": [
+   {
+    "detail": "Read-only simulated register samples reseeded for obsolete screw press training.",
+    "event_type": "reset",
+    "message": "Demo legacy bridge seeded",
+    "severity": "info",
+    "source": "Legacy OT bridge",
+    "timestamp": "2026-10-20T22:36:05.624428+00:00"
+   }
+  ]
+ },
+ "/api/legacy/registers": {
+  "host": "127.0.0.1",
+  "port": 15020,
+  "read_only": true,
+  "rows": [
+   {
+    "address": 40001,
+    "description": "Screw press run feedback from obsolete PLC.",
+    "engineering_value": true,
+    "name": "PRESS_RUN_FB",
+    "raw_value": 1,
+    "scale": 1,
+    "unit": "bool",
+    "writable": false
+   },
+   {
+    "address": 40002,
+    "description": "Legacy alarm bit from press overload or jam.",
+    "engineering_value": false,
+    "name": "PRESS_FAULT",
+    "raw_value": 0,
+    "scale": 1,
+    "unit": "bool",
+    "writable": false
+   },
+   {
+    "address": 40003,
+    "description": "Motor current scaled by 10.",
+    "engineering_value": 71.5,
+    "name": "PRESS_CURRENT_A_X10",
+    "raw_value": 715,
+    "scale": 10,
+    "unit": "A",
+    "writable": false
+   },
+   {
+    "address": 40004,
+    "description": "Press load percentage scaled by 10.",
+    "engineering_value": 66.9,
+    "name": "PRESS_LOAD_PCT_X10",
+    "raw_value": 669,
+    "scale": 10,
+    "unit": "%",
+    "writable": false
+   },
+   {
+    "address": 40005,
+    "description": "Vibration estimate scaled by 100.",
+    "engineering_value": 2.6,
+    "name": "PRESS_VIBRATION_X100",
+    "raw_value": 260,
+    "scale": 100,
+    "unit": "mm/s",
+    "writable": false
+   },
+   {
+    "address": 40006,
+    "description": "CPO slurry/output flow scaled by 100.",
+    "engineering_value": 5.67,
+    "name": "OUTPUT_FLOW_TPH_X100",
+    "raw_value": 567,
+    "scale": 100,
+    "unit": "t/h",
+    "writable": false
+   },
+   {
+    "address": 40007,
+    "description": "Sterilizer temperature scaled by 10.",
+    "engineering_value": 130.2,
+    "name": "STERILIZER_TEMP_C_X10",
+    "raw_value": 1302,
+    "scale": 10,
+    "unit": "deg C",
+    "writable": false
+   },
+   {
+    "address": 40008,
+    "description": "Steam pressure scaled by 100.",
+    "engineering_value": 3.04,
+    "name": "STEAM_PRESSURE_BAR_X100",
+    "raw_value": 304,
+    "scale": 100,
+    "unit": "bar",
+    "writable": false
+   },
+   {
+    "address": 40009,
+    "description": "XP/7 HMI heartbeat counter observed by bridge.",
+    "engineering_value": 89,
+    "name": "HMI_HEARTBEAT",
+    "raw_value": 89,
+    "scale": 1,
+    "unit": "count",
+    "writable": false
+   },
+   {
+    "address": 40010,
+    "description": "Read-only bridge communication quality.",
+    "engineering_value": 98,
+    "name": "COMMS_QUALITY_PCT",
+    "raw_value": 98,
+    "scale": 1,
+    "unit": "%",
+    "writable": false
+   },
+   {
+    "address": 40011,
+    "description": "Accumulated downtime minutes seen by bridge.",
+    "engineering_value": 6,
+    "name": "DOWNTIME_MIN_TOTAL",
+    "raw_value": 6,
+    "scale": 1,
+    "unit": "min",
+    "writable": false
+   },
+   {
+    "address": 40012,
+    "description": "Accumulated alarm count seen by bridge.",
+    "engineering_value": 6,
+    "name": "ALARM_COUNT_TOTAL",
+    "raw_value": 6,
+    "scale": 1,
+    "unit": "events",
+    "writable": false
+   }
+  ],
+  "transport": "Virtual Modbus TCP"
+ },
+ "/api/legacy/summary": {
+  "boundary": {
+   "license_bypass": false,
+   "localhost_only": true,
+   "mode": "read-only shadow monitoring",
+   "real_plc_connection": false,
+   "write_endpoints": false
+  },
+  "communication": {
+   "health": "HEALTHY",
+   "host": "127.0.0.1",
+   "modbus_library": "pymodbus 3.13.1",
+   "port": 15020,
+   "quality_percent": 98,
+   "read_status": "OK",
+   "transport": "Virtual Modbus TCP"
+  },
+  "generated_at": "2026-10-20T22:36:05.669034+00:00",
+  "headline_cards": [
+   {
+    "explanation": "The bridge observes legacy registers and never commands PLC outputs.",
+    "label": "Bridge mode",
+    "status": "normal",
+    "unit": "no writes",
+    "value": "READ ONLY"
+   },
+   {
+    "explanation": "Cable, adapter, baud/timeout, or polling issues show up here first.",
+    "label": "Comms quality",
+    "status": "normal",
+    "unit": "%",
+    "value": 98
+   },
+   {
+    "explanation": "High current hints at jam, feed rate, cage restriction, or VFD stress.",
+    "label": "Press current",
+    "status": "normal",
+    "unit": "A",
+    "value": 71.5
+   },
+   {
+    "explanation": "A bridge can prove repeated faults before PLC replacement is approved.",
+    "label": "Fault count",
+    "status": "watch",
+    "unit": "events",
+    "value": 5
+   },
+   {
+    "explanation": "Shadow historian records losses without changing the old controller.",
+    "label": "Downtime observed",
+    "status": "watch",
+    "unit": "min",
+    "value": 5
+   },
+   {
+    "explanation": "Treat the old PC as a fragile appliance; no internet and strict network rules.",
+    "label": "XP/7 HMI risk",
+    "status": "watch",
+    "unit": "zone",
+    "value": "ISOLATE"
+   }
+  ],
+  "latest_sample": {
+   "alarm_count_total": 6,
+   "comms_quality_percent": 98,
+   "downtime_minutes_total": 6,
+   "hmi_heartbeat": 89,
+   "id": 90,
+   "output_flow_tph": 5.67,
+   "plant_minute": 89,
+   "press_current_a": 71.5,
+   "press_fault": 0,
+   "press_load_percent": 66.9,
+   "press_run_fb": 1,
+   "press_vibration_mm_s": 2.6,
+   "read_status": "OK",
+   "steam_pressure_bar": 3.04,
+   "sterilizer_temp_c": 130.2,
+   "timestamp": "2026-10-20T22:35:05.622959+00:00"
+  },
+  "legacy_station": {
+   "adapter": "Virtual Modbus TCP on 127.0.0.1; RS-232 simulated lesson only",
+   "control_authority": "Existing PLC remains in control",
+   "legacy_hmi": "Windows XP/7 HMI with missing installer/license",
+   "legacy_plc": "Unknown / obsolete PLC class",
+   "name": "Obsolete Screw Press Station",
+   "process": "Oil-palm screw press"
+  },
+  "real_situations": [
+   {
+    "problem": "XP/7 HMI works but cannot be reinstalled.",
+    "solution": "Disk image it, isolate it, keep it as reference, and build a read-only dashboard beside it."
+   },
+   {
+    "problem": "PLC software and license are gone.",
+    "solution": "Avoid bypassing licenses; recover backups, contact OEM, document behavior, and plan replacement."
+   },
+   {
+    "problem": "RS-232 protocol is unclear.",
+    "solution": "Identify baud/parity/stop bits, observe traffic, decode frames, then build a reader before any command."
+   },
+   {
+    "problem": "Production cannot stop.",
+    "solution": "Run shadow monitoring first, test during scheduled windows, and keep rollback ready."
+   }
+  ],
+  "rs232_lesson": {
+   "baudrate": 9600,
+   "library": "pyserial 3.5",
+   "meaning": "Simulated pySerial loopback frame for press current register 40003; no real COM port is opened by default.",
+   "parity": "N",
+   "port": "loop://",
+   "sample_frame": ":P040003?\\r\\n",
+   "sample_response": ":P040003=0785\\r\\n",
+   "stop_bits": 1,
+   "timeout_seconds": 1,
+   "warning": "Real RS-232/RFC2217 links are not encrypted or authenticated; use only in trusted, authorized environments."
+  },
+  "storage": {
+   "engine": "SQLite",
+   "event_count": 1,
+   "path": "sample recorded from the local trainer",
+   "sample_count": 90,
+   "simulated": true
+  },
+  "workflow": [
+   {
+    "meaning": "Record PLC, HMI, I/O cards, cables, firmware, software, and machine drawings.",
+    "step": "Inventory"
+   },
+   {
+    "meaning": "Clone the old PC drive and preserve PLC/HMI backups where authorized.",
+    "step": "Backup/Image"
+   },
+   {
+    "meaning": "Place XP/7 and legacy PLC behind OT firewall/VLAN; keep internet away.",
+    "step": "Isolate"
+   },
+   {
+    "meaning": "Read registers/signals only; confirm values against operators and maintenance.",
+    "step": "Observe"
+   },
+   {
+    "meaning": "Compare extracted Ladder, HMI screens, alarm list, and machine behavior.",
+    "step": "Reconstruct"
+   },
+   {
+    "meaning": "Publish safe historian/dashboard data without commanding the machine.",
+    "step": "Bridge"
+   },
+   {
+    "meaning": "Plan HMI/PLC replacement with FAT, SAT, cutover, and rollback.",
+    "step": "Migrate later"
+   }
+  ]
+ }
+}

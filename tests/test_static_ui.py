@@ -17,14 +17,12 @@ def test_root_serves_industrial_trainer_ui() -> None:
     assert "timer-table" in html
     assert "alarm-summary" in html
     assert "data-field-lamp" in html
-    assert "/static/how-it-works.html" in html
-    assert "/static/industrial-situations.html" in html
-    assert "/static/oil-palm-industrial-environment.html" in html
-    assert "/static/phase-2-start-here.html" in html
-    assert "/static/phase-3-data-analytics.html" in html
-    assert "/static/phase-4-legacy-ot-recovery.html" in html
-    assert "/static/plc-programming-methods.html" in html
-    assert "/static/risk-assessment-certification.html" in html
+    # Same stage menu as the lessons (Home, Basics, Skills, Factory, Data, Safety)
+    # plus the guide to this simulator; the control-panel look stays.
+    for target in ("start.html", "beginner-guide.html", "plc-programming-methods.html",
+                   "oil-palm-industrial-environment.html", "phase-2-start-here.html",
+                   "risk-assessment-certification.html", "how-it-works.html"):
+        assert f"/static/{target}" in html, target
 
 
 def test_how_it_works_page_serves_ladder_scenarios() -> None:
@@ -605,4 +603,49 @@ def test_tap_to_explain_glossary() -> None:
         assert len(terms[word].split()) <= 22, word
     # Only the first use on a page is marked, and the tip is a real button + note.
     assert "pending.splice" in script and 'aria-expanded' in script and 'role", "note"' in script
+
+
+def test_start_page_helps_people_find_their_way() -> None:
+    import importlib.util
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parent.parent
+    static = root / "static"
+    start = (static / "start.html").read_text(encoding="utf-8")
+    # Goal chooser, search box and "welcome back" banner.
+    assert "What do you want to do?" in start and start.count('class="sp-goal"') == 8
+    for hook in ('id="search"', 'id="hub-search-input"', 'id="continue"',
+                 "/static/search-index.js", "/static/hub-home.js"):
+        assert hook in start, hook
+    # The search index is generated from the lessons and must be up to date.
+    script = root / "scripts" / "build_search_index.py"
+    spec = importlib.util.spec_from_file_location("build_search_index", script)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    assert module.main(["--check"]) == 0
+    # Lesson pages and the start page share one progress record in the browser.
+    flow = (static / "hub-flow.js").read_text(encoding="utf-8")
+    home = (static / "hub-home.js").read_text(encoding="utf-8")
+    assert '"salbotics-hub-progress"' in flow and '"salbotics-hub-progress"' in home
+    assert "IntersectionObserver" in flow and '"Search"' in flow and "Start over" in home
+    # Storage can fail (private mode); both scripts must keep working.
+    assert flow.count("try {") >= 2 and home.count("try {") >= 2
+
+
+def test_dashboards_show_recorded_samples_on_the_website() -> None:
+    import json
+    from pathlib import Path
+
+    static = Path(__file__).resolve().parent.parent / "static"
+    analytics = json.loads((static / "sample-analytics.json").read_text(encoding="utf-8"))
+    legacy = json.loads((static / "sample-legacy.json").read_text(encoding="utf-8"))
+    assert "/api/analytics/summary" in analytics and "/api/analytics/events?limit=12" in analytics
+    for metric in ("oer_percent", "press_current_a", "tank_level_percent"):
+        assert analytics[f"/api/analytics/trends?metric={metric}&minutes=60"]["points"], metric
+    for url in ("/api/legacy/summary", "/api/legacy/registers", "/api/legacy/events?limit=10"):
+        assert url in legacy, url
+    # No machine-specific temporary paths leak into the published files.
+    assert "/tmp" not in json.dumps(analytics) + json.dumps(legacy)
+    assert "sample-analytics.json" in (static / "phase3-analytics.js").read_text(encoding="utf-8")
+    assert "sample-legacy.json" in (static / "phase4-legacy.js").read_text(encoding="utf-8")
 
