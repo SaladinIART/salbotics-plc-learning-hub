@@ -61,7 +61,10 @@ published automatically from `main` by GitHub Actions:
 
 - **Start page: "What is this?" overview** - one plain-language page for non-technical visitors:
   why the hub exists, the inputs -> PLC -> outputs picture (everyday and palm-oil mill examples),
-  the 3-step loop, who it is for and a 4-step learning path.
+  the 3-step loop, who it is for and a 4-step learning path. It also has an at-a-glance numbers band,
+  three animated scenes (traffic light, car-park barrier, palm-oil conveyor pull-cord) with
+  input/output lamps that light up as the PLC decides, and a visual Phase 1-5 roadmap.
+  Animations can be paused and start paused when the device asks for reduced motion.
 - **Beginner guide** - PLC basics in plain language using a washing machine, lift,
   automatic gate, escalator, rice cooker, car-park barrier and the trainer's own traffic light,
   with the technical term beside each idea, two diagrams, "Try it" questions and a glossary.
