@@ -485,6 +485,11 @@ def test_start_page_explains_idea_in_plain_words() -> None:
                    "Beginners and students", "Technicians and operators",
                    "Employers and recruiters", "not certified"):
         assert phrase in page, phrase
+    # Modern look lives in its own stylesheet; other pages keep the industrial style.
+    assert "/static/start.css" in page and "guide.css" not in page
+    static = Path(__file__).resolve().parent.parent / "static"
+    css = (static / "start.css").read_text(encoding="utf-8")
+    assert "prefers-color-scheme: dark" in css and "@media (max-width: 760px)" in css
     # The inputs -> PLC -> outputs picture has a desktop and a phone version.
     assert page.count("<svg") == 2 and page.count('role="img"') == 2
     assert "beginner-svg-wide" in page and "beginner-svg-tall" in page
