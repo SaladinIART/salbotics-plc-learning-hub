@@ -6,7 +6,7 @@
     <title>Salbotics PLC Learning Hub - How It Works</title>
     <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
     <link rel="stylesheet" href="/static/guide.css" />
-    <link rel="stylesheet" href="/static/hub.css?v=flow-20261020" />
+    <link rel="stylesheet" href="/static/hub.css?v=plain-20261021" />
     <link rel="stylesheet" href="/static/scenes.css?v=flow-20261020" />
   </head>
   <body class="hub-page" data-lesson="how-it-works.html">
@@ -145,7 +145,10 @@
             <h2>Scenario 1: Auto Cycle</h2>
             <span>normal running sequence</span>
           </div>
-          <figure class="sp-scene hub-scene" style="--sp-start: 0s">
+          <div class="plain-view">
+            <p class="plain-text">Press START and the lights run by themselves. Each road gets green, then yellow, then a short all-red gap before the other road starts.</p>
+            <p class="plain-like"><strong>Like:</strong> Taking turns at a junction, with a pause so nobody crashes.</p>
+            <figure class="sp-scene hub-scene" style="--sp-start: 0s">
           <svg class="sp-anim sp-anim-traffic" viewBox="0 0 480 340" role="img" aria-labelledby="anim-traffic-title">
                   <title id="anim-traffic-title">Animated junction: north-south green, yellow, all red, then east-west green, yellow, all red</title>
                   <defs>
@@ -205,6 +208,11 @@
               <button type="button" class="sp-play">Pause</button>
             </figcaption>
           </figure>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
+          
           <div class="scenario-layout">
             <div class="scenario-notes">
               <h3>What happens</h3>
@@ -263,6 +271,8 @@
               </div>
             </div>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="pedestrian" class="panel scenario-panel">
@@ -270,6 +280,13 @@
             <h2>Scenario 2: Pedestrian Request</h2>
             <span>latched request</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">Pressing the crossing button is remembered, even after you let go. The PLC serves the request when that road next turns green.</p>
+            <p class="plain-like"><strong>Like:</strong> A lift button that stays lit until the lift arrives.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="scenario-layout">
             <div class="scenario-notes">
               <h3>What happens</h3>
@@ -310,6 +327,8 @@
               </div>
             </div>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="vehicle" class="panel scenario-panel">
@@ -317,6 +336,13 @@
             <h2>Scenario 3: Vehicle Demand Extension</h2>
             <span>green can extend, but not forever</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">A car sensor can keep a green light on a little longer. There is always a maximum, so the other road never waits forever.</p>
+            <p class="plain-like"><strong>Like:</strong> Holding a door for someone, but not all day.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="scenario-layout">
             <div class="scenario-notes">
               <h3>What happens</h3>
@@ -352,6 +378,8 @@
               </div>
             </div>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="emergency" class="panel scenario-panel danger-scenario">
@@ -359,6 +387,13 @@
             <h2>Scenario 4: Emergency All-Red</h2>
             <span>highest priority override</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">The emergency switch beats every other rule. All lights turn red at once and an alarm is recorded.</p>
+            <p class="plain-like"><strong>Like:</strong> A fire alarm that stops every lift in a building.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="scenario-layout">
             <div class="scenario-notes">
               <h3>What happens</h3>
@@ -393,6 +428,8 @@
               </div>
             </div>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="night" class="panel scenario-panel">
@@ -400,6 +437,13 @@
             <h2>Scenario 5: Night Red Flash</h2>
             <span>normal sequence paused</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">At night the normal sequence pauses. Both red lights blink together and the greens stay off.</p>
+            <p class="plain-like"><strong>Like:</strong> A quiet junction flashing red after midnight.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="scenario-layout">
             <div class="scenario-notes">
               <h3>What happens</h3>
@@ -429,6 +473,8 @@
               </div>
             </div>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="manual" class="panel scenario-panel">
@@ -436,6 +482,13 @@
             <h2>Scenario 6: Manual Safe-Step</h2>
             <span>one safe phase at a time</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">A technician can step through the lights one press at a time. Even then, the PLC only allows a safe next step.</p>
+            <p class="plain-like"><strong>Like:</strong> Turning pages one by one, without skipping the warning page.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="scenario-layout">
             <div class="scenario-notes">
               <h3>What happens</h3>
@@ -465,6 +518,8 @@
               </div>
             </div>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="fault" class="panel scenario-panel danger-scenario">
@@ -472,6 +527,13 @@
             <h2>Scenario 7: Fault And Reset</h2>
             <span>stuck pushbutton training fault</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">If START and STOP are on together, the PLC treats it as a broken button. Everything goes red until someone fixes it and presses reset.</p>
+            <p class="plain-like"><strong>Like:</strong> A machine that refuses to run when two opposite buttons are held.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="scenario-layout">
             <div class="scenario-notes">
               <h3>What happens</h3>
@@ -501,6 +563,8 @@
               </div>
             </div>
           </div>
+            </div>
+          </details>
         </section>
       </main>
       <footer class="product-footer">
@@ -508,7 +572,8 @@
         <a href="https://salbotics.uk/">Salbotics Solutions</a>. It is not certified safety or traffic-control software.
       </footer>
     </div>
-      <script src="/static/hub-flow.js?v=flow-20261020" defer></script>
+      <script src="/static/hub-flow.js?v=plain-20261021" defer></script>
+      <script src="/static/hub-ui.js?v=plain-20261021" defer></script>
       <script src="/static/mobile-nav.js?v=m5-20261015" defer></script>
       <script src="/static/start.js?v=flow-20261020" defer></script>
   </body>

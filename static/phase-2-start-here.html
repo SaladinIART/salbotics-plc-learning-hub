@@ -6,7 +6,7 @@
     <title>Salbotics PLC Learning Hub - Phase 2 Start Here</title>
     <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
     <link rel="stylesheet" href="/static/guide.css?v=phase2-clean-svg-20260626" />
-    <link rel="stylesheet" href="/static/hub.css?v=flow-20261020" />
+    <link rel="stylesheet" href="/static/hub.css?v=plain-20261021" />
   </head>
   <body class="hub-page" data-lesson="phase-2-start-here.html">
     <div class="app-shell guide-shell industrial-shell phase2-shell">
@@ -97,6 +97,13 @@
             <h2>1. Choose Your Learning Path First</h2>
             <span>three doors into the same plant</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">Pick the path that fits you: operator, technician or developer. Each path shows what to focus on first.</p>
+            <p class="plain-like"><strong>Like:</strong> Choosing the easy, medium or advanced trail.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="learning-path-grid">
             <article class="path-card operator-path">
               <h3>Operator Path</h3>
@@ -141,6 +148,8 @@
               </ol>
             </article>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="data-story" class="panel scenario-panel" data-start-open>
@@ -148,7 +157,17 @@
             <h2>2. The Industrial Data Story</h2>
             <span>Ladder, HMI, SCADA, and analytics answer different questions</span>
           </div>
-          <div class="diagram-panel">
+          <div class="plain-view">
+            <p class="plain-text">Machine data travels in layers. The PLC acts, screens tell operators what to do, and reports help managers improve.</p>
+            <p class="plain-like"><strong>Like:</strong> A shop's till, its shop-floor screen and its monthly report.</p>
+            <ol class="phone-flow" aria-label="Steps in order">
+              <li><strong>Field</strong><span>sensors and motor drives</span></li>
+              <li><strong>PLC / PAC</strong><span>follows the rules, many times a second</span></li>
+              <li><strong>HMI</strong><span>tells the operator what to do now</span></li>
+              <li><strong>SCADA</strong><span>shows the whole plant</span></li>
+              <li><strong>Analytics</strong><span>finds patterns and repeated losses</span></li>
+            </ol>
+            <div class="diagram-panel has-phone-flow">
             <svg class="process-svg phase2-svg" viewBox="0 0 1180 360" role="img" aria-labelledby="phase2-data-title">
               <title id="phase2-data-title">PLC data path from field devices to analytics</title>
               <defs>
@@ -202,12 +221,19 @@
               <line x1="1042" y1="128" x2="1042" y2="208" class="flow-branch flow-animated" marker-end="url(#arrow-phase2-data)"></line>
             </svg>
           </div>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
+          
           <div class="phase2-answer-grid">
             <div><b>Ladder diagram</b><span>What is the PLC logic doing?</span></div>
             <div><b>HMI</b><span>What should the operator do now?</span></div>
             <div><b>SCADA</b><span>What is the whole plant doing over time?</span></div>
             <div><b>Analytics</b><span>What patterns, losses, faults, and performance trends can we learn?</span></div>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="communications" class="panel scenario-panel">
@@ -215,6 +241,13 @@
             <h2>3. Industrial Communications Notes</h2>
             <span>names you will see before touching real drivers</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">Machines talk using different cables and 'languages'. Older ones use serial cables; newer ones use Ethernet networks.</p>
+            <p class="plain-like"><strong>Like:</strong> Old landline phones versus modern chat apps.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="comm-card-grid">
             <article class="comm-card">
               <h3>RS-232</h3>
@@ -255,6 +288,8 @@
               </tbody>
             </table>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="local-server" class="panel scenario-panel">
@@ -262,6 +297,13 @@
             <h2>4. Computer Network And Locally Hosted Server</h2>
             <span>why the browser can see the simulator</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">The trainer runs on your own computer, which is the safe default. Sharing controls on a network needs passwords and safety rules.</p>
+            <p class="plain-like"><strong>Like:</strong> Practising in your own garage, not on a public road.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="diagram-panel">
             <svg class="process-svg phase2-svg" viewBox="0 0 1180 360" role="img" aria-labelledby="phase2-server-title">
               <title id="phase2-server-title">Local server and LAN learning boundary</title>
@@ -322,6 +364,8 @@ FastAPI local server at 127.0.0.1:8733
 PLC simulator
   runs the scan cycle and returns inputs, outputs, timers, alarms, and event log</code></pre>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="scada-design" class="panel scenario-panel">
@@ -329,6 +373,13 @@ PLC simulator
             <h2>5. Oil-Palm SCADA And HMI Design</h2>
             <span>why engineers design screens instead of showing only Ladder</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">Engineers design screens so operators see what matters at a glance. There are overview, station, alarm, trend and maintenance screens.</p>
+            <p class="plain-like"><strong>Like:</strong> A car dashboard: speed up front, details in the menus.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="scada-screen-grid">
             <article class="scada-screen plant-screen">
               <h3>Plant Overview</h3>
@@ -356,6 +407,8 @@ PLC simulator
               <div class="screen-strip"><span>VFD 03 OK</span><span>Node 12 Online</span><span>Run 1482h</span><span>Backup v1.8</span></div>
             </article>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="hmi-challenges" class="panel scenario-panel">
@@ -363,6 +416,13 @@ PLC simulator
             <h2>6. HMI Design Challenges Engineers Face</h2>
             <span>good screens reduce panic during faults</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">Bad screens cause confusion when things go wrong. Good screens use clear alarms and show what is stopping a machine.</p>
+            <p class="plain-like"><strong>Like:</strong> A clear road sign versus a confusing one.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="wide-table">
             <table>
               <thead>
@@ -378,6 +438,8 @@ PLC simulator
               </tbody>
             </table>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="phase3-preview" class="panel scenario-panel">
@@ -385,6 +447,13 @@ PLC simulator
             <h2>7. Phase 3 Preview: Python Data Extraction And Analytics</h2>
             <span>virtual Modbus TCP first, then OPC UA/MQTT, then pySerial/RS-232</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">Phase 3 collects machine numbers with a small Python program. It stores them and turns them into charts.</p>
+            <p class="plain-like"><strong>Like:</strong> A diary that records the mill's numbers every minute.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="phase2-roadmap">
             <div><b>1</b><span>Virtual Modbus TCP</span><code>simulated registers</code></div>
             <div><b>2</b><span>Python collector</span><code>poll, timeout, retry</code></div>
@@ -405,6 +474,8 @@ Local historian
 Analytics page
   shows trends, production counters, alarm frequency, downtime hints</code></pre>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="glossary" class="panel scenario-panel">
@@ -412,6 +483,12 @@ Analytics page
             <h2>8. Tiny Glossary For Newcomers</h2>
             <span>words that stop being scary after one sentence</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">Key words explained in one line each. You can also tap any underlined word on this site for a quick meaning.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="wide-table">
             <table>
               <tbody>
@@ -434,10 +511,13 @@ Analytics page
             <a href="/static/industrial-situations.html">Industrial Situations</a>
             <a href="/static/plc-programming-methods.html">PLC Methods</a>
           </div>
+            </div>
+          </details>
         </section>
       </main>
     </div>
-      <script src="/static/hub-flow.js?v=flow-20261020" defer></script>
+      <script src="/static/hub-flow.js?v=plain-20261021" defer></script>
+      <script src="/static/hub-ui.js?v=plain-20261021" defer></script>
       <script src="/static/mobile-nav.js?v=m5-20261015" defer></script>
   </body>
 </html>

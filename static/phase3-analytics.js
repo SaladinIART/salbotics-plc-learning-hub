@@ -36,13 +36,13 @@ function formatValue(value) {
   return Number.isInteger(value) ? value.toString() : value.toFixed(1);
 }
 
-async function loadJson(url, options) {
+let loadJson = async function (url, options) {
   const response = await fetch(url, options);
   if (!response.ok) {
     throw new Error(`${url} returned HTTP ${response.status}`);
   }
   return response.json();
-}
+};
 
 function renderCards(cards) {
   qs("#management-cards").innerHTML = cards
@@ -285,9 +285,27 @@ function renderWebsitePreview() {
 }
 
 qs("#reset-analytics").addEventListener("click", resetDashboard);
+// On the website, draw a sample recorded from the trainer (see
+// scripts/build_dashboard_samples.py) with the same chart code.
+async function showWebsiteSample() {
+  try {
+    const sample = await (await fetch("sample-analytics.json")).json();
+    loadJson = async (url) => {
+      if (!(url in sample)) throw new Error(`no sample for ${url}`);
+      return sample[url];
+    };
+    await refreshDashboard();
+    qs("#storage-status").textContent = "Sample data recorded from the trainer";
+    qs("#generated-at").textContent = "sample, not live";
+    qs("#reset-analytics").hidden = true;
+  } catch (error) {
+    renderWebsitePreview();
+  }
+}
+
 if (onTrainerPage()) {
   refreshDashboard();
   setInterval(refreshDashboard, 5000);
 } else {
-  renderWebsitePreview();
+  showWebsiteSample();
 }

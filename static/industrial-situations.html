@@ -6,7 +6,7 @@
     <title>Salbotics PLC Learning Hub - Industrial Situations</title>
     <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
     <link rel="stylesheet" href="/static/guide.css" />
-    <link rel="stylesheet" href="/static/hub.css?v=flow-20261020" />
+    <link rel="stylesheet" href="/static/hub.css?v=plain-20261021" />
   </head>
   <body class="hub-page" data-lesson="industrial-situations.html">
     <div class="app-shell guide-shell industrial-shell">
@@ -97,6 +97,13 @@
             <h2>Situation 1: PLC Brand Reality</h2>
             <span>Omron and Siemens are both common, but the habits differ</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">Omron and Siemens are two common PLC makers. The ideas are the same, but their software and wiring habits differ.</p>
+            <p class="plain-like"><strong>Like:</strong> Android and iPhone: both make calls, but the menus differ.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="brand-grid">
             <article class="brand-card">
               <div class="brand-title">
@@ -140,6 +147,8 @@
             diagnostic workflow change. The control idea stays the same: inputs are read, logic is
             solved, outputs are written, and faults must be handled safely.
           </p>
+            </div>
+          </details>
         </section>
 
         <section id="lower-higher" class="panel scenario-panel">
@@ -147,6 +156,13 @@
             <h2>Situation 2: Lower PLC Or Higher PLC?</h2>
             <span>choose by machine risk, I/O count, network needs, diagnostics, and motion</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">Small PLCs suit simple machines and cost less. Bigger PLCs handle many signals, networks and motors, but need more skill.</p>
+            <p class="plain-like"><strong>Like:</strong> A motorbike for errands, a lorry for heavy loads.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="compare-grid">
             <div class="mini-table">
               <h3>Small / lower PLC use case</h3>
@@ -178,6 +194,8 @@
             <div><b>4</b><span>Check safety</span><code>risk assessment required</code></div>
             <div><b>5</b><span>Check service</span><code>diagnostics and spares</code></div>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="master-device" class="panel scenario-panel">
@@ -185,6 +203,13 @@
             <h2>Situation 3: Master / Device Roles</h2>
             <span>learn modern terms, but understand old manuals</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">In a network, one device asks and the others answer. Older manuals say master and slave; newer ones say controller and device.</p>
+            <p class="plain-like"><strong>Like:</strong> A teacher asking questions and students answering.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="scenario-layout">
             <div class="scenario-notes">
               <h3>Words you will see</h3>
@@ -224,6 +249,8 @@
               </p>
             </div>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="analog" class="panel scenario-panel">
@@ -231,6 +258,13 @@
             <h2>Situation 4: Analog Modules</h2>
             <span>not just on/off: voltage, current, scaling, and failure clues</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">Some signals are not just on or off, like temperature or pressure. The PLC turns them into real units such as bar or degrees.</p>
+            <p class="plain-like"><strong>Like:</strong> A thermometer instead of a light switch.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="compare-grid">
             <div class="mini-table">
               <h3>Common analog signals</h3>
@@ -269,6 +303,8 @@
               </tbody>
             </table>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="vfd" class="panel scenario-panel">
@@ -276,6 +312,13 @@
             <h2>Situation 5: VFD / PWM Motor Control</h2>
             <span>the PLC commands speed; the drive creates motor power</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">A motor drive (VFD) controls how fast a motor turns. The PLC says run and how fast; the drive does the heavy power work.</p>
+            <p class="plain-like"><strong>Like:</strong> You press the pedal; the engine does the work.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="scenario-layout">
             <div class="scenario-notes">
               <h3>What the PLC usually does</h3>
@@ -325,6 +368,8 @@
               </tbody>
             </table>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="npn-pnp" class="panel scenario-panel danger-scenario">
@@ -332,6 +377,13 @@
             <h2>Situation 6: NPN / PNP Sensor Troubleshooting</h2>
             <span>sourcing and sinking mistakes are common cabinet faults</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">Sensors come in two wiring types that are easy to mix up. A wrong match is a very common reason a sensor seems dead.</p>
+            <p class="plain-like"><strong>Like:</strong> A plug that fits but is wired the wrong way round.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="compare-grid">
             <div class="sensor-card">
               <h3>PNP sensor</h3>
@@ -381,6 +433,8 @@
               </table>
             </div>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="robust-design" class="panel scenario-panel">
@@ -388,6 +442,13 @@
             <h2>Situation 7: Robust System Design</h2>
             <span>make the machine easier to diagnose before it fails</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">Good machines explain themselves when something goes wrong. Clear names, clear alarms and safe manual modes save hours of fault-finding.</p>
+            <p class="plain-like"><strong>Like:</strong> A car dashboard saying 'door open' instead of just beeping.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="robust-grid">
             <div class="robust-item">
               <h3>Interlocks</h3>
@@ -422,6 +483,8 @@
               <div><b>HMI / maintenance</b><span>which side is waiting?</span><span>which permissive is missing?</span><span>what should operator check?</span></div>
             </div>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="future-languages" class="panel scenario-panel">
@@ -429,6 +492,13 @@
             <h2>Situation 8: Future PLC Languages</h2>
             <span>ladder first, then compare other IEC styles later</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">Learn Ladder first, because technicians use it most. Other PLC languages are different ways to write the same rules.</p>
+            <p class="plain-like"><strong>Like:</strong> Learning to print before learning joined-up writing.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="compare-grid language-grid">
             <div class="language-card">
               <h3>Ladder</h3>
@@ -458,6 +528,8 @@
             <a href="https://www.siemens.com/en-us/products/simatic/">Siemens SIMATIC</a>
             <a href="https://www.siemens.com/global/en/products/automation/systems/industrial/plc/simatic-s7-1500.html">Siemens S7-1500</a>
           </div>
+            </div>
+          </details>
         </section>
       </main>
       <footer class="product-footer">
@@ -465,7 +537,8 @@
         <a href="https://salbotics.uk/">Salbotics Solutions</a>. It is not certified safety or traffic-control software.
       </footer>
     </div>
-      <script src="/static/hub-flow.js?v=flow-20261020" defer></script>
+      <script src="/static/hub-flow.js?v=plain-20261021" defer></script>
+      <script src="/static/hub-ui.js?v=plain-20261021" defer></script>
       <script src="/static/mobile-nav.js?v=m5-20261015" defer></script>
   </body>
 </html>

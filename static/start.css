@@ -632,6 +632,199 @@ body.start-page {
   margin: 0;
 }
 
+/* ---------- Welcome back + search (hub-home.js) ---------- */
+.sp-continue {
+  margin-top: 22px;
+  padding: 16px 18px;
+  border: 1px solid color-mix(in srgb, var(--sp-in) 35%, transparent);
+  border-radius: var(--sp-radius);
+  background: var(--sp-in-soft);
+}
+
+.sp-continue[hidden],
+.sp-search[hidden] {
+  display: none;
+}
+
+.sp-continue-title {
+  margin: 0 0 10px;
+  color: var(--sp-text);
+  font-weight: 700;
+}
+
+.sp-continue-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+}
+
+.sp-continue-reset {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--sp-muted);
+  font: inherit;
+  font-size: 15px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.sp-search {
+  position: relative;
+  margin-top: 22px;
+  scroll-margin-top: 120px;
+}
+
+.sp-search label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--sp-text);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.sp-search input {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 16px;
+  border: 1px solid var(--sp-line);
+  border-radius: 12px;
+  background: var(--sp-surface);
+  color: var(--sp-text);
+  font: inherit;
+  font-size: 17px;
+  box-shadow: var(--sp-shadow);
+}
+
+.sp-search input:focus {
+  border-color: var(--sp-brand);
+  outline: 3px solid color-mix(in srgb, var(--sp-brand) 25%, transparent);
+}
+
+.sp-search-results {
+  display: grid;
+  gap: 6px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sp-search-results:empty {
+  display: none;
+}
+
+.sp-search-results li {
+  border: 1px solid var(--sp-line);
+  border-radius: 12px;
+  background: var(--sp-surface);
+}
+
+.sp-search-results a,
+.sp-search-word,
+.sp-search-empty {
+  display: grid;
+  gap: 2px;
+  padding: 10px 14px;
+}
+
+.start-page .sp-search-results a {
+  color: var(--sp-body);
+  text-decoration: none;
+}
+
+.start-page .sp-search-results a:hover,
+.start-page .sp-search-results a:focus-visible {
+  background: var(--sp-surface-2);
+  border-radius: 12px;
+}
+
+.sp-search-results strong {
+  color: var(--sp-text);
+}
+
+.sp-search-results small,
+.sp-search-results span {
+  color: var(--sp-muted);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.sp-search-word {
+  border-left: 4px solid var(--sp-brand) !important;
+}
+
+/* ---------- "What do you want to do?" goal tiles ---------- */
+.sp-goals {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.start-page a.sp-goal {
+  display: grid;
+  align-content: start;
+  gap: 4px;
+  padding: 18px;
+  border: 1px solid var(--sp-line);
+  border-radius: var(--sp-radius);
+  background: var(--sp-surface);
+  box-shadow: var(--sp-shadow);
+  color: var(--sp-body);
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.start-page a.sp-goal:hover,
+.start-page a.sp-goal:focus-visible {
+  border-color: var(--sp-brand);
+  transform: translateY(-2px);
+}
+
+.sp-goal .sp-badge {
+  margin-bottom: 8px;
+}
+
+.sp-goal strong {
+  color: var(--sp-text);
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.sp-goal small {
+  color: var(--sp-muted);
+  font-size: 15px;
+}
+
+.start-page .sp-lessons a.is-done {
+  border-color: color-mix(in srgb, var(--sp-in) 45%, transparent);
+}
+
+.sp-lessons a.is-done .sp-lesson-no {
+  background: var(--sp-in-soft);
+  color: var(--sp-in);
+}
+
+@media (max-width: 960px) {
+  .sp-goals {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 420px) {
+  .sp-goals {
+    gap: 10px;
+  }
+
+  .start-page a.sp-goal {
+    padding: 14px;
+  }
+
+  .sp-goal strong {
+    font-size: 16px;
+  }
+}
+
 /* Full lesson map inside the learning-path timeline */
 .sp-stages h3 {
   margin: 8px 0 10px;

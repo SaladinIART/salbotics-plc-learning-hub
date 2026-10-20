@@ -6,7 +6,7 @@
     <title>Salbotics PLC Learning Hub - Phase 4 Legacy OT Recovery</title>
     <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
     <link rel="stylesheet" href="/static/guide.css?v=phase4-legacy-ot-20260626" />
-    <link rel="stylesheet" href="/static/hub.css?v=flow-20261020" />
+    <link rel="stylesheet" href="/static/hub.css?v=plain-20261021" />
   </head>
   <body class="hub-page" data-lesson="phase-4-legacy-ot-recovery.html" data-needs-trainer>
     <div class="app-shell guide-shell industrial-shell phase4-shell">
@@ -84,6 +84,9 @@
             <h2>1. Read-Only Bridge Summary</h2>
             <span id="legacy-health">virtual legacy bridge</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">Shows whether the old machine is being read safely. Nothing on this page can change the machine.</p>
+          </div>
           <div class="analytics-toolbar">
             <span>Last refresh: <strong id="legacy-generated-at">--</strong></span>
             <button id="reset-legacy" type="button">RESET LEGACY DEMO</button>
@@ -97,6 +100,9 @@
             <h2>2. Recovery Workflow</h2>
             <span>stabilize first, migrate later</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">The safe order: save evidence, protect the old machine, watch it read-only, then plan a replacement.</p>
+          </div>
           <div id="legacy-workflow" class="legacy-workflow-grid"></div>
         </section>
 
@@ -104,6 +110,9 @@
           <div class="panel-heading">
             <h2>3. Read-Only Register Map</h2>
             <span>Virtual Modbus TCP register view, no writes</span>
+          </div>
+          <div class="plain-view">
+            <p class="plain-text">Values read from the old controller, such as tank level or motor current. Every row is read-only.</p>
           </div>
           <div class="wide-table">
             <table>
@@ -122,7 +131,16 @@
             <h2>4. XP/7 Risk Isolation Diagram</h2>
             <span>old assets stay protected while modern systems read summaries</span>
           </div>
-          <div class="diagram-panel">
+          <div class="plain-view">
+            <p class="plain-text">The old computer and PLC sit behind a protective barrier. Modern systems only read summaries through a one-way bridge.</p>
+            <p class="plain-like"><strong>Like:</strong> Reading a museum label without touching the exhibit.</p>
+                      <ol class="phone-flow" aria-label="How the data flows">
+              <li><strong>Old machine zone</strong><span>the old PLC and XP/7 screen keep running the machine</span></li>
+              <li><strong>Read-only bridge</strong><span>a small program reads values and never writes</span></li>
+              <li><strong>Modern view</strong><span>dashboards and records, plus planning for replacement</span></li>
+            </ol>
+          </div>
+          <div class="diagram-panel has-phone-flow">
             <svg class="process-svg phase4-svg" viewBox="0 0 1180 430" role="img" aria-labelledby="phase4-isolation-title">
               <title id="phase4-isolation-title">Legacy OT isolation and read-only bridge topology</title>
               <defs>
@@ -168,6 +186,9 @@
             <h2>5. Real Situations Engineers Face</h2>
             <span>what companies usually do before replacement</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">Common real cases, like a lost installer or missing licence, and what companies usually do about them.</p>
+          </div>
           <div id="legacy-situations" class="legacy-situation-grid"></div>
         </section>
 
@@ -175,6 +196,9 @@
           <div class="panel-heading">
             <h2>6. Bridge Events</h2>
             <span>faults and communication clues without touching PLC outputs</span>
+          </div>
+          <div class="plain-view">
+            <p class="plain-text">Communication problems the bridge noticed, recorded without touching the machine.</p>
           </div>
           <div class="wide-table">
             <table>
@@ -190,6 +214,9 @@
           <div class="panel-heading">
             <h2>7. Simulated RS-232 / pySerial Lesson</h2>
             <span>legacy COM-port thinking without opening a real COM port</span>
+          </div>
+          <div class="plain-view">
+            <p class="plain-text">Many old machines talk through a serial cable. This lesson shows how to listen safely, in a simulation.</p>
           </div>
           <div class="legacy-rs232-grid">
             <div id="legacy-rs232-card" class="code-panel"></div>
@@ -213,6 +240,9 @@ observe first, command never, until an approved test plan exists.</code></pre>
             <h2>8. Phase 5 Preview: Modernization And Migration Strategy</h2>
             <span>replace the risk only after evidence, testing, and rollback planning</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">Replacing an old system happens in careful steps, with testing and a way to go back if needed.</p>
+          </div>
           <div class="phase2-roadmap phase4-roadmap">
             <div><b>1</b><span>Rebuild HMI</span><code>screens + alarms</code></div>
             <div><b>2</b><span>Reconstruct Logic</span><code>Ladder + states</code></div>
@@ -231,7 +261,8 @@ observe first, command never, until an approved test plan exists.</code></pre>
       </main>
     </div>
     <script src="/static/phase4-legacy.js?v=phase4-legacy-20260626"></script>
-      <script src="/static/hub-flow.js?v=flow-20261020" defer></script>
+      <script src="/static/hub-flow.js?v=plain-20261021" defer></script>
+      <script src="/static/hub-ui.js?v=plain-20261021" defer></script>
       <script src="/static/mobile-nav.js?v=m5-20261015" defer></script>
   </body>
 </html>

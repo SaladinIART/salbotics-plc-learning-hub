@@ -65,6 +65,27 @@
     return { number: 0, name: "" };
   }
 
+  // Finished lessons are remembered only in this browser (start page reads it too).
+  var KEY = "salbotics-hub-progress";
+  function loadProgress() {
+    try {
+      var saved = JSON.parse(localStorage.getItem(KEY) || "{}");
+      return { done: Array.isArray(saved.done) ? saved.done : [],
+               last: typeof saved.last === "string" ? saved.last : "" };
+    } catch (error) {
+      return { done: [], last: "" };
+    }
+  }
+  function saveProgress(p) {
+    try { localStorage.setItem(KEY, JSON.stringify(p)); } catch (error) { /* private mode */ }
+  }
+  var saved = loadProgress();
+  saved.last = current;
+  saveProgress(saved);
+  function doneCount() {
+    return LESSONS.filter(function (l) { return saved.done.indexOf(l.file) !== -1; }).length;
+  }
+
   var lesson = LESSONS[index];
   var stage = stageOf(lesson);
   var words = (main.textContent || "").split(/\s+/).length;
@@ -80,20 +101,32 @@
   progress.setAttribute("aria-label", "Learning path");
   var top = el("div", "hub-progress-top");
   top.appendChild(el("span", "hub-stage", "Stage " + stage.number + " of " + STAGES.length + " · " + stage.name));
-  top.appendChild(el("span", "hub-step",
-    "Lesson " + (index + 1) + " of " + LESSONS.length + " · about " + minutes + " min read"));
+  var step = el("span", "hub-step");
+  function stepText() {
+    var count = doneCount();
+    step.textContent = "Lesson " + (index + 1) + " of " + LESSONS.length + " · about " + minutes +
+      " min read" + (count ? " · " + count + " finished" : "");
+  }
+  stepText();
+  top.appendChild(step);
+  var tools = el("span", "hub-progress-links");
+  var find = el("a", "hub-map-link", "Search");
+  find.href = href("start.html") + "#search";
   var map = el("a", "hub-map-link", "All lessons");
   map.href = href("start.html") + "#path";
-  top.appendChild(map);
+  tools.appendChild(find);
+  tools.appendChild(map);
+  top.appendChild(tools);
   progress.appendChild(top);
 
   var bar = el("ol", "hub-progress-bar");
   LESSONS.forEach(function (item, n) {
-    var li = el("li", n < index ? "is-done" : n === index ? "is-current" : "");
+    var li = el("li", (saved.done.indexOf(item.file) !== -1 ? "is-done " : "") + (n === index ? "is-current" : ""));
     var a = el("a");
     a.href = href(item.file);
     a.title = "Lesson " + (n + 1) + ": " + item.title;
-    a.appendChild(el("span", "hub-sr", "Lesson " + (n + 1) + ": " + item.title));
+    a.appendChild(el("span", "hub-sr", "Lesson " + (n + 1) + ": " + item.title +
+      (saved.done.indexOf(item.file) !== -1 ? " (finished)" : "")));
     if (n === index) a.setAttribute("aria-current", "page");
     li.appendChild(a);
     bar.appendChild(li);
@@ -107,7 +140,7 @@
     note.setAttribute("role", "note");
     note.appendChild(el("strong", "", "Live numbers need the free trainer. "));
     note.appendChild(document.createTextNode(
-      "This page shows a dashboard from the Windows trainer. On this website you see a preview only. "));
+      "This page shows a dashboard from the Windows trainer. On this website you see sample numbers recorded from it. "));
     var dl = el("a", "", "How to download the trainer");
     dl.href = DOWNLOAD_URL;
     note.appendChild(dl);
@@ -149,4 +182,31 @@
   links.appendChild(all);
   next.appendChild(links);
   main.appendChild(next);
+
+  // Reaching the "Up next" card counts as finishing this lesson.
+  var finished = el("p", "hub-finished", "\u2713 Lesson finished. Your progress is saved in this browser.");
+  finished.hidden = saved.done.indexOf(current) === -1;
+  next.insertBefore(finished, next.firstChild);
+  function markDone() {
+    saved = loadProgress();
+    if (saved.done.indexOf(current) === -1) saved.done.push(current);
+    saved.last = current;
+    saveProgress(saved);
+    finished.hidden = false;
+    var seg = bar.children[index];
+    if (seg) seg.classList.add("is-done");
+    stepText();
+  }
+  if ("IntersectionObserver" in window) {
+    var seen = new IntersectionObserver(function (entries) {
+      if (entries.some(function (e) { return e.isIntersecting; })) {
+        markDone();
+        seen.disconnect();
+      }
+    }, { threshold: 0.6 });
+    seen.observe(next);
+  }
+  next.addEventListener("click", function (event) {
+    if (event.target.closest(".hub-next-card")) markDone();
+  });
 })();
