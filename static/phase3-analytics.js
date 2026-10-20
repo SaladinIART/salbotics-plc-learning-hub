@@ -245,6 +245,49 @@ async function resetDashboard() {
   }
 }
 
+
+// The public website has no trainer server behind it. There, show a calm
+// preview message instead of polling an API that does not exist.
+function onTrainerPage() {
+  const path = location.pathname;
+  return /^\/static\//.test(path) || !/(\.html|\/)$/.test(path);
+}
+
+const PREVIEW_NOTE = "Live numbers appear when you run the free Windows trainer. This website shows the layout only.";
+
+function renderWebsitePreview() {
+  qs("#storage-status").textContent = "Preview: runs in the trainer";
+  qs("#generated-at").textContent = "not running here";
+  qs("#reset-analytics").hidden = true;
+  qs("#management-cards").innerHTML = `
+    <article class="analytics-kpi-card analytics-wide-card">
+      <span>Dashboard preview</span>
+      <strong>Live in the trainer</strong>
+      <p>${PREVIEW_NOTE}</p>
+    </article>
+  `;
+  metrics.forEach((metric) => {
+    const panel = qs(`#trend-${metric.id}`);
+    if (!panel) return;
+    panel.innerHTML = `
+      <div class="trend-head"><span>${metric.title}</span><strong>Preview</strong></div>
+      <div class="trend-placeholder">This chart fills in when the trainer is running.</div>
+    `;
+  });
+  qs("#event-table").innerHTML = `
+    <tr><td>--</td><td>INFO</td><td>Website preview</td><td>Events appear in the trainer</td><td>${PREVIEW_NOTE}</td></tr>
+  `;
+  qs("#station-states").innerHTML = `
+    <div class="station-state-row"><strong>Station states</strong><span>PREVIEW</span><p>Shown live in the trainer.</p></div>
+  `;
+  qs("#press-deep-dive").innerHTML = `<p>Screw press values are shown live in the trainer.</p>`;
+  renderArchitecture(fallbackArchitectureLayers);
+}
+
 qs("#reset-analytics").addEventListener("click", resetDashboard);
-refreshDashboard();
-setInterval(refreshDashboard, 5000);
+if (onTrainerPage()) {
+  refreshDashboard();
+  setInterval(refreshDashboard, 5000);
+} else {
+  renderWebsitePreview();
+}

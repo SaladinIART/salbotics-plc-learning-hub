@@ -1,0 +1,764 @@
+/* Lesson pages: calm, modern reading layer on top of styles.css + guide.css.
+   Loaded only by pages with <body class="hub-page"> (the lessons). The live
+   simulator (index.html) keeps its control-panel look. Same palette as start.css. */
+
+:root {
+  --hp-bg: #f7f9fc;
+  --hp-surface: #ffffff;
+  --hp-surface-2: #eef3f9;
+  --hp-text: #0f172a;
+  --hp-body: #334155;
+  --hp-muted: #64748b;
+  --hp-line: #e2e8f0;
+  --hp-brand: #2563eb;
+  --hp-brand-strong: #1d4ed8;
+  --hp-brand-soft: #dbeafe;
+  --hp-ok: #059669;
+  --hp-ok-soft: #d1fae5;
+  --hp-warn-bg: #fffbeb;
+  --hp-warn-line: #f59e0b;
+  --hp-warn-text: #78350f;
+  --hp-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+body.hub-page {
+  background: var(--hp-bg);
+  color: var(--hp-body);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hub-page .app-shell {
+  width: min(1180px, calc(100% - 32px));
+  padding-top: 12px;
+}
+
+/* ---------- Top bar ---------- */
+.hub-page .topbar {
+  position: sticky;
+  top: 8px;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 16px;
+  border: 1px solid var(--hp-line);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--hp-surface) 92%, transparent);
+  -webkit-backdrop-filter: saturate(160%) blur(10px);
+  backdrop-filter: saturate(160%) blur(10px);
+  box-shadow: var(--hp-shadow);
+  overflow: visible;
+}
+
+.hub-page .brand-block {
+  min-height: 60px;
+  padding: 0;
+  border: 0;
+  gap: 0;
+}
+
+.hub-page .brand-block strong {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.hub-page .hub-home {
+  color: var(--hp-text);
+  text-decoration: none;
+}
+
+.hub-page .brand-block span {
+  color: var(--hp-muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.hub-page .top-actions {
+  justify-content: flex-end;
+  gap: 2px;
+  padding: 8px 0;
+  border: 0;
+}
+
+.hub-page .header-link,
+.hub-page .connection-pill {
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--hp-body);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.hub-page .header-link:hover,
+.hub-page .header-link:focus-visible {
+  background: var(--hp-surface-2);
+  color: var(--hp-text);
+}
+
+.hub-page .header-link[aria-current] {
+  background: var(--hp-brand-soft);
+  color: var(--hp-brand-strong);
+}
+
+.hub-page .connection-pill {
+  margin-left: 6px;
+  background: var(--hp-brand);
+  color: #ffffff;
+}
+
+.hub-page .connection-pill:hover,
+.hub-page .connection-pill:focus-visible {
+  background: var(--hp-brand-strong);
+  color: #ffffff;
+}
+
+/* The jargon tiles under the old header add noise for new readers. */
+.hub-page .guide-status-strip {
+  display: none;
+}
+
+/* ---------- Page body ---------- */
+.hub-page .guide-main {
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.hub-page .guide-main * {
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.hub-page .panel {
+  border: 1px solid var(--hp-line);
+  border-radius: 16px;
+  background: var(--hp-surface);
+  color: var(--hp-body);
+  box-shadow: var(--hp-shadow);
+}
+
+.hub-page .lesson-panel,
+.hub-page .scenario-panel {
+  padding: 20px 24px 24px;
+}
+
+.hub-page .panel-heading {
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 16px;
+  margin: -20px -24px 18px;
+  padding: 18px 24px 14px;
+  border-bottom: 1px solid var(--hp-line);
+  background: transparent;
+  color: var(--hp-text);
+}
+
+.hub-page .panel-heading h1 {
+  color: var(--hp-text);
+  font-size: clamp(26px, 3.4vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.hub-page .panel-heading h2 {
+  margin: 0;
+  overflow: visible;
+  color: var(--hp-text);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  white-space: normal;
+}
+
+.hub-page .intro-grid h2,
+.hub-page .guide-main .intro-grid h2 {
+  margin-bottom: 6px;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.hub-page .panel-heading span {
+  color: var(--hp-muted);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.hub-page .guide-main h2 {
+  color: var(--hp-text);
+}
+
+.hub-page .guide-main h3 {
+  color: var(--hp-text);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.hub-page .guide-main p,
+.hub-page .guide-main li {
+  color: var(--hp-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.hub-page .guide-main td,
+.hub-page .guide-main th {
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.hub-page .guide-main a {
+  color: var(--hp-brand);
+  text-underline-offset: 3px;
+}
+
+.hub-page .path-card,
+.hub-page .brand-card,
+.hub-page .sensor-card,
+.hub-page .robust-item,
+.hub-page .language-card,
+.hub-page .industrial-diagram,
+.hub-page .comm-card,
+.hub-page .scada-screen {
+  padding: 18px;
+  border-color: var(--hp-line);
+  border-radius: 12px;
+}
+
+.hub-page .diagram-panel,
+.hub-page .wide-table {
+  border-color: var(--hp-line);
+  border-radius: 12px;
+}
+
+.hub-page .safety-note {
+  padding: 16px 18px;
+  border: 1px solid color-mix(in srgb, var(--hp-warn-line) 45%, transparent);
+  border-left: 5px solid var(--hp-warn-line);
+  border-radius: 12px;
+  background: var(--hp-warn-bg);
+}
+
+.hub-page .safety-note h2 {
+  color: var(--hp-warn-text);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.hub-page .guide-main .safety-note p {
+  color: var(--hp-warn-text);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Section links: light pills instead of a dark button grid */
+.hub-page .scenario-nav {
+  position: static;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.hub-page .scenario-nav a {
+  min-height: 0;
+  padding: 7px 14px;
+  border: 1px solid var(--hp-line);
+  border-radius: 999px;
+  background: var(--hp-surface);
+  color: var(--hp-body);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.hub-page .scenario-nav a:hover,
+.hub-page .scenario-nav a:focus-visible {
+  border-color: var(--hp-brand);
+  background: var(--hp-surface);
+  color: var(--hp-brand);
+}
+
+.hub-page .product-footer {
+  margin-top: 24px;
+  border: 0;
+  border-top: 1px solid var(--hp-line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--hp-muted);
+  font-weight: 500;
+}
+
+.hub-page .product-footer a {
+  color: var(--hp-brand);
+}
+
+/* Notes above the full-width Ladder view, so rungs are not squeezed */
+.hub-page .scenario-layout {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.hub-page .scenario-notes .phase-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* ---------- "In 30 seconds" summary ---------- */
+.hub-page .hub-summary {
+  margin: 0 0 18px;
+  border-radius: 12px;
+  padding: 18px 20px;
+  border: 1px solid color-mix(in srgb, var(--hp-brand) 25%, transparent);
+  background: linear-gradient(180deg, var(--hp-brand-soft), var(--hp-surface) 70%);
+}
+
+.hub-summary h2 {
+  margin: 0 0 10px;
+  color: var(--hp-brand-strong);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.hub-page .guide-main .hub-summary h2 {
+  color: var(--hp-brand-strong);
+}
+
+.hub-summary ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hub-page .guide-main .hub-summary li {
+  position: relative;
+  padding-left: 30px;
+  color: var(--hp-text);
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.hub-summary li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--hp-ok-soft);
+  color: var(--hp-ok);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.hub-page .guide-main .hub-summary .hub-summary-tip {
+  margin: 12px 0 0;
+  color: var(--hp-muted);
+  font-size: 14px;
+}
+
+/* ---------- Learning-path progress (hub-flow.js) ---------- */
+.hub-progress {
+  padding: 14px 18px;
+  border: 1px solid var(--hp-line);
+  border-radius: 14px;
+  background: var(--hp-surface);
+}
+
+.hub-progress-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 14px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.hub-stage {
+  color: var(--hp-brand-strong);
+  font-weight: 800;
+}
+
+.hub-step {
+  color: var(--hp-muted);
+}
+
+.hub-page .hub-map-link {
+  margin-left: auto;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.hub-progress-bar {
+  display: flex;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hub-progress-bar li {
+  flex: 1 1 0;
+}
+
+.hub-progress-bar a {
+  display: block;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--hp-line);
+}
+
+.hub-progress-bar .is-done a {
+  background: color-mix(in srgb, var(--hp-brand) 55%, var(--hp-surface));
+}
+
+.hub-progress-bar .is-current a {
+  background: var(--hp-brand);
+  box-shadow: 0 0 0 3px var(--hp-brand-soft);
+}
+
+.hub-progress-bar a:hover,
+.hub-progress-bar a:focus-visible {
+  background: var(--hp-brand-strong);
+}
+
+.hub-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Offline note (Phase 3 / 4 dashboards) ---------- */
+.hub-offline {
+  padding: 14px 18px;
+  border: 1px solid color-mix(in srgb, var(--hp-warn-line) 45%, transparent);
+  border-left: 5px solid var(--hp-warn-line);
+  border-radius: 12px;
+  background: var(--hp-warn-bg);
+  color: var(--hp-warn-text);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.hub-page .hub-offline a {
+  color: var(--hp-brand-strong);
+  font-weight: 700;
+}
+
+/* ---------- "Up next" (hub-flow.js) ---------- */
+.hub-next {
+  margin-top: 16px;
+  padding: 24px;
+  border: 1px solid var(--hp-line);
+  border-radius: 16px;
+  background: var(--hp-surface);
+  box-shadow: var(--hp-shadow);
+}
+
+.hub-page .guide-main .hub-next-label {
+  margin: 0 0 12px;
+  color: var(--hp-muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.hub-page .hub-next-card,
+.hub-page .guide-main .hub-next-card {
+  display: grid;
+  gap: 4px;
+  padding: 20px 22px;
+  border-radius: 14px;
+  background: var(--hp-brand);
+  color: #ffffff;
+  text-decoration: none;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.hub-page .guide-main .hub-next-card:hover,
+.hub-page .guide-main .hub-next-card:focus-visible {
+  background: var(--hp-brand-strong);
+  transform: translateY(-1px);
+}
+
+.hub-next-card strong {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.hub-next-card span {
+  color: #dbeafe;
+  font-size: 16px;
+}
+
+.hub-next-card .hub-next-go {
+  margin-top: 6px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.hub-next-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-top: 14px;
+  font-size: 15px;
+}
+
+.hub-page .hub-next-links a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.hub-page .hub-next-links a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Topic sections fold away (all screen sizes) ---------- */
+.js-sections .hub-page section[id] > .panel-heading[role="button"] {
+  position: relative;
+  padding-right: 64px;
+  cursor: pointer;
+}
+
+.js-sections .hub-page section[id] > .panel-heading[role="button"]::after {
+  content: "\2212";
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--hp-surface-2);
+  color: var(--hp-text);
+  font-size: 20px;
+  font-weight: 600;
+  transform: translateY(-50%);
+}
+
+.js-sections .hub-page section.section-collapsed > .panel-heading[role="button"]::after {
+  content: "+";
+  background: var(--hp-brand-soft);
+  color: var(--hp-brand-strong);
+}
+
+.js-sections .hub-page section[id] > .panel-heading[role="button"]:hover h2 {
+  color: var(--hp-brand-strong);
+}
+
+.js-sections .hub-page section.section-collapsed > :not(.panel-heading) {
+  display: none;
+}
+
+.js-sections .hub-page section.section-collapsed {
+  padding-bottom: 0;
+}
+
+.js-sections .hub-page section.section-collapsed > .panel-heading {
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
+.hub-page .section-tools {
+  display: flex;
+  justify-content: flex-end;
+  margin: -4px 0 -6px;
+}
+
+.hub-page .section-tools button {
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--hp-line);
+  border-radius: 999px;
+  background: var(--hp-surface);
+  color: var(--hp-body);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hub-page .section-tools button:hover,
+.hub-page .section-tools button:focus-visible {
+  border-color: var(--hp-brand);
+  color: var(--hp-brand);
+}
+
+/* ---------- Purposeful animation ----------
+   Only where movement explains a process. All of it stops when the device
+   asks for reduced motion. */
+
+/* Beginner guide: read -> decide -> act boxes light up in turn */
+.hub-page .loop-step {
+  animation: hub-loop-step 3s linear infinite;
+}
+
+.hub-page .loop-step-2 { animation-delay: 1s; }
+.hub-page .loop-step-3 { animation-delay: 2s; }
+
+@keyframes hub-loop-step {
+  0%, 30% { stroke-width: 6px; filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.45)); }
+  33.4%, 100% { stroke-width: 2px; filter: none; }
+}
+
+/* Oil mill: stations light up left to right, like a batch moving through */
+.hub-page .mill-step rect {
+  animation: hub-mill-step 8s linear infinite;
+  animation-delay: calc(var(--step, 0) * 1s);
+}
+
+@keyframes hub-mill-step {
+  0%, 11% { stroke-width: 6px; filter: drop-shadow(0 0 8px rgba(234, 88, 12, 0.55)); }
+  12.5%, 100% { stroke-width: 2px; filter: none; }
+}
+
+/* Phase 2: data moving along the arrows */
+.hub-page .flow-animated {
+  stroke-dasharray: 10 8;
+  animation: hub-data-flow 1s linear infinite;
+}
+
+@keyframes hub-data-flow {
+  to { stroke-dashoffset: -18; }
+}
+
+/* How it works: the shared traffic-light scene inside Scenario 1 */
+.hub-page .hub-scene {
+  margin: 0 0 18px;
+  padding: 16px;
+  border: 1px solid var(--hp-line);
+  border-radius: 12px;
+  background: var(--hp-surface);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hub-page .loop-step,
+  .hub-page .mill-step rect,
+  .hub-page .flow-animated {
+    animation: none;
+  }
+}
+
+/* ---------- Phone ---------- */
+@media (max-width: 760px) {
+  .hub-page .app-shell {
+    width: calc(100% - 24px);
+    padding-top: 8px;
+  }
+
+  .hub-page .topbar {
+    flex-wrap: wrap;
+    padding: 0 14px;
+  }
+
+  .hub-page .brand-block {
+    flex: 1 1 100%;
+    min-height: 58px;
+  }
+
+  .js-nav .hub-page .menu-toggle {
+    min-height: 40px;
+    border: 1px solid var(--hp-line);
+    border-radius: 10px;
+    background: var(--hp-surface);
+    color: var(--hp-text);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .hub-page .top-actions {
+    flex: 1 1 100%;
+    justify-content: flex-start;
+    padding: 0 0 12px;
+  }
+
+  .hub-page .connection-pill {
+    margin-left: 0;
+  }
+
+  .hub-page .lesson-panel,
+  .hub-page .scenario-panel {
+    padding: 16px 16px 18px;
+  }
+
+  .hub-page .panel-heading {
+    margin: -16px -16px 14px;
+    padding: 14px 16px 12px;
+  }
+
+  .hub-page .panel-heading h2 {
+    font-size: 18px;
+  }
+
+  .hub-page .panel-heading span {
+    font-size: 14px;
+  }
+
+  .js-sections .hub-page section[id] > .panel-heading[role="button"] {
+    padding-right: 56px;
+  }
+
+  .js-sections .hub-page section[id] > .panel-heading[role="button"]::after {
+    right: 14px;
+  }
+
+  .hub-page .guide-main p,
+  .hub-page .guide-main li {
+    font-size: 16px;
+  }
+
+  .hub-page .hub-summary,
+  .hub-next {
+    padding: 18px;
+  }
+
+  .hub-page .hub-map-link {
+    margin-left: 0;
+  }
+
+  .hub-page .js-sections .section-jump,
+  .js-sections .hub-page .section-jump {
+    border-color: var(--hp-line);
+    border-radius: 12px;
+    background: var(--hp-surface);
+    color: var(--hp-text);
+    box-shadow: var(--hp-shadow);
+  }
+
+  .hub-next-card strong {
+    font-size: 20px;
+  }
+
+  .js-sections .hub-page .section-jump select {
+    border: 1px solid var(--hp-line);
+    background: var(--hp-surface-2);
+    color: var(--hp-text);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hub-page .hub-next-card {
+    transition: none;
+  }
+}

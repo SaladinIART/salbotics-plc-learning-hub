@@ -65,7 +65,8 @@
         setOpen(section, section.classList.contains("section-collapsed"));
       }
     });
-    setOpen(section, false);
+    // A lesson can keep its key picture visible with data-start-open.
+    setOpen(section, section.hasAttribute("data-start-open"));
   });
 
   function openFromHash() {
@@ -106,6 +107,33 @@
     label.appendChild(text);
     label.appendChild(select);
     nav.parentNode.insertBefore(label, nav);
+  }
+
+  // One button to open or fold every topic at once.
+  if (sections.length > 1) {
+    var tools = document.createElement("div");
+    tools.className = "section-tools";
+    var toggle = document.createElement("button");
+    toggle.type = "button";
+    var allOpen = function () {
+      return sections.every(function (s) { return !s.classList.contains("section-collapsed"); });
+    };
+    var label = function () {
+      toggle.textContent = allOpen() ? "Fold all topics" : "Open all topics";
+    };
+    toggle.addEventListener("click", function () {
+      var open = !allOpen();
+      sections.forEach(function (s) { setOpen(s, open); });
+      label();
+    });
+    sections.forEach(function (s) {
+      s.querySelector(":scope > .panel-heading").addEventListener("click", function () {
+        setTimeout(label, 0);
+      });
+    });
+    tools.appendChild(toggle);
+    sections[0].parentNode.insertBefore(tools, sections[0]);
+    label();
   }
 
   window.addEventListener("hashchange", openFromHash);

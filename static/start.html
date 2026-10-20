@@ -7,7 +7,8 @@
     <title>Salbotics PLC Learning Hub - What Is This?</title>
     <meta name="description" content="Learn how factory machines think, for free, in your browser. No equipment needed." />
     <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
-    <link rel="stylesheet" href="/static/start.css?v=anim-20261020" />
+    <link rel="stylesheet" href="/static/start.css?v=flow-20261020" />
+    <link rel="stylesheet" href="/static/scenes.css?v=flow-20261020" />
   </head>
   <body class="start-page">
     <header class="topbar">
@@ -16,12 +17,12 @@
         <span>Learn how machines think</span>
       </div>
       <nav class="top-actions" aria-label="Hub pages">
-        <a class="header-link" href="/static/beginner-guide.html">Beginner guide</a>
-        <a class="header-link" href="/static/how-it-works.html">How it works</a>
-        <a class="header-link" href="/static/industrial-situations.html">Industry</a>
-        <a class="header-link" href="/static/oil-palm-industrial-environment.html">Oil mill</a>
-        <a class="header-link" href="/static/phase-2-start-here.html">Phase 2</a>
-        <a class="header-link" href="/static/risk-assessment-certification.html">Safety</a>
+        <a class="header-link" href="/static/start.html" aria-current="page">Home</a>
+        <a class="header-link" href="/static/beginner-guide.html" data-stage="basics">Basics</a>
+        <a class="header-link" href="/static/plc-programming-methods.html" data-stage="skills">Skills</a>
+        <a class="header-link" href="/static/oil-palm-industrial-environment.html" data-stage="factory">Factory</a>
+        <a class="header-link" href="/static/phase-2-start-here.html" data-stage="data">Data</a>
+        <a class="header-link" href="/static/risk-assessment-certification.html" data-stage="safety">Safety</a>
         <a class="connection-pill guide-back" href="/">Simulator</a>
       </nav>
     </header>
@@ -473,12 +474,54 @@
         <!-- 6. Path -->
         <section id="path" class="sp-section">
           <p class="sp-eyebrow">Your learning path</p>
-          <h2>Four steps, at your own pace.</h2>
-          <ol class="sp-path">
-            <li><div><h3><a href="/static/beginner-guide.html">Beginner guide</a></h3><p>PLC ideas through a washer, lift, gate and rice cooker.</p></div></li>
-            <li><div><h3><a href="/static/how-it-works.html">How it works</a></h3><p>The traffic-light rules, one by one.</p></div></li>
-            <li><div><h3><a href="/static/oil-palm-industrial-environment.html">Oil mill</a> and <a href="/static/industrial-situations.html">Industry</a></h3><p>The same ideas inside a real factory.</p></div></li>
-            <li><div><h3><a href="/static/phase-2-start-here.html">Phase 2 and beyond</a></h3><p>Control-room screens, networks and factory data.</p></div></li>
+          <h2>10 short lessons in 5 stages.</h2>
+          <p class="sp-intro">Go in order, or jump to what you need. Every lesson ends with a link to the next one.</p>
+          <ol class="sp-path sp-stages">
+            <li>
+              <div>
+                <h3>The basics</h3>
+                <ul class="sp-lessons">
+                <li><a href="/static/beginner-guide.html"><span class="sp-lesson-no">1</span><span><strong>Beginner guide</strong><small>PLC ideas through a washer, lift, gate and rice cooker.</small></span></a></li>
+                <li><a href="/static/how-it-works.html"><span class="sp-lesson-no">2</span><span><strong>How the traffic light works</strong><small>Follow the trainer's rules, one scenario at a time.</small></span></a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3>Real skills</h3>
+                <ul class="sp-lessons">
+                <li><a href="/static/plc-programming-methods.html"><span class="sp-lesson-no">3</span><span><strong>Writing a reliable program</strong><small>Plan with a flowchart first, then write Ladder.</small></span></a></li>
+                <li><a href="/static/industrial-situations.html"><span class="sp-lesson-no">4</span><span><strong>Real industrial situations</strong><small>Brands, sensors, motor drives and common cabinet faults.</small></span></a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3>A real factory</h3>
+                <ul class="sp-lessons">
+                <li><a href="/static/oil-palm-industrial-environment.html"><span class="sp-lesson-no">5</span><span><strong>Inside a palm-oil mill</strong><small>Follow fruit bunches all the way to crude palm oil.</small></span></a></li>
+                <li><a href="/static/oil-palm-control-stack-analysis.html"><span class="sp-lesson-no">6</span><span><strong>Choosing the right controller</strong><small>PLC, PAC, Raspberry Pi or Arduino: which job suits which?</small></span></a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3>Data and networks</h3>
+                <ul class="sp-lessons">
+                <li><a href="/static/phase-2-start-here.html"><span class="sp-lesson-no">7</span><span><strong>Control rooms and networks</strong><small>How machines, screens and servers share information.</small></span></a></li>
+                <li><a href="/static/phase-3-data-analytics.html"><span class="sp-lesson-no">8</span><span><strong>Factory data and dashboards</strong><small>Turn machine signals into numbers managers can use.</small></span></a></li>
+                <li><a href="/static/phase-4-legacy-ot-recovery.html"><span class="sp-lesson-no">9</span><span><strong>Rescuing old machines</strong><small>Read data safely from old equipment that must keep running.</small></span></a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3>Safety career</h3>
+                <ul class="sp-lessons">
+                <li><a href="/static/risk-assessment-certification.html"><span class="sp-lesson-no">10</span><span><strong>Becoming safety qualified</strong><small>What machine-safety training means, and how to get it.</small></span></a></li>
+                </ul>
+              </div>
+            </li>
           </ol>
           <div class="sp-callout">
             <p><strong>Want to press the buttons yourself?</strong> The full interactive trainer runs free on a Windows PC.</p>

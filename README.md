@@ -61,16 +61,30 @@ published automatically from `main` by GitHub Actions:
 
 - **Start page: "What is this?" overview** - one plain-language page for non-technical visitors:
   why the hub exists, the inputs -> PLC -> outputs picture (everyday and palm-oil mill examples),
-  the 3-step loop, who it is for and a 4-step learning path. It also has an at-a-glance numbers band,
+  the 3-step loop, who it is for and the full 10-lesson map. It also has an at-a-glance numbers band,
   three animated scenes (traffic light, car-park barrier, palm-oil conveyor pull-cord) with
   input/output lamps that light up as the PLC decides, and a visual Phase 1-5 roadmap.
   Animations can be paused and start paused when the device asks for reduced motion.
+- **One learning path** - 10 lessons in 5 stages (The basics, Real skills, A real factory,
+  Data and networks, Safety career), defined once in `static/hub-flow.js`. Every lesson has the
+  same top menu, a "Lesson X of 10" progress bar with reading time, and an "Up next" card at the
+  end, so readers always know what to learn next.
+- **Summary first, details on demand** - each lesson opens with an "In 30 seconds" box under its
+  title. Long topics fold into one-line rows (title + one-line subtitle); tap to open, or use
+  "Open all topics". Each lesson keeps its key picture open.
+- **Calm, modern look** - lesson pages share the start page's light design (`static/hub.css`);
+  the live simulator keeps its control-panel look.
+- **Animation only where it explains** - the scan loop (read, decide, act), the traffic-light
+  auto cycle, stations lighting up along the palm-oil mill, and data moving along the Phase 2
+  data path. All of it stops when the device asks for reduced motion.
+- **Website preview for live dashboards** - the Phase 3 and Phase 4 pages show a calm "preview"
+  note on the public site instead of server errors; live numbers appear in the local trainer.
 - **Beginner guide** - PLC basics in plain language using a washing machine, lift,
   automatic gate, escalator, rice cooker, car-park barrier and the trainer's own traffic light,
   with the technical term beside each idea, two diagrams, "Try it" questions and a glossary.
 - **Phone friendly** - on screens under about 760 px: a MENU button instead of the full link bar,
-  calmer text, readable stacked diagrams, collapsible sections with a "Jump to section" menu on
-  the longest pages, and "swipe sideways" hints on wide diagrams and tables. Desktop is unchanged.
+  readable stacked diagrams, a "Jump to section" menu on long lessons, and "swipe sideways"
+  hints on wide diagrams and tables.
 - **No live controls** - the interactive PLC/HMI simulator needs the local FastAPI backend, so it is
   not published. Use [Run Locally](#run-locally) for the full trainer.
 
@@ -107,9 +121,9 @@ Programming methods and flowcharts:
 
 ![Programming methods page](docs/screenshots/programming-methods.png)
 
-On a phone: MENU button, calmer text and collapsed sections with a Jump to section menu:
+On a phone: MENU button, learning-path progress bar and the "In 30 seconds" summary:
 
-<img src="docs/screenshots/mobile.png" alt="Oil-palm page on a phone with MENU button and collapsed sections" width="320">
+<img src="docs/screenshots/mobile.png" alt="Oil-palm lesson on a phone with MENU button, progress bar and 30-second summary" width="320">
 
 ## What You Can Learn
 

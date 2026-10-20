@@ -6,31 +6,40 @@
     <title>Salbotics PLC Learning Hub - Beginner Start Here</title>
     <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
     <link rel="stylesheet" href="/static/guide.css?v=phase2-clean-svg-20260626" />
+    <link rel="stylesheet" href="/static/hub.css?v=flow-20261020" />
   </head>
-  <body>
+  <body class="hub-page" data-lesson="beginner-guide.html">
     <div class="app-shell guide-shell industrial-shell beginner-shell">
       <header class="topbar">
         <div class="brand-block">
-          <strong>SALBOTICS PLC HUB</strong>
-          <span>BEGINNER START HERE</span>
+          <strong><a class="hub-home" href="/static/start.html">Salbotics PLC Hub</a></strong>
+          <span>Beginner guide</span>
         </div>
         <div class="top-actions">
-          <a class="connection-pill guide-back" href="/">SIMULATOR</a>
-          <a class="header-link" href="/static/start.html">WHAT IS THIS?</a>
-          <a class="header-link" href="/static/how-it-works.html">HOW</a>
-          <a class="header-link" href="/static/industrial-situations.html">INDUSTRY</a>
-          <a class="header-link" href="/static/oil-palm-industrial-environment.html">OIL MILL</a>
-          <a class="header-link" href="/static/phase-2-start-here.html">PHASE 2</a>
-          <a class="header-link" href="/static/plc-programming-methods.html">METHODS</a>
-          <a class="header-link" href="/static/risk-assessment-certification.html">SAFETY</a>
+          <a class="header-link" href="/static/start.html">Home</a>
+          <a class="header-link" href="/static/beginner-guide.html" data-stage="basics">Basics</a>
+          <a class="header-link" href="/static/plc-programming-methods.html" data-stage="skills">Skills</a>
+          <a class="header-link" href="/static/oil-palm-industrial-environment.html" data-stage="factory">Factory</a>
+          <a class="header-link" href="/static/phase-2-start-here.html" data-stage="data">Data</a>
+          <a class="header-link" href="/static/risk-assessment-certification.html" data-stage="safety">Safety</a>
+          <a class="connection-pill guide-back" href="/">Simulator</a>
         </div>
       </header>
 
-      <main class="guide-main">
+      <main class="guide-main" data-collapsible-sections>
         <section class="panel lesson-panel intro-panel industrial-intro">
           <div class="panel-heading">
             <h1>New to automation? Start here.</h1>
             <span>no engineering background needed</span>
+          </div>
+          <div class="hub-summary" role="region" aria-labelledby="hub-summary-title">
+            <h2 id="hub-summary-title">In 30 seconds</h2>
+            <ul>
+              <li>A PLC is a tough little computer that switches machines on and off by following rules.</li>
+              <li>It repeats three steps: read buttons and sensors, decide, then switch motors and lamps.</li>
+              <li>Six everyday machines show the main tricks: timers, memory, safety checks and holding a temperature.</li>
+            </ul>
+            <p class="hub-summary-tip">Tap a topic below to open it, or use "Open all topics".</p>
           </div>
           <div class="intro-grid industrial-intro-grid">
             <div>
@@ -62,6 +71,7 @@
           </div>
         </section>
 
+
         <nav class="scenario-nav industrial-nav" aria-label="Beginner lesson sections">
           <a href="#loop">The 3-step loop</a>
           <a href="#parts">Inputs &amp; outputs</a>
@@ -75,7 +85,7 @@
           <a href="#trainer">Use the trainer</a>
         </nav>
 
-        <section id="loop" class="panel scenario-panel">
+        <section id="loop" class="panel scenario-panel" data-start-open>
           <div class="panel-heading">
             <h2>1. The 3-step loop every PLC repeats</h2>
             <span>read, decide, act</span>
@@ -120,17 +130,17 @@
                   <path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"></path>
                 </marker>
               </defs>
-              <rect x="30" y="30" width="250" height="120" rx="8" class="phase2-svg-field"></rect>
+              <rect x="30" y="30" width="250" height="120" rx="8" class="phase2-svg-field loop-step loop-step-1"></rect>
               <text x="155" y="64" class="svg-center">1. READ INPUTS</text>
               <text x="155" y="92" class="svg-center small">buttons and sensors</text>
               <text x="155" y="120" class="svg-center small">lid closed? water level?</text>
 
-              <rect x="325" y="30" width="250" height="120" rx="8" class="phase2-svg-plc"></rect>
+              <rect x="325" y="30" width="250" height="120" rx="8" class="phase2-svg-plc loop-step loop-step-2"></rect>
               <text x="450" y="64" class="svg-center">2. DECIDE</text>
               <text x="450" y="92" class="svg-center small">follow the written rules</text>
               <text x="450" y="120" class="svg-center small">lid closed + Start: run</text>
 
-              <rect x="620" y="30" width="250" height="120" rx="8" class="phase2-svg-hmi"></rect>
+              <rect x="620" y="30" width="250" height="120" rx="8" class="phase2-svg-hmi loop-step loop-step-3"></rect>
               <text x="745" y="64" class="svg-center">3. ACT</text>
               <text x="745" y="92" class="svg-center small">motors, lamps, valves</text>
               <text x="745" y="120" class="svg-center small">valve ON, drum motor ON</text>
@@ -147,17 +157,17 @@
                   <path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"></path>
                 </marker>
               </defs>
-              <rect x="20" y="20" width="290" height="110" rx="8" class="phase2-svg-field"></rect>
+              <rect x="20" y="20" width="290" height="110" rx="8" class="phase2-svg-field loop-step loop-step-1"></rect>
               <text x="165" y="54" class="svg-center">1. READ INPUTS</text>
               <text x="165" y="82" class="svg-center small">buttons and sensors</text>
               <text x="165" y="108" class="svg-center small">lid closed? water level?</text>
               <line x1="165" y1="130" x2="165" y2="168" class="flow-branch" marker-end="url(#arrow-beginner-m)"></line>
-              <rect x="20" y="170" width="290" height="110" rx="8" class="phase2-svg-plc"></rect>
+              <rect x="20" y="170" width="290" height="110" rx="8" class="phase2-svg-plc loop-step loop-step-2"></rect>
               <text x="165" y="204" class="svg-center">2. DECIDE</text>
               <text x="165" y="232" class="svg-center small">follow the written rules</text>
               <text x="165" y="258" class="svg-center small">lid closed + Start: run</text>
               <line x1="165" y1="280" x2="165" y2="318" class="flow-branch" marker-end="url(#arrow-beginner-m)"></line>
-              <rect x="20" y="320" width="290" height="110" rx="8" class="phase2-svg-hmi"></rect>
+              <rect x="20" y="320" width="290" height="110" rx="8" class="phase2-svg-hmi loop-step loop-step-3"></rect>
               <text x="165" y="354" class="svg-center">3. ACT</text>
               <text x="165" y="382" class="svg-center small">motors, lamps, valves</text>
               <text x="165" y="408" class="svg-center small">valve ON, drum motor ON</text>
@@ -506,6 +516,7 @@
         </section>
       </main>
     </div>
+      <script src="/static/hub-flow.js?v=flow-20261020" defer></script>
       <script src="/static/mobile-nav.js?v=m5-20261015" defer></script>
   </body>
 </html>
