@@ -15,6 +15,7 @@ Mission: one portable place where beginners, technicians, and recruiters can see
 
 ## Start Here
 
+1. [What is this? overview](https://salbotics.uk/salbotics-plc-learning-hub/) - the whole idea on one plain-language page (inputs, PLC, outputs; who it is for)
 1. [Beginner Guide](Beginner-Guide.md) - new to automation? start here
 1. [Live Site And Mobile](Live-Site-And-Mobile.md)
 1. [Windows Download And Launch](Windows-Download-And-Launch.md)

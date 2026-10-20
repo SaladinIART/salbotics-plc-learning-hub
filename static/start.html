@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Salbotics PLC Learning Hub - What Is This?</title>
+    <meta name="description" content="Learn how factory machines think, for free, in your browser. No equipment needed." />
+    <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
+    <link rel="stylesheet" href="/static/guide.css?v=start-page-20261020" />
+  </head>
+  <body>
+    <div class="app-shell guide-shell industrial-shell beginner-shell start-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <strong>SALBOTICS PLC HUB</strong>
+          <span>WHAT IS THIS?</span>
+        </div>
+        <div class="top-actions">
+          <a class="connection-pill guide-back" href="/">SIMULATOR</a>
+          <a class="header-link" href="/static/beginner-guide.html">BEGINNER</a>
+          <a class="header-link" href="/static/how-it-works.html">HOW</a>
+          <a class="header-link" href="/static/industrial-situations.html">INDUSTRY</a>
+          <a class="header-link" href="/static/oil-palm-industrial-environment.html">OIL MILL</a>
+          <a class="header-link" href="/static/phase-2-start-here.html">PHASE 2</a>
+          <a class="header-link" href="/static/plc-programming-methods.html">METHODS</a>
+          <a class="header-link" href="/static/risk-assessment-certification.html">SAFETY</a>
+        </div>
+      </header>
+
+      <main class="guide-main">
+        <section class="panel lesson-panel intro-panel industrial-intro start-hero">
+          <div class="panel-heading">
+            <h1>Learn how factory machines think.</h1>
+            <span>free, in your browser, no equipment needed</span>
+          </div>
+          <div class="intro-grid industrial-intro-grid">
+            <div>
+              <h2>The idea in one sentence</h2>
+              <p class="start-lead">
+                Every lift, traffic light and factory conveyor is run by a small computer called a
+                <strong>PLC</strong>. This hub teaches how it works, step by step, in plain language.
+              </p>
+              <p>
+                You do not need a real machine, special software or an engineering degree.
+                Everything is simulated, so mistakes are safe and free.
+              </p>
+              <div class="start-actions">
+                <a class="start-button start-button-main" href="/static/beginner-guide.html">Start learning</a>
+                <a class="start-button" href="#picture">See how it works</a>
+              </div>
+            </div>
+            <div class="safety-note" role="note" aria-label="What this hub is not">
+              <h2>Good to know</h2>
+              <p>
+                This is a <strong>teaching tool</strong>. It is not certified control software.
+                Never use it to run or change real machines.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <nav class="scenario-nav industrial-nav" aria-label="Page sections">
+          <a href="#why">Why it exists</a>
+          <a href="#picture">The big picture</a>
+          <a href="#io">Inputs &amp; outputs</a>
+          <a href="#steps">3 steps</a>
+          <a href="#who">Who it is for</a>
+          <a href="#path">Your path</a>
+        </nav>
+
+        <section id="why" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>1. Why this hub exists</h2>
+            <span>the problem it solves</span>
+          </div>
+          <div class="learning-path-grid">
+            <article class="path-card operator-path">
+              <h3>Real equipment is expensive</h3>
+              <p>A training PLC kit with sensors and motors can cost thousands. Most learners never get to touch one.</p>
+            </article>
+            <article class="path-card technician-path">
+              <h3>Mistakes on real machines are risky</h3>
+              <p>A wrong rule can start a motor at the wrong moment. Here you can break things safely and try again.</p>
+            </article>
+            <article class="path-card developer-path">
+              <h3>Most material is full of jargon</h3>
+              <p>This hub starts with machines you already know. Each technical word appears only after the plain idea.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="picture" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>2. The big picture: senses, brain, muscles</h2>
+            <span>every automated machine works this way</span>
+          </div>
+          <p>
+            Think of a machine like a body. <strong>Inputs</strong> are its senses.
+            The <strong>PLC</strong> is its brain. <strong>Outputs</strong> are its muscles.
+          </p>
+          <div class="diagram-panel">
+            <svg class="process-svg beginner-svg beginner-svg-wide" viewBox="0 0 900 300" role="img" aria-labelledby="start-io-title">
+              <title id="start-io-title">Inputs such as buttons and sensors go into the PLC, which switches outputs such as motors, lamps and valves</title>
+              <defs>
+                <marker id="arrow-start" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"></path>
+                </marker>
+              </defs>
+              <rect x="30" y="30" width="250" height="210" rx="8" class="phase2-svg-field"></rect>
+              <text x="155" y="62" class="svg-center">INPUTS = SENSES</text>
+              <text x="155" y="92" class="svg-center small">push buttons</text>
+              <text x="155" y="118" class="svg-center small">switches</text>
+              <text x="155" y="144" class="svg-center small">light beams (photo-eyes)</text>
+              <text x="155" y="170" class="svg-center small">level and heat sensors</text>
+              <text x="155" y="196" class="svg-center small">emergency stop</text>
+              <text x="155" y="224" class="svg-center small">"what is happening?"</text>
+
+              <rect x="325" y="30" width="250" height="210" rx="8" class="phase2-svg-plc"></rect>
+              <text x="450" y="62" class="svg-center">PLC = BRAIN</text>
+              <text x="450" y="104" class="svg-center small">reads the inputs</text>
+              <text x="450" y="130" class="svg-center small">checks its written rules</text>
+              <text x="450" y="156" class="svg-center small">decides what to switch</text>
+              <text x="450" y="182" class="svg-center small">repeats ~10 times a second</text>
+              <text x="450" y="224" class="svg-center small">"what should I do?"</text>
+
+              <rect x="620" y="30" width="250" height="210" rx="8" class="phase2-svg-hmi"></rect>
+              <text x="745" y="62" class="svg-center">OUTPUTS = MUSCLES</text>
+              <text x="745" y="92" class="svg-center small">motors</text>
+              <text x="745" y="118" class="svg-center small">valves and pumps</text>
+              <text x="745" y="144" class="svg-center small">lamps and buzzers</text>
+              <text x="745" y="170" class="svg-center small">locks and brakes</text>
+              <text x="745" y="196" class="svg-center small">screens (HMI)</text>
+              <text x="745" y="224" class="svg-center small">"make it happen"</text>
+
+              <line x1="280" y1="135" x2="325" y2="135" class="flow-branch" marker-end="url(#arrow-start)"></line>
+              <line x1="575" y1="135" x2="620" y2="135" class="flow-branch" marker-end="url(#arrow-start)"></line>
+              <text x="450" y="280" class="svg-center small">Example: lift button pressed (input), PLC decides, lift motor runs (output).</text>
+            </svg>
+            <svg class="process-svg beginner-svg beginner-svg-tall" viewBox="0 0 360 600" role="img" aria-labelledby="start-io-title-m">
+              <title id="start-io-title-m">Inputs such as buttons and sensors go into the PLC, which switches outputs such as motors, lamps and valves</title>
+              <defs>
+                <marker id="arrow-start-m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"></path>
+                </marker>
+              </defs>
+              <rect x="20" y="20" width="320" height="140" rx="8" class="phase2-svg-field"></rect>
+              <text x="180" y="52" class="svg-center">INPUTS = SENSES</text>
+              <text x="180" y="82" class="svg-center small">buttons, switches</text>
+              <text x="180" y="108" class="svg-center small">light beams, level and heat sensors</text>
+              <text x="180" y="134" class="svg-center small">emergency stop</text>
+              <line x1="180" y1="160" x2="180" y2="198" class="flow-branch" marker-end="url(#arrow-start-m)"></line>
+              <rect x="20" y="200" width="320" height="140" rx="8" class="phase2-svg-plc"></rect>
+              <text x="180" y="232" class="svg-center">PLC = BRAIN</text>
+              <text x="180" y="262" class="svg-center small">reads the inputs</text>
+              <text x="180" y="288" class="svg-center small">checks its written rules</text>
+              <text x="180" y="314" class="svg-center small">repeats ~10 times a second</text>
+              <line x1="180" y1="340" x2="180" y2="378" class="flow-branch" marker-end="url(#arrow-start-m)"></line>
+              <rect x="20" y="380" width="320" height="140" rx="8" class="phase2-svg-hmi"></rect>
+              <text x="180" y="412" class="svg-center">OUTPUTS = MUSCLES</text>
+              <text x="180" y="442" class="svg-center small">motors, valves, pumps</text>
+              <text x="180" y="468" class="svg-center small">lamps, buzzers, locks</text>
+              <text x="180" y="494" class="svg-center small">screens (HMI)</text>
+              <text x="180" y="556" class="svg-center small">Lift button pressed (input),</text>
+              <text x="180" y="580" class="svg-center small">PLC decides, lift motor runs (output).</text>
+            </svg>
+          </div>
+        </section>
+
+        <section id="io" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>3. Inputs and outputs you already know</h2>
+            <span>the same parts at home and in a palm-oil mill</span>
+          </div>
+          <p>
+            The same kinds of parts appear in everyday machines and in big factories.
+            Here each one is shown both ways. Our factory example is a palm-oil mill.
+          </p>
+          <div class="start-table-wrap">
+            <table class="start-io-table">
+              <thead>
+                <tr><th>Part</th><th>Everyday example</th><th>Palm-oil mill example</th></tr>
+              </thead>
+              <tbody>
+                <tr class="start-io-group"><th colspan="3" scope="colgroup">Inputs: what the PLC senses</th></tr>
+                <tr><td>Push button</td><td>Lift floor button</td><td>Conveyor start / stop button</td></tr>
+                <tr><td>Limit switch</td><td>Gate fully open</td><td>Steriliser door closed</td></tr>
+                <tr><td>Photo-eye (light beam)</td><td>Car-park barrier beam</td><td>Fruit bunch on the conveyor</td></tr>
+                <tr><td>Level sensor</td><td>Water level in a washer</td><td>Oil tank level</td></tr>
+                <tr><td>Temperature sensor</td><td>Rice cooker</td><td>Steriliser and oil tank heat</td></tr>
+                <tr><td>Emergency stop</td><td>Escalator red stop button</td><td>Pull-cord along a conveyor</td></tr>
+                <tr class="start-io-group"><th colspan="3" scope="colgroup">Outputs: what the PLC controls</th></tr>
+                <tr><td>Motor</td><td>Escalator steps</td><td>Conveyor, screw press</td></tr>
+                <tr><td>Valve / pump</td><td>Washer fill and drain</td><td>Steam valve, oil transfer pump</td></tr>
+                <tr><td>Lamp / buzzer</td><td>Lift "door closing" chime</td><td>Alarm light tower and siren</td></tr>
+                <tr><td>Screen (HMI)</td><td>Lift floor display</td><td>Control-room screen (SCADA)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="learning-path-grid start-trainer-grid">
+            <article class="path-card operator-path">
+              <h3>In our trainer: 8 inputs</h3>
+              <ul>
+                <li><strong>START</strong> and <strong>STOP</strong> buttons</li>
+                <li>Two <strong>pedestrian</strong> crossing buttons</li>
+                <li>Two <strong>car sensors</strong>, one per road</li>
+                <li><strong>EMERGENCY</strong> switch and <strong>NIGHT</strong> mode switch</li>
+              </ul>
+            </article>
+            <article class="path-card technician-path">
+              <h3>In our trainer: 6 outputs</h3>
+              <ul>
+                <li><strong>Red, yellow, green</strong> lamps for the north-south road</li>
+                <li><strong>Red, yellow, green</strong> lamps for the east-west road</li>
+              </ul>
+              <p>A traffic light is small, but it uses every key idea.</p>
+            </article>
+            <article class="path-card developer-path">
+              <h3>On / off or "how much"</h3>
+              <p>
+                A button is simply <strong>on or off</strong>. A temperature changes smoothly.
+                Engineers call these <em>digital</em> and <em>analog</em> signals.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="steps" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>4. How a PLC works in 3 steps</h2>
+            <span>repeated about ten times every second</span>
+          </div>
+          <ol class="start-steps">
+            <li><strong>Read.</strong> Check every button and sensor. Is the door closed? Is the tank full?</li>
+            <li><strong>Decide.</strong> Follow the written rules. "If the door is closed and Start is pressed, run."</li>
+            <li><strong>Act.</strong> Switch motors, lamps and valves to match. Then go back to step 1.</li>
+          </ol>
+          <p>
+            That is the whole secret. The <a href="/static/beginner-guide.html#loop">Beginner guide</a>
+            explains each step with a washing machine, a lift and more.
+          </p>
+        </section>
+
+        <section id="who" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>5. Who it is for</h2>
+            <span>pick the card that sounds like you</span>
+          </div>
+          <div class="learning-path-grid">
+            <article class="path-card operator-path">
+              <h3>Beginners and students</h3>
+              <p>Curious how machines work, or thinking about a career in automation? Start with everyday examples.</p>
+              <p><a href="/static/beginner-guide.html">Start here: Beginner guide</a></p>
+            </article>
+            <article class="path-card technician-path">
+              <h3>Technicians and operators</h3>
+              <p>Already work near machines? See real factory situations, sensor faults and motor control.</p>
+              <p><a href="/static/industrial-situations.html">Start here: Industry situations</a></p>
+            </article>
+            <article class="path-card developer-path">
+              <h3>Employers and recruiters</h3>
+              <p>Want to see practical automation skills? Look at the working simulator, tests and roadmap.</p>
+              <p><a href="https://github.com/SaladinIART/salbotics-plc-learning-hub">Start here: the project on GitHub</a></p>
+            </article>
+          </div>
+        </section>
+
+        <section id="path" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2>6. Your learning path</h2>
+            <span>four steps, at your own pace</span>
+          </div>
+          <ol class="start-steps">
+            <li><a href="/static/beginner-guide.html"><strong>Beginner guide</strong></a>: PLC ideas through a washer, lift, gate and rice cooker.</li>
+            <li><a href="/static/how-it-works.html"><strong>How it works</strong></a>: the traffic-light rules, one by one.</li>
+            <li><a href="/static/oil-palm-industrial-environment.html"><strong>Oil mill</strong></a> and <a href="/static/industrial-situations.html"><strong>Industry</strong></a>: the same ideas in a real factory.</li>
+            <li><a href="/static/phase-2-start-here.html"><strong>Phase 2 and beyond</strong></a>: control-room screens, networks and factory data.</li>
+          </ol>
+          <p>
+            Want to press the buttons yourself? The full interactive trainer runs free on a Windows PC.
+            See <a href="https://github.com/SaladinIART/salbotics-plc-learning-hub#download-and-open-on-windows">how to download it</a>.
+          </p>
+        </section>
+
+        <section class="panel scenario-panel">
+          <div class="safety-note" role="note" aria-label="Educational use note">
+            <h2>Educational use</h2>
+            <p>
+              Simplified teaching material from
+              <a href="https://salbotics.uk/">Salbotics</a>. It is not certified safety software. Do not use it to design or change real machines.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+      <script src="/static/mobile-nav.js?v=m5-20261015" defer></script>
+  </body>
+</html>

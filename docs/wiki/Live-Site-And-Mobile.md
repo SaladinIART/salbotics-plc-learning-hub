@@ -3,7 +3,7 @@
 ## Live Site
 
 - URL: https://salbotics.uk/salbotics-plc-learning-hub/
-- Content: a read-only copy of the learning pages; the Beginner guide is the landing page.
+- Content: a read-only copy of the learning pages; the "What is this?" overview is the landing page, then the Beginner guide.
 - Not published: the live PLC/HMI simulator panel and its `/api` controls. Run the trainer locally
   for those (see [Windows Download And Launch](Windows-Download-And-Launch.md)).
 

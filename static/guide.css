@@ -2193,6 +2193,103 @@ rect.clean,
   }
 }
 
+/* Start page ("What is this?"): plain-language overview for non-technical visitors */
+.intro-grid p.start-lead {
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.start-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.start-button {
+  display: inline-block;
+  padding: 10px 18px;
+  border: 2px solid #1d4ed8;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #1d4ed8;
+  font-size: 14px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.start-button-main {
+  background: #1d4ed8;
+  color: #ffffff;
+}
+
+.start-button:hover,
+.start-button:focus-visible {
+  background: #1e40af;
+  border-color: #1e40af;
+  color: #ffffff;
+}
+
+.start-table-wrap {
+  overflow-x: auto;
+  margin: 12px 0;
+}
+
+.start-io-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+.start-io-table th,
+.start-io-table td {
+  padding: 8px 10px;
+  border: 1px solid #dbe3ee;
+  color: #334155;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: left;
+  vertical-align: top;
+}
+
+.start-io-table thead th {
+  background: #e7edf5;
+  color: #0f172a;
+}
+
+.start-io-table td:first-child {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.start-io-group th {
+  background: #f0f9ff;
+  color: #0c4a6e;
+  font-weight: 900;
+}
+
+.start-trainer-grid {
+  margin-top: 14px;
+}
+
+.start-steps {
+  margin: 8px 0 12px;
+  padding-left: 22px;
+}
+
+.start-steps li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+  .start-io-table th,
+  .start-io-table td {
+    padding: 7px 6px;
+    font-size: 13px;
+  }
+}
+
 /* M-3: calmer reading style on phones (desktop unchanged).
    Fewer capitals, lighter weights, larger body text, more line spacing. */
 @media (max-width: 760px) {
