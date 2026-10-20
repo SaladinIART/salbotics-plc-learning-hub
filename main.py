@@ -83,6 +83,10 @@ def create_app(
     def index() -> FileResponse:
         return FileResponse(STATIC_DIR / "index.html")
 
+    @app.get("/start")
+    def start_page() -> FileResponse:
+        return FileResponse(STATIC_DIR / "start.html")
+
     @app.get("/beginner-guide")
     def beginner_guide() -> FileResponse:
         return FileResponse(STATIC_DIR / "beginner-guide.html")

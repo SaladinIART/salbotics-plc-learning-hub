@@ -347,7 +347,7 @@ def test_pages_site_build_has_relative_links_and_landing_page(tmp_path) -> None:
     out = module.build(tmp_path / "site")
     assert module.check(out) == []
     assert (out / "index.html").read_text(encoding="utf-8") == \
-        (out / "beginner-guide.html").read_text(encoding="utf-8")
+        (out / "start.html").read_text(encoding="utf-8")
     assert (out / ".nojekyll").exists()
     for page in out.glob("*.html"):
         text = page.read_text(encoding="utf-8")
@@ -461,3 +461,61 @@ def test_swipe_hint_for_sideways_scrolling_boxes_on_phones() -> None:
     assert "@media (max-width: 760px)" in block and ".swipe-hint-done" in block
     for page in static.glob("*.html"):
         assert "mobile-nav.js?v=m5-" in page.read_text(encoding="utf-8"), page.name
+
+
+def test_start_page_explains_idea_in_plain_words() -> None:
+    import html as html_lib
+    import re
+    from pathlib import Path
+
+    app = create_app(start_background=False)
+    with TestClient(app) as client:
+        response = client.get("/start")
+        static_response = client.get("/static/start.html")
+    assert response.status_code == 200
+    assert static_response.status_code == 200
+    page = response.text
+    # Story order: why, big picture, inputs/outputs, 3 steps, who, path.
+    for section in ("why", "picture", "action", "io", "steps", "who", "path", "roadmap"):
+        assert f'id="{section}"' in page, section
+        assert f'href="#{section}"' in page, section
+    for phrase in ("Learn how factory machines think.", "senses, brain, muscles",
+                   "Inputs: what the PLC senses", "Outputs: what the PLC controls",
+                   "Palm-oil mill example", "In our trainer: 8 inputs", "In our trainer: 6 outputs",
+                   "Beginners and students", "Technicians and operators",
+                   "Employers and recruiters", "not certified", "The hub at a glance",
+                   "Traffic light: our trainer", "Car-park barrier: never lower on a car",
+                   "Palm-oil mill: emergency pull-cord", "Where the hub is going."):
+        assert phrase in page, phrase
+    # Modern look lives in its own stylesheet; other pages keep the industrial style.
+    assert "/static/start.css" in page and "guide.css" not in page
+    static = Path(__file__).resolve().parent.parent / "static"
+    css = (static / "start.css").read_text(encoding="utf-8")
+    assert "prefers-color-scheme: dark" in css and "@media (max-width: 760px)" in css
+    # The inputs -> PLC -> outputs picture (desktop + phone) plus 3 animated scenes.
+    assert page.count("<svg") == 5 and page.count('role="img"') == 5
+    assert page.count("<title id=") == 5
+    assert "beginner-svg-wide" in page and "beginner-svg-tall" in page
+    assert page.count('class="sp-anim ') == 3 and page.count('class="sp-play"') == 3
+    # Animations respect reduced motion and can be paused.
+    assert "prefers-reduced-motion: reduce" in css and ".is-paused" in css
+    assert "/static/start.js" in page
+    script = (static / "start.js").read_text(encoding="utf-8")
+    assert "prefers-reduced-motion: reduce" in script and "is-paused" in script
+    # Roadmap: every phase is shown with a status.
+    for phase in ("Phase 1 ", "Phase 2 ", "Phase 3 ", "Phase 4 ", "Phase 5 "):
+        assert phase in html_lib.unescape(page), phase
+    assert page.count('class="sp-status"') == 6
+    # The beginner guide links back to the overview page.
+    beginner = (Path(__file__).resolve().parent.parent / "static" /
+                "beginner-guide.html").read_text(encoding="utf-8")
+    assert "/static/start.html" in beginner
+    # Plain language: short sentences only.
+    main = re.sub(r"<svg.*?</svg>", "", page[page.index("<main"):], flags=re.S)
+    long_sentences = []
+    for block in re.findall(r"<(?:p|li|td|h3)[^>]*>(.*?)</(?:p|li|td|h3)>", main, flags=re.S):
+        text = re.sub(r"\s+", " ", html_lib.unescape(re.sub(r"<[^>]+>", "", block))).strip()
+        for sentence in re.split(r"(?<=[.?!])\s+", text):
+            if len(sentence.split()) > 22:
+                long_sentences.append(sentence)
+    assert long_sentences == []

@@ -9,11 +9,48 @@ An open educational product by **Salbotics Solutions**: one portable place to le
 
 This repo is built to be useful for learners and visible for recruiters: it shows practical automation thinking, a working local simulator, SCADA-style UI design, test coverage, documentation, and a clear roadmap.
 
+## In Plain Words
+
+**Learn how factory machines think, for free, in your browser. No equipment needed.**
+
+- **What it is:** lifts, traffic lights and factory conveyors are run by a small computer called a
+  **PLC**. This hub teaches how one works, step by step, in plain language, with a safe simulator.
+- **Why it exists:** real training kit is expensive, mistakes on real machines are risky, and most
+  material is full of jargon. Here everything is simulated and starts with machines you already know.
+- **Who it is for:** beginners and students, technicians and operators, and employers who want to
+  see practical automation skills.
+- **Start here:** [salbotics.uk/salbotics-plc-learning-hub](https://salbotics.uk/salbotics-plc-learning-hub/)
+  (opens on a one-page "What is this?" overview).
+
+Every automated machine works the same way - **senses, brain, muscles**:
+
+```mermaid
+flowchart LR
+    IN["INPUTS = senses<br/>buttons, switches,<br/>light beams, sensors,<br/>emergency stop"] --> PLC["PLC = brain<br/>reads, checks the rules,<br/>decides - about 10x a second"]
+    PLC --> OUT["OUTPUTS = muscles<br/>motors, valves, pumps,<br/>lamps, buzzers, screens"]
+```
+
+| Part | Everyday example | Palm-oil mill example |
+|---|---|---|
+| **Input:** push button | Lift floor button | Conveyor start / stop button |
+| **Input:** photo-eye (light beam) | Car-park barrier beam | Fruit bunch on the conveyor |
+| **Input:** level / temperature sensor | Washer water level, rice cooker | Oil tank level, steriliser heat |
+| **Input:** emergency stop | Escalator red stop button | Pull-cord along a conveyor |
+| **Output:** motor | Escalator steps | Conveyor, screw press |
+| **Output:** valve / pump | Washer fill and drain | Steam valve, oil transfer pump |
+| **Output:** lamp / buzzer | Lift "door closing" chime | Alarm light tower and siren |
+| **Output:** screen (HMI) | Lift floor display | Control-room screen (SCADA) |
+
+The trainer itself is a 4-way traffic light: **8 inputs** (START, STOP, two pedestrian buttons,
+two car sensors, EMERGENCY, NIGHT) control **6 outputs** (red, yellow and green lamps for each road).
+
+The rest of this README is the technical detail.
+
 ## Public Links
 
 - Product / company site: [salbotics.uk](https://salbotics.uk/)
 - GitHub repo target: [SaladinIART/salbotics-plc-learning-hub](https://github.com/SaladinIART/salbotics-plc-learning-hub)
-- Live learning site: [https://salbotics.uk/salbotics-plc-learning-hub/](https://salbotics.uk/salbotics-plc-learning-hub/) (opens on the Beginner guide)
+- Live learning site: [https://salbotics.uk/salbotics-plc-learning-hub/](https://salbotics.uk/salbotics-plc-learning-hub/) (opens on the "What is this?" overview)
 - Project wiki: [GitHub wiki](https://github.com/SaladinIART/salbotics-plc-learning-hub/wiki) (mirrored in [docs/wiki](docs/wiki/Home.md))
 - Portfolio: `TODO: add portfolio URL before public launch`
 
@@ -22,7 +59,13 @@ This repo is built to be useful for learners and visible for recruiters: it show
 The public site at [https://salbotics.uk/salbotics-plc-learning-hub/](https://salbotics.uk/salbotics-plc-learning-hub/) is a read-only copy of the learning pages,
 published automatically from `main` by GitHub Actions:
 
-- **Start page: Beginner guide** - PLC basics in plain language using a washing machine, lift,
+- **Start page: "What is this?" overview** - one plain-language page for non-technical visitors:
+  why the hub exists, the inputs -> PLC -> outputs picture (everyday and palm-oil mill examples),
+  the 3-step loop, who it is for and a 4-step learning path. It also has an at-a-glance numbers band,
+  three animated scenes (traffic light, car-park barrier, palm-oil conveyor pull-cord) with
+  input/output lamps that light up as the PLC decides, and a visual Phase 1-5 roadmap.
+  Animations can be paused and start paused when the device asks for reduced motion.
+- **Beginner guide** - PLC basics in plain language using a washing machine, lift,
   automatic gate, escalator, rice cooker, car-park barrier and the trainer's own traffic light,
   with the technical term beside each idea, two diagrams, "Try it" questions and a glossary.
 - **Phone friendly** - on screens under about 760 px: a MENU button instead of the full link bar,
@@ -32,7 +75,7 @@ published automatically from `main` by GitHub Actions:
   not published. Use [Run Locally](#run-locally) for the full trainer.
 
 How it is built: `scripts/build_pages_site.py` copies `static/`, rewrites links to work under
-`/salbotics-plc-learning-hub/`, makes the Beginner guide the landing page and fails on any broken
+`/salbotics-plc-learning-hub/`, makes the "What is this?" page (`static/start.html`) the landing page and fails on any broken
 link; `.github/workflows/pages.yml` runs that build on pull requests and deploys from `main`.
 Details: [docs/STATIC_DEMO_PUBLISHING.md](docs/STATIC_DEMO_PUBLISHING.md).
 
@@ -40,7 +83,11 @@ Details: [docs/STATIC_DEMO_PUBLISHING.md](docs/STATIC_DEMO_PUBLISHING.md).
 
 Screenshots refreshed 15 October 2026.
 
-Beginner guide (start page of the live site):
+"What is this?" overview (start page of the live site):
+
+![What is this? overview page](docs/screenshots/start.png)
+
+Beginner guide:
 
 ![Beginner guide start page](docs/screenshots/beginner-guide.png)
 

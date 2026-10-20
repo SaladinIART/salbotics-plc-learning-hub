@@ -63,7 +63,7 @@ repo) had nothing to show and fell through to the portfolio's 404 page; and
 `/salbotics-plc-learning-hub/` sub-path.
 
 Fix: `scripts/build_pages_site.py` builds a relative-link copy of `static/` (the
-beginner guide is the landing page; the live simulator panel is left out because it
+"What is this?" overview (`start.html`) is the landing page; the live simulator panel is left out because it
 needs the local backend), and `.github/workflows/pages.yml` deploys it.
 
 One-time step that only the repository owner can do: GitHub -> repository

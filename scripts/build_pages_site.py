@@ -6,7 +6,7 @@ The learning pages use absolute paths such as ``/static/styles.css`` because
 the local FastAPI app serves them from the domain root. On GitHub Pages the
 site lives under ``/salbotics-plc-learning-hub/``, so those paths 404 and the
 styles break. This script copies ``static/`` into a NEW directory, rewrites
-the paths to relative ones, makes the beginner guide the landing page, and
+the paths to relative ones, makes the start page ("What is this?") the landing page, and
 leaves the live simulator panel out (it needs the local /api backend).
 
 Usage:
@@ -24,17 +24,20 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 STATIC = ROOT / "static"
 REPO_URL = "https://github.com/SaladinIART/salbotics-plc-learning-hub"
-LANDING_SOURCE = "beginner-guide.html"
+LANDING_SOURCE = "start.html"
 EXCLUDED = {"index.html"}  # live simulator: requires the local FastAPI backend
 
-BACK_LINK = re.compile(r'<a class="([^"]*)" href="/">.*?</a>', re.S)
+BACK_LINK = re.compile(r'<a class="([^"]*)" href="/">(.*?)</a>', re.S)
 ATTR = re.compile(r'(?:href|src)="([^"]+)"')
 
 
 def rewrite_html(text):
-    text = BACK_LINK.sub(
-        lambda m: f'<a class="{m.group(1)}" href="{REPO_URL}">RUN LOCALLY</a>',
-        text)
+    def back_link(m):
+        # Keep the page's own style: "SIMULATOR" -> "RUN LOCALLY", "Simulator" -> "Run locally".
+        label = "RUN LOCALLY" if m.group(2).isupper() else "Run locally"
+        return f'<a class="{m.group(1)}" href="{REPO_URL}">{label}</a>'
+
+    text = BACK_LINK.sub(back_link, text)
     text = text.replace('href="/static/', 'href="').replace('src="/static/', 'src="')
     return text
 
