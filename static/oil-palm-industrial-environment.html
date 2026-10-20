@@ -6,21 +6,23 @@
     <title>Salbotics PLC Learning Hub - Oil Palm Industrial Environment</title>
     <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
     <link rel="stylesheet" href="/static/guide.css" />
+    <link rel="stylesheet" href="/static/hub.css?v=flow-20261020" />
   </head>
-  <body>
+  <body class="hub-page" data-lesson="oil-palm-industrial-environment.html">
     <div class="app-shell guide-shell industrial-shell oil-shell">
       <header class="topbar">
         <div class="brand-block">
-          <strong>SALBOTICS PLC HUB</strong>
-          <span>OIL PALM PLANT</span>
+          <strong><a class="hub-home" href="/static/start.html">Salbotics PLC Hub</a></strong>
+          <span>Inside a palm-oil mill</span>
         </div>
         <div class="top-actions">
-          <a class="connection-pill guide-back" href="/">SIMULATOR PANEL</a>
-          <a class="header-link" href="/static/beginner-guide.html" title="Beginner Start Here">BEGINNER</a>
-          <a class="header-link" href="/static/industrial-situations.html">INDUSTRIAL SITUATIONS</a>
-          <a class="header-link" href="/static/oil-palm-control-stack-analysis.html">STACK ANALYSIS</a>
-          <a class="header-link" href="/static/phase-4-legacy-ot-recovery.html">LEGACY OT</a>
-          <a class="header-link" href="/static/plc-programming-methods.html">PLC METHODS</a>
+          <a class="header-link" href="/static/start.html">Home</a>
+          <a class="header-link" href="/static/beginner-guide.html" data-stage="basics">Basics</a>
+          <a class="header-link" href="/static/plc-programming-methods.html" data-stage="skills">Skills</a>
+          <a class="header-link" href="/static/oil-palm-industrial-environment.html" data-stage="factory">Factory</a>
+          <a class="header-link" href="/static/phase-2-start-here.html" data-stage="data">Data</a>
+          <a class="header-link" href="/static/risk-assessment-certification.html" data-stage="safety">Safety</a>
+          <a class="connection-pill guide-back" href="/">Simulator</a>
         </div>
         <div class="status-strip guide-status-strip">
           <div class="status-item">
@@ -48,6 +50,15 @@
             <h1>Oil Palm Plant: From FFB To Crude Palm Oil</h1>
             <span>process flow, station control, PAC, IIoT, and edge devices</span>
           </div>
+          <div class="hub-summary" role="region" aria-labelledby="hub-summary-title">
+            <h2 id="hub-summary-title">In 30 seconds</h2>
+            <ul>
+              <li>A palm-oil mill turns fresh fruit bunches into crude palm oil, station by station.</li>
+              <li>Each station has its own controller, sensors, motors and alarms.</li>
+              <li>Learn the process first, then the checks technicians make before editing logic.</li>
+            </ul>
+            <p class="hub-summary-tip">Tap a topic below to open it, or use "Open all topics".</p>
+          </div>
           <div class="intro-grid industrial-intro-grid">
             <div>
               <h2>Training goal</h2>
@@ -67,6 +78,7 @@
             </div>
           </div>
         </section>
+
 
         <nav class="scenario-nav industrial-nav oil-nav" aria-label="Oil palm lesson sections">
           <a href="#operating-modes">Modes</a>
@@ -157,7 +169,7 @@
           </div>
         </section>
 
-        <section id="process-flow" class="panel scenario-panel">
+        <section id="process-flow" class="panel scenario-panel" data-start-open>
           <div class="panel-heading">
             <h2>2. Main Process Flow</h2>
             <span>fresh fruit bunches to crude palm oil</span>
@@ -175,28 +187,28 @@
               <g class="flow-line">
                 <line x1="126" y1="180" x2="1042" y2="180" marker-end="url(#arrow)"></line>
               </g>
-              <g class="flow-node raw" transform="translate(38 108)">
+              <g class="flow-node raw mill-step" style="--step: 0" transform="translate(38 108)">
                 <rect width="132" height="96" rx="8"></rect><text x="66" y="32">FFB</text><text x="66" y="58">Reception</text><text x="66" y="78">weighbridge</text>
               </g>
-              <g class="flow-node steam" transform="translate(188 108)">
+              <g class="flow-node steam mill-step" style="--step: 1" transform="translate(188 108)">
                 <rect width="132" height="96" rx="8"></rect><text x="66" y="32">Sterilizer</text><text x="66" y="58">steam</text><text x="66" y="78">pressure</text>
               </g>
-              <g class="flow-node mech" transform="translate(338 108)">
+              <g class="flow-node mech mill-step" style="--step: 2" transform="translate(338 108)">
                 <rect width="132" height="96" rx="8"></rect><text x="66" y="32">Thresher</text><text x="66" y="58">separate</text><text x="66" y="78">fruit/EFB</text>
               </g>
-              <g class="flow-node heat" transform="translate(488 108)">
+              <g class="flow-node heat mill-step" style="--step: 3" transform="translate(488 108)">
                 <rect width="132" height="96" rx="8"></rect><text x="66" y="32">Digester</text><text x="66" y="58">heat + mash</text><text x="66" y="78">fruit</text>
               </g>
-              <g class="flow-node motor" transform="translate(638 108)">
+              <g class="flow-node motor mill-step" style="--step: 4" transform="translate(638 108)">
                 <rect width="132" height="96" rx="8"></rect><text x="66" y="32">Screw Press</text><text x="66" y="58">extract</text><text x="66" y="78">oil slurry</text>
               </g>
-              <g class="flow-node water" transform="translate(788 108)">
+              <g class="flow-node water mill-step" style="--step: 5" transform="translate(788 108)">
                 <rect width="132" height="96" rx="8"></rect><text x="66" y="32">Clarifier</text><text x="66" y="58">oil/water</text><text x="66" y="78">solids</text>
               </g>
-              <g class="flow-node clean" transform="translate(938 108)">
+              <g class="flow-node clean mill-step" style="--step: 6" transform="translate(938 108)">
                 <rect width="132" height="96" rx="8"></rect><text x="66" y="32">Purifier</text><text x="66" y="58">drying</text><text x="66" y="78">clean oil</text>
               </g>
-              <g class="flow-node product" transform="translate(1030 238)">
+              <g class="flow-node product mill-step" style="--step: 7" transform="translate(1030 238)">
                 <rect width="112" height="68" rx="8"></rect><text x="56" y="30">CPO Tank</text><text x="56" y="50">storage</text>
               </g>
               <line x1="1004" y1="204" x2="1086" y2="238" class="flow-branch" marker-end="url(#arrow)"></line>
@@ -733,6 +745,7 @@
         <a href="https://salbotics.uk/">Salbotics Solutions</a>. It is not certified safety or traffic-control software.
       </footer>
     </div>
+      <script src="/static/hub-flow.js?v=flow-20261020" defer></script>
       <script src="/static/mobile-nav.js?v=m5-20261015" defer></script>
   </body>
 </html>

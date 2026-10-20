@@ -2296,7 +2296,7 @@ rect.clean,
   }
 
   .js-sections section[id] > .panel-heading[role="button"]::after {
-    content: "2";
+    content: "\2212";
     position: absolute;
     right: 12px;
     top: 50%;

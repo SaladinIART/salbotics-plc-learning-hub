@@ -6,21 +6,23 @@
     <title>Salbotics PLC Learning Hub - Phase 3 Data Analytics</title>
     <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
     <link rel="stylesheet" href="/static/guide.css?v=phase3-diagram-note-20260626" />
+    <link rel="stylesheet" href="/static/hub.css?v=flow-20261020" />
   </head>
-  <body>
+  <body class="hub-page" data-lesson="phase-3-data-analytics.html" data-needs-trainer>
     <div class="app-shell guide-shell industrial-shell phase3-shell">
       <header class="topbar">
         <div class="brand-block">
-          <strong>SALBOTICS PLC HUB</strong>
-          <span>PHASE 3 ANALYTICS</span>
+          <strong><a class="hub-home" href="/static/start.html">Salbotics PLC Hub</a></strong>
+          <span>Factory data and dashboards</span>
         </div>
         <div class="top-actions">
-          <a class="connection-pill guide-back" href="/">SIMULATOR</a>
-          <a class="header-link" href="/static/beginner-guide.html" title="Beginner Start Here">BEGINNER</a>
-          <a class="header-link" href="/static/phase-4-legacy-ot-recovery.html">PHASE 4</a>
-          <a class="header-link" href="/static/phase-2-start-here.html">PHASE 2</a>
-          <a class="header-link" href="/static/oil-palm-industrial-environment.html">OIL MILL</a>
-          <a class="header-link" href="/static/plc-programming-methods.html">METHODS</a>
+          <a class="header-link" href="/static/start.html">Home</a>
+          <a class="header-link" href="/static/beginner-guide.html" data-stage="basics">Basics</a>
+          <a class="header-link" href="/static/plc-programming-methods.html" data-stage="skills">Skills</a>
+          <a class="header-link" href="/static/oil-palm-industrial-environment.html" data-stage="factory">Factory</a>
+          <a class="header-link" href="/static/phase-2-start-here.html" data-stage="data">Data</a>
+          <a class="header-link" href="/static/risk-assessment-certification.html" data-stage="safety">Safety</a>
+          <a class="connection-pill guide-back" href="/">Simulator</a>
         </div>
         <div class="status-strip guide-status-strip">
           <div class="status-item"><span>Source</span><strong>Sim</strong></div>
@@ -35,6 +37,14 @@
           <div class="panel-heading">
             <h1>Phase 3: Local Data Collection, Historian, Analytics, And Management Dashboard</h1>
             <span>simulated oil-palm plant data, persistent SQLite storage, and management KPIs</span>
+          </div>
+          <div class="hub-summary" role="region" aria-labelledby="hub-summary-title">
+            <h2 id="hub-summary-title">In 30 seconds</h2>
+            <ul>
+              <li>Managers need numbers like output, downtime and alarms, not Ladder rungs.</li>
+              <li>A local database records simulated mill data over time.</li>
+              <li>A dashboard turns those records into simple charts and key figures.</li>
+            </ul>
           </div>
           <div class="intro-grid industrial-intro-grid">
             <div>
@@ -56,6 +66,7 @@
             </div>
           </div>
         </section>
+
 
         <nav class="scenario-nav industrial-nav phase3-nav" aria-label="Phase 3 lesson sections">
           <a href="#management">Management</a>
@@ -186,6 +197,7 @@ Browser management dashboard
       </main>
     </div>
     <script src="/static/phase3-analytics.js?v=phase3-analytics-fallback-20260626"></script>
+      <script src="/static/hub-flow.js?v=flow-20261020" defer></script>
       <script src="/static/mobile-nav.js?v=m5-20261015" defer></script>
   </body>
 </html>

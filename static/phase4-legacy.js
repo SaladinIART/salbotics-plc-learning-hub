@@ -185,6 +185,39 @@ async function resetLegacy() {
   }
 }
 
+
+// The public website has no trainer server behind it. There, show a calm
+// preview message instead of polling an API that does not exist.
+function onTrainerPage() {
+  const path = location.pathname;
+  return /^\/static\//.test(path) || !/(\.html|\/)$/.test(path);
+}
+
+const PREVIEW_NOTE = "Live numbers appear when you run the free Windows trainer. This website shows the layout only.";
+
+function renderLegacyWebsitePreview() {
+  legacyQs("#legacy-health").textContent = "Preview: runs in the trainer";
+  legacyQs("#legacy-generated-at").textContent = "not running here";
+  legacyQs("#reset-legacy").hidden = true;
+  legacyQs("#legacy-cards").innerHTML = `
+    <article class="analytics-kpi-card analytics-wide-card">
+      <span>Bridge preview</span>
+      <strong>Live in the trainer</strong>
+      <p>${PREVIEW_NOTE}</p>
+    </article>
+  `;
+  const note = `<p class="legacy-preview-note">This part loads live from the trainer.</p>`;
+  ["#legacy-station", "#legacy-workflow", "#legacy-situations", "#legacy-rs232-card"].forEach((id) => {
+    legacyQs(id).innerHTML = note;
+  });
+  legacyQs("#legacy-register-table").innerHTML = `<tr><td colspan="7">Registers are shown live in the trainer.</td></tr>`;
+  legacyQs("#legacy-event-table").innerHTML = `<tr><td colspan="6">Bridge events are shown live in the trainer.</td></tr>`;
+}
+
 legacyQs("#reset-legacy").addEventListener("click", resetLegacy);
-refreshLegacy();
-setInterval(refreshLegacy, 5000);
+if (onTrainerPage()) {
+  refreshLegacy();
+  setInterval(refreshLegacy, 5000);
+} else {
+  renderLegacyWebsitePreview();
+}

@@ -6,21 +6,23 @@
     <title>Salbotics PLC Learning Hub - Phase 4 Legacy OT Recovery</title>
     <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
     <link rel="stylesheet" href="/static/guide.css?v=phase4-legacy-ot-20260626" />
+    <link rel="stylesheet" href="/static/hub.css?v=flow-20261020" />
   </head>
-  <body>
+  <body class="hub-page" data-lesson="phase-4-legacy-ot-recovery.html" data-needs-trainer>
     <div class="app-shell guide-shell industrial-shell phase4-shell">
       <header class="topbar">
         <div class="brand-block">
-          <strong>SALBOTICS PLC HUB</strong>
-          <span>PHASE 4 LEGACY OT</span>
+          <strong><a class="hub-home" href="/static/start.html">Salbotics PLC Hub</a></strong>
+          <span>Rescuing old machines</span>
         </div>
         <div class="top-actions">
-          <a class="connection-pill guide-back" href="/">SIMULATOR</a>
-          <a class="header-link" href="/static/beginner-guide.html" title="Beginner Start Here">BEGINNER</a>
-          <a class="header-link" href="/static/phase-3-data-analytics.html">PHASE 3</a>
-          <a class="header-link" href="/static/phase-2-start-here.html">PHASE 2</a>
-          <a class="header-link" href="/static/oil-palm-industrial-environment.html">OIL MILL</a>
-          <a class="header-link" href="/static/plc-programming-methods.html">METHODS</a>
+          <a class="header-link" href="/static/start.html">Home</a>
+          <a class="header-link" href="/static/beginner-guide.html" data-stage="basics">Basics</a>
+          <a class="header-link" href="/static/plc-programming-methods.html" data-stage="skills">Skills</a>
+          <a class="header-link" href="/static/oil-palm-industrial-environment.html" data-stage="factory">Factory</a>
+          <a class="header-link" href="/static/phase-2-start-here.html" data-stage="data">Data</a>
+          <a class="header-link" href="/static/risk-assessment-certification.html" data-stage="safety">Safety</a>
+          <a class="connection-pill guide-back" href="/">Simulator</a>
         </div>
         <div class="status-strip guide-status-strip">
           <div class="status-item"><span>Mode</span><strong>Read Only</strong></div>
@@ -35,6 +37,14 @@
           <div class="panel-heading">
             <h1>Phase 4: Legacy OT Recovery And Read-Only Data Bridging</h1>
             <span>obsolete PLCs, XP/7 HMIs, missing software, fragile production, safe shadow monitoring</span>
+          </div>
+          <div class="hub-summary" role="region" aria-labelledby="hub-summary-title">
+            <h2 id="hub-summary-title">In 30 seconds</h2>
+            <ul>
+              <li>Many factories still depend on old PLCs and Windows XP or 7 screens.</li>
+              <li>The safe approach: save evidence, isolate risk, then read data without changing anything.</li>
+              <li>Replacement comes later, after testing and a rollback plan.</li>
+            </ul>
           </div>
           <div class="intro-grid industrial-intro-grid">
             <div>
@@ -56,6 +66,7 @@
             </div>
           </div>
         </section>
+
 
         <nav class="scenario-nav industrial-nav phase4-nav" aria-label="Phase 4 lesson sections">
           <a href="#summary">Bridge</a>
@@ -220,6 +231,7 @@ observe first, command never, until an approved test plan exists.</code></pre>
       </main>
     </div>
     <script src="/static/phase4-legacy.js?v=phase4-legacy-20260626"></script>
+      <script src="/static/hub-flow.js?v=flow-20261020" defer></script>
       <script src="/static/mobile-nav.js?v=m5-20261015" defer></script>
   </body>
 </html>

@@ -40,8 +40,9 @@ def test_how_it_works_page_serves_ladder_scenarios() -> None:
     assert "Scenario 4: Emergency All-Red" in html
     assert "Full Ladder View" in html
     assert "ladder-diagram" in html
-    assert "/static/industrial-situations.html" in html
+    # Shared menu + learning path (hub-flow.js) link it to the next stages.
     assert "/static/plc-programming-methods.html" in html
+    assert 'data-lesson="how-it-works.html"' in html and "/static/hub-flow.js" in html
     assert static_response.status_code == 200
     assert "How This PLC Learning Hub Works" in static_response.text
 
@@ -437,8 +438,11 @@ def test_long_guide_pages_opt_in_to_collapsible_sections_on_phones() -> None:
     from pathlib import Path
 
     static = Path(__file__).resolve().parent.parent / "static"
+    # Every long lesson folds its topics; the two live-dashboard pages stay open.
     opted = {"oil-palm-industrial-environment.html", "industrial-situations.html",
-             "phase-2-start-here.html", "plc-programming-methods.html"}
+             "phase-2-start-here.html", "plc-programming-methods.html", "beginner-guide.html",
+             "how-it-works.html", "oil-palm-control-stack-analysis.html",
+             "risk-assessment-certification.html"}
     for page in static.glob("*.html"):
         html = page.read_text(encoding="utf-8")
         assert ("data-collapsible-sections" in html) == (page.name in opted), page.name
@@ -498,7 +502,9 @@ def test_start_page_explains_idea_in_plain_words() -> None:
     assert "beginner-svg-wide" in page and "beginner-svg-tall" in page
     assert page.count('class="sp-anim ') == 3 and page.count('class="sp-play"') == 3
     # Animations respect reduced motion and can be paused.
-    assert "prefers-reduced-motion: reduce" in css and ".is-paused" in css
+    scenes = (static / "scenes.css").read_text(encoding="utf-8")
+    assert "/static/scenes.css" in page
+    assert "prefers-reduced-motion: reduce" in scenes and ".is-paused" in scenes
     assert "/static/start.js" in page
     script = (static / "start.js").read_text(encoding="utf-8")
     assert "prefers-reduced-motion: reduce" in script and "is-paused" in script
@@ -519,3 +525,37 @@ def test_start_page_explains_idea_in_plain_words() -> None:
             if len(sentence.split()) > 22:
                 long_sentences.append(sentence)
     assert long_sentences == []
+
+
+def test_learning_path_is_one_list_used_everywhere() -> None:
+    import re
+    from pathlib import Path
+
+    static = Path(__file__).resolve().parent.parent / "static"
+    flow = (static / "hub-flow.js").read_text(encoding="utf-8")
+    lessons = re.findall(r'file: "([a-z0-9-]+\.html)"', flow)
+    assert len(lessons) == 10 and len(set(lessons)) == 10
+    start = (static / "start.html").read_text(encoding="utf-8")
+    path = start[start.index('<section id="path"'):]
+    path = path[:path.index("</section>")]
+    # The start page lesson map lists the same lessons in the same order.
+    assert re.findall(r'href="/static/([a-z0-9-]+\.html)"', path) == lessons
+    for name in lessons:
+        page = (static / name).read_text(encoding="utf-8")
+        # Every lesson: shared menu, learning-path script, modern layer, 30-second summary.
+        assert f'data-lesson="{name}"' in page, name
+        assert "/static/hub-flow.js" in page and "/static/hub.css" in page, name
+        assert 'class="hub-summary"' in page and "In 30 seconds" in page, name
+        # Summary first: it sits right under the page title, before the long intro.
+        assert page.index('class="hub-summary"') < page.index("intro-grid") if "intro-grid" in page else True
+        for stage in ("basics", "skills", "factory", "data", "safety"):
+            assert f'data-stage="{stage}"' in page, (name, stage)
+    # "Up next" card, progress bar and the website-preview note are built by the script.
+    for hook in ("hub-progress", "hub-next", "Up next", "hub-offline", "data-needs-trainer"):
+        assert hook in flow, hook
+    css = (static / "hub.css").read_text(encoding="utf-8")
+    assert "prefers-reduced-motion: reduce" in css
+    # Dashboards show a calm preview on the public website instead of API errors.
+    for script in ("phase3-analytics.js", "phase4-legacy.js"):
+        assert "onTrainerPage()" in (static / script).read_text(encoding="utf-8"), script
+

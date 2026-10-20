@@ -1,0 +1,240 @@
+/* Animated scenes (traffic light, car-park barrier, palm-oil conveyor).
+   Shared by start.html and the lesson pages; start.js adds the Play/Pause buttons.
+   Colours read the page's --sp-* variables when present, with light defaults. */
+
+/* ---------- Animated scenes ---------- */
+.sp-scenes {
+  display: grid;
+  gap: 20px;
+}
+
+.sp-scene {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: center;
+  margin: 0;
+}
+
+.sp-scene svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.sp-scene figcaption h3 {
+  margin: 0 0 12px;
+  color: var(--sp-text, #0f172a);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.sp-scene ol {
+  margin: 0 0 14px;
+  padding-left: 22px;
+}
+
+.sp-scene li {
+  margin-bottom: 6px;
+}
+
+.sp-rule {
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--sp-surface-2, #eef3f9);
+  color: var(--sp-text, #0f172a);
+  font-size: 16px;
+}
+
+.sp-play {
+  display: none;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--sp-line, #e2e8f0);
+  border-radius: 10px;
+  background: var(--sp-surface, #ffffff);
+  color: var(--sp-text, #0f172a);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.js-anim .sp-play {
+  display: inline-flex;
+  align-items: center;
+}
+
+.sp-play:hover,
+.sp-play:focus-visible {
+  border-color: var(--sp-brand, #2563eb);
+  color: var(--sp-brand, #2563eb);
+}
+
+/* Scene drawing */
+.sp-a-ground { fill: var(--sp-ground, #e2ebe0); }
+.sp-a-road { fill: var(--sp-road, #64748b); }
+.sp-a-dash { stroke: #f8fafc; stroke-width: 3; stroke-dasharray: 14 12; opacity: 0.85; }
+.sp-a-stop { stroke: #f8fafc; stroke-width: 4; }
+.sp-a-car1 { fill: #2563eb; }
+.sp-a-car2 { fill: #f97316; }
+.sp-a-glass { fill: #bfdbfe; }
+.sp-a-head { fill: #1e293b; }
+.sp-a-off { fill: #475569; }
+.sp-a-red { fill: #ef4444; }
+.sp-a-yellow { fill: #facc15; }
+.sp-a-green { fill: #22c55e; }
+.sp-a-loop { fill: none; stroke: #fde68a; stroke-width: 3; stroke-dasharray: 8 6; }
+.sp-a-post,
+.sp-a-pillar { fill: #1e293b; }
+.sp-a-beam { stroke: #4ade80; stroke-width: 3; stroke-dasharray: 6 6; }
+.sp-a-beam-broken { stroke: #ef4444; stroke-width: 5; }
+.sp-a-arm-base { stroke: #f8fafc; stroke-width: 10; stroke-linecap: round; }
+.sp-a-arm-stripe { stroke: #ef4444; stroke-width: 10; stroke-dasharray: 14 12; }
+.sp-a-belt { fill: #334155; }
+.sp-a-roller { fill: #94a3b8; }
+.sp-a-leg { stroke: #94a3b8; stroke-width: 6; }
+.sp-a-bunch { fill: #9a3412; stroke: #431407; stroke-width: 2; }
+.sp-a-cord { stroke: #facc15; stroke-width: 3; }
+.sp-a-cord-pulled { stroke: #ef4444; stroke-width: 4; }
+.sp-a-handle { fill: #ef4444; }
+.sp-a-motor { fill: #94a3b8; }
+.sp-a-motor-on { fill: #22c55e; }
+.sp-a-pole { stroke: #64748b; stroke-width: 6; }
+
+.sp-a-label,
+.sp-a-strip-text,
+.sp-a-motor-text {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.sp-a-label { fill: var(--sp-text, #0f172a); font-size: 15px; font-weight: 600; text-anchor: middle; }
+.sp-a-strip { fill: var(--sp-surface-2, #eef3f9); stroke: var(--sp-line, #e2e8f0); }
+.sp-a-strip-text { fill: var(--sp-body, #334155); font-size: 17px; font-weight: 600; }
+.sp-a-strong { fill: var(--sp-text, #0f172a); font-weight: 800; }
+.sp-a-start { text-anchor: start; }
+.sp-a-motor-text { fill: #0f172a; font-size: 18px; font-weight: 800; text-anchor: middle; }
+.sp-a-lamp-off { fill: var(--sp-line, #e2e8f0); }
+.sp-a-lamp-in { fill: var(--sp-in, #059669); }
+.sp-a-lamp-out { fill: var(--sp-out, #ea580c); }
+
+.sp-a-mover,
+.sp-a-arm {
+  transform-box: view-box;
+}
+
+.sp-a-arm {
+  transform-origin: 250px 236px;
+}
+
+/* Traffic light: 14 s cycle, same order as the trainer's AUTO_SEQUENCE */
+.a-tl-ns-green, .a-tl-s1 { animation: tl-ns-green 14s linear infinite; }
+.a-tl-ns-yellow, .a-tl-s2 { animation: tl-ns-yellow 14s linear infinite; }
+.a-tl-ns-red { animation: tl-ns-red 14s linear infinite; }
+.a-tl-s3 { animation: tl-s3 14s linear infinite; }
+.a-tl-ew-green, .a-tl-s4 { animation: tl-ew-green 14s linear infinite; }
+.a-tl-ew-yellow, .a-tl-s5 { animation: tl-ew-yellow 14s linear infinite; }
+.a-tl-ew-red { animation: tl-ew-red 14s linear infinite; }
+.a-tl-s6 { animation: tl-s6 14s linear infinite; }
+.a-tl-timer { animation: tl-timer 14s linear infinite; }
+.a-tl-car-ns { animation: tl-car-ns 14s linear infinite; }
+.a-tl-car-ew { animation: tl-car-ew 14s linear infinite; }
+
+@keyframes tl-ns-green { 0%, 34.9% { opacity: 1; } 35%, 100% { opacity: 0; } }
+@keyframes tl-ns-yellow { 0%, 34.9% { opacity: 0; } 35%, 44.9% { opacity: 1; } 45%, 100% { opacity: 0; } }
+@keyframes tl-ns-red { 0%, 44.9% { opacity: 0; } 45%, 100% { opacity: 1; } }
+@keyframes tl-s3 { 0%, 44.9% { opacity: 0; } 45%, 49.9% { opacity: 1; } 50%, 100% { opacity: 0; } }
+@keyframes tl-ew-green { 0%, 49.9% { opacity: 0; } 50%, 84.9% { opacity: 1; } 85%, 100% { opacity: 0; } }
+@keyframes tl-ew-yellow { 0%, 84.9% { opacity: 0; } 85%, 94.9% { opacity: 1; } 95%, 100% { opacity: 0; } }
+@keyframes tl-ew-red { 0%, 49.9% { opacity: 1; } 50%, 94.9% { opacity: 0; } 95%, 100% { opacity: 1; } }
+@keyframes tl-s6 { 0%, 94.9% { opacity: 0; } 95%, 100% { opacity: 1; } }
+@keyframes tl-timer {
+  0%, 33.9% { opacity: 0; } 34%, 34.9% { opacity: 1; } 35%, 43.9% { opacity: 0; } 44%, 44.9% { opacity: 1; }
+  45%, 48.9% { opacity: 0; } 49%, 49.9% { opacity: 1; } 50%, 83.9% { opacity: 0; } 84%, 84.9% { opacity: 1; }
+  85%, 93.9% { opacity: 0; } 94%, 94.9% { opacity: 1; } 95%, 98.9% { opacity: 0; } 99%, 100% { opacity: 1; }
+}
+@keyframes tl-car-ns {
+  0% { transform: translateY(0); } 30% { transform: translateY(-290px); } 30.1%, 40% { transform: translateY(120px); }
+  60%, 100% { transform: translateY(0); }
+}
+@keyframes tl-car-ew {
+  0%, 50% { transform: translateX(0); } 80% { transform: translateX(380px); } 80.1%, 88% { transform: translateX(-220px); }
+  100% { transform: translateX(0); }
+}
+
+/* Car-park barrier: 12 s cycle */
+.a-bar-car { animation: bar-car 12s linear infinite; }
+.a-bar-arm { animation: bar-arm 12s ease-in-out infinite; }
+.a-bar-wait { animation: bar-wait 12s linear infinite; }
+.a-bar-beam { animation: bar-beam 12s linear infinite; }
+.a-bar-up { animation: bar-up 12s linear infinite; }
+
+@keyframes bar-car {
+  0% { transform: translateX(-260px); } 20%, 40% { transform: translateX(0); }
+  75%, 100% { transform: translateX(420px); }
+}
+@keyframes bar-arm {
+  0%, 25% { transform: rotate(0deg); } 35%, 60% { transform: rotate(90deg); } 70%, 100% { transform: rotate(0deg); }
+}
+@keyframes bar-wait { 0%, 19.9% { opacity: 0; } 20%, 47.4% { opacity: 1; } 47.5%, 100% { opacity: 0; } }
+@keyframes bar-beam { 0%, 44.5% { opacity: 0; } 44.6%, 51.2% { opacity: 1; } 51.3%, 100% { opacity: 0; } }
+@keyframes bar-up { 0%, 24.9% { opacity: 0; } 25%, 69.9% { opacity: 1; } 70%, 100% { opacity: 0; } }
+
+/* Palm-oil conveyor with pull-cord: 10 s cycle */
+.a-cv-bunch { animation: cv-bunch 10s linear infinite; }
+.a-cv-run { animation: cv-run 10s linear infinite; }
+.a-cv-stop { animation: cv-stop 10s linear infinite; }
+.a-cv-pull { animation: cv-pull 10s linear infinite; }
+.a-cv-flash { animation: cv-flash 10s linear infinite; }
+
+@keyframes cv-bunch {
+  0% { transform: translateX(0); } 40%, 75% { transform: translateX(55.4px); } 100% { transform: translateX(90px); }
+}
+@keyframes cv-run { 0%, 39.9% { opacity: 1; } 40%, 74.9% { opacity: 0; } 75%, 100% { opacity: 1; } }
+@keyframes cv-stop { 0%, 39.9% { opacity: 0; } 40%, 74.9% { opacity: 1; } 75%, 100% { opacity: 0; } }
+@keyframes cv-pull {
+  0%, 39.9% { transform: translateY(0); } 40%, 74.9% { transform: translateY(14px); } 75%, 100% { transform: translateY(0); }
+}
+@keyframes cv-flash {
+  0%, 39.9% { opacity: 0; } 40%, 44.9% { opacity: 1; } 45%, 49.9% { opacity: 0; } 50%, 54.9% { opacity: 1; }
+  55%, 59.9% { opacity: 0; } 60%, 64.9% { opacity: 1; } 65%, 69.9% { opacity: 0; } 70%, 74.9% { opacity: 1; }
+  75%, 100% { opacity: 0; }
+}
+
+/* Each scene can start part-way through (--sp-start), so a paused scene shows the key moment. */
+.sp-scene .sp-anim * {
+  animation-delay: var(--sp-start, 0s);
+}
+
+.sp-scene.is-paused .sp-anim * {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:not(.js-anim) .sp-scene .sp-anim * {
+    animation-play-state: paused;
+  }
+}
+
+@media (max-width: 960px) {
+  .sp-scene {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 760px) {
+  .sp-scene {
+    padding: 16px;
+  }
+
+  /* Larger text inside the scenes, which shrink on narrow screens */
+  .sp-a-strip-text {
+    font-size: 19px;
+  }
+
+  .sp-a-label {
+    font-size: 17px;
+  }
+}

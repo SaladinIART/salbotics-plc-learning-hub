@@ -6,21 +6,23 @@
     <title>Salbotics PLC Learning Hub - Industrial Situations</title>
     <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
     <link rel="stylesheet" href="/static/guide.css" />
+    <link rel="stylesheet" href="/static/hub.css?v=flow-20261020" />
   </head>
-  <body>
+  <body class="hub-page" data-lesson="industrial-situations.html">
     <div class="app-shell guide-shell industrial-shell">
       <header class="topbar">
         <div class="brand-block">
-          <strong>SALBOTICS PLC HUB</strong>
-          <span>REAL INDUSTRIAL SITUATIONS</span>
+          <strong><a class="hub-home" href="/static/start.html">Salbotics PLC Hub</a></strong>
+          <span>Real industrial situations</span>
         </div>
         <div class="top-actions">
-          <a class="connection-pill guide-back" href="/">SIMULATOR PANEL</a>
-          <a class="header-link" href="/static/beginner-guide.html" title="Beginner Start Here">BEGINNER</a>
-          <a class="header-link" href="/static/how-it-works.html">HOW IT WORKS</a>
-          <a class="header-link" href="/static/oil-palm-industrial-environment.html">OIL PALM PLANT</a>
-          <a class="header-link" href="/static/phase-2-start-here.html">PHASE 2</a>
-          <a class="header-link" href="/static/plc-programming-methods.html">PLC METHODS</a>
+          <a class="header-link" href="/static/start.html">Home</a>
+          <a class="header-link" href="/static/beginner-guide.html" data-stage="basics">Basics</a>
+          <a class="header-link" href="/static/plc-programming-methods.html" data-stage="skills">Skills</a>
+          <a class="header-link" href="/static/oil-palm-industrial-environment.html" data-stage="factory">Factory</a>
+          <a class="header-link" href="/static/phase-2-start-here.html" data-stage="data">Data</a>
+          <a class="header-link" href="/static/risk-assessment-certification.html" data-stage="safety">Safety</a>
+          <a class="connection-pill guide-back" href="/">Simulator</a>
         </div>
         <div class="status-strip guide-status-strip">
           <div class="status-item">
@@ -48,6 +50,15 @@
             <h1>Industrial Situations</h1>
             <span>from beginner PLC panel to factory troubleshooting</span>
           </div>
+          <div class="hub-summary" role="region" aria-labelledby="hub-summary-title">
+            <h2 id="hub-summary-title">In 30 seconds</h2>
+            <ul>
+              <li>Real cabinets mix PLC brands, analog signals, motor drives and different sensor wiring.</li>
+              <li>Many faults come from wiring and scaling mistakes, not from the program.</li>
+              <li>Learn these habits here before you touch a live cabinet.</li>
+            </ul>
+            <p class="hub-summary-tip">Tap a topic below to open it, or use "Open all topics".</p>
+          </div>
           <div class="intro-grid industrial-intro-grid">
             <div>
               <h2>Why this page exists</h2>
@@ -68,6 +79,7 @@
             </div>
           </div>
         </section>
+
 
         <nav class="scenario-nav industrial-nav" aria-label="Industrial situations list">
           <a href="#brand-reality">Brand Reality</a>
@@ -453,6 +465,7 @@
         <a href="https://salbotics.uk/">Salbotics Solutions</a>. It is not certified safety or traffic-control software.
       </footer>
     </div>
+      <script src="/static/hub-flow.js?v=flow-20261020" defer></script>
       <script src="/static/mobile-nav.js?v=m5-20261015" defer></script>
   </body>
 </html>

@@ -6,19 +6,23 @@
     <title>Salbotics PLC Learning Hub - Risk Assessment Certification</title>
     <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
     <link rel="stylesheet" href="/static/guide.css" />
+    <link rel="stylesheet" href="/static/hub.css?v=flow-20261020" />
   </head>
-  <body>
+  <body class="hub-page" data-lesson="risk-assessment-certification.html">
     <div class="app-shell guide-shell industrial-shell cert-shell">
       <header class="topbar">
         <div class="brand-block">
-          <strong>SALBOTICS PLC HUB</strong>
-          <span>RISK ASSESSMENT CERTIFICATION</span>
+          <strong><a class="hub-home" href="/static/start.html">Salbotics PLC Hub</a></strong>
+          <span>Becoming safety qualified</span>
         </div>
         <div class="top-actions">
-          <a class="connection-pill guide-back" href="/">SIMULATOR PANEL</a>
-          <a class="header-link" href="/static/beginner-guide.html" title="Beginner Start Here">BEGINNER</a>
-          <a class="header-link" href="/static/plc-programming-methods.html">PLC METHODS</a>
-          <a class="header-link" href="/static/oil-palm-industrial-environment.html">OIL PALM PLANT</a>
+          <a class="header-link" href="/static/start.html">Home</a>
+          <a class="header-link" href="/static/beginner-guide.html" data-stage="basics">Basics</a>
+          <a class="header-link" href="/static/plc-programming-methods.html" data-stage="skills">Skills</a>
+          <a class="header-link" href="/static/oil-palm-industrial-environment.html" data-stage="factory">Factory</a>
+          <a class="header-link" href="/static/phase-2-start-here.html" data-stage="data">Data</a>
+          <a class="header-link" href="/static/risk-assessment-certification.html" data-stage="safety">Safety</a>
+          <a class="connection-pill guide-back" href="/">Simulator</a>
         </div>
         <div class="status-strip guide-status-strip">
           <div class="status-item"><span>Scope</span><strong>SAFETY</strong></div>
@@ -28,11 +32,20 @@
         </div>
       </header>
 
-      <main class="guide-main">
+      <main class="guide-main" data-collapsible-sections>
         <section class="panel lesson-panel intro-panel industrial-intro">
           <div class="panel-heading">
             <h1>How To Become Qualified For Machinery Risk Assessment</h1>
             <span>what certification means, when to get it, where to look, and what to budget</span>
+          </div>
+          <div class="hub-summary" role="region" aria-labelledby="hub-summary-title">
+            <h2 id="hub-summary-title">In 30 seconds</h2>
+            <ul>
+              <li>No single licence makes someone a machine-safety assessor everywhere.</li>
+              <li>Competence mixes standards training, machine experience and review by qualified engineers.</li>
+              <li>This page shows training options, typical costs and what a good assessment produces.</li>
+            </ul>
+            <p class="hub-summary-tip">Tap a topic below to open it, or use "Open all topics".</p>
           </div>
           <div class="intro-grid industrial-intro-grid">
             <div>
@@ -55,6 +68,7 @@
             </div>
           </div>
         </section>
+
 
         <nav class="scenario-nav industrial-nav cert-nav" aria-label="Risk assessment certification sections">
           <a href="#meaning">Meaning</a>
@@ -280,6 +294,7 @@
         <a href="https://salbotics.uk/">Salbotics Solutions</a>. It is not certified safety or traffic-control software.
       </footer>
     </div>
+      <script src="/static/hub-flow.js?v=flow-20261020" defer></script>
       <script src="/static/mobile-nav.js?v=m5-20261015" defer></script>
   </body>
 </html>
