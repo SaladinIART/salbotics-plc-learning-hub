@@ -559,3 +559,50 @@ def test_learning_path_is_one_list_used_everywhere() -> None:
     for script in ("phase3-analytics.js", "phase4-legacy.js"):
         assert "onTrainerPage()" in (static / script).read_text(encoding="utf-8"), script
 
+
+def test_every_topic_has_plain_view_and_details_toggle() -> None:
+    import re
+    from pathlib import Path
+
+    static = Path(__file__).resolve().parent.parent / "static"
+    wrapped = ["how-it-works", "plc-programming-methods", "industrial-situations",
+               "oil-palm-industrial-environment", "oil-palm-control-stack-analysis",
+               "phase-2-start-here", "risk-assessment-certification"]
+    dashboards = ["phase-3-data-analytics", "phase-4-legacy-ot-recovery"]
+    for name in wrapped + dashboards:
+        page = (static / f"{name}.html").read_text(encoding="utf-8")
+        sections = re.findall(r'<section id="([^"]+)"', page)
+        assert sections, name
+        # Every topic opens with plain words (and an everyday comparison on most).
+        assert page.count('class="plain-view"') == len(sections), name
+        assert "/static/hub-ui.js" in page, name
+        if name in wrapped:
+            # Engineer detail is kept, but behind a native, keyboard-friendly toggle.
+            assert page.count('<details class="tech-details">') == len(sections), name
+            assert page.count("Show technical details") == len(sections), name
+        else:
+            # Live dashboards stay visible; they just gain the plain explanation.
+            assert "tech-details" not in page, name
+    # Key pictures stay outside the toggle; wide ones get a phone step list.
+    mill = (static / "oil-palm-industrial-environment.html").read_text(encoding="utf-8")
+    flow = mill[mill.index('<section id="process-flow"'):]
+    assert flow.index("phone-flow") < flow.index("process-svg") < flow.index("tech-details")
+    css = (static / "hub.css").read_text(encoding="utf-8")
+    for hook in (".plain-view", ".tech-details", ".phone-flow", ".term-tip",
+                 "table.stack-on-phone", "table.pairs-on-phone"):
+        assert hook in css, hook
+
+
+def test_tap_to_explain_glossary() -> None:
+    import re
+    from pathlib import Path
+
+    script = (Path(__file__).resolve().parent.parent / "static" / "hub-ui.js").read_text(
+        encoding="utf-8")
+    terms = dict(re.findall(r'\["([^"]+)", "([^"]+)"\]', script))
+    for word in ("PLC", "VFD", "FFB", "CPO", "SCADA", "HMI", "NPN", "PNP", "interlock"):
+        assert word in terms, word
+        assert len(terms[word].split()) <= 22, word
+    # Only the first use on a page is marked, and the tip is a real button + note.
+    assert "pending.splice" in script and 'aria-expanded' in script and 'role", "note"' in script
+

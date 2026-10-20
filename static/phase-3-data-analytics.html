@@ -6,7 +6,7 @@
     <title>Salbotics PLC Learning Hub - Phase 3 Data Analytics</title>
     <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
     <link rel="stylesheet" href="/static/guide.css?v=phase3-diagram-note-20260626" />
-    <link rel="stylesheet" href="/static/hub.css?v=flow-20261020" />
+    <link rel="stylesheet" href="/static/hub.css?v=plain-20261021" />
   </head>
   <body class="hub-page" data-lesson="phase-3-data-analytics.html" data-needs-trainer>
     <div class="app-shell guide-shell industrial-shell phase3-shell">
@@ -82,6 +82,9 @@
             <h2>1. Management Dashboard</h2>
             <span id="storage-status">SQLite historian</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">These boxes show the numbers managers care about: fruit processed, oil produced, downtime and alarms.</p>
+          </div>
           <div class="analytics-toolbar">
             <span>Last refresh: <strong id="generated-at">--</strong></span>
             <button id="reset-analytics" type="button">RESET DEMO DATA</button>
@@ -94,6 +97,9 @@
             <h2>2. Historian Trends</h2>
             <span>one sample every 2 seconds represents 1 minute of plant time</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">Each chart shows how one value changes over time. Trends show whether a problem is new or keeps coming back.</p>
+          </div>
           <div class="analytics-trend-grid">
             <article id="trend-oer_percent" class="trend-card"></article>
             <article id="trend-press_current_a" class="trend-card"></article>
@@ -105,6 +111,9 @@
           <div class="panel-heading">
             <h2>3. Alarm, Downtime, And Production Events</h2>
             <span>events explain why KPI numbers moved</span>
+          </div>
+          <div class="plain-view">
+            <p class="plain-text">A list of alarms and stops with their times. It explains why the numbers above went up or down.</p>
           </div>
           <div class="wide-table">
             <table>
@@ -121,6 +130,9 @@
             <h2>4. Station Deep Dive: Screw Press</h2>
             <span>one realistic station example behind the management summary</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">A close look at one machine, the screw press, which squeezes the oil out of the fruit.</p>
+          </div>
           <div class="station-deep-grid">
             <div id="station-states" class="station-state-list"></div>
             <div id="press-deep-dive" class="press-deep-dive"></div>
@@ -131,6 +143,9 @@
           <div class="panel-heading">
             <h2>5. OT, IT, MES, ERP: Where Dashboard Data Goes</h2>
             <span>plant signals become business decisions through layers</span>
+          </div>
+          <div class="plain-view">
+            <p class="plain-text">Data moves up in layers: machines, computers, production planning, then business systems. Each layer answers a different question.</p>
           </div>
           <div class="diagram-panel">
             <svg class="process-svg phase3-svg" viewBox="0 0 1180 330" role="img" aria-labelledby="phase3-architecture-title">
@@ -175,6 +190,9 @@
             <h2>6. Local Data Pipeline In This Demo</h2>
             <span>Phase 3 V1 uses simulated data before virtual Modbus TCP runtime</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">How this demo works behind the scenes. A small program saves a sample every two seconds, and this page reads it.</p>
+          </div>
           <div class="code-panel">
             <h3>Current local analytics flow</h3>
             <pre><code>Simulated oil-palm collector
@@ -197,7 +215,8 @@ Browser management dashboard
       </main>
     </div>
     <script src="/static/phase3-analytics.js?v=phase3-analytics-fallback-20260626"></script>
-      <script src="/static/hub-flow.js?v=flow-20261020" defer></script>
+      <script src="/static/hub-flow.js?v=plain-20261021" defer></script>
+      <script src="/static/hub-ui.js?v=plain-20261021" defer></script>
       <script src="/static/mobile-nav.js?v=m5-20261015" defer></script>
   </body>
 </html>

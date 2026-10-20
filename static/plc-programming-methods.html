@@ -6,7 +6,7 @@
     <title>Salbotics PLC Learning Hub - Programming Methods</title>
     <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
     <link rel="stylesheet" href="/static/guide.css" />
-    <link rel="stylesheet" href="/static/hub.css?v=flow-20261020" />
+    <link rel="stylesheet" href="/static/hub.css?v=plain-20261021" />
   </head>
   <body class="hub-page" data-lesson="plc-programming-methods.html">
     <div class="app-shell guide-shell industrial-shell method-shell">
@@ -87,6 +87,13 @@
             <h2>1. Reliable Program Method From Scratch</h2>
             <span>the order matters more than the software brand</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">Good programs follow a fixed order: understand the machine, list the dangers, plan, then write code. Starting with code is the most common beginner mistake.</p>
+            <p class="plain-like"><strong>Like:</strong> Drawing a house plan before laying bricks.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="diagram-panel">
             <svg class="process-svg method-svg" viewBox="0 0 1180 430" role="img" aria-labelledby="scratch-title">
               <title id="scratch-title">Reliable PLC program development flow</title>
@@ -126,6 +133,8 @@
             <div class="method-card"><h3>Alarm as sentences</h3><p>Alarm text should tell source, condition, and action: "CV101 blocked chute - inspect discharge before reset".</p></div>
             <div class="method-card"><h3>Test before site pressure</h3><p>Create a test matrix for every state, interlock, permissive, fault, reset, and abnormal sensor condition.</p></div>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="flowcharts" class="panel scenario-panel">
@@ -133,6 +142,13 @@
             <h2>2. Flowcharts Before Ladder</h2>
             <span>flowchart is the machine story; Ladder is only one expression of it</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">First draw the machine's steps as boxes and arrows. The program then simply follows that drawing.</p>
+            <p class="plain-like"><strong>Like:</strong> Writing a recipe step by step before you start cooking.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="compare-grid">
             <div class="diagram-panel">
               <svg class="process-svg mini-flow-svg" viewBox="0 0 900 430" role="img" aria-labelledby="flow-title">
@@ -168,6 +184,8 @@
               </table>
             </div>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="lad-structure" class="panel scenario-panel">
@@ -175,6 +193,13 @@
             <h2>3. Reliable Ladder Structure</h2>
             <span>recommended rung order for maintainable LAD</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">Keep every program in the same order: inputs, safety checks, steps, alarms, then outputs. Anyone can then find a problem quickly.</p>
+            <p class="plain-like"><strong>Like:</strong> A tidy toolbox where every tool has its place.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="wide-table">
             <table>
               <thead>
@@ -199,6 +224,8 @@
             <div class="ladder-row"><span class="rung-id">L040</span><div class="ladder-track"><span class="ld-contact">Step_Start</span><span class="ld-timer">T_StartDelay 2s</span><span class="ld-coil">Step_Run</span></div><p>Step transition is visible and timed.</p></div>
             <div class="ladder-row danger"><span class="rung-id">L090</span><div class="ladder-track"><span class="ld-contact">FaultActive</span><span class="ld-coil reset">RST RunCmd</span><span class="ld-coil danger">AlarmHorn</span></div><p>Fault section removes command and announces it.</p></div>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="languages" class="panel scenario-panel">
@@ -206,6 +233,13 @@
             <h2>4. PLC Programming Languages And Modern Approaches</h2>
             <span>LAD is not old-fashioned; it is one tool in a mixed toolkit</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">PLCs can be programmed in several styles. Ladder is easiest for technicians to read; other styles suit maths, sequences or temperature control.</p>
+            <p class="plain-like"><strong>Like:</strong> Choosing a hammer or a screwdriver for the job.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="wide-table">
             <table>
               <thead>
@@ -224,6 +258,8 @@
               </tbody>
             </table>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="limits" class="panel scenario-panel danger-scenario">
@@ -231,6 +267,13 @@
             <h2>5. Hardware Processing Limits Shape The Programming Style</h2>
             <span>scan time, memory, watchdog, I/O update, and online troubleshooting matter</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">A PLC is a small computer with limited speed and memory. Simple, readable code is often better than clever code.</p>
+            <p class="plain-like"><strong>Like:</strong> Clear notes that the night shift can follow at 2 AM.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="robust-grid">
             <div class="robust-item"><h3>Scan time</h3><p>Every extra rung, loop, communication call, and calculation adds work. Slow scans can miss short pulses or make control feel late.</p></div>
             <div class="robust-item"><h3>Watchdog</h3><p>Loops in ST must be bounded. A bad loop can exceed watchdog time and fault the controller.</p></div>
@@ -239,6 +282,8 @@
             <div class="robust-item"><h3>Communication load</h3><p>HMI, SCADA, VFD networks, MQTT gateways, and remote I/O can affect update rates and diagnostics.</p></div>
             <div class="robust-item"><h3>Maintainability</h3><p>The fastest code is not always the best plant code. A readable rung during a 2 AM breakdown is worth a lot.</p></div>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="case-conveyor" class="panel scenario-panel">
@@ -246,6 +291,13 @@
             <h2>Case Study 1: Conveyor Train</h2>
             <span>best default: LAD for interlocks, SFC for sequence, ST only for counters/data</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">Conveyors must start in the right order and stop if a belt stops turning. Ladder shows these rules clearly for maintenance staff.</p>
+            <p class="plain-like"><strong>Like:</strong> Opening the exit before letting more people into a hallway.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="case-grid">
             <div class="ladder-diagram compact-lad">
               <h3>LAD version</h3>
@@ -277,6 +329,8 @@ Alm_ZeroSpeed := ZeroSpeedTimer.Q;</code></pre>
               </tbody></table>
             </div>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="case-sterilizer" class="panel scenario-panel">
@@ -284,6 +338,13 @@ Alm_ZeroSpeed := ZeroSpeedTimer.Q;</code></pre>
             <h2>Case Study 2: Sterilizer Batch Cycle</h2>
             <span>best default: SFC or state machine, with LAD safety/permissive rungs</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">The sterilizer is a room-sized pressure cooker for fruit. Its steps run in strict order, and the door stays locked while there is pressure.</p>
+            <p class="plain-like"><strong>Like:</strong> A pressure cooker you must not open until it is safe.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="case-grid">
             <div class="mini-table">
               <h3>SFC steps</h3>
@@ -314,6 +375,8 @@ END_CASE;</code></pre>
               <p>ST is good for state machines, but keep dangerous interlocks visible in LAD too.</p>
             </div>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="case-clarifier" class="panel scenario-panel">
@@ -321,6 +384,13 @@ END_CASE;</code></pre>
             <h2>Case Study 3: Clarifier Temperature And Oil Transfer</h2>
             <span>best default: FBD for analog/PID, ST for scaling, LAD for permissives</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">The clarifier keeps oil at the right temperature and moves it when tanks are ready. Different programming styles suit heating control and safety checks.</p>
+            <p class="plain-like"><strong>Like:</strong> A kettle thermostat plus a 'tank is full' check.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="case-grid">
             <div class="code-panel">
               <h3>ST scaling</h3>
@@ -347,6 +417,8 @@ SensorFault := RawAI < RawUnderRange OR RawAI > RawOverRange;</code></pre>
               <div class="ladder-row danger"><span class="rung-id">CL02</span><div class="ladder-track"><span class="ld-contact">TankHighHigh</span><span class="ld-coil reset">RST TransferRun</span><span class="ld-coil danger">Alm_TankHH</span></div><p>High-high level blocks transfer regardless of analog strategy.</p></div>
             </div>
           </div>
+            </div>
+          </details>
         </section>
 
         <section id="checklist" class="panel scenario-panel">
@@ -354,6 +426,13 @@ SensorFault := RawAI < RawUnderRange OR RawAI > RawOverRange;</code></pre>
             <h2>9. Final Checklist Before Writing Or Downloading Code</h2>
             <span>use this before touching a live PLC</span>
           </div>
+          <div class="plain-view">
+            <p class="plain-text">Before loading a program into a real machine, answer a short list of questions. It covers safety, modes, alarms, tests and backups.</p>
+            <p class="plain-like"><strong>Like:</strong> A pilot's checklist before take-off.</p>
+          </div>
+          <details class="tech-details">
+            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <div class="tech-body">
           <div class="wide-table">
             <table>
               <thead><tr><th>Check</th><th>Question</th><th>Evidence</th></tr></thead>
@@ -375,6 +454,8 @@ SensorFault := RawAI < RawUnderRange OR RawAI > RawOverRange;</code></pre>
             <a href="https://opcfoundation.org/about/opc-technologies/opc-ua/">OPC UA</a>
             <a href="https://mqtt.org/">MQTT</a>
           </div>
+            </div>
+          </details>
         </section>
       </main>
       <footer class="product-footer">
@@ -382,7 +463,8 @@ SensorFault := RawAI < RawUnderRange OR RawAI > RawOverRange;</code></pre>
         <a href="https://salbotics.uk/">Salbotics Solutions</a>. It is not certified safety or traffic-control software.
       </footer>
     </div>
-      <script src="/static/hub-flow.js?v=flow-20261020" defer></script>
+      <script src="/static/hub-flow.js?v=plain-20261021" defer></script>
+      <script src="/static/hub-ui.js?v=plain-20261021" defer></script>
       <script src="/static/mobile-nav.js?v=m5-20261015" defer></script>
   </body>
 </html>

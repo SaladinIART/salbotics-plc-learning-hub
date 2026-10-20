@@ -605,6 +605,137 @@ body.hub-page {
   color: var(--hp-brand);
 }
 
+/* ---------- Plain view first, technical details on request ---------- */
+.hub-page .plain-view {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.hub-page .guide-main .plain-text {
+  margin: 0;
+  color: var(--hp-text);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.hub-page .guide-main .plain-like {
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--hp-surface-2);
+  color: var(--hp-body);
+  font-size: 16px;
+}
+
+.hub-page .guide-main .plain-like strong {
+  color: var(--hp-brand-strong);
+}
+
+.hub-page .tech-details {
+  border: 1px solid var(--hp-line);
+  border-radius: 12px;
+  background: var(--hp-surface);
+}
+
+.hub-page .tech-details > summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 10px 16px;
+  color: var(--hp-brand-strong);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+
+.hub-page .tech-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.hub-page .tech-details > summary::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform 0.15s ease;
+}
+
+.hub-page .tech-details[open] > summary::before {
+  transform: rotate(45deg);
+}
+
+.hub-page .tech-details > summary:hover,
+.hub-page .tech-details > summary:focus-visible {
+  background: var(--hp-surface-2);
+  border-radius: 12px;
+}
+
+.hub-page .tech-details .tech-open,
+.hub-page .tech-details[open] .tech-closed {
+  display: none;
+}
+
+.hub-page .tech-details[open] .tech-open {
+  display: inline;
+}
+
+.hub-page .tech-details[open] > summary {
+  border-bottom: 1px solid var(--hp-line);
+  border-radius: 12px 12px 0 0;
+}
+
+.hub-page .tech-body {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+}
+
+/* Step list that replaces a wide diagram on phones */
+.hub-page .phone-flow {
+  display: none;
+}
+
+/* ---------- Tap-to-explain words ---------- */
+.hub-page .term {
+  display: inline;
+  padding: 0;
+  border: 0;
+  border-bottom: 2px dotted var(--hp-brand);
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: help;
+}
+
+.hub-page .term:hover,
+.hub-page .term:focus-visible,
+.hub-page .term[aria-expanded="true"] {
+  color: var(--hp-brand-strong);
+  background: var(--hp-brand-soft);
+  border-radius: 3px;
+}
+
+.hub-page .term-tip {
+  display: inline-block;
+  margin: 4px 0 4px 6px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: var(--hp-text);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.hub-page .term-tip[hidden] {
+  display: none;
+}
+
 /* ---------- Purposeful animation ----------
    Only where movement explains a process. All of it stops when the device
    asks for reduced motion. */
@@ -662,6 +793,162 @@ body.hub-page {
 
 /* ---------- Phone ---------- */
 @media (max-width: 760px) {
+  /* Key diagrams become a simple numbered list */
+  .hub-page .has-phone-flow,
+  .hub-page #architecture .diagram-panel {
+    display: none;
+  }
+
+  /* Code and pipeline notes wrap instead of scrolling sideways */
+  .hub-page .guide-main pre {
+    min-width: 0;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  .hub-page .phone-flow {
+    counter-reset: flow;
+    display: grid;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .hub-page .guide-main .phone-flow li {
+    counter-increment: flow;
+    position: relative;
+    display: grid;
+    gap: 0;
+    padding: 10px 12px 10px 52px;
+    border: 1px solid var(--hp-line);
+    border-radius: 10px;
+    background: var(--hp-surface);
+    line-height: 1.35;
+  }
+
+  .hub-page .phone-flow li::before {
+    content: counter(flow);
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--hp-brand-soft);
+    color: var(--hp-brand-strong);
+    font-size: 14px;
+    font-weight: 800;
+    transform: translateY(-50%);
+  }
+
+  .hub-page .phone-flow li strong {
+    color: var(--hp-text);
+  }
+
+  .hub-page .phone-flow li span {
+    color: var(--hp-muted);
+    font-size: 15px;
+  }
+
+  .hub-page .guide-main .plain-text {
+    font-size: 17px;
+  }
+
+  .hub-page .tech-body {
+    padding: 12px;
+  }
+
+  /* Tables with column headings stack into one card per row */
+  .hub-page table.stack-on-phone {
+    width: 100%;
+    min-width: 0 !important;
+  }
+
+  .hub-page table.stack-on-phone thead {
+    display: none;
+  }
+
+  .hub-page table.stack-on-phone,
+  .hub-page table.stack-on-phone tbody,
+  .hub-page table.stack-on-phone tr,
+  .hub-page table.stack-on-phone td,
+  .hub-page table.stack-on-phone tbody th {
+    display: block;
+  }
+
+  .hub-page table.stack-on-phone tr {
+    margin-bottom: 10px;
+    padding: 10px 12px;
+    border: 1px solid var(--hp-line);
+    border-radius: 10px;
+    background: var(--hp-surface);
+  }
+
+  .hub-page table.stack-on-phone td,
+  .hub-page table.stack-on-phone tbody th {
+    padding: 3px 0;
+    border: 0;
+    background: transparent;
+    white-space: normal;
+  }
+
+  .hub-page table.stack-on-phone td:first-child,
+  .hub-page table.stack-on-phone tbody th:first-child {
+    color: var(--hp-text);
+    font-weight: 700;
+  }
+
+  .hub-page table.stack-on-phone td[data-label]:not(:first-child)::before {
+    content: attr(data-label) ": ";
+    color: var(--hp-muted);
+    font-weight: 600;
+  }
+
+  .hub-page table.pairs-on-phone {
+    width: 100%;
+    min-width: 0 !important;
+  }
+
+  .hub-page table.pairs-on-phone,
+  .hub-page table.pairs-on-phone tbody,
+  .hub-page table.pairs-on-phone tr,
+  .hub-page table.pairs-on-phone th,
+  .hub-page table.pairs-on-phone td {
+    display: block;
+  }
+
+  .hub-page table.pairs-on-phone tr {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--hp-line);
+  }
+
+  .hub-page table.pairs-on-phone th,
+  .hub-page table.pairs-on-phone td {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    white-space: normal;
+  }
+
+  .hub-page table.pairs-on-phone tr > :first-child:not(:only-child) {
+    color: var(--hp-muted);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .hub-page .wide-table:has(table.pairs-on-phone),
+  .hub-page .wide-table:has(> table.stack-on-phone),
+  .hub-page .wide-table:has(table.stack-on-phone) {
+    overflow: visible;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
   .hub-page .app-shell {
     width: calc(100% - 24px);
     padding-top: 8px;
