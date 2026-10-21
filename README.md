@@ -90,6 +90,17 @@ published automatically from `main` by GitHub Actions:
 - **Sample numbers on the website** - the Phase 3 and Phase 4 dashboards draw a snapshot recorded
   from the trainer (`scripts/build_dashboard_samples.py`), clearly labelled as sample data; the
   local trainer still shows live numbers.
+- **Same simple layout on every lesson** - a plain title (with the "Technical name" underneath),
+  a one-line intro, "In 30 seconds", a one-line safety note with "Read more", topics with plain
+  titles, and "Check yourself" (three tap-to-reveal questions) before "Up next".
+- **Dark mode** - follows the phone or computer setting; the round button in the top bar switches
+  Auto, Light and Dark and is remembered. Diagrams, Ladder rungs and tables stay on light cards.
+- **English, Bahasa Malaysia, Deutsch** - the EN | BM | DE switch in the top bar changes menus,
+  titles, summaries, plain views, questions, glossary meanings and search. English is the default;
+  "Show technical details" stays in English. Translations live in `static/lang/` (see
+  [Translations](#translations)) and still need a native-speaker review.
+- **Accessible** - checked with axe-core on every page (light, dark, BM, DE) with no issues found;
+  a "Skip to content" link, keyboard focus on every control and on wide tables, and labelled switches.
 - **Beginner guide** - PLC basics in plain language using a washing machine, lift,
   automatic gate, escalator, rice cooker, car-park barrier and the trainer's own traffic light,
   with the technical term beside each idea, two diagrams, "Try it" questions and a glossary.
@@ -106,7 +117,7 @@ Details: [docs/STATIC_DEMO_PUBLISHING.md](docs/STATIC_DEMO_PUBLISHING.md).
 
 ## Screenshots
 
-Screenshots refreshed 15 October 2026.
+Screenshots refreshed 21 October 2026.
 
 "What is this?" overview (start page of the live site):
 
@@ -135,6 +146,10 @@ Programming methods and flowcharts:
 On a phone: MENU button, learning-path progress bar and the "In 30 seconds" summary:
 
 <img src="docs/screenshots/mobile.png" alt="Oil-palm lesson on a phone with MENU button, progress bar and 30-second summary" width="320">
+
+The same lesson in dark mode and German:
+
+<img src="docs/screenshots/mobile-dark-de.png" alt="Oil-palm lesson on a phone in dark mode with the German language selected" width="320">
 
 ## What You Can Learn
 
@@ -232,6 +247,20 @@ python -m http.server 8080 --directory site-preview
 ```
 
 The output directory must be new; existing directories are refused.
+
+### Translations
+
+English text lives in the pages. Bahasa Malaysia and German live in `static/lang/ms.json` and
+`static/lang/de.json`, keyed by the `data-i18n` attributes on the pages (and `hubT("js...")` in
+the scripts). After changing page text:
+
+```powershell
+python scripts/i18n_keys.py          # refresh static/lang/en.json (the list of keys)
+python scripts/build_search_index.py # refresh search, including BM/DE
+```
+
+Then add or update the same keys in `ms.json` and `de.json`. The tests fail if a key is missing,
+empty, or has different markup or `{placeholders}` from the English.
 
 ## Frontend Spike
 

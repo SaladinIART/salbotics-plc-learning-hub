@@ -113,14 +113,20 @@
   }
 
   // ---------- Controls in the top bar ----------
-  var THEME_ICON = { auto: "◐", light: "☀", dark: "☾" };
+  // Small drawn icons (text symbols like ◐ render too small in many fonts).
+  var SVG = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false">';
+  var THEME_ICON = {
+    auto: SVG + '<circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg>',
+    light: SVG + '<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/></svg>',
+    dark: SVG + '<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5z"/></svg>'
+  };
   var themeButton = null;
   var langButtons = [];
 
   function paintTheme() {
     if (!themeButton) return;
     var names = { auto: hubT("js.theme.auto", "Auto"), light: hubT("js.theme.light", "Light"), dark: hubT("js.theme.dark", "Dark") };
-    themeButton.textContent = THEME_ICON[theme];
+    themeButton.innerHTML = THEME_ICON[theme];   // fixed icons above, no user text
     var label = hubT("js.theme.label", "Colour theme: {name}. Tap to change.", { name: names[theme] });
     themeButton.setAttribute("aria-label", label);
     themeButton.title = label;
