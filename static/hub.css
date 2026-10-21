@@ -729,7 +729,7 @@ html:not([lang="en"]) .lang-note {
 }
 
 .hub-next-card span {
-  color: #dbeafe;
+  color: #ffffff;
   font-size: 16px;
 }
 
@@ -1348,4 +1348,10 @@ html:not([lang="en"]) .lang-note {
   .hub-page .hub-next-card {
     transition: none;
   }
+}
+
+/* Wide tables that scroll sideways get keyboard focus (hub-ui.js); show where it is. */
+.mini-table[data-scroll-focus]:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;
 }

@@ -202,6 +202,7 @@
  "js.search": "Search",
  "js.search.none": "No match yet. Try a simpler word, such as motor, sensor or alarm.",
  "js.seeall": "See all lessons",
+ "js.skip": "Skip to content",
  "js.stage": "Stage {n} of {total} · {name}",
  "js.startlesson": "Start this lesson →",
  "js.startover": "Start over",

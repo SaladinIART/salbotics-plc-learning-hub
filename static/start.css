@@ -14,10 +14,12 @@
   --sp-brand-strong: #1d4ed8;
   --sp-brand-soft: #dbeafe;
   --sp-in: #059669;
+  --sp-in-text: #047857;
   --sp-in-soft: #d1fae5;
   --sp-plc: #4f46e5;
   --sp-plc-soft: #e0e7ff;
   --sp-out: #ea580c;
+  --sp-out-text: #c2410c;
   --sp-out-soft: #ffedd5;
   --sp-warn-bg: #fffbeb;
   --sp-warn-line: #f59e0b;
@@ -43,10 +45,12 @@
     --sp-brand-strong: #93c5fd;
     --sp-brand-soft: #1e3a8a;
     --sp-in: #34d399;
+    --sp-in-text: #34d399;
     --sp-in-soft: #064e3b;
     --sp-plc: #a5b4fc;
     --sp-plc-soft: #312e81;
     --sp-out: #fb923c;
+    --sp-out-text: #fb923c;
     --sp-out-soft: #7c2d12;
     --sp-warn-bg: #2a1f0a;
     --sp-warn-line: #f59e0b;
@@ -70,10 +74,12 @@
   --sp-brand-strong: #93c5fd;
   --sp-brand-soft: #1e3a8a;
   --sp-in: #34d399;
+  --sp-in-text: #34d399;
   --sp-in-soft: #064e3b;
   --sp-plc: #a5b4fc;
   --sp-plc-soft: #312e81;
   --sp-out: #fb923c;
+  --sp-out-text: #fb923c;
   --sp-out-soft: #7c2d12;
   --sp-warn-bg: #2a1f0a;
   --sp-warn-line: #f59e0b;
@@ -296,9 +302,9 @@ body.start-page {
   font-weight: 800;
 }
 
-.sp-badge-in { background: var(--sp-in-soft); color: var(--sp-in); }
+.sp-badge-in { background: var(--sp-in-soft); color: var(--sp-in-text); }
 .sp-badge-plc { background: var(--sp-plc-soft); color: var(--sp-plc); }
-.sp-badge-out { background: var(--sp-out-soft); color: var(--sp-out); }
+.sp-badge-out { background: var(--sp-out-soft); color: var(--sp-out-text); }
 
 /* ---------- Hero ---------- */
 .sp-hero {
@@ -537,8 +543,8 @@ body.start-page {
   font-weight: 800;
 }
 
-.sp-group-in th { color: var(--sp-in); }
-.sp-group-out th { color: var(--sp-out); }
+.sp-group-in th { color: var(--sp-in-text); }
+.sp-group-out th { color: var(--sp-out-text); }
 
 .sp-dot {
   display: inline-block;

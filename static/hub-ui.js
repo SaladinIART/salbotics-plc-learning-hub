@@ -167,4 +167,33 @@
       new MutationObserver(function () { labelTable(table); }).observe(body, { childList: true });
     }
   });
+
+  // ---------- 3. Keyboard access to boxes that scroll sideways ----------
+  // A table wider than its box can be scrolled with the arrow keys once it has focus.
+  function focusScrollBoxes() {
+    Array.prototype.forEach.call(main.querySelectorAll(".mini-table"), function (box) {
+      var scrolls = box.scrollWidth > box.clientWidth + 1;
+      if (scrolls && !box.hasAttribute("tabindex")) {
+        box.setAttribute("tabindex", "0");
+        box.setAttribute("role", "region");
+        var cap = box.querySelector("caption, th");
+        box.setAttribute("aria-label", cap ? cap.textContent.trim() : "Table");
+        box.setAttribute("data-scroll-focus", "");
+      } else if (!scrolls && box.hasAttribute("data-scroll-focus")) {
+        ["tabindex", "role", "aria-label", "data-scroll-focus"].forEach(function (a) { box.removeAttribute(a); });
+      }
+    });
+  }
+  focusScrollBoxes();
+  window.addEventListener("resize", focusScrollBoxes);
+  // Live dashboards (Phase 4) draw their tables after loading data.
+  if (window.MutationObserver) {
+    var pending = false;
+    new MutationObserver(function () {
+      if (pending) return;
+      pending = true;
+      setTimeout(function () { pending = false; focusScrollBoxes(); }, 200);
+    }).observe(main, { childList: true, subtree: true });
+  }
+  document.addEventListener("hub:lang", focusScrollBoxes);
 })();

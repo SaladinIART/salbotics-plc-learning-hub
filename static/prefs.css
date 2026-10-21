@@ -71,3 +71,26 @@ html:not([lang="en"]) body {
   hyphens: auto;
   overflow-wrap: break-word;
 }
+
+/* Hidden until a keyboard user tabs to it. */
+.hub-skip {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: #1d4ed8;
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-160%);
+}
+.hub-skip:focus {
+  transform: none;
+  outline: 3px solid #f59e0b;
+  outline-offset: 2px;
+}
+main h1[tabindex="-1"]:focus {
+  outline: none;
+}

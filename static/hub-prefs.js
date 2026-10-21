@@ -176,8 +176,27 @@
     if (document.readyState === "interactive") capture();
   });
 
+  // "Skip to content" link: the first stop for keyboard users, jumps past the menus.
+  var skipLink = null;
+  function buildSkipLink() {
+    var target = document.querySelector("main h1") || document.querySelector("main");
+    if (!target || document.querySelector(".hub-skip")) return;
+    if (!target.id) target.id = "hub-content";
+    if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
+    skipLink = document.createElement("a");
+    skipLink.className = "hub-skip";
+    skipLink.href = "#" + target.id;
+    paintSkipLink();
+    document.body.insertBefore(skipLink, document.body.firstChild);
+  }
+  function paintSkipLink() {
+    if (skipLink) skipLink.textContent = hubT("js.skip", "Skip to content");
+  }
+  document.addEventListener("hub:lang", paintSkipLink);
+
   function ready() {
     capture();
+    buildSkipLink();
     buildControls();
     if (lang !== "en") loadLanguage(lang, applyLanguage);
   }

@@ -756,3 +756,24 @@ def test_language_switch_has_complete_malay_and_german_text() -> None:
     data = json.loads(index[index.index("{"):index.rindex("}") + 1])
     assert len(data["topics"]) > 60
     assert all("ms" in item["tr"] and "de" in item["tr"] for item in data["lessons"] + data["words"])
+
+
+def test_accessibility_basics() -> None:
+    from pathlib import Path
+
+    static = Path(__file__).resolve().parent.parent / "static"
+    prefs = (static / "hub-prefs.js").read_text(encoding="utf-8")
+    # Keyboard users can jump past the menus; switches say what they are.
+    assert "hub-skip" in prefs and '"js.skip"' in prefs
+    assert 'aria-pressed' in prefs and 'setAttribute("aria-label"' in prefs
+    assert ".hub-skip:focus" in (static / "prefs.css").read_text(encoding="utf-8")
+    # Wide tables that scroll sideways can be reached with the keyboard.
+    assert "focusScrollBoxes" in (static / "hub-ui.js").read_text(encoding="utf-8")
+    # Text on the "Up next" card and the start page input/output headings is
+    # dark or light enough to read (checked with axe-core).
+    assert ".hub-next-card span {\n  color: #ffffff;" in (static / "hub.css").read_text(encoding="utf-8")
+    start_css = (static / "start.css").read_text(encoding="utf-8")
+    assert ".sp-group-in th { color: var(--sp-in-text); }" in start_css
+    assert start_css.count("--sp-in-text:") == 3 and start_css.count("--sp-out-text:") == 3
+    # No landmark inside another landmark on the start page.
+    assert "<aside" not in (static / "start.html").read_text(encoding="utf-8")
