@@ -680,3 +680,24 @@ def test_every_lesson_follows_the_same_skeleton() -> None:
         for tag in ("h1", "h2", "span", "div", "section", "details", "summary", "p", "li"):
             assert len(re.findall(rf"<{tag}\b", text)) == text.count(f"</{tag}>"), (page.name, tag)
 
+
+def test_dark_mode_follows_device_and_has_a_switch() -> None:
+    from pathlib import Path
+
+    static = Path(__file__).resolve().parent.parent / "static"
+    for css_name in ("hub.css", "start.css"):
+        css = (static / css_name).read_text(encoding="utf-8")
+        assert "prefers-color-scheme: dark" in css and ':root:not([data-theme="light"])' in css
+        assert ':root[data-theme="dark"]' in css, css_name
+    prefs = (static / "hub-prefs.js").read_text(encoding="utf-8")
+    assert '"salbotics-hub-theme"' in prefs and '"auto", "light", "dark"' in prefs
+    # Loaded in <head> without defer so the theme applies before first paint.
+    for page in ["start"] + ["beginner-guide", "how-it-works", "industrial-situations",
+                             "phase-3-data-analytics", "risk-assessment-certification"]:
+        html = (static / f"{page}.html").read_text(encoding="utf-8")
+        head = html[:html.index("</head>")]
+        assert '<script src="/static/hub-prefs.js' in head and "defer" not in head.split("hub-prefs.js")[1][:30]
+        assert "/static/prefs.css" in head, page
+    # Diagrams, Ladder rungs and tables stay on light "paper" cards.
+    assert 'Light "paper" cards' in (static / "hub.css").read_text(encoding="utf-8")
+

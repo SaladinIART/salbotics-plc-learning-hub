@@ -58,8 +58,9 @@
       if (!next && progress.done.indexOf(l.file) === -1) next = l;
     });
     banner.appendChild(el("p", "sp-continue-title",
-      next ? "Welcome back! You have finished " + doneCount + " of " + lessons.length + " lessons."
-           : "You finished all " + lessons.length + " lessons. Well done!"));
+      !next ? "You finished all " + lessons.length + " lessons. Well done!"
+            : doneCount ? "Welcome back! You have finished " + doneCount + " of " + lessons.length + " lessons."
+            : "Welcome back! Pick up where you left off."));
     var row = el("div", "sp-continue-row");
     if (next) {
       var go = el("a", "sp-button sp-button-main", "Continue: Lesson " + next.number + " · " + next.title + " →");

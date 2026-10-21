@@ -29,8 +29,9 @@
   --sp-ground: #e2ebe0;
 }
 
+/* Dark mode: follows the device unless the reader picks Light or Dark (hub-prefs.js). */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --sp-bg: #0b1120;
     --sp-surface: #111a2e;
     --sp-surface-2: #17223a;
@@ -55,6 +56,32 @@
     --sp-road: #334155;
     --sp-ground: #14281f;
   }
+}
+
+:root[data-theme="dark"] {
+  --sp-bg: #0b1120;
+  --sp-surface: #111a2e;
+  --sp-surface-2: #17223a;
+  --sp-text: #f1f5f9;
+  --sp-body: #cbd5e1;
+  --sp-muted: #94a3b8;
+  --sp-line: #1f2b44;
+  --sp-brand: #60a5fa;
+  --sp-brand-strong: #93c5fd;
+  --sp-brand-soft: #1e3a8a;
+  --sp-in: #34d399;
+  --sp-in-soft: #064e3b;
+  --sp-plc: #a5b4fc;
+  --sp-plc-soft: #312e81;
+  --sp-out: #fb923c;
+  --sp-out-soft: #7c2d12;
+  --sp-warn-bg: #2a1f0a;
+  --sp-warn-line: #f59e0b;
+  --sp-warn-text: #fde68a;
+  --sp-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+  --sp-on-brand: #0b1120;
+  --sp-road: #334155;
+  --sp-ground: #14281f;
 }
 
 body.start-page {
