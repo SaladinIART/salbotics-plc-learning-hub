@@ -790,6 +790,7 @@ body.start-page {
 
 .start-page a.sp-goal {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   align-content: start;
   gap: 4px;
   padding: 18px;

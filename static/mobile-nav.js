@@ -1,5 +1,9 @@
 // Phone-friendly top bar: collapses the page links behind a MENU button.
 // Without JavaScript the links simply stay visible (progressive enhancement).
+function hubText(key, english) {
+  return window.hubT ? window.hubT(key, english) : english;
+}
+
 (function () {
   var topbar = document.querySelector(".topbar");
   var actions = topbar && topbar.querySelector(".top-actions");
@@ -14,14 +18,15 @@
   button.className = "menu-toggle";
   button.setAttribute("aria-controls", actions.id);
   button.setAttribute("aria-expanded", "false");
-  button.textContent = "MENU";
   brand.appendChild(button);
 
   function setOpen(open) {
     topbar.classList.toggle("menu-open", open);
     button.setAttribute("aria-expanded", open ? "true" : "false");
-    button.textContent = open ? "CLOSE" : "MENU";
+    button.textContent = open ? hubText("js.close", "CLOSE") : hubText("js.menu", "MENU");
   }
+  setOpen(false);
+  document.addEventListener("hub:lang", function () { setOpen(topbar.classList.contains("menu-open")); });
 
   button.addEventListener("click", function () {
     setOpen(!topbar.classList.contains("menu-open"));
@@ -86,11 +91,11 @@
     var label = document.createElement("label");
     label.className = "section-jump";
     var text = document.createElement("span");
-    text.textContent = "Jump to section";
+    text.textContent = hubText("js.jump", "Jump to section");
     var select = document.createElement("select");
     var first = document.createElement("option");
     first.value = "";
-    first.textContent = "Choose a section...";
+    first.textContent = hubText("js.choose", "Choose a section...");
     select.appendChild(first);
     Array.prototype.forEach.call(nav.querySelectorAll("a[href^='#']"), function (link) {
       var option = document.createElement("option");
@@ -107,6 +112,16 @@
     label.appendChild(text);
     label.appendChild(select);
     nav.parentNode.insertBefore(label, nav);
+    // Follow the language switch: the menu copies the (translated) section links.
+    document.addEventListener("hub:lang", function () {
+      text.textContent = hubText("js.jump", "Jump to section");
+      first.textContent = hubText("js.choose", "Choose a section...");
+      Array.prototype.forEach.call(select.options, function (option) {
+        if (!option.value) return;
+        var link = nav.querySelector('a[href="' + option.value + '"]');
+        if (link) option.textContent = link.textContent.trim();
+      });
+    });
   }
 
   // One button to open or fold every topic at once.
@@ -119,8 +134,9 @@
       return sections.every(function (s) { return !s.classList.contains("section-collapsed"); });
     };
     var label = function () {
-      toggle.textContent = allOpen() ? "Fold all topics" : "Open all topics";
+      toggle.textContent = allOpen() ? hubText("js.foldall", "Fold all topics") : hubText("js.openall", "Open all topics");
     };
+    document.addEventListener("hub:lang", function () { label(); });
     toggle.addEventListener("click", function () {
       var open = !allOpen();
       sections.forEach(function (s) { setOpen(s, open); });
@@ -162,7 +178,7 @@
       var hint = document.createElement("p");
       hint.className = "swipe-hint";
       hint.setAttribute("aria-hidden", "true");
-      hint.textContent = "Swipe sideways to see more \u2192";
+      hint.textContent = hubText("js.swipe", "Swipe sideways to see more \u2192");
       el.parentNode.insertBefore(hint, el);
       el.addEventListener("scroll", function onScroll() {
         if (el.scrollLeft > Math.min(24, (el.scrollWidth - el.clientWidth) / 2)) {

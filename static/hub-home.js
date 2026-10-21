@@ -33,22 +33,38 @@
     return node;
   }
 
+  // Text in the reader's language (hub-prefs.js); English when no translation.
+  function T(key, english, vars) {
+    return window.hubT ? window.hubT(key, english, vars) : english;
+  }
+  function lang() { return window.hubLang ? window.hubLang() : "en"; }
+  // A field of a search-index entry in the current language (falls back to English).
+  function loc(item, field) {
+    var tr = item.tr && item.tr[lang()];
+    return (tr && tr[field]) || item[field];
+  }
+
   // ---------- 1. Progress: ticks on the lesson map + welcome back ----------
   var progress = loadProgress();
+  var lessons = data.lessons;
 
-  Array.prototype.forEach.call(document.querySelectorAll("#path .sp-lessons a"), function (a) {
-    var file = (a.getAttribute("href") || "").split("/").pop();
-    if (progress.done.indexOf(file) !== -1) {
-      a.classList.add("is-done");
-      var no = a.querySelector(".sp-lesson-no");
-      if (no) no.textContent = "✓";
-      a.setAttribute("aria-label", a.textContent.trim() + " (finished)");
-    }
-  });
+  function paintTicks() {
+    Array.prototype.forEach.call(document.querySelectorAll("#path .sp-lessons a"), function (a) {
+      var file = (a.getAttribute("href") || "").split("/").pop();
+      if (progress.done.indexOf(file) !== -1) {
+        a.classList.add("is-done");
+        var no = a.querySelector(".sp-lesson-no");
+        if (no) no.textContent = "✓";
+        a.removeAttribute("aria-label");
+        a.setAttribute("aria-label", a.textContent.trim() + T("js.finishedsuffix", " (finished)"));
+      }
+    });
+  }
 
   var banner = document.getElementById("continue");
-  var lessons = data.lessons;
-  if (banner && lessons.length && (progress.done.length || progress.last)) {
+  function renderBanner() {
+    if (!banner || !lessons.length || !(progress.done.length || progress.last)) return;
+    banner.textContent = "";
     var doneCount = lessons.filter(function (l) { return progress.done.indexOf(l.file) !== -1; }).length;
     var next = null;
     lessons.forEach(function (l) {
@@ -58,16 +74,18 @@
       if (!next && progress.done.indexOf(l.file) === -1) next = l;
     });
     banner.appendChild(el("p", "sp-continue-title",
-      !next ? "You finished all " + lessons.length + " lessons. Well done!"
-            : doneCount ? "Welcome back! You have finished " + doneCount + " of " + lessons.length + " lessons."
-            : "Welcome back! Pick up where you left off."));
+      !next ? T("js.welcome.all", "You finished all {total} lessons. Well done!", { total: lessons.length })
+            : doneCount ? T("js.welcome.some", "Welcome back! You have finished {n} of {total} lessons.",
+                            { n: doneCount, total: lessons.length })
+            : T("js.welcome.none", "Welcome back! Pick up where you left off.")));
     var row = el("div", "sp-continue-row");
     if (next) {
-      var go = el("a", "sp-button sp-button-main", "Continue: Lesson " + next.number + " · " + next.title + " →");
+      var go = el("a", "sp-button sp-button-main",
+        T("js.continue", "Continue: Lesson {n} · {title} →", { n: next.number, title: loc(next, "title") }));
       go.href = href(next.file);
       row.appendChild(go);
     }
-    var reset = el("button", "sp-continue-reset", "Start over");
+    var reset = el("button", "sp-continue-reset", T("js.startover", "Start over"));
     reset.type = "button";
     reset.addEventListener("click", function () {
       saveProgress({ done: [], last: "" });
@@ -78,17 +96,37 @@
     banner.hidden = false;
   }
 
+  paintTicks();
+  renderBanner();
+
   // ---------- 2. Search ----------
   var box = document.getElementById("search");
   var input = document.getElementById("hub-search-input");
   var list = document.getElementById("hub-search-results");
-  if (!box || !input || !list) return;
+  if (!box || !input || !list) {
+    document.addEventListener("hub:lang", function () { paintTicks(); renderBanner(); });
+    return;
+  }
   box.hidden = false;
 
   function lower(s) { return (s || "").toLowerCase(); }
   function stripNumber(title) { return title.replace(/^(\d+\.|Scenario \d+:|Situation \d+:|Case Study \d+:)\s*/, ""); }
   var lessonNumber = {};
   lessons.forEach(function (l) { lessonNumber[l.file] = l.number; });
+  var lessonByFile = {};
+  lessons.forEach(function (l) { lessonByFile[l.file] = l; });
+
+  // Matches English and the reader's language, so "sensor" and "penderia" both work.
+  function both(item, fields) {
+    var out = [];
+    fields.forEach(function (f) {
+      var v = item[f];
+      out.push(Array.isArray(v) ? v.join(" ") : v);
+      var tr = item.tr && item.tr[lang()];
+      if (tr && tr[f]) out.push(Array.isArray(tr[f]) ? tr[f].join(" ") : tr[f]);
+    });
+    return lower(out.join(" "));
+  }
 
   function search(query) {
     var tokens = lower(query).split(/\s+/).filter(function (t) { return t.length > 1; });
@@ -98,19 +136,19 @@
     data.words.forEach(function (w) {
       var term = lower(w.term);
       var score = term === lower(query.trim()) ? 100 : tokens.some(function (t) { return term.indexOf(t) === 0; }) ? 40 : 0;
-      if (!score && all(lower(w.meaning))) score = 8;
+      if (!score && all(both(w, ["meaning"]))) score = 8;
       if (score) results.push({ kind: "word", score: score, item: w });
     });
     data.topics.forEach(function (t) {
-      var hay = lower([t.title, t.sub, t.plain, t.lesson].join(" "));
+      var hay = both(t, ["title", "sub", "plain", "lesson"]);
       if (!all(hay)) return;
-      var score = 10 + (all(lower(t.title)) ? 20 : 0) + (all(lower(t.plain)) ? 5 : 0);
+      var score = 10 + (all(both(t, ["title"])) ? 20 : 0) + (all(both(t, ["plain"])) ? 5 : 0);
       results.push({ kind: "topic", score: score, item: t });
     });
     lessons.forEach(function (l) {
-      var hay = lower([l.title, l.blurb, l.stage].concat(l.summary).join(" "));
+      var hay = both(l, ["title", "blurb", "stage", "summary"]);
       if (!all(hay)) return;
-      results.push({ kind: "lesson", score: 12 + (all(lower(l.title)) ? 25 : 0), item: l });
+      results.push({ kind: "lesson", score: 12 + (all(both(l, ["title"])) ? 25 : 0), item: l });
     });
     results.sort(function (a, b) { return b.score - a.score; });
     return results.slice(0, 8);
@@ -122,25 +160,28 @@
     var results = search(query);
     if (!results.length) {
       list.appendChild(el("li", "sp-search-empty",
-        "No match yet. Try a simpler word, such as motor, sensor or alarm."));
+        T("js.search.none", "No match yet. Try a simpler word, such as motor, sensor or alarm.")));
       return;
     }
     results.forEach(function (r) {
       var li = el("li", "sp-search-" + r.kind);
       if (r.kind === "word") {
         li.appendChild(el("strong", "", r.item.term));
-        li.appendChild(el("span", "", r.item.meaning));
+        li.appendChild(el("span", "", loc(r.item, "meaning")));
       } else {
         var a = el("a");
         if (r.kind === "topic") {
+          var plain = loc(r.item, "plain");
           a.href = href(r.item.file) + "#" + r.item.id;
-          a.appendChild(el("strong", "", stripNumber(r.item.title)));
-          a.appendChild(el("small", "", "Lesson " + lessonNumber[r.item.file] + " · " + r.item.lesson +
-            (r.item.plain ? " — " + r.item.plain : "")));
+          a.appendChild(el("strong", "", stripNumber(loc(r.item, "title"))));
+          a.appendChild(el("small", "", T("js.lessonlabel", "Lesson {n}: {title}",
+            { n: lessonNumber[r.item.file], title: loc(lessonByFile[r.item.file], "title") }) +
+            (plain ? " — " + plain : "")));
         } else {
           a.href = href(r.item.file);
-          a.appendChild(el("strong", "", "Lesson " + r.item.number + ": " + r.item.title));
-          a.appendChild(el("small", "", r.item.blurb));
+          a.appendChild(el("strong", "", T("js.lessonlabel", "Lesson {n}: {title}",
+            { n: r.item.number, title: loc(r.item, "title") })));
+          a.appendChild(el("small", "", loc(r.item, "blurb")));
         }
         li.appendChild(a);
       }
@@ -152,6 +193,12 @@
   input.addEventListener("input", function () {
     clearTimeout(timer);
     timer = setTimeout(function () { render(input.value); }, 120);
+  });
+
+  document.addEventListener("hub:lang", function () {
+    paintTicks();
+    renderBanner();
+    render(input.value);
   });
 
   function focusFromHash() {

@@ -7,7 +7,31 @@ window.HUB_SEARCH = {
    "title": "Beginner guide",
    "blurb": "PLC ideas through a washer, lift, gate and rice cooker.",
    "number": 1,
-   "summary": []
+   "summary": [
+    "A PLC is a tough little computer that switches machines on and off by following rules.",
+    "It repeats three steps: read buttons and sensors, decide, then switch motors and lamps.",
+    "Six everyday machines show the main tricks: timers, memory, safety checks and holding a temperature."
+   ],
+   "tr": {
+    "ms": {
+     "title": "Panduan pemula",
+     "blurb": "Idea PLC melalui mesin basuh, lif, pagar dan periuk nasi.",
+     "summary": [
+      "PLC ialah komputer kecil yang lasak yang menghidupkan dan mematikan mesin dengan mengikut peraturan.",
+      "Ia mengulang tiga langkah: baca butang dan sensor, putuskan, kemudian hidupkan motor dan lampu.",
+      "Enam mesin harian menunjukkan helah utama: pemasa, ingatan, semakan keselamatan dan mengekalkan suhu."
+     ]
+    },
+    "de": {
+     "title": "Einsteigerleitfaden",
+     "blurb": "SPS-Ideen anhand von Waschmaschine, Aufzug, Tor und Reiskocher.",
+     "summary": [
+      "Eine SPS ist ein robuster kleiner Computer, der Maschinen nach Regeln ein- und ausschaltet.",
+      "Sie wiederholt drei Schritte: Taster und Sensoren lesen, entscheiden, dann Motoren und Lampen schalten.",
+      "Sechs Alltagsmaschinen zeigen die wichtigsten Tricks: Timer, Speicher, Sicherheitsprüfungen und Temperatur halten."
+     ]
+    }
+   }
   },
   {
    "file": "how-it-works.html",
@@ -15,7 +39,31 @@ window.HUB_SEARCH = {
    "title": "How the traffic light works",
    "blurb": "Follow the trainer's rules, one scenario at a time.",
    "number": 2,
-   "summary": []
+   "summary": [
+    "The trainer is a 4-way traffic light run by Ladder-style rules.",
+    "Seven short scenarios cover normal running, crossing requests, emergencies, night mode and faults.",
+    "Each one lists the inputs to press and what the lamps should do."
+   ],
+   "tr": {
+    "ms": {
+     "title": "Cara lampu isyarat berfungsi",
+     "blurb": "Ikut peraturan jurulatih, satu senario pada satu masa.",
+     "summary": [
+      "Jurulatih ialah lampu isyarat 4 hala yang dikawal oleh peraturan gaya Ladder.",
+      "Tujuh senario ringkas merangkumi operasi biasa, permintaan lintasan, kecemasan, mod malam dan kerosakan.",
+      "Setiap satu menyenaraikan input yang perlu ditekan dan apa yang lampu patut lakukan."
+     ]
+    },
+    "de": {
+     "title": "So funktioniert die Ampel",
+     "blurb": "Folge den Regeln des Trainers, ein Szenario nach dem anderen.",
+     "summary": [
+      "Der Trainer ist eine Ampel an einer Kreuzung, gesteuert von Regeln im Ladder-Stil.",
+      "Sieben kurze Szenarien zeigen Normalbetrieb, Fußgängeranforderungen, Notfälle, Nachtmodus und Fehler.",
+      "Jedes nennt die Eingänge, die du drücken sollst, und was die Lampen tun sollten."
+     ]
+    }
+   }
   },
   {
    "file": "plc-programming-methods.html",
@@ -23,7 +71,31 @@ window.HUB_SEARCH = {
    "title": "Writing a reliable program",
    "blurb": "Plan with a flowchart first, then write Ladder.",
    "number": 3,
-   "summary": []
+   "summary": [
+    "A good PLC program starts as a flowchart of the machine story, not as code.",
+    "Write Ladder in a fixed order: modes, permissives, interlocks, alarms, then outputs.",
+    "Three palm-oil mill case studies show which language suits which job."
+   ],
+   "tr": {
+    "ms": {
+     "title": "Menulis program yang boleh dipercayai",
+     "blurb": "Rancang dengan carta alir dahulu, kemudian tulis Ladder.",
+     "summary": [
+      "Program PLC yang baik bermula sebagai carta alir cerita mesin, bukan sebagai kod.",
+      "Tulis Ladder dalam turutan tetap: mod, syarat mula, saling kunci, penggera, kemudian output.",
+      "Tiga kajian kes kilang kelapa sawit menunjukkan bahasa mana yang sesuai untuk tugas apa."
+     ]
+    },
+    "de": {
+     "title": "Ein zuverlässiges Programm schreiben",
+     "blurb": "Erst mit einem Ablaufplan planen, dann Ladder schreiben.",
+     "summary": [
+      "Ein gutes SPS-Programm beginnt als Ablaufplan der Maschinengeschichte, nicht als Code.",
+      "Schreib Ladder in fester Reihenfolge: Betriebsarten, Freigaben, Verriegelungen, Alarme, dann Ausgänge.",
+      "Drei Fallstudien aus der Palmölmühle zeigen, welche Sprache zu welcher Aufgabe passt."
+     ]
+    }
+   }
   },
   {
    "file": "industrial-situations.html",
@@ -31,7 +103,31 @@ window.HUB_SEARCH = {
    "title": "Real industrial situations",
    "blurb": "Brands, sensors, motor drives and common cabinet faults.",
    "number": 4,
-   "summary": []
+   "summary": [
+    "Real cabinets mix PLC brands, analog signals, motor drives and different sensor wiring.",
+    "Many faults come from wiring and scaling mistakes, not from the program.",
+    "Learn these habits here before you touch a live cabinet."
+   ],
+   "tr": {
+    "ms": {
+     "title": "Situasi industri sebenar",
+     "blurb": "Jenama, sensor, pemacu motor dan kerosakan kabinet yang biasa.",
+     "summary": [
+      "Kabinet sebenar mencampurkan jenama PLC, isyarat analog, pemacu motor dan pendawaian sensor yang berbeza.",
+      "Banyak kerosakan berpunca daripada kesilapan pendawaian dan penskalaan, bukan daripada program.",
+      "Pelajari tabiat ini di sini sebelum anda menyentuh kabinet yang berkuasa."
+     ]
+    },
+    "de": {
+     "title": "Echte Situationen aus der Industrie",
+     "blurb": "Marken, Sensoren, Motorantriebe und typische Schaltschrankfehler.",
+     "summary": [
+      "Echte Schaltschränke mischen SPS-Marken, analoge Signale, Motorantriebe und unterschiedliche Sensor-Verdrahtungen.",
+      "Viele Fehler entstehen durch Verdrahtungs- und Skalierungsfehler, nicht durch das Programm.",
+      "Lerne diese Gewohnheiten hier, bevor du einen Schaltschrank unter Spannung anfasst."
+     ]
+    }
+   }
   },
   {
    "file": "oil-palm-industrial-environment.html",
@@ -39,7 +135,31 @@ window.HUB_SEARCH = {
    "title": "Inside a palm-oil mill",
    "blurb": "Follow fruit bunches all the way to crude palm oil.",
    "number": 5,
-   "summary": []
+   "summary": [
+    "A palm-oil mill turns fresh fruit bunches into crude palm oil, station by station.",
+    "Each station has its own controller, sensors, motors and alarms.",
+    "Learn the process first, then the checks technicians make before editing logic."
+   ],
+   "tr": {
+    "ms": {
+     "title": "Di dalam kilang kelapa sawit",
+     "blurb": "Ikut tandan buah sehingga menjadi minyak sawit mentah.",
+     "summary": [
+      "Kilang kelapa sawit menukar tandan buah segar menjadi minyak sawit mentah, stesen demi stesen.",
+      "Setiap stesen ada pengawal, sensor, motor dan penggeranya sendiri.",
+      "Pelajari proses dahulu, kemudian semakan yang dibuat juruteknik sebelum menukar logik."
+     ]
+    },
+    "de": {
+     "title": "In einer Palmölmühle",
+     "blurb": "Folge den Fruchtbündeln bis zum rohen Palmöl.",
+     "summary": [
+      "Eine Palmölmühle macht aus frischen Fruchtbündeln Station für Station rohes Palmöl.",
+      "Jede Station hat ihre eigene Steuerung, Sensoren, Motoren und Alarme.",
+      "Lerne zuerst den Prozess, dann die Prüfungen, die Techniker vor einer Logikänderung machen."
+     ]
+    }
+   }
   },
   {
    "file": "oil-palm-control-stack-analysis.html",
@@ -47,7 +167,31 @@ window.HUB_SEARCH = {
    "title": "Choosing the right controller",
    "blurb": "PLC, PAC, Raspberry Pi or Arduino: which job suits which?",
    "number": 6,
-   "summary": []
+   "summary": [
+    "Factories mix PLCs, PACs, Raspberry Pi and Arduino-style boards.",
+    "Certified PLCs handle control and safety. Small boards suit data, learning and prototypes.",
+    "Choose each device by its job, budget and risk, not by brand."
+   ],
+   "tr": {
+    "ms": {
+     "title": "Memilih pengawal yang sesuai",
+     "blurb": "PLC, PAC, Raspberry Pi atau Arduino: yang mana sesuai untuk tugas apa?",
+     "summary": [
+      "Kilang menggabungkan PLC, PAC, Raspberry Pi dan papan jenis Arduino.",
+      "PLC yang diperakui mengendalikan kawalan dan keselamatan. Papan kecil sesuai untuk data, pembelajaran dan prototaip.",
+      "Pilih setiap peranti mengikut kerja, bajet dan risikonya, bukan mengikut jenama."
+     ]
+    },
+    "de": {
+     "title": "Die richtige Steuerung wählen",
+     "blurb": "SPS, PAC, Raspberry Pi oder Arduino: Was passt zu welcher Aufgabe?",
+     "summary": [
+      "Fabriken mischen SPS, PACs, Raspberry Pi und Arduino-ähnliche Boards.",
+      "Zertifizierte SPS übernehmen Steuerung und Sicherheit. Kleine Boards eignen sich für Daten, Lernen und Prototypen.",
+      "Wähle jedes Gerät nach Aufgabe, Budget und Risiko, nicht nach Marke."
+     ]
+    }
+   }
   },
   {
    "file": "phase-2-start-here.html",
@@ -55,7 +199,31 @@ window.HUB_SEARCH = {
    "title": "Control rooms and networks",
    "blurb": "How machines, screens and servers share information.",
    "number": 7,
-   "summary": []
+   "summary": [
+    "Phase 2 shows how machine data reaches operators, engineers and managers.",
+    "You meet the names of networks and protocols before using real ones.",
+    "Everything is still simulated, so nothing here touches a real machine."
+   ],
+   "tr": {
+    "ms": {
+     "title": "Bilik kawalan dan rangkaian",
+     "blurb": "Cara mesin, skrin dan pelayan berkongsi maklumat.",
+     "summary": [
+      "Fasa 2 menunjukkan bagaimana data mesin sampai kepada operator, jurutera dan pengurus.",
+      "Anda mengenali nama rangkaian dan protokol sebelum menggunakan yang sebenar.",
+      "Semuanya masih simulasi, jadi tiada apa-apa di sini yang menyentuh mesin sebenar."
+     ]
+    },
+    "de": {
+     "title": "Leitstände und Netzwerke",
+     "blurb": "Wie Maschinen, Bildschirme und Server Informationen teilen.",
+     "summary": [
+      "Phase 2 zeigt, wie Maschinendaten Bediener, Ingenieure und Manager erreichen.",
+      "Du lernst die Namen von Netzwerken und Protokollen kennen, bevor du echte nutzt.",
+      "Alles ist weiterhin simuliert, nichts hier berührt eine echte Maschine."
+     ]
+    }
+   }
   },
   {
    "file": "phase-3-data-analytics.html",
@@ -63,7 +231,31 @@ window.HUB_SEARCH = {
    "title": "Factory data and dashboards",
    "blurb": "Turn machine signals into numbers managers can use.",
    "number": 8,
-   "summary": []
+   "summary": [
+    "Managers need numbers like output, downtime and alarms, not Ladder rungs.",
+    "A local database records simulated mill data over time.",
+    "A dashboard turns those records into simple charts and key figures."
+   ],
+   "tr": {
+    "ms": {
+     "title": "Data kilang dan papan pemuka",
+     "blurb": "Jadikan isyarat mesin sebagai angka yang boleh digunakan pengurus.",
+     "summary": [
+      "Pengurus memerlukan angka seperti hasil, masa henti dan penggera, bukan rung Ladder.",
+      "Pangkalan data tempatan merekod data kilang simulasi dari semasa ke semasa.",
+      "Papan pemuka menukar rekod tersebut kepada carta yang mudah dan angka utama."
+     ]
+    },
+    "de": {
+     "title": "Fabrikdaten und Dashboards",
+     "blurb": "Maschinensignale in Zahlen verwandeln, die Manager nutzen können.",
+     "summary": [
+      "Manager brauchen Zahlen wie Produktion, Stillstand und Alarme, keine Ladder-Strompfade.",
+      "Eine lokale Datenbank zeichnet simulierte Mühlendaten über die Zeit auf.",
+      "Ein Dashboard macht aus diesen Aufzeichnungen einfache Diagramme und Kennzahlen."
+     ]
+    }
+   }
   },
   {
    "file": "phase-4-legacy-ot-recovery.html",
@@ -71,7 +263,31 @@ window.HUB_SEARCH = {
    "title": "Rescuing old machines",
    "blurb": "Read data safely from old equipment that must keep running.",
    "number": 9,
-   "summary": []
+   "summary": [
+    "Many factories still depend on old PLCs and Windows XP or 7 screens.",
+    "The safe approach: save evidence, isolate risk, then read data without changing anything.",
+    "Replacement comes later, after testing and a rollback plan."
+   ],
+   "tr": {
+    "ms": {
+     "title": "Menyelamatkan mesin lama",
+     "blurb": "Baca data dengan selamat daripada peralatan lama yang mesti terus berjalan.",
+     "summary": [
+      "Banyak kilang masih bergantung pada PLC lama dan skrin Windows XP atau 7.",
+      "Pendekatan selamat: simpan bukti, asingkan risiko, kemudian baca data tanpa mengubah apa-apa.",
+      "Penggantian dibuat kemudian, selepas ujian dan pelan untuk kembali kepada sistem lama."
+     ]
+    },
+    "de": {
+     "title": "Alte Maschinen retten",
+     "blurb": "Daten sicher aus alten Anlagen lesen, die weiterlaufen müssen.",
+     "summary": [
+      "Viele Fabriken sind noch auf alte SPS und Bildschirme mit Windows XP oder 7 angewiesen.",
+      "Der sichere Weg: Beweise sichern, Risiken abschotten, dann Daten lesen, ohne etwas zu ändern.",
+      "Der Austausch kommt später, nach Tests und mit einem Rückfallplan."
+     ]
+    }
+   }
   },
   {
    "file": "risk-assessment-certification.html",
@@ -79,178 +295,2029 @@ window.HUB_SEARCH = {
    "title": "Becoming safety qualified",
    "blurb": "What machine-safety training means, and how to get it.",
    "number": 10,
-   "summary": []
+   "summary": [
+    "No single licence makes someone a machine-safety assessor everywhere.",
+    "Competence mixes standards training, machine experience and review by qualified engineers.",
+    "This page shows training options, typical costs and what a good assessment produces."
+   ],
+   "tr": {
+    "ms": {
+     "title": "Menjadi layak dalam keselamatan",
+     "blurb": "Maksud latihan keselamatan mesin, dan cara mendapatkannya.",
+     "summary": [
+      "Tiada satu lesen pun yang menjadikan seseorang penilai keselamatan mesin di semua tempat.",
+      "Kecekapan menggabungkan latihan piawaian, pengalaman mesin dan semakan oleh jurutera bertauliah.",
+      "Halaman ini menunjukkan pilihan latihan, kos biasa dan hasil penilaian yang baik."
+     ]
+    },
+    "de": {
+     "title": "Für Sicherheit qualifiziert werden",
+     "blurb": "Was eine Ausbildung in Maschinensicherheit bedeutet und wie man sie bekommt.",
+     "summary": [
+      "Keine einzelne Lizenz macht jemanden überall zum Gutachter für Maschinensicherheit.",
+      "Kompetenz verbindet Normenschulung, Maschinenerfahrung und Prüfung durch qualifizierte Ingenieure.",
+      "Diese Seite zeigt Ausbildungswege, typische Kosten und was eine gute Beurteilung ergibt."
+     ]
+    }
+   }
   }
  ],
- "topics": [],
+ "topics": [
+  {
+   "id": "loop",
+   "title": "1. The 3-step loop every PLC repeats",
+   "sub": "read, decide, act",
+   "plain": "Every PLC repeats three steps, many times a second: read the inputs, decide, then switch the outputs.",
+   "tr": {
+    "ms": {
+     "title": "1. Gelung 3 langkah yang diulang setiap PLC",
+     "plain": "Setiap PLC mengulang tiga langkah, berkali-kali sesaat: baca input, putuskan, kemudian tukar output."
+    },
+    "de": {
+     "title": "1. Die 3-Schritt-Schleife jeder SPS",
+     "plain": "Jede SPS wiederholt drei Schritte, viele Male pro Sekunde: Eingänge lesen, entscheiden, dann die Ausgänge schalten."
+    }
+   },
+   "file": "beginner-guide.html",
+   "lesson": "Beginner guide"
+  },
+  {
+   "id": "parts",
+   "title": "2. Inputs and outputs in everyday machines",
+   "sub": "what the PLC listens to, and what it controls",
+   "plain": "Inputs are what the PLC senses, like buttons and sensors. Outputs are what it controls, like motors and lamps.",
+   "tr": {
+    "ms": {
+     "title": "2. Input dan output dalam mesin harian",
+     "plain": "Input ialah apa yang PLC kesan, seperti butang dan sensor. Output ialah apa yang ia kawal, seperti motor dan lampu."
+    },
+    "de": {
+     "title": "2. Ein- und Ausgänge in Alltagsmaschinen",
+     "plain": "Eingänge sind, was die SPS erfasst, etwa Taster und Sensoren. Ausgänge sind, was sie steuert, etwa Motoren und Lampen."
+    }
+   },
+   "file": "beginner-guide.html",
+   "lesson": "Beginner guide"
+  },
+  {
+   "id": "washer",
+   "title": "3. Washing machine: a sequence with timers",
+   "sub": "one step after another, each waiting for a condition",
+   "plain": "A washing machine runs its steps in order: fill, wash, drain, spin. Each step waits for a timer or a sensor.",
+   "tr": {
+    "ms": {
+     "title": "3. Mesin basuh: turutan dengan pemasa",
+     "plain": "Mesin basuh menjalankan langkahnya mengikut turutan: isi, basuh, salir, putar. Setiap langkah menunggu pemasa atau sensor."
+    },
+    "de": {
+     "title": "3. Waschmaschine: ein Ablauf mit Timern",
+     "plain": "Eine Waschmaschine arbeitet ihre Schritte der Reihe nach ab: füllen, waschen, abpumpen, schleudern. Jeder Schritt wartet auf einen Timer oder Sensor."
+    }
+   },
+   "file": "beginner-guide.html",
+   "lesson": "Beginner guide"
+  },
+  {
+   "id": "lift",
+   "title": "4. Lift (elevator): remembering requests and staying safe",
+   "sub": "latching, interlocks and priorities",
+   "plain": "A lift remembers every button press and serves them in a sensible order. It never moves with its doors open.",
+   "tr": {
+    "ms": {
+     "title": "4. Lif: mengingati permintaan dan kekal selamat",
+     "plain": "Lif mengingati setiap tekanan butang dan melayannya mengikut turutan yang munasabah. Ia tidak pernah bergerak dengan pintu terbuka."
+    },
+    "de": {
+     "title": "4. Aufzug: Anfragen merken und sicher bleiben",
+     "plain": "Ein Aufzug merkt sich jeden Knopfdruck und bedient sie in sinnvoller Reihenfolge. Er fährt nie mit offenen Türen."
+    }
+   },
+   "file": "beginner-guide.html",
+   "lesson": "Beginner guide"
+  },
+  {
+   "id": "gate",
+   "title": "5. Automatic gate: inputs from the world, safety first",
+   "sub": "limit switches, a safety beam and a timer",
+   "plain": "An automatic gate listens to switches and a safety beam. If something is in the way, it stops or opens again.",
+   "tr": {
+    "ms": {
+     "title": "5. Pagar automatik: input dari dunia luar, keselamatan dahulu",
+     "plain": "Pagar automatik mendengar suis dan pancaran keselamatan. Jika ada sesuatu yang menghalang, ia berhenti atau terbuka semula."
+    },
+    "de": {
+     "title": "5. Automatiktor: Eingänge aus der Umgebung, Sicherheit zuerst",
+     "plain": "Ein automatisches Tor hört auf Schalter und eine Sicherheits-Lichtschranke. Ist etwas im Weg, stoppt es oder öffnet wieder."
+    }
+   },
+   "file": "beginner-guide.html",
+   "lesson": "Beginner guide"
+  },
+  {
+   "id": "escalator",
+   "title": "6. Escalator: run on demand, stop on danger",
+   "sub": "start conditions, run timer and emergency stop",
+   "plain": "An escalator runs when people use it and stops at once if the emergency button is pressed.",
+   "tr": {
+    "ms": {
+     "title": "6. Eskalator: jalan bila perlu, berhenti bila bahaya",
+     "plain": "Eskalator berjalan apabila orang menggunakannya dan berhenti serta-merta jika butang kecemasan ditekan."
+    },
+    "de": {
+     "title": "6. Rolltreppe: bei Bedarf laufen, bei Gefahr stoppen",
+     "plain": "Eine Rolltreppe läuft, wenn Menschen sie benutzen, und stoppt sofort, wenn der Not-Halt gedrückt wird."
+    }
+   },
+   "file": "beginner-guide.html",
+   "lesson": "Beginner guide"
+  },
+  {
+   "id": "cooker",
+   "title": "7. Rice cooker: keeping something at the right temperature",
+   "sub": "on/off control with a safe gap",
+   "plain": "A rice cooker switches its heater on and off to keep the food at the right temperature.",
+   "tr": {
+    "ms": {
+     "title": "7. Periuk nasi: mengekalkan sesuatu pada suhu yang betul",
+     "plain": "Periuk nasi menghidupkan dan mematikan pemanasnya untuk mengekalkan makanan pada suhu yang betul."
+    },
+    "de": {
+     "title": "7. Reiskocher: etwas auf der richtigen Temperatur halten",
+     "plain": "Ein Reiskocher schaltet seine Heizung ein und aus, um das Essen auf der richtigen Temperatur zu halten."
+    }
+   },
+   "file": "beginner-guide.html",
+   "lesson": "Beginner guide"
+  },
+  {
+   "id": "barrier",
+   "title": "8. Car-park barrier: never lower on a car",
+   "sub": "a road sensor, a timer and an interlock",
+   "plain": "A car-park barrier lifts for a car and only lowers when the space under it is clear.",
+   "tr": {
+    "ms": {
+     "title": "8. Palang tempat letak kereta: jangan turun ke atas kereta",
+     "plain": "Palang tempat letak kereta naik untuk kereta dan hanya turun apabila ruang di bawahnya kosong."
+    },
+    "de": {
+     "title": "8. Parkplatzschranke: nie auf ein Auto senken",
+     "plain": "Eine Parkplatzschranke öffnet sich für ein Auto und senkt sich erst, wenn der Platz darunter frei ist."
+    }
+   },
+   "file": "beginner-guide.html",
+   "lesson": "Beginner guide"
+  },
+  {
+   "id": "words",
+   "title": "9. Key words in plain language",
+   "sub": "keep this list nearby",
+   "plain": "The key words used across this hub, each explained in one line.",
+   "tr": {
+    "ms": {
+     "title": "9. Istilah utama dalam bahasa mudah",
+     "plain": "Istilah utama yang digunakan di seluruh hab ini, setiap satu diterangkan dalam satu baris."
+    },
+    "de": {
+     "title": "9. Wichtige Begriffe in einfacher Sprache",
+     "plain": "Die wichtigsten Begriffe dieses Hubs, jeweils in einer Zeile erklärt."
+    }
+   },
+   "file": "beginner-guide.html",
+   "lesson": "Beginner guide"
+  },
+  {
+   "id": "trainer",
+   "title": "10. Now use the trainer",
+   "sub": "a traffic light is the same ideas in one small package",
+   "plain": "The trainer is a traffic light that uses all of these ideas. Try the steps below.",
+   "tr": {
+    "ms": {
+     "title": "10. Sekarang gunakan jurulatih",
+     "plain": "Jurulatih ialah lampu isyarat yang menggunakan semua idea ini. Cuba langkah-langkah di bawah."
+    },
+    "de": {
+     "title": "10. Jetzt den Trainer benutzen",
+     "plain": "Der Trainer ist eine Ampel, die all diese Ideen nutzt. Probier die Schritte unten aus."
+    }
+   },
+   "file": "beginner-guide.html",
+   "lesson": "Beginner guide"
+  },
+  {
+   "id": "auto-cycle",
+   "title": "Normal running: the lights take turns",
+   "sub": "Scenario 1: Auto Cycle · normal running sequence",
+   "plain": "Press START and the lights run by themselves. Each road gets green, then yellow, then a short all-red gap before the other road starts.",
+   "tr": {
+    "ms": {
+     "title": "Operasi biasa: lampu bergilir-gilir",
+     "plain": "Tekan START dan lampu berjalan sendiri. Setiap jalan mendapat hijau, kemudian kuning, kemudian jeda semua merah sebelum jalan yang lain bermula."
+    },
+    "de": {
+     "title": "Normalbetrieb: die Ampeln wechseln sich ab",
+     "plain": "Drück START, und die Ampel läuft von selbst. Jede Straße bekommt Grün, dann Gelb, dann eine kurze Alles-Rot-Pause, bevor die andere Straße startet."
+    }
+   },
+   "file": "how-it-works.html",
+   "lesson": "How the traffic light works"
+  },
+  {
+   "id": "pedestrian",
+   "title": "A crossing button is remembered",
+   "sub": "Scenario 2: Pedestrian Request · latched request",
+   "plain": "Pressing the crossing button is remembered, even after you let go. The PLC serves the request when that road next turns green.",
+   "tr": {
+    "ms": {
+     "title": "Butang lintasan diingati",
+     "plain": "Tekanan butang lintasan diingati, walaupun selepas anda melepaskannya. PLC melayan permintaan itu apabila jalan tersebut menjadi hijau."
+    },
+    "de": {
+     "title": "Ein Fußgänger-Taster wird gespeichert",
+     "plain": "Der Druck auf den Fußgänger-Taster wird gespeichert, auch nachdem du loslässt. Die SPS bedient die Anforderung, sobald diese Straße grün wird."
+    }
+   },
+   "file": "how-it-works.html",
+   "lesson": "How the traffic light works"
+  },
+  {
+   "id": "vehicle",
+   "title": "A waiting car can extend green, up to a limit",
+   "sub": "Scenario 3: Vehicle Demand Extension · green can extend, but not forever",
+   "plain": "A car sensor can keep a green light on a little longer. There is always a maximum, so the other road never waits forever.",
+   "tr": {
+    "ms": {
+     "title": "Kereta yang menunggu boleh melanjutkan hijau, hingga satu had",
+     "plain": "Sensor kereta boleh mengekalkan lampu hijau lebih lama sedikit. Sentiasa ada had maksimum, jadi jalan yang lain tidak menunggu selama-lamanya."
+    },
+    "de": {
+     "title": "Ein wartendes Auto verlängert Grün, aber nur bis zu einer Grenze",
+     "plain": "Ein Fahrzeugsensor kann Grün etwas länger halten. Es gibt immer ein Maximum, damit die andere Straße nicht ewig wartet."
+    }
+   },
+   "file": "how-it-works.html",
+   "lesson": "How the traffic light works"
+  },
+  {
+   "id": "emergency",
+   "title": "Emergency: everything turns red",
+   "sub": "Scenario 4: Emergency All-Red · highest priority override",
+   "plain": "The emergency switch beats every other rule. All lights turn red at once and an alarm is recorded.",
+   "tr": {
+    "ms": {
+     "title": "Kecemasan: semuanya menjadi merah",
+     "plain": "Suis kecemasan mengatasi setiap peraturan lain. Semua lampu menjadi merah serta-merta dan penggera direkodkan."
+    },
+    "de": {
+     "title": "Notfall: alles wird rot",
+     "plain": "Der Not-Halt-Schalter schlägt jede andere Regel. Alle Ampeln werden sofort rot, und ein Alarm wird gespeichert."
+    }
+   },
+   "file": "how-it-works.html",
+   "lesson": "How the traffic light works"
+  },
+  {
+   "id": "night",
+   "title": "Night mode: the red lights blink",
+   "sub": "Scenario 5: Night Red Flash · normal sequence paused",
+   "plain": "At night the normal sequence pauses. Both red lights blink together and the greens stay off.",
+   "tr": {
+    "ms": {
+     "title": "Mod malam: lampu merah berkelip",
+     "plain": "Pada waktu malam, turutan biasa berhenti seketika. Kedua-dua lampu merah berkelip bersama dan lampu hijau kekal padam."
+    },
+    "de": {
+     "title": "Nachtmodus: die roten Lampen blinken",
+     "plain": "Nachts pausiert der normale Ablauf. Beide roten Lampen blinken gemeinsam, die grünen bleiben aus."
+    }
+   },
+   "file": "how-it-works.html",
+   "lesson": "How the traffic light works"
+  },
+  {
+   "id": "manual",
+   "title": "Stepping through by hand, safely",
+   "sub": "Scenario 6: Manual Safe-Step · one safe phase at a time",
+   "plain": "A technician can step through the lights one press at a time. Even then, the PLC only allows a safe next step.",
+   "tr": {
+    "ms": {
+     "title": "Melangkah secara manual, dengan selamat",
+     "plain": "Juruteknik boleh melangkah melalui lampu satu tekanan pada satu masa. Walaupun begitu, PLC hanya membenarkan langkah seterusnya yang selamat."
+    },
+    "de": {
+     "title": "Schritt für Schritt von Hand, sicher",
+     "plain": "Ein Techniker kann die Ampel per Knopfdruck Schritt für Schritt weiterschalten. Auch dann erlaubt die SPS nur einen sicheren nächsten Schritt."
+    }
+   },
+   "file": "how-it-works.html",
+   "lesson": "How the traffic light works"
+  },
+  {
+   "id": "fault",
+   "title": "Two buttons at once: a fault",
+   "sub": "Scenario 7: Fault And Reset · stuck pushbutton training fault",
+   "plain": "If START and STOP are on together, the PLC treats it as a broken button. Everything goes red until someone fixes it and presses reset.",
+   "tr": {
+    "ms": {
+     "title": "Dua butang serentak: satu kerosakan",
+     "plain": "Jika START dan STOP hidup serentak, PLC menganggapnya butang rosak. Semuanya menjadi merah sehingga seseorang membaikinya dan menekan set semula."
+    },
+    "de": {
+     "title": "Zwei Taster gleichzeitig: ein Fehler",
+     "plain": "Sind START und STOP gleichzeitig an, behandelt die SPS das als kaputten Taster. Alles bleibt rot, bis jemand es behebt und Reset drückt."
+    }
+   },
+   "file": "how-it-works.html",
+   "lesson": "How the traffic light works"
+  },
+  {
+   "id": "scratch-method",
+   "title": "Plan before you program",
+   "sub": "1. Reliable Program Method From Scratch · the order matters more than the software brand",
+   "plain": "Good programs follow a fixed order: understand the machine, list the dangers, plan, then write code. Starting with code is the most common beginner mistake.",
+   "tr": {
+    "ms": {
+     "title": "Rancang sebelum mengaturcara",
+     "plain": "Program yang baik mengikut turutan tetap: fahami mesin, senaraikan bahaya, rancang, kemudian tulis kod. Bermula dengan kod ialah kesilapan pemula yang paling biasa."
+    },
+    "de": {
+     "title": "Erst planen, dann programmieren",
+     "plain": "Gute Programme folgen einer festen Reihenfolge: Maschine verstehen, Gefahren auflisten, planen, dann Code schreiben. Mit dem Code anzufangen ist der häufigste Anfängerfehler."
+    }
+   },
+   "file": "plc-programming-methods.html",
+   "lesson": "Writing a reliable program"
+  },
+  {
+   "id": "flowcharts",
+   "title": "Draw the machine's steps first",
+   "sub": "2. Flowcharts Before Ladder · flowchart is the machine story; Ladder is only one expression of it",
+   "plain": "First draw the machine's steps as boxes and arrows. The program then simply follows that drawing.",
+   "tr": {
+    "ms": {
+     "title": "Lukis langkah mesin dahulu",
+     "plain": "Lukis dahulu langkah mesin sebagai kotak dan anak panah. Program kemudian hanya mengikut lukisan itu."
+    },
+    "de": {
+     "title": "Erst die Schritte der Maschine zeichnen",
+     "plain": "Zeichne zuerst die Schritte der Maschine als Kästen und Pfeile. Das Programm folgt dann einfach dieser Zeichnung."
+    }
+   },
+   "file": "plc-programming-methods.html",
+   "lesson": "Writing a reliable program"
+  },
+  {
+   "id": "lad-structure",
+   "title": "Keep the program in a fixed order",
+   "sub": "3. Reliable Ladder Structure · recommended rung order for maintainable LAD",
+   "plain": "Keep every program in the same order: inputs, safety checks, steps, alarms, then outputs. Anyone can then find a problem quickly.",
+   "tr": {
+    "ms": {
+     "title": "Susun program dalam turutan yang tetap",
+     "plain": "Susun setiap program dalam turutan yang sama: input, semakan keselamatan, langkah, penggera, kemudian output. Sesiapa pun boleh mencari masalah dengan cepat."
+    },
+    "de": {
+     "title": "Das Programm in fester Reihenfolge aufbauen",
+     "plain": "Halte jedes Programm in derselben Reihenfolge: Eingänge, Sicherheitsprüfungen, Schritte, Alarme, dann Ausgänge. So findet jeder ein Problem schnell."
+    }
+   },
+   "file": "plc-programming-methods.html",
+   "lesson": "Writing a reliable program"
+  },
+  {
+   "id": "languages",
+   "title": "Different ways to write PLC rules",
+   "sub": "4. PLC Programming Languages And Modern Approaches · LAD is not old-fashioned; it is one tool in a mixed toolkit",
+   "plain": "PLCs can be programmed in several styles. Ladder is easiest for technicians to read; other styles suit maths, sequences or temperature control.",
+   "tr": {
+    "ms": {
+     "title": "Cara berbeza untuk menulis peraturan PLC",
+     "plain": "PLC boleh diaturcara dalam beberapa gaya. Ladder paling mudah dibaca juruteknik; gaya lain sesuai untuk matematik, turutan atau kawalan suhu."
+    },
+    "de": {
+     "title": "Verschiedene Wege, SPS-Regeln zu schreiben",
+     "plain": "SPS lassen sich in mehreren Stilen programmieren. Ladder ist für Techniker am leichtesten zu lesen; andere Stile eignen sich für Mathematik, Abläufe oder Temperaturregelung."
+    }
+   },
+   "file": "plc-programming-methods.html",
+   "lesson": "Writing a reliable program"
+  },
+  {
+   "id": "limits",
+   "title": "A PLC has limited speed and memory",
+   "sub": "5. Hardware Processing Limits Shape The Programming Style · scan time, memory, watchdog, I/O update, and online troubleshooting matter",
+   "plain": "A PLC is a small computer with limited speed and memory. Simple, readable code is often better than clever code.",
+   "tr": {
+    "ms": {
+     "title": "PLC mempunyai kelajuan dan ingatan yang terhad",
+     "plain": "PLC ialah komputer kecil dengan kelajuan dan ingatan yang terhad. Kod yang ringkas dan mudah dibaca selalunya lebih baik daripada kod yang bijak."
+    },
+    "de": {
+     "title": "Eine SPS hat begrenzte Geschwindigkeit und begrenzten Speicher",
+     "plain": "Eine SPS ist ein kleiner Computer mit begrenzter Geschwindigkeit und begrenztem Speicher. Einfacher, lesbarer Code ist oft besser als cleverer Code."
+    }
+   },
+   "file": "plc-programming-methods.html",
+   "lesson": "Writing a reliable program"
+  },
+  {
+   "id": "case-conveyor",
+   "title": "Example: starting and stopping conveyors",
+   "sub": "Case Study 1: Conveyor Train · best default: LAD for interlocks, SFC for sequence, ST only for counters/data",
+   "plain": "Conveyors must start in the right order and stop if a belt stops turning. Ladder shows these rules clearly for maintenance staff.",
+   "tr": {
+    "ms": {
+     "title": "Contoh: memulakan dan menghentikan penghantar",
+     "plain": "Penghantar mesti bermula mengikut turutan yang betul dan berhenti jika tali sawat berhenti berputar. Ladder menunjukkan peraturan ini dengan jelas kepada kakitangan penyelenggaraan."
+    },
+    "de": {
+     "title": "Beispiel: Förderbänder starten und stoppen",
+     "plain": "Förderbänder müssen in der richtigen Reihenfolge starten und stoppen, wenn ein Band nicht mehr läuft. Ladder zeigt diese Regeln dem Instandhaltungspersonal klar."
+    }
+   },
+   "file": "plc-programming-methods.html",
+   "lesson": "Writing a reliable program"
+  },
+  {
+   "id": "case-sterilizer",
+   "title": "Example: the steam cooker cycle",
+   "sub": "Case Study 2: Sterilizer Batch Cycle · best default: SFC or state machine, with LAD safety/permissive rungs",
+   "plain": "The sterilizer is a room-sized pressure cooker for fruit. Its steps run in strict order, and the door stays locked while there is pressure.",
+   "tr": {
+    "ms": {
+     "title": "Contoh: kitaran periuk stim",
+     "plain": "Pensteril ialah periuk tekanan sebesar bilik untuk buah. Langkahnya berjalan mengikut turutan yang ketat, dan pintu kekal berkunci selagi ada tekanan."
+    },
+    "de": {
+     "title": "Beispiel: der Zyklus des Dampfkochers",
+     "plain": "Der Sterilisator ist ein raumgroßer Schnellkochtopf für Früchte. Seine Schritte laufen in fester Reihenfolge, und die Tür bleibt verriegelt, solange Druck anliegt."
+    }
+   },
+   "file": "plc-programming-methods.html",
+   "lesson": "Writing a reliable program"
+  },
+  {
+   "id": "case-clarifier",
+   "title": "Example: keeping oil at the right heat",
+   "sub": "Case Study 3: Clarifier Temperature And Oil Transfer · best default: FBD for analog/PID, ST for scaling, LAD for permissives",
+   "plain": "The clarifier keeps oil at the right temperature and moves it when tanks are ready. Different programming styles suit heating control and safety checks.",
+   "tr": {
+    "ms": {
+     "title": "Contoh: mengekalkan minyak pada haba yang betul",
+     "plain": "Penjernih mengekalkan minyak pada suhu yang betul dan memindahkannya apabila tangki sedia. Gaya pengaturcaraan yang berbeza sesuai untuk kawalan pemanasan dan semakan keselamatan."
+    },
+    "de": {
+     "title": "Beispiel: Öl auf der richtigen Temperatur halten",
+     "plain": "Der Klärbehälter hält das Öl auf der richtigen Temperatur und pumpt es um, wenn die Tanks bereit sind. Für die Heizungsregelung und die Sicherheitsprüfungen passen unterschiedliche Programmierstile."
+    }
+   },
+   "file": "plc-programming-methods.html",
+   "lesson": "Writing a reliable program"
+  },
+  {
+   "id": "checklist",
+   "title": "Checklist before loading a program",
+   "sub": "9. Final Checklist Before Writing Or Downloading Code · use this before touching a live PLC",
+   "plain": "Before loading a program into a real machine, answer a short list of questions. It covers safety, modes, alarms, tests and backups.",
+   "tr": {
+    "ms": {
+     "title": "Senarai semak sebelum memuatkan program",
+     "plain": "Sebelum memuatkan program ke mesin sebenar, jawab satu senarai soalan yang ringkas. Ia merangkumi keselamatan, mod, penggera, ujian dan sandaran."
+    },
+    "de": {
+     "title": "Checkliste vor dem Laden eines Programms",
+     "plain": "Bevor du ein Programm in eine echte Maschine lädst, beantworte eine kurze Liste von Fragen. Sie deckt Sicherheit, Betriebsarten, Alarme, Tests und Sicherungen ab."
+    }
+   },
+   "file": "plc-programming-methods.html",
+   "lesson": "Writing a reliable program"
+  },
+  {
+   "id": "brand-reality",
+   "title": "Different PLC brands, same ideas",
+   "sub": "Situation 1: PLC Brand Reality · Omron and Siemens are both common, but the habits differ",
+   "plain": "Omron and Siemens are two common PLC makers. The ideas are the same, but their software and wiring habits differ.",
+   "tr": {
+    "ms": {
+     "title": "Jenama PLC berbeza, idea yang sama",
+     "plain": "Omron dan Siemens ialah dua pembuat PLC yang biasa. Ideanya sama, tetapi perisian dan tabiat pendawaian mereka berbeza."
+    },
+    "de": {
+     "title": "Verschiedene SPS-Marken, gleiche Ideen",
+     "plain": "Omron und Siemens sind zwei verbreitete SPS-Hersteller. Die Ideen sind gleich, aber Software und Verdrahtungsgewohnheiten unterscheiden sich."
+    }
+   },
+   "file": "industrial-situations.html",
+   "lesson": "Real industrial situations"
+  },
+  {
+   "id": "lower-higher",
+   "title": "Small PLC or big PLC?",
+   "sub": "Situation 2: Lower PLC Or Higher PLC? · choose by machine risk, I/O count, network needs, diagnostics, and motion",
+   "plain": "Small PLCs suit simple machines and cost less. Bigger PLCs handle many signals, networks and motors, but need more skill.",
+   "tr": {
+    "ms": {
+     "title": "PLC kecil atau PLC besar?",
+     "plain": "PLC kecil sesuai untuk mesin ringkas dan lebih murah. PLC besar mengendalikan banyak isyarat, rangkaian dan motor, tetapi memerlukan lebih banyak kemahiran."
+    },
+    "de": {
+     "title": "Kleine oder große SPS?",
+     "plain": "Kleine SPS passen zu einfachen Maschinen und sind günstiger. Größere SPS steuern viele Signale, Netzwerke und Motoren, brauchen aber mehr Können."
+    }
+   },
+   "file": "industrial-situations.html",
+   "lesson": "Real industrial situations"
+  },
+  {
+   "id": "master-device",
+   "title": "Who asks and who answers on a network",
+   "sub": "Situation 3: Master / Device Roles · learn modern terms, but understand old manuals",
+   "plain": "In a network, one device asks and the others answer. Older manuals say master and slave; newer ones say controller and device.",
+   "tr": {
+    "ms": {
+     "title": "Siapa bertanya dan siapa menjawab dalam rangkaian",
+     "plain": "Dalam rangkaian, satu peranti bertanya dan yang lain menjawab. Manual lama menyebut master dan slave; yang baharu menyebut pengawal dan peranti."
+    },
+    "de": {
+     "title": "Wer im Netzwerk fragt und wer antwortet",
+     "plain": "In einem Netzwerk fragt ein Gerät, und die anderen antworten. Ältere Handbücher sagen Master und Slave, neuere Controller und Gerät."
+    }
+   },
+   "file": "industrial-situations.html",
+   "lesson": "Real industrial situations"
+  },
+  {
+   "id": "analog",
+   "title": "Signals that are not just on or off",
+   "sub": "Situation 4: Analog Modules · not just on/off: voltage, current, scaling, and failure clues",
+   "plain": "Some signals are not just on or off, like temperature or pressure. The PLC turns them into real units such as bar or degrees.",
+   "tr": {
+    "ms": {
+     "title": "Isyarat yang bukan sekadar hidup atau mati",
+     "plain": "Sesetengah isyarat bukan sekadar hidup atau mati, seperti suhu atau tekanan. PLC menukarnya kepada unit sebenar seperti bar atau darjah."
+    },
+    "de": {
+     "title": "Signale, die nicht nur ein oder aus sind",
+     "plain": "Manche Signale sind nicht nur ein oder aus, zum Beispiel Temperatur oder Druck. Die SPS rechnet sie in echte Einheiten wie bar oder Grad um."
+    }
+   },
+   "file": "industrial-situations.html",
+   "lesson": "Real industrial situations"
+  },
+  {
+   "id": "vfd",
+   "title": "Controlling how fast a motor turns",
+   "sub": "Situation 5: VFD / PWM Motor Control · the PLC commands speed; the drive creates motor power",
+   "plain": "A motor drive (VFD) controls how fast a motor turns. The PLC says run and how fast; the drive does the heavy power work.",
+   "tr": {
+    "ms": {
+     "title": "Mengawal kelajuan putaran motor",
+     "plain": "Pemacu motor (VFD) mengawal kelajuan putaran motor. PLC menyuruh jalan dan menetapkan kelajuan; pemacu melakukan kerja kuasa yang berat."
+    },
+    "de": {
+     "title": "Steuern, wie schnell sich ein Motor dreht",
+     "plain": "Ein Frequenzumrichter (VFD) regelt, wie schnell sich ein Motor dreht. Die SPS sagt \"laufen\" und \"wie schnell\", der Umrichter liefert die Leistung."
+    }
+   },
+   "file": "industrial-situations.html",
+   "lesson": "Real industrial situations"
+  },
+  {
+   "id": "npn-pnp",
+   "title": "Two sensor wiring types",
+   "sub": "Situation 6: NPN / PNP Sensor Troubleshooting · sourcing and sinking mistakes are common cabinet faults",
+   "plain": "Sensors come in two wiring types that are easy to mix up. A wrong match is a very common reason a sensor seems dead.",
+   "tr": {
+    "ms": {
+     "title": "Dua jenis pendawaian sensor",
+     "plain": "Sensor datang dalam dua jenis pendawaian yang mudah tertukar. Padanan yang salah ialah sebab biasa sensor kelihatan rosak."
+    },
+    "de": {
+     "title": "Zwei Arten der Sensor-Verdrahtung",
+     "plain": "Sensoren gibt es in zwei Verdrahtungsarten, die man leicht verwechselt. Eine falsche Kombination ist ein häufiger Grund, warum ein Sensor tot wirkt."
+    }
+   },
+   "file": "industrial-situations.html",
+   "lesson": "Real industrial situations"
+  },
+  {
+   "id": "robust-design",
+   "title": "Machines that explain their own faults",
+   "sub": "Situation 7: Robust System Design · make the machine easier to diagnose before it fails",
+   "plain": "Good machines explain themselves when something goes wrong. Clear names, clear alarms and safe manual modes save hours of fault-finding.",
+   "tr": {
+    "ms": {
+     "title": "Mesin yang menerangkan kerosakannya sendiri",
+     "plain": "Mesin yang baik menerangkan dirinya apabila berlaku masalah. Nama yang jelas, penggera yang jelas dan mod manual yang selamat menjimatkan berjam-jam mencari kerosakan."
+    },
+    "de": {
+     "title": "Maschinen, die ihre Fehler selbst erklären",
+     "plain": "Gute Maschinen erklären sich selbst, wenn etwas schiefgeht. Klare Namen, klare Alarme und sichere Handbetriebe sparen Stunden bei der Fehlersuche."
+    }
+   },
+   "file": "industrial-situations.html",
+   "lesson": "Real industrial situations"
+  },
+  {
+   "id": "future-languages",
+   "title": "Which PLC language to learn next",
+   "sub": "Situation 8: Future PLC Languages · ladder first, then compare other IEC styles later",
+   "plain": "Learn Ladder first, because technicians use it most. Other PLC languages are different ways to write the same rules.",
+   "tr": {
+    "ms": {
+     "title": "Bahasa PLC mana yang perlu dipelajari seterusnya",
+     "plain": "Belajar Ladder dahulu, kerana juruteknik paling banyak menggunakannya. Bahasa PLC lain ialah cara berbeza untuk menulis peraturan yang sama."
+    },
+    "de": {
+     "title": "Welche SPS-Sprache du als Nächstes lernen solltest",
+     "plain": "Lerne zuerst Ladder (Kontaktplan), denn Techniker nutzen ihn am meisten. Andere SPS-Sprachen sind andere Wege, dieselben Regeln zu schreiben."
+    }
+   },
+   "file": "industrial-situations.html",
+   "lesson": "Real industrial situations"
+  },
+  {
+   "id": "operating-modes",
+   "title": "Manual, semi-auto and auto",
+   "sub": "1. Operating Modes: Manual, Semi-Auto, Auto · the same machine behaves differently depending on mode ownership",
+   "plain": "Machines run in three modes. Manual moves one part at a time, semi-auto runs one step, and auto runs the whole line. Safety rules apply in every mode.",
+   "tr": {
+    "ms": {
+     "title": "Manual, separa auto dan auto",
+     "plain": "Mesin berjalan dalam tiga mod. Manual menggerakkan satu bahagian pada satu masa, separa auto menjalankan satu langkah, dan auto menjalankan seluruh barisan. Peraturan keselamatan terpakai dalam setiap mod."
+    },
+    "de": {
+     "title": "Hand, Halbautomatik und Automatik",
+     "plain": "Maschinen laufen in drei Betriebsarten. Hand bewegt ein Teil nach dem anderen, Halbautomatik führt einen Schritt aus, Automatik die ganze Linie. Sicherheitsregeln gelten in jeder Betriebsart."
+    }
+   },
+   "file": "oil-palm-industrial-environment.html",
+   "lesson": "Inside a palm-oil mill"
+  },
+  {
+   "id": "process-flow",
+   "title": "From fresh fruit to crude palm oil",
+   "sub": "2. Main Process Flow · fresh fruit bunches to crude palm oil",
+   "plain": "Fresh fruit bunches arrive by truck and pass through eight stations. Steam, pressing and settling turn them into crude palm oil.",
+   "tr": {
+    "ms": {
+     "title": "Dari buah segar ke minyak sawit mentah",
+     "plain": "Tandan buah segar tiba dengan lori dan melalui lapan stesen. Stim, penekanan dan pemendapan menukarnya menjadi minyak sawit mentah."
+    },
+    "de": {
+     "title": "Von der frischen Frucht zum rohen Palmöl",
+     "plain": "Frische Fruchtbündel kommen per Lkw an und durchlaufen acht Stationen. Dampf, Pressen und Absetzen machen daraus rohes Palmöl."
+    }
+   },
+   "file": "oil-palm-industrial-environment.html",
+   "lesson": "Inside a palm-oil mill"
+  },
+  {
+   "id": "handling-systems",
+   "title": "Conveyors that move the fruit",
+   "sub": "3. Conveyor And Handling Systems · where many real plant faults begin",
+   "plain": "Conveyors carry fruit between stations. They start from the far end first and stop from the near end first, so nothing piles up.",
+   "tr": {
+    "ms": {
+     "title": "Penghantar yang memindahkan buah",
+     "plain": "Penghantar membawa buah antara stesen. Ia bermula dari hujung yang jauh dahulu dan berhenti dari hujung yang dekat dahulu, supaya tiada yang bertimbun."
+    },
+    "de": {
+     "title": "Förderbänder, die die Früchte bewegen",
+     "plain": "Förderbänder bringen die Früchte von Station zu Station. Sie starten zuerst am hinteren Ende und stoppen zuerst am vorderen, damit sich nichts staut."
+    }
+   },
+   "file": "oil-palm-industrial-environment.html",
+   "lesson": "Inside a palm-oil mill"
+  },
+  {
+   "id": "process-lad",
+   "title": "Simple rules for each station",
+   "sub": "4. Process LAD Examples By Stage · Ladder-style control narratives for each major oil-palm process",
+   "plain": "Each station has its own simple rules. For example, the dump gate only opens when the conveyor ahead is ready.",
+   "tr": {
+    "ms": {
+     "title": "Peraturan ringkas untuk setiap stesen",
+     "plain": "Setiap stesen ada peraturan ringkasnya sendiri. Contohnya, pintu pemunggah hanya dibuka apabila penghantar di hadapan sudah sedia."
+    },
+    "de": {
+     "title": "Einfache Regeln für jede Station",
+     "plain": "Jede Station hat ihre eigenen einfachen Regeln. Zum Beispiel öffnet die Kippklappe nur, wenn das Förderband davor bereit ist."
+    }
+   },
+   "file": "oil-palm-industrial-environment.html",
+   "lesson": "Inside a palm-oil mill"
+  },
+  {
+   "id": "station-map",
+   "title": "Different controllers in one mill",
+   "sub": "5. Four Mixed Control Stations · economy PLC, PAC, Raspberry Pi industrial edge, Arduino industrial PLC",
+   "plain": "A mill can mix different controllers. Strong PLCs run the machines; small computers collect data or test new ideas.",
+   "tr": {
+    "ms": {
+     "title": "Pengawal berbeza dalam satu kilang",
+     "plain": "Sebuah kilang boleh menggunakan pelbagai jenis pengawal. PLC yang kukuh menjalankan mesin; komputer kecil mengumpul data atau menguji idea baharu."
+    },
+    "de": {
+     "title": "Verschiedene Steuerungen in einer Mühle",
+     "plain": "Eine Mühle kann verschiedene Steuerungen mischen. Robuste SPS steuern die Maschinen, kleine Computer sammeln Daten oder testen neue Ideen."
+    }
+   },
+   "file": "oil-palm-industrial-environment.html",
+   "lesson": "Inside a palm-oil mill"
+  },
+  {
+   "id": "utilities",
+   "title": "Steam, power, water and waste",
+   "sub": "6. Utility And Byproduct Loop · steam, fiber/shell fuel, POME, and environmental monitoring",
+   "plain": "The mill also needs steam, power and water, and must treat its waste water. Sensors track these for safety, cost and the environment.",
+   "tr": {
+    "ms": {
+     "title": "Stim, kuasa, air dan sisa",
+     "plain": "Kilang juga memerlukan stim, kuasa dan air, dan mesti merawat air sisanya. Sensor memantau semua ini untuk keselamatan, kos dan alam sekitar."
+    },
+    "de": {
+     "title": "Dampf, Strom, Wasser und Abwasser",
+     "plain": "Die Mühle braucht auch Dampf, Strom und Wasser und muss ihr Abwasser behandeln. Sensoren überwachen das für Sicherheit, Kosten und Umwelt."
+    }
+   },
+   "file": "oil-palm-industrial-environment.html",
+   "lesson": "Inside a palm-oil mill"
+  },
+  {
+   "id": "control-network",
+   "title": "Keeping networks separate and safe",
+   "sub": "7. PAC And IIoT Control Network · keep control, safety, edge, and cloud roles separated",
+   "plain": "Machine control, office computers and the internet are kept on separate networks. Dashboards may read data but should not control machines.",
+   "tr": {
+    "ms": {
+     "title": "Memastikan rangkaian berasingan dan selamat",
+     "plain": "Kawalan mesin, komputer pejabat dan internet diletakkan pada rangkaian berasingan. Papan pemuka boleh membaca data tetapi tidak patut mengawal mesin."
+    },
+    "de": {
+     "title": "Netzwerke getrennt und sicher halten",
+     "plain": "Maschinensteuerung, Bürorechner und Internet laufen in getrennten Netzwerken. Dashboards dürfen Daten lesen, sollen aber keine Maschinen steuern."
+    }
+   },
+   "file": "oil-palm-industrial-environment.html",
+   "lesson": "Inside a palm-oil mill"
+  },
+  {
+   "id": "equipment-map",
+   "title": "The mill's sensors and machines",
+   "sub": "8. Typical Oil-Palm I/O And Actuator Map · where analog modules, VFDs, sensors, and alarms appear",
+   "plain": "A list of real mill parts and what they sense or do. Inputs are sensors and switches; outputs are motors, valves and alarms.",
+   "tr": {
+    "ms": {
+     "title": "Sensor dan mesin kilang",
+     "plain": "Senarai bahagian sebenar kilang dan apa yang dikesan atau dilakukannya. Input ialah sensor dan suis; output ialah motor, injap dan penggera."
+    },
+    "de": {
+     "title": "Die Sensoren und Maschinen der Mühle",
+     "plain": "Eine Liste echter Teile der Mühle und was sie messen oder tun. Eingänge sind Sensoren und Schalter, Ausgänge sind Motoren, Ventile und Alarme."
+    }
+   },
+   "file": "oil-palm-industrial-environment.html",
+   "lesson": "Inside a palm-oil mill"
+  },
+  {
+   "id": "scenarios",
+   "title": "What to check when something fails",
+   "sub": "9. Technician Fault Scenarios · what to check before editing logic",
+   "plain": "When something goes wrong, check the real equipment before changing the program. Each fault here has a short checklist.",
+   "tr": {
+    "ms": {
+     "title": "Apa yang perlu diperiksa apabila sesuatu rosak",
+     "plain": "Apabila berlaku masalah, periksa peralatan sebenar sebelum menukar program. Setiap kerosakan di sini ada senarai semak yang ringkas."
+    },
+    "de": {
+     "title": "Was du prüfst, wenn etwas ausfällt",
+     "plain": "Wenn etwas schiefgeht, prüfe erst die echte Anlage, bevor du das Programm änderst. Jeder Fehler hier hat eine kurze Checkliste."
+    }
+   },
+   "file": "oil-palm-industrial-environment.html",
+   "lesson": "Inside a palm-oil mill"
+  },
+  {
+   "id": "standards",
+   "title": "Rules and standards to recognise",
+   "sub": "10. Standards And Regulations Awareness · what a learner should recognize, not certify alone",
+   "plain": "Factories follow standards for safety, quality and the environment. Learners should recognise the names, not certify alone.",
+   "tr": {
+    "ms": {
+     "title": "Peraturan dan piawaian yang perlu dikenali",
+     "plain": "Kilang mematuhi piawaian untuk keselamatan, kualiti dan alam sekitar. Pelajar patut mengenali namanya, bukan membuat pensijilan sendiri."
+    },
+    "de": {
+     "title": "Regeln und Normen, die du kennen solltest",
+     "plain": "Fabriken folgen Normen für Sicherheit, Qualität und Umwelt. Lernende sollten die Namen kennen, aber nicht allein zertifizieren."
+    }
+   },
+   "file": "oil-palm-industrial-environment.html",
+   "lesson": "Inside a palm-oil mill"
+  },
+  {
+   "id": "matrix",
+   "title": "Four kinds of controller compared",
+   "sub": "1. Technology Comparison Matrix · pick by job, not by brand pride",
+   "plain": "Four kinds of controller are compared: WECON PLCs, PAC systems, Raspberry Pi and Arduino. Each is best at a different job.",
+   "tr": {
+    "ms": {
+     "title": "Perbandingan empat jenis pengawal",
+     "plain": "Empat jenis pengawal dibandingkan: PLC WECON, sistem PAC, Raspberry Pi dan Arduino. Setiap satu paling sesuai untuk kerja yang berbeza."
+    },
+    "de": {
+     "title": "Vier Arten von Steuerungen im Vergleich",
+     "plain": "Vier Arten von Steuerungen im Vergleich: WECON-SPS, PAC-Systeme, Raspberry Pi und Arduino. Jede ist für eine andere Aufgabe am besten."
+    }
+   },
+   "file": "oil-palm-control-stack-analysis.html",
+   "lesson": "Choosing the right controller"
+  },
+  {
+   "id": "scale",
+   "title": "Small, medium and large mills",
+   "sub": "2. Hobbyist, Small, Medium, Large Scale · same plant idea, different engineering burden",
+   "plain": "The same mill idea needs different tools at different sizes. A hobby project, a small plant and a large group each need more engineering.",
+   "tr": {
+    "ms": {
+     "title": "Kilang kecil, sederhana dan besar",
+     "plain": "Idea kilang yang sama memerlukan alat yang berbeza pada saiz yang berbeza. Projek hobi, loji kecil dan kumpulan besar masing-masing memerlukan lebih banyak kejuruteraan."
+    },
+    "de": {
+     "title": "Kleine, mittlere und große Mühlen",
+     "plain": "Dieselbe Mühlen-Idee braucht je nach Größe andere Werkzeuge. Ein Bastelprojekt, eine kleine Anlage und eine große Gruppe brauchen jeweils mehr Engineering."
+    }
+   },
+   "file": "oil-palm-control-stack-analysis.html",
+   "lesson": "Choosing the right controller"
+  },
+  {
+   "id": "edge-ai",
+   "title": "What AI should and should not do",
+   "sub": "3. AI At The Edge · what AI should and should not do in a mill",
+   "plain": "AI can help spot problems, check quality and save energy. It must never replace safety trips or secretly control machines.",
+   "tr": {
+    "ms": {
+     "title": "Apa yang patut dan tidak patut dilakukan oleh AI",
+     "plain": "AI boleh membantu mengesan masalah, memeriksa kualiti dan menjimatkan tenaga. Ia tidak boleh sekali-kali menggantikan pemutus keselamatan atau mengawal mesin secara diam-diam."
+    },
+    "de": {
+     "title": "Was KI tun sollte und was nicht",
+     "plain": "KI kann helfen, Probleme zu erkennen, die Qualität zu prüfen und Energie zu sparen. Sie darf niemals Sicherheitsabschaltungen ersetzen oder Maschinen heimlich steuern."
+    }
+   },
+   "file": "oil-palm-control-stack-analysis.html",
+   "lesson": "Choosing the right controller"
+  },
+  {
+   "id": "install",
+   "title": "Where setup time really goes",
+   "sub": "4. Installation And Commissioning Speed · where time is really spent",
+   "plain": "Setting up a system takes longer than buying it. Most time goes on drawings, wiring, settings and testing.",
+   "tr": {
+    "ms": {
+     "title": "Ke mana sebenarnya masa pemasangan pergi",
+     "plain": "Memasang sistem mengambil masa lebih lama daripada membelinya. Kebanyakan masa digunakan untuk lukisan, pendawaian, tetapan dan ujian."
+    },
+    "de": {
+     "title": "Wohin die Einrichtungszeit wirklich geht",
+     "plain": "Ein System einzurichten dauert länger, als es zu kaufen. Die meiste Zeit geht für Pläne, Verdrahtung, Einstellungen und Tests drauf."
+    }
+   },
+   "file": "oil-palm-control-stack-analysis.html",
+   "lesson": "Choosing the right controller"
+  },
+  {
+   "id": "reliability",
+   "title": "What keeps a system reliable",
+   "sub": "5. Reliability Factors Beginners Often Miss · the device is only one part of reliability",
+   "plain": "Reliable systems need clean power, cool cabinets, spare parts and backups. The controller alone is not enough.",
+   "tr": {
+    "ms": {
+     "title": "Apa yang memastikan sistem boleh dipercayai",
+     "plain": "Sistem yang boleh dipercayai memerlukan bekalan kuasa yang bersih, kabinet yang sejuk, alat ganti dan sandaran. Pengawal sahaja tidak mencukupi."
+    },
+    "de": {
+     "title": "Was ein System zuverlässig macht",
+     "plain": "Zuverlässige Systeme brauchen saubere Stromversorgung, kühle Schaltschränke, Ersatzteile und Backups. Die Steuerung allein reicht nicht."
+    }
+   },
+   "file": "oil-palm-control-stack-analysis.html",
+   "lesson": "Choosing the right controller"
+  },
+  {
+   "id": "cyber",
+   "title": "Keeping connected machines secure",
+   "sub": "6. Cybersecurity And Remote Access · IIoT adds value and risk together",
+   "plain": "Connecting machines to networks adds risk. Keep networks separate, use proper passwords and control remote access.",
+   "tr": {
+    "ms": {
+     "title": "Memastikan mesin yang bersambung selamat",
+     "plain": "Menyambungkan mesin ke rangkaian menambah risiko. Asingkan rangkaian, gunakan kata laluan yang betul dan kawal akses jarak jauh."
+    },
+    "de": {
+     "title": "Vernetzte Maschinen sicher halten",
+     "plain": "Maschinen mit Netzwerken zu verbinden bringt Risiken. Trenne Netzwerke, nutze richtige Passwörter und kontrolliere den Fernzugriff."
+    }
+   },
+   "file": "oil-palm-control-stack-analysis.html",
+   "lesson": "Choosing the right controller"
+  },
+  {
+   "id": "standards-stack",
+   "title": "Standard names in one table",
+   "sub": "7. Standards Cheat Sheet · recognize the family before reading the full standard",
+   "plain": "A quick guide to the standard names you will hear. Each row says what area it covers and what to do first.",
+   "tr": {
+    "ms": {
+     "title": "Nama piawaian dalam satu jadual",
+     "plain": "Panduan ringkas tentang nama piawaian yang akan anda dengar. Setiap baris menyatakan bidang yang diliputinya dan apa yang perlu dilakukan dahulu."
+    },
+    "de": {
+     "title": "Normnamen in einer Tabelle",
+     "plain": "Ein kurzer Überblick über die Normnamen, die du hören wirst. Jede Zeile sagt, welchen Bereich sie abdeckt und was zuerst zu tun ist."
+    }
+   },
+   "file": "oil-palm-control-stack-analysis.html",
+   "lesson": "Choosing the right controller"
+  },
+  {
+   "id": "paths",
+   "title": "Choose your path",
+   "sub": "1. Choose Your Learning Path First · three doors into the same plant",
+   "plain": "Pick the path that fits you: operator, technician or developer. Each path shows what to focus on first.",
+   "tr": {
+    "ms": {
+     "title": "Pilih laluan anda",
+     "plain": "Pilih laluan yang sesuai dengan anda: operator, juruteknik atau pembangun. Setiap laluan menunjukkan apa yang perlu diberi tumpuan dahulu."
+    },
+    "de": {
+     "title": "Wähle deinen Pfad",
+     "plain": "Wähle den Pfad, der zu dir passt: Bediener, Techniker oder Entwickler. Jeder Pfad zeigt, worauf du dich zuerst konzentrieren solltest."
+    }
+   },
+   "file": "phase-2-start-here.html",
+   "lesson": "Control rooms and networks"
+  },
+  {
+   "id": "data-story",
+   "title": "How machine data travels",
+   "sub": "2. The Industrial Data Story · Ladder, HMI, SCADA, and analytics answer different questions",
+   "plain": "Machine data travels in layers. The PLC acts, screens tell operators what to do, and reports help managers improve.",
+   "tr": {
+    "ms": {
+     "title": "Bagaimana data mesin bergerak",
+     "plain": "Data mesin bergerak melalui beberapa lapisan. PLC bertindak, skrin memberitahu operator apa yang perlu dibuat, dan laporan membantu pengurus membuat penambahbaikan."
+    },
+    "de": {
+     "title": "Wie Maschinendaten wandern",
+     "plain": "Maschinendaten wandern in Schichten. Die SPS handelt, Bildschirme sagen Bedienern, was zu tun ist, und Berichte helfen Managern, besser zu werden."
+    }
+   },
+   "file": "phase-2-start-here.html",
+   "lesson": "Control rooms and networks"
+  },
+  {
+   "id": "communications",
+   "title": "How machines talk to each other",
+   "sub": "3. Industrial Communications Notes · names you will see before touching real drivers",
+   "plain": "Machines talk using different cables and 'languages'. Older ones use serial cables; newer ones use Ethernet networks.",
+   "tr": {
+    "ms": {
+     "title": "Bagaimana mesin berkomunikasi antara satu sama lain",
+     "plain": "Mesin berkomunikasi menggunakan kabel dan 'bahasa' yang berbeza. Mesin lama menggunakan kabel bersiri; yang baharu menggunakan rangkaian Ethernet."
+    },
+    "de": {
+     "title": "Wie Maschinen miteinander sprechen",
+     "plain": "Maschinen sprechen über verschiedene Kabel und \"Sprachen\". Ältere nutzen serielle Kabel, neuere Ethernet-Netzwerke."
+    }
+   },
+   "file": "phase-2-start-here.html",
+   "lesson": "Control rooms and networks"
+  },
+  {
+   "id": "local-server",
+   "title": "Why the trainer runs on your own computer",
+   "sub": "4. Computer Network And Locally Hosted Server · why the browser can see the simulator",
+   "plain": "The trainer runs on your own computer, which is the safe default. Sharing controls on a network needs passwords and safety rules.",
+   "tr": {
+    "ms": {
+     "title": "Mengapa jurulatih berjalan pada komputer anda sendiri",
+     "plain": "Jurulatih berjalan pada komputer anda sendiri, iaitu pilihan lalai yang selamat. Berkongsi kawalan dalam rangkaian memerlukan kata laluan dan peraturan keselamatan."
+    },
+    "de": {
+     "title": "Warum der Trainer auf deinem eigenen Computer läuft",
+     "plain": "Der Trainer läuft auf deinem eigenen Computer, das ist die sichere Standardeinstellung. Steuerungen im Netzwerk zu teilen braucht Passwörter und Sicherheitsregeln."
+    }
+   },
+   "file": "phase-2-start-here.html",
+   "lesson": "Control rooms and networks"
+  },
+  {
+   "id": "scada-design",
+   "title": "Screens that operators can read",
+   "sub": "5. Oil-Palm SCADA And HMI Design · why engineers design screens instead of showing only Ladder",
+   "plain": "Engineers design screens so operators see what matters at a glance. There are overview, station, alarm, trend and maintenance screens.",
+   "tr": {
+    "ms": {
+     "title": "Skrin yang mudah dibaca oleh operator",
+     "plain": "Jurutera mereka bentuk skrin supaya operator nampak perkara penting sekali imbas. Ada skrin gambaran keseluruhan, stesen, penggera, trend dan penyelenggaraan."
+    },
+    "de": {
+     "title": "Bildschirme, die Bediener lesen können",
+     "plain": "Ingenieure gestalten Bildschirme so, dass Bediener das Wichtige auf einen Blick sehen. Es gibt Übersichts-, Stations-, Alarm-, Trend- und Wartungsbilder."
+    }
+   },
+   "file": "phase-2-start-here.html",
+   "lesson": "Control rooms and networks"
+  },
+  {
+   "id": "hmi-challenges",
+   "title": "Common screen design mistakes",
+   "sub": "6. HMI Design Challenges Engineers Face · good screens reduce panic during faults",
+   "plain": "Bad screens cause confusion when things go wrong. Good screens use clear alarms and show what is stopping a machine.",
+   "tr": {
+    "ms": {
+     "title": "Kesilapan biasa reka bentuk skrin",
+     "plain": "Skrin yang buruk menimbulkan kekeliruan apabila berlaku masalah. Skrin yang baik menggunakan penggera yang jelas dan menunjukkan apa yang menghentikan mesin."
+    },
+    "de": {
+     "title": "Typische Fehler beim Bildschirm-Design",
+     "plain": "Schlechte Bildschirme sorgen für Verwirrung, wenn etwas schiefgeht. Gute Bildschirme nutzen klare Alarme und zeigen, was eine Maschine aufhält."
+    }
+   },
+   "file": "phase-2-start-here.html",
+   "lesson": "Control rooms and networks"
+  },
+  {
+   "id": "phase3-preview",
+   "title": "Coming next: collecting machine data",
+   "sub": "7. Phase 3 Preview: Python Data Extraction And Analytics · virtual Modbus TCP first, then OPC UA/MQTT, then pySerial/RS-232",
+   "plain": "Phase 3 collects machine numbers with a small Python program. It stores them and turns them into charts.",
+   "tr": {
+    "ms": {
+     "title": "Akan datang: mengumpul data mesin",
+     "plain": "Fasa 3 mengumpul angka mesin dengan program Python yang kecil. Ia menyimpannya dan menukarnya menjadi carta."
+    },
+    "de": {
+     "title": "Als Nächstes: Maschinendaten sammeln",
+     "plain": "Phase 3 sammelt Maschinenzahlen mit einem kleinen Python-Programm. Es speichert sie und macht daraus Diagramme."
+    }
+   },
+   "file": "phase-2-start-here.html",
+   "lesson": "Control rooms and networks"
+  },
+  {
+   "id": "glossary",
+   "title": "Key words in one line",
+   "sub": "8. Tiny Glossary For Newcomers · words that stop being scary after one sentence",
+   "plain": "Key words explained in one line each. You can also tap any underlined word on this site for a quick meaning.",
+   "tr": {
+    "ms": {
+     "title": "Istilah utama dalam satu baris",
+     "plain": "Istilah utama diterangkan dalam satu baris setiap satu. Anda juga boleh ketik mana-mana perkataan bergaris bawah di laman ini untuk maksud ringkas."
+    },
+    "de": {
+     "title": "Wichtige Begriffe in einer Zeile",
+     "plain": "Wichtige Begriffe in je einer Zeile erklärt. Du kannst auch auf jedes unterstrichene Wort auf dieser Seite tippen, um eine kurze Erklärung zu sehen."
+    }
+   },
+   "file": "phase-2-start-here.html",
+   "lesson": "Control rooms and networks"
+  },
+  {
+   "id": "management",
+   "title": "The numbers managers watch",
+   "sub": "1. Management Dashboard",
+   "plain": "These boxes show the numbers managers care about: fruit processed, oil produced, downtime and alarms.",
+   "tr": {
+    "ms": {
+     "title": "Angka yang dipantau pengurus"
+    },
+    "de": {
+     "title": "Die Zahlen, auf die Manager schauen"
+    }
+   },
+   "file": "phase-3-data-analytics.html",
+   "lesson": "Factory data and dashboards"
+  },
+  {
+   "id": "trends",
+   "title": "Values over time",
+   "sub": "2. Historian Trends · one sample every 2 seconds represents 1 minute of plant time",
+   "plain": "These boxes show the numbers managers care about: fruit processed, oil produced, downtime and alarms.",
+   "tr": {
+    "ms": {
+     "title": "Nilai dari semasa ke semasa",
+     "plain": "Kotak-kotak ini menunjukkan angka yang penting bagi pengurus: buah yang diproses, minyak yang dihasilkan, masa henti dan penggera."
+    },
+    "de": {
+     "title": "Werte im Zeitverlauf",
+     "plain": "Diese Kästen zeigen die Zahlen, die Manager interessieren: verarbeitete Früchte, erzeugtes Öl, Stillstand und Alarme."
+    }
+   },
+   "file": "phase-3-data-analytics.html",
+   "lesson": "Factory data and dashboards"
+  },
+  {
+   "id": "trends",
+   "title": "Values over time",
+   "sub": "2. Historian Trends",
+   "plain": "Each chart shows how one value changes over time. Trends show whether a problem is new or keeps coming back.",
+   "tr": {
+    "ms": {
+     "title": "Nilai dari semasa ke semasa",
+     "plain": "Setiap carta menunjukkan bagaimana satu nilai berubah dari semasa ke semasa. Trend menunjukkan sama ada sesuatu masalah itu baharu atau berulang."
+    },
+    "de": {
+     "title": "Werte im Zeitverlauf",
+     "plain": "Jedes Diagramm zeigt, wie sich ein Wert über die Zeit ändert. Trends zeigen, ob ein Problem neu ist oder immer wiederkommt."
+    }
+   },
+   "file": "phase-3-data-analytics.html",
+   "lesson": "Factory data and dashboards"
+  },
+  {
+   "id": "events",
+   "title": "Alarms and stops",
+   "sub": "3. Alarm, Downtime, And Production Events · events explain why KPI numbers moved",
+   "plain": "A list of alarms and stops with their times. It explains why the numbers above went up or down.",
+   "tr": {
+    "ms": {
+     "title": "Penggera dan hentian",
+     "plain": "Senarai penggera dan hentian beserta masanya. Ia menerangkan mengapa angka di atas naik atau turun."
+    },
+    "de": {
+     "title": "Alarme und Stopps",
+     "plain": "Eine Liste von Alarmen und Stopps mit Uhrzeit. Sie erklärt, warum die Zahlen oben gestiegen oder gefallen sind."
+    }
+   },
+   "file": "phase-3-data-analytics.html",
+   "lesson": "Factory data and dashboards"
+  },
+  {
+   "id": "station",
+   "title": "A close look at the screw press",
+   "sub": "4. Station Deep Dive: Screw Press · one realistic station example behind the management summary",
+   "plain": "A close look at one machine, the screw press, which squeezes the oil out of the fruit.",
+   "tr": {
+    "ms": {
+     "title": "Pandangan dekat pada penekan skru",
+     "plain": "Pandangan dekat pada satu mesin, iaitu penekan skru, yang memerah minyak keluar daripada buah."
+    },
+    "de": {
+     "title": "Ein genauer Blick auf die Schneckenpresse",
+     "plain": "Ein genauer Blick auf eine Maschine, die Schneckenpresse, die das Öl aus den Früchten presst."
+    }
+   },
+   "file": "phase-3-data-analytics.html",
+   "lesson": "Factory data and dashboards"
+  },
+  {
+   "id": "architecture",
+   "title": "How data moves up to the business",
+   "sub": "5. OT, IT, MES, ERP: Where Dashboard Data Goes · plant signals become business decisions through layers",
+   "plain": "Data moves up in layers: machines, computers, production planning, then business systems. Each layer answers a different question.",
+   "tr": {
+    "ms": {
+     "title": "Bagaimana data naik ke peringkat perniagaan",
+     "plain": "Data bergerak naik mengikut lapisan: mesin, komputer, perancangan pengeluaran, kemudian sistem perniagaan. Setiap lapisan menjawab soalan yang berbeza."
+    },
+    "de": {
+     "title": "Wie Daten bis ins Geschäft gelangen",
+     "plain": "Daten wandern in Schichten nach oben: Maschinen, Computer, Produktionsplanung, dann Geschäftssysteme. Jede Schicht beantwortet eine andere Frage."
+    }
+   },
+   "file": "phase-3-data-analytics.html",
+   "lesson": "Factory data and dashboards"
+  },
+  {
+   "id": "pipeline",
+   "title": "How this demo works",
+   "sub": "6. Local Data Pipeline In This Demo · Phase 3 V1 uses simulated data before virtual Modbus TCP runtime",
+   "plain": "How this demo works behind the scenes. A small program saves a sample every two seconds, and this page reads it.",
+   "tr": {
+    "ms": {
+     "title": "Cara demo ini berfungsi",
+     "plain": "Cara demo ini berfungsi di sebalik tabir. Satu program kecil menyimpan sampel setiap dua saat, dan halaman ini membacanya."
+    },
+    "de": {
+     "title": "So funktioniert diese Demo",
+     "plain": "So funktioniert diese Demo im Hintergrund. Ein kleines Programm speichert alle zwei Sekunden einen Messwert, und diese Seite liest ihn."
+    }
+   },
+   "file": "phase-3-data-analytics.html",
+   "lesson": "Factory data and dashboards"
+  },
+  {
+   "id": "summary",
+   "title": "Is the old machine being read safely?",
+   "sub": "1. Read-Only Bridge Summary",
+   "plain": "Shows whether the old machine is being read safely. Nothing on this page can change the machine.",
+   "tr": {
+    "ms": {
+     "title": "Adakah mesin lama dibaca dengan selamat?"
+    },
+    "de": {
+     "title": "Wird die alte Maschine sicher ausgelesen?"
+    }
+   },
+   "file": "phase-4-legacy-ot-recovery.html",
+   "lesson": "Rescuing old machines"
+  },
+  {
+   "id": "workflow",
+   "title": "The safe order of work",
+   "sub": "2. Recovery Workflow · stabilize first, migrate later",
+   "plain": "Shows whether the old machine is being read safely. Nothing on this page can change the machine.",
+   "tr": {
+    "ms": {
+     "title": "Turutan kerja yang selamat",
+     "plain": "Menunjukkan sama ada mesin lama sedang dibaca dengan selamat. Tiada apa-apa di halaman ini yang boleh mengubah mesin."
+    },
+    "de": {
+     "title": "Die sichere Reihenfolge der Arbeit",
+     "plain": "Zeigt, ob die alte Maschine sicher ausgelesen wird. Nichts auf dieser Seite kann die Maschine verändern."
+    }
+   },
+   "file": "phase-4-legacy-ot-recovery.html",
+   "lesson": "Rescuing old machines"
+  },
+  {
+   "id": "workflow",
+   "title": "The safe order of work",
+   "sub": "2. Recovery Workflow",
+   "plain": "The safe order: save evidence, protect the old machine, watch it read-only, then plan a replacement.",
+   "tr": {
+    "ms": {
+     "title": "Turutan kerja yang selamat",
+     "plain": "Turutan selamat: simpan bukti, lindungi mesin lama, pantau secara baca sahaja, kemudian rancang penggantian."
+    },
+    "de": {
+     "title": "Die sichere Reihenfolge der Arbeit",
+     "plain": "Die sichere Reihenfolge: Beweise sichern, die alte Maschine schützen, sie nur lesend beobachten, dann den Austausch planen."
+    }
+   },
+   "file": "phase-4-legacy-ot-recovery.html",
+   "lesson": "Rescuing old machines"
+  },
+  {
+   "id": "registers",
+   "title": "Values read from the old controller",
+   "sub": "3. Read-Only Register Map · Virtual Modbus TCP register view, no writes",
+   "plain": "Values read from the old controller, such as tank level or motor current. Every row is read-only.",
+   "tr": {
+    "ms": {
+     "title": "Nilai yang dibaca daripada pengawal lama",
+     "plain": "Nilai yang dibaca daripada pengawal lama, seperti paras tangki atau arus motor. Setiap baris adalah baca sahaja."
+    },
+    "de": {
+     "title": "Werte aus der alten Steuerung",
+     "plain": "Werte aus der alten Steuerung, etwa Tankfüllstand oder Motorstrom. Jede Zeile ist nur lesbar."
+    }
+   },
+   "file": "phase-4-legacy-ot-recovery.html",
+   "lesson": "Rescuing old machines"
+  },
+  {
+   "id": "isolation",
+   "title": "Protecting the old machine",
+   "sub": "4. XP/7 Risk Isolation Diagram · old assets stay protected while modern systems read summaries",
+   "plain": "The old computer and PLC sit behind a protective barrier. Modern systems only read summaries through a one-way bridge.",
+   "tr": {
+    "ms": {
+     "title": "Melindungi mesin lama",
+     "plain": "Komputer dan PLC lama berada di sebalik penghadang pelindung. Sistem moden hanya membaca ringkasan melalui jambatan sehala."
+    },
+    "de": {
+     "title": "Die alte Maschine schützen",
+     "plain": "Der alte Computer und die SPS stehen hinter einer Schutzbarriere. Moderne Systeme lesen nur Zusammenfassungen über eine Einweg-Brücke."
+    }
+   },
+   "file": "phase-4-legacy-ot-recovery.html",
+   "lesson": "Rescuing old machines"
+  },
+  {
+   "id": "situations",
+   "title": "Real cases and what companies do",
+   "sub": "5. Real Situations Engineers Face · what companies usually do before replacement",
+   "plain": "Common real cases, like a lost installer or missing licence, and what companies usually do about them.",
+   "tr": {
+    "ms": {
+     "title": "Kes sebenar dan apa yang dilakukan syarikat",
+     "plain": "Kes sebenar yang biasa, seperti fail pemasangan yang hilang atau lesen yang tiada, dan apa yang biasanya dilakukan oleh syarikat."
+    },
+    "de": {
+     "title": "Echte Fälle und was Firmen tun",
+     "plain": "Häufige echte Fälle, etwa ein verlorenes Installationsprogramm oder eine fehlende Lizenz, und was Firmen meist dagegen tun."
+    }
+   },
+   "file": "phase-4-legacy-ot-recovery.html",
+   "lesson": "Rescuing old machines"
+  },
+  {
+   "id": "events",
+   "title": "Problems the bridge noticed",
+   "sub": "6. Bridge Events · faults and communication clues without touching PLC outputs",
+   "plain": "Communication problems the bridge noticed, recorded without touching the machine.",
+   "tr": {
+    "ms": {
+     "title": "Masalah yang dikesan oleh jambatan",
+     "plain": "Masalah komunikasi yang dikesan oleh jambatan, direkodkan tanpa menyentuh mesin."
+    },
+    "de": {
+     "title": "Probleme, die die Brücke bemerkt hat",
+     "plain": "Kommunikationsprobleme, die die Brücke bemerkt hat, aufgezeichnet ohne die Maschine zu berühren."
+    }
+   },
+   "file": "phase-4-legacy-ot-recovery.html",
+   "lesson": "Rescuing old machines"
+  },
+  {
+   "id": "rs232",
+   "title": "Listening to an old serial cable",
+   "sub": "7. Simulated RS-232 / pySerial Lesson · legacy COM-port thinking without opening a real COM port",
+   "plain": "Many old machines talk through a serial cable. This lesson shows how to listen safely, in a simulation.",
+   "tr": {
+    "ms": {
+     "title": "Mendengar kabel bersiri lama",
+     "plain": "Banyak mesin lama berkomunikasi melalui kabel bersiri. Pelajaran ini menunjukkan cara mendengar dengan selamat, dalam simulasi."
+    },
+    "de": {
+     "title": "Ein altes serielles Kabel abhören",
+     "plain": "Viele alte Maschinen sprechen über ein serielles Kabel. Diese Lektion zeigt in einer Simulation, wie du sicher mithörst."
+    }
+   },
+   "file": "phase-4-legacy-ot-recovery.html",
+   "lesson": "Rescuing old machines"
+  },
+  {
+   "id": "phase5",
+   "title": "Replacing an old system step by step",
+   "sub": "8. Phase 5 Preview: Modernization And Migration Strategy · replace the risk only after evidence, testing, and rollback planning",
+   "plain": "Replacing an old system happens in careful steps, with testing and a way to go back if needed.",
+   "tr": {
+    "ms": {
+     "title": "Menggantikan sistem lama langkah demi langkah",
+     "plain": "Penggantian sistem lama dibuat dalam langkah yang berhati-hati, dengan ujian dan cara untuk kembali jika perlu."
+    },
+    "de": {
+     "title": "Ein altes System Schritt für Schritt ersetzen",
+     "plain": "Ein altes System wird in vorsichtigen Schritten ersetzt, mit Tests und einem Weg zurück, falls nötig."
+    }
+   },
+   "file": "phase-4-legacy-ot-recovery.html",
+   "lesson": "Rescuing old machines"
+  },
+  {
+   "id": "meaning",
+   "title": "What being qualified really means",
+   "sub": "1. What \"Qualified\" Should Mean · certification helps, but competence is bigger than a certificate",
+   "plain": "Being qualified means knowing the standards, understanding real machines and documenting your work. A short course alone is not enough.",
+   "tr": {
+    "ms": {
+     "title": "Maksud sebenar menjadi layak",
+     "plain": "Layak bermaksud mengetahui piawaian, memahami mesin sebenar dan mendokumenkan kerja anda. Kursus pendek sahaja tidak mencukupi."
+    },
+    "de": {
+     "title": "Was qualifiziert sein wirklich bedeutet",
+     "plain": "Qualifiziert sein heißt, die Normen zu kennen, echte Maschinen zu verstehen und deine Arbeit zu dokumentieren. Ein Kurzkurs allein reicht nicht."
+    }
+   },
+   "file": "risk-assessment-certification.html",
+   "lesson": "Becoming safety qualified"
+  },
+  {
+   "id": "when",
+   "title": "When to check machine risks",
+   "sub": "2. When Risk Assessment Is Needed · do it before the machine teaches the lesson the expensive way",
+   "plain": "Check the risks before installing, changing or buying a used machine. Changing code or speed can make an old check out of date.",
+   "tr": {
+    "ms": {
+     "title": "Bila perlu menyemak risiko mesin",
+     "plain": "Semak risiko sebelum memasang, menukar atau membeli mesin terpakai. Menukar kod atau kelajuan boleh menjadikan semakan lama sudah tidak terkini."
+    },
+    "de": {
+     "title": "Wann du Maschinenrisiken prüfst",
+     "plain": "Prüfe die Risiken, bevor du eine Maschine installierst, änderst oder gebraucht kaufst. Geänderter Code oder eine andere Geschwindigkeit kann eine alte Prüfung veralten lassen."
+    }
+   },
+   "file": "risk-assessment-certification.html",
+   "lesson": "Becoming safety qualified"
+  },
+  {
+   "id": "where",
+   "title": "Where to get trained",
+   "sub": "3. Where To Get Training Or Certification · choose the certificate based on the machine type and job responsibility",
+   "plain": "Training ranges from short local courses to recognised certificates such as CMSE, TUV or exida. Pick one that fits your machines and job.",
+   "tr": {
+    "ms": {
+     "title": "Di mana untuk mendapatkan latihan",
+     "plain": "Latihan merangkumi kursus pendek tempatan hingga sijil yang diiktiraf seperti CMSE, TUV atau exida. Pilih yang sesuai dengan mesin dan kerja anda."
+    },
+    "de": {
+     "title": "Wo du dich ausbilden lässt",
+     "plain": "Die Ausbildung reicht von kurzen lokalen Kursen bis zu anerkannten Zertifikaten wie CMSE, TUV oder exida. Wähle eine, die zu deinen Maschinen und deinem Job passt."
+    }
+   },
+   "file": "risk-assessment-certification.html",
+   "lesson": "Becoming safety qualified"
+  },
+  {
+   "id": "path",
+   "title": "A realistic learning path",
+   "sub": "4. Practical Learning Path · a realistic route from beginner to useful risk-assessment contributor",
+   "plain": "Plan for years, not weeks. Learn hazards first, then assist others, then lead small assessments under review.",
+   "tr": {
+    "ms": {
+     "title": "Laluan pembelajaran yang realistik",
+     "plain": "Rancang untuk beberapa tahun, bukan beberapa minggu. Pelajari bahaya dahulu, kemudian bantu orang lain, kemudian ketuai penilaian kecil yang disemak."
+    },
+    "de": {
+     "title": "Ein realistischer Lernweg",
+     "plain": "Plane in Jahren, nicht in Wochen. Lerne zuerst die Gefährdungen, unterstütze dann andere und leite schließlich kleine Beurteilungen unter Aufsicht."
+    }
+   },
+   "file": "risk-assessment-certification.html",
+   "lesson": "Becoming safety qualified"
+  },
+  {
+   "id": "cost",
+   "title": "What training costs",
+   "sub": "5. Cost Planning · budget ranges as of June 2026; always request a current quote",
+   "plain": "Self-study can start free. Short courses start around RM 800, and full certification can cost more than RM 25,000.",
+   "tr": {
+    "ms": {
+     "title": "Kos latihan",
+     "plain": "Belajar sendiri boleh bermula secara percuma. Kursus pendek bermula sekitar RM 800, dan pensijilan penuh boleh mencecah lebih RM 25,000."
+    },
+    "de": {
+     "title": "Was Ausbildung kostet",
+     "plain": "Selbststudium kann kostenlos beginnen. Kurzkurse starten bei etwa RM 800, eine volle Zertifizierung kann mehr als RM 25,000 kosten."
+    }
+   },
+   "file": "risk-assessment-certification.html",
+   "lesson": "Becoming safety qualified"
+  },
+  {
+   "id": "deliverables",
+   "title": "What a good assessment leaves behind",
+   "sub": "6. What A Proper Risk Assessment Produces · the paperwork is proof that the thinking happened",
+   "plain": "A proper risk assessment leaves written proof. It lists the hazards, how serious they are, and what was done to reduce them.",
+   "tr": {
+    "ms": {
+     "title": "Apa yang ditinggalkan oleh penilaian yang baik",
+     "plain": "Penilaian risiko yang betul meninggalkan bukti bertulis. Ia menyenaraikan bahaya, tahap keseriusannya, dan apa yang dilakukan untuk mengurangkannya."
+    },
+    "de": {
+     "title": "Was eine gute Beurteilung hinterlässt",
+     "plain": "Eine richtige Risikobeurteilung hinterlässt einen schriftlichen Nachweis. Er listet die Gefährdungen auf, wie ernst sie sind und was getan wurde, um sie zu senken."
+    }
+   },
+   "file": "risk-assessment-certification.html",
+   "lesson": "Becoming safety qualified"
+  },
+  {
+   "id": "malaysia",
+   "title": "Malaysian mills: who to involve",
+   "sub": "7. Malaysia And Oil-Palm Plant Reality · connect the training to local plant responsibility",
+   "plain": "In Malaysian mills, involve operations, maintenance, safety staff and a qualified engineer. Check current DOSH, DOE and MPOB rules for your plant.",
+   "tr": {
+    "ms": {
+     "title": "Kilang Malaysia: siapa yang perlu dilibatkan",
+     "plain": "Di kilang Malaysia, libatkan kakitangan operasi, penyelenggaraan, keselamatan dan jurutera bertauliah. Semak peraturan DOSH, DOE dan MPOB terkini untuk loji anda."
+    },
+    "de": {
+     "title": "Malaysische Mühlen: wen du einbeziehst",
+     "plain": "Beziehe in malaysischen Mühlen Betrieb, Instandhaltung, Sicherheitspersonal und einen qualifizierten Ingenieur ein. Prüfe die aktuellen Regeln von DOSH, DOE und MPOB für deine Anlage."
+    }
+   },
+   "file": "risk-assessment-certification.html",
+   "lesson": "Becoming safety qualified"
+  },
+  {
+   "id": "sources",
+   "title": "Official links to check",
+   "sub": "8. Reference Links To Verify Current Details · use these for syllabus, edition, provider availability, and current quote",
+   "plain": "Official links to check the latest courses, standard editions and prices.",
+   "tr": {
+    "ms": {
+     "title": "Pautan rasmi untuk disemak",
+     "plain": "Pautan rasmi untuk menyemak kursus, edisi piawaian dan harga terkini."
+    },
+    "de": {
+     "title": "Offizielle Links zum Prüfen",
+     "plain": "Offizielle Links, um aktuelle Kurse, Normausgaben und Preise zu prüfen."
+    }
+   },
+   "file": "risk-assessment-certification.html",
+   "lesson": "Becoming safety qualified"
+  }
+ ],
  "words": [
   {
    "term": "PLC",
-   "meaning": "A tough little computer that controls machines by following written rules."
+   "meaning": "A tough little computer that controls machines by following written rules.",
+   "tr": {
+    "ms": {
+     "meaning": "Komputer kecil yang lasak yang mengawal mesin dengan mengikut peraturan bertulis."
+    },
+    "de": {
+     "meaning": "Ein robuster kleiner Computer, der Maschinen nach geschriebenen Regeln steuert (deutsch: SPS)."
+    }
+   }
   },
   {
    "term": "PAC",
-   "meaning": "A more powerful industrial controller, used for large or critical plants."
+   "meaning": "A more powerful industrial controller, used for large or critical plants.",
+   "tr": {
+    "ms": {
+     "meaning": "Pengawal industri yang lebih berkuasa, digunakan untuk loji besar atau kritikal."
+    },
+    "de": {
+     "meaning": "Eine leistungsstärkere Industriesteuerung für große oder kritische Anlagen."
+    }
+   }
   },
   {
    "term": "HMI",
-   "meaning": "The screen an operator uses to watch and control one machine."
+   "meaning": "The screen an operator uses to watch and control one machine.",
+   "tr": {
+    "ms": {
+     "meaning": "Skrin yang digunakan operator untuk memantau dan mengawal satu mesin."
+    },
+    "de": {
+     "meaning": "Der Bildschirm, mit dem ein Bediener eine Maschine beobachtet und steuert."
+    }
+   }
   },
   {
    "term": "SCADA",
-   "meaning": "Control-room software that watches the whole plant, with alarms and charts."
+   "meaning": "Control-room software that watches the whole plant, with alarms and charts.",
+   "tr": {
+    "ms": {
+     "meaning": "Perisian bilik kawalan yang memantau seluruh loji, dengan penggera dan carta."
+    },
+    "de": {
+     "meaning": "Leitstand-Software, die die ganze Anlage überwacht, mit Alarmen und Diagrammen."
+    }
+   }
   },
   {
    "term": "VFD",
-   "meaning": "A motor drive that sets how fast a motor turns."
+   "meaning": "A motor drive that sets how fast a motor turns.",
+   "tr": {
+    "ms": {
+     "meaning": "Pemacu motor yang menetapkan kelajuan putaran motor."
+    },
+    "de": {
+     "meaning": "Ein Frequenzumrichter, der festlegt, wie schnell sich ein Motor dreht."
+    }
+   }
   },
   {
    "term": "FFB",
-   "meaning": "Fresh fruit bunches: the palm fruit that arrives at the mill."
+   "meaning": "Fresh fruit bunches: the palm fruit that arrives at the mill.",
+   "tr": {
+    "ms": {
+     "meaning": "Tandan buah segar: buah sawit yang tiba di kilang."
+    },
+    "de": {
+     "meaning": "Frische Fruchtbündel: die Palmfrüchte, die in der Mühle ankommen."
+    }
+   }
   },
   {
    "term": "CPO",
-   "meaning": "Crude palm oil: the mill's main product."
+   "meaning": "Crude palm oil: the mill's main product.",
+   "tr": {
+    "ms": {
+     "meaning": "Minyak sawit mentah: hasil utama kilang."
+    },
+    "de": {
+     "meaning": "Rohes Palmöl: das Hauptprodukt der Mühle."
+    }
+   }
   },
   {
    "term": "EFB",
-   "meaning": "Empty fruit bunch: what is left after the fruit is removed."
+   "meaning": "Empty fruit bunch: what is left after the fruit is removed.",
+   "tr": {
+    "ms": {
+     "meaning": "Tandan buah kosong: apa yang tinggal selepas buah ditanggalkan."
+    },
+    "de": {
+     "meaning": "Leeres Fruchtbündel: was übrig bleibt, wenn die Früchte entfernt sind."
+    }
+   }
   },
   {
    "term": "POME",
-   "meaning": "Palm oil mill effluent: the mill's waste water, which must be treated."
+   "meaning": "Palm oil mill effluent: the mill's waste water, which must be treated.",
+   "tr": {
+    "ms": {
+     "meaning": "Efluen kilang minyak sawit: air sisa kilang yang mesti dirawat."
+    },
+    "de": {
+     "meaning": "Abwasser der Palmölmühle, das behandelt werden muss."
+    }
+   }
   },
   {
    "term": "OER",
-   "meaning": "Oil extraction rate: how much oil the mill gets from the fruit."
+   "meaning": "Oil extraction rate: how much oil the mill gets from the fruit.",
+   "tr": {
+    "ms": {
+     "meaning": "Kadar perahan minyak: berapa banyak minyak yang diperoleh kilang daripada buah."
+    },
+    "de": {
+     "meaning": "Ölausbeute: wie viel Öl die Mühle aus den Früchten gewinnt."
+    }
+   }
   },
   {
    "term": "I/O",
-   "meaning": "Inputs and outputs: what a PLC senses (buttons, sensors) and controls (motors, lamps)."
+   "meaning": "Inputs and outputs: what a PLC senses (buttons, sensors) and controls (motors, lamps).",
+   "tr": {
+    "ms": {
+     "meaning": "Input dan output: apa yang PLC kesan (butang, sensor) dan kawal (motor, lampu)."
+    },
+    "de": {
+     "meaning": "Ein- und Ausgänge: was eine SPS erfasst (Taster, Sensoren) und steuert (Motoren, Lampen)."
+    }
+   }
   },
   {
    "term": "NPN",
-   "meaning": "A sensor wiring type that switches to 0 V. It must match the PLC input wiring."
+   "meaning": "A sensor wiring type that switches to 0 V. It must match the PLC input wiring.",
+   "tr": {
+    "ms": {
+     "meaning": "Jenis pendawaian sensor yang bersambung ke 0 V. Ia mesti sepadan dengan pendawaian input PLC."
+    },
+    "de": {
+     "meaning": "Eine Sensor-Verdrahtung, die nach 0 V schaltet. Sie muss zur Verdrahtung des SPS-Eingangs passen."
+    }
+   }
   },
   {
    "term": "PNP",
-   "meaning": "A sensor wiring type that switches to +24 V. Common on modern PLC inputs."
+   "meaning": "A sensor wiring type that switches to +24 V. Common on modern PLC inputs.",
+   "tr": {
+    "ms": {
+     "meaning": "Jenis pendawaian sensor yang bersambung ke +24 V. Biasa pada input PLC moden."
+    },
+    "de": {
+     "meaning": "Eine Sensor-Verdrahtung, die nach +24 V schaltet. Üblich bei modernen SPS-Eingängen."
+    }
+   }
   },
   {
    "term": "4-20mA",
-   "meaning": "A common smooth signal: 4 mA means the lowest value, 20 mA the highest."
+   "meaning": "A common smooth signal: 4 mA means the lowest value, 20 mA the highest.",
+   "tr": {
+    "ms": {
+     "meaning": "Isyarat lancar yang biasa: 4 mA bermaksud nilai terendah, 20 mA nilai tertinggi."
+    },
+    "de": {
+     "meaning": "Ein gängiges stufenloses Signal: 4 mA ist der kleinste Wert, 20 mA der größte."
+    }
+   }
   },
   {
    "term": "analog",
-   "meaning": "A signal that changes smoothly, like temperature, instead of just on or off."
+   "meaning": "A signal that changes smoothly, like temperature, instead of just on or off.",
+   "tr": {
+    "ms": {
+     "meaning": "Isyarat yang berubah secara lancar, seperti suhu, bukan sekadar hidup atau mati."
+    },
+    "de": {
+     "meaning": "Ein Signal, das sich stufenlos ändert, wie eine Temperatur, statt nur ein oder aus."
+    }
+   }
   },
   {
    "term": "Ladder",
-   "meaning": "A PLC programming style that looks like an electrical wiring drawing."
+   "meaning": "A PLC programming style that looks like an electrical wiring drawing.",
+   "tr": {
+    "ms": {
+     "meaning": "Gaya pengaturcaraan PLC yang kelihatan seperti lukisan pendawaian elektrik."
+    },
+    "de": {
+     "meaning": "Ein SPS-Programmierstil, der wie ein Stromlaufplan aussieht (Kontaktplan)."
+    }
+   }
   },
   {
    "term": "LAD",
-   "meaning": "Ladder: a PLC programming style that looks like an electrical wiring drawing."
+   "meaning": "Ladder: a PLC programming style that looks like an electrical wiring drawing.",
+   "tr": {
+    "ms": {
+     "meaning": "Ladder: gaya pengaturcaraan PLC yang kelihatan seperti lukisan pendawaian elektrik."
+    },
+    "de": {
+     "meaning": "Kontaktplan (Ladder): ein SPS-Programmierstil, der wie ein Stromlaufplan aussieht."
+    }
+   }
   },
   {
    "term": "FBD",
-   "meaning": "Function block diagram: a PLC style that connects ready-made blocks."
+   "meaning": "Function block diagram: a PLC style that connects ready-made blocks.",
+   "tr": {
+    "ms": {
+     "meaning": "Rajah blok fungsi: gaya PLC yang menyambungkan blok sedia ada."
+    },
+    "de": {
+     "meaning": "Funktionsbausteinsprache: ein SPS-Stil, der fertige Bausteine verbindet."
+    }
+   }
   },
   {
    "term": "SFC",
-   "meaning": "Sequential function chart: a PLC style for step-by-step sequences."
+   "meaning": "Sequential function chart: a PLC style for step-by-step sequences.",
+   "tr": {
+    "ms": {
+     "meaning": "Carta fungsi berjujukan: gaya PLC untuk turutan langkah demi langkah."
+    },
+    "de": {
+     "meaning": "Ablaufsprache: ein SPS-Stil für Schritt-für-Schritt-Abläufe."
+    }
+   }
   },
   {
    "term": "interlock",
-   "meaning": "A rule that blocks an action unless something else is safe or ready."
+   "meaning": "A rule that blocks an action unless something else is safe or ready.",
+   "tr": {
+    "ms": {
+     "meaning": "Peraturan yang menyekat sesuatu tindakan kecuali keadaan lain selamat atau sedia."
+    },
+    "de": {
+     "meaning": "Eine Regel, die eine Aktion sperrt, solange etwas anderes nicht sicher oder bereit ist."
+    }
+   }
   },
   {
    "term": "permissive",
-   "meaning": "A condition that must be true before a machine is allowed to start."
+   "meaning": "A condition that must be true before a machine is allowed to start.",
+   "tr": {
+    "ms": {
+     "meaning": "Syarat yang mesti benar sebelum mesin dibenarkan bermula."
+    },
+    "de": {
+     "meaning": "Eine Bedingung, die erfüllt sein muss, bevor eine Maschine starten darf."
+    }
+   }
   },
   {
    "term": "latch",
-   "meaning": "A memory that stays on after the button is released."
+   "meaning": "A memory that stays on after the button is released.",
+   "tr": {
+    "ms": {
+     "meaning": "Ingatan yang kekal hidup selepas butang dilepaskan."
+    },
+    "de": {
+     "meaning": "Ein Speicher, der eingeschaltet bleibt, nachdem der Taster losgelassen wurde."
+    }
+   }
   },
   {
    "term": "setpoint",
-   "meaning": "The target value, such as the temperature you want."
+   "meaning": "The target value, such as the temperature you want.",
+   "tr": {
+    "ms": {
+     "meaning": "Nilai sasaran, seperti suhu yang anda mahukan."
+    },
+    "de": {
+     "meaning": "Der Sollwert, zum Beispiel die gewünschte Temperatur."
+    }
+   }
   },
   {
    "term": "PID",
-   "meaning": "Automatic control that holds a value steady, like cruise control in a car."
+   "meaning": "Automatic control that holds a value steady, like cruise control in a car.",
+   "tr": {
+    "ms": {
+     "meaning": "Kawalan automatik yang mengekalkan sesuatu nilai, seperti kawalan laju kereta."
+    },
+    "de": {
+     "meaning": "Eine Regelung, die einen Wert konstant hält, wie ein Tempomat im Auto."
+    }
+   }
   },
   {
    "term": "E-stop",
-   "meaning": "The red emergency stop button."
+   "meaning": "The red emergency stop button.",
+   "tr": {
+    "ms": {
+     "meaning": "Butang merah henti kecemasan."
+    },
+    "de": {
+     "meaning": "Der rote Not-Halt-Taster."
+    }
+   }
   },
   {
    "term": "historian",
-   "meaning": "A database that records machine values over time."
+   "meaning": "A database that records machine values over time.",
+   "tr": {
+    "ms": {
+     "meaning": "Pangkalan data yang merekod nilai mesin dari semasa ke semasa."
+    },
+    "de": {
+     "meaning": "Eine Datenbank, die Maschinenwerte über die Zeit aufzeichnet."
+    }
+   }
   },
   {
    "term": "Modbus",
-   "meaning": "A simple, widely used way for machines to exchange numbers."
+   "meaning": "A simple, widely used way for machines to exchange numbers.",
+   "tr": {
+    "ms": {
+     "meaning": "Cara mudah dan meluas bagi mesin untuk bertukar-tukar angka."
+    },
+    "de": {
+     "meaning": "Ein einfacher, weit verbreiteter Weg, wie Maschinen Zahlen austauschen."
+    }
+   }
   },
   {
    "term": "OPC UA",
-   "meaning": "A modern standard way for industrial systems to share data securely."
+   "meaning": "A modern standard way for industrial systems to share data securely.",
+   "tr": {
+    "ms": {
+     "meaning": "Cara standard moden bagi sistem industri untuk berkongsi data dengan selamat."
+    },
+    "de": {
+     "meaning": "Ein moderner Standard, mit dem Industriesysteme Daten sicher austauschen."
+    }
+   }
   },
   {
    "term": "MQTT",
-   "meaning": "A lightweight messaging method often used to send factory data to dashboards."
+   "meaning": "A lightweight messaging method often used to send factory data to dashboards.",
+   "tr": {
+    "ms": {
+     "meaning": "Kaedah pemesejan ringan yang sering digunakan untuk menghantar data kilang ke papan pemuka."
+    },
+    "de": {
+     "meaning": "Ein schlankes Nachrichtenverfahren, oft genutzt, um Fabrikdaten an Dashboards zu senden."
+    }
+   }
   },
   {
    "term": "RS-232",
-   "meaning": "An old serial cable link between two devices."
+   "meaning": "An old serial cable link between two devices.",
+   "tr": {
+    "ms": {
+     "meaning": "Sambungan kabel bersiri lama antara dua peranti."
+    },
+    "de": {
+     "meaning": "Eine alte serielle Kabelverbindung zwischen zwei Geräten."
+    }
+   }
   },
   {
    "term": "RS-485",
-   "meaning": "A serial cable link shared by several devices on one line."
+   "meaning": "A serial cable link shared by several devices on one line.",
+   "tr": {
+    "ms": {
+     "meaning": "Sambungan kabel bersiri yang dikongsi oleh beberapa peranti pada satu talian."
+    },
+    "de": {
+     "meaning": "Eine serielle Kabelverbindung, die sich mehrere Geräte auf einer Leitung teilen."
+    }
+   }
   },
   {
    "term": "IIoT",
-   "meaning": "Industrial internet of things: connected factory sensors and machines."
+   "meaning": "Industrial internet of things: connected factory sensors and machines.",
+   "tr": {
+    "ms": {
+     "meaning": "Internet benda industri: sensor dan mesin kilang yang bersambung."
+    },
+    "de": {
+     "meaning": "Industrielles Internet der Dinge: vernetzte Sensoren und Maschinen in der Fabrik."
+    }
+   }
   },
   {
    "term": "MES",
-   "meaning": "Software that plans and tracks production on the factory floor."
+   "meaning": "Software that plans and tracks production on the factory floor.",
+   "tr": {
+    "ms": {
+     "meaning": "Perisian yang merancang dan menjejak pengeluaran di lantai kilang."
+    },
+    "de": {
+     "meaning": "Software, die die Produktion in der Fabrikhalle plant und verfolgt."
+    }
+   }
   },
   {
    "term": "ERP",
-   "meaning": "Business software for orders, stock and accounts."
+   "meaning": "Business software for orders, stock and accounts.",
+   "tr": {
+    "ms": {
+     "meaning": "Perisian perniagaan untuk pesanan, stok dan akaun."
+    },
+    "de": {
+     "meaning": "Unternehmenssoftware für Aufträge, Lager und Buchhaltung."
+    }
+   }
   },
   {
    "term": "MCC",
-   "meaning": "Motor control centre: the cabinet that powers the plant's motors."
+   "meaning": "Motor control centre: the cabinet that powers the plant's motors.",
+   "tr": {
+    "ms": {
+     "meaning": "Pusat kawalan motor: kabinet yang membekalkan kuasa kepada motor loji."
+    },
+    "de": {
+     "meaning": "Motorsteuerzentrale: der Schrank, der die Motoren der Anlage versorgt."
+    }
+   }
   },
   {
    "term": "FAT",
-   "meaning": "Factory acceptance test: proving the system works before delivery."
+   "meaning": "Factory acceptance test: proving the system works before delivery.",
+   "tr": {
+    "ms": {
+     "meaning": "Ujian penerimaan kilang: membuktikan sistem berfungsi sebelum dihantar."
+    },
+    "de": {
+     "meaning": "Werksabnahmetest: der Nachweis, dass das System vor der Lieferung funktioniert."
+    }
+   }
   },
   {
    "term": "SAT",
-   "meaning": "Site acceptance test: proving the system works once installed on site."
+   "meaning": "Site acceptance test: proving the system works once installed on site.",
+   "tr": {
+    "ms": {
+     "meaning": "Ujian penerimaan tapak: membuktikan sistem berfungsi selepas dipasang di tapak."
+    },
+    "de": {
+     "meaning": "Abnahmetest vor Ort: der Nachweis, dass das System nach dem Einbau funktioniert."
+    }
+   }
   },
   {
    "term": "DOSH",
-   "meaning": "Malaysia's Department of Occupational Safety and Health."
+   "meaning": "Malaysia's Department of Occupational Safety and Health.",
+   "tr": {
+    "ms": {
+     "meaning": "Jabatan Keselamatan dan Kesihatan Pekerjaan Malaysia."
+    },
+    "de": {
+     "meaning": "Malaysias Behörde für Arbeitssicherheit und Gesundheitsschutz."
+    }
+   }
   },
   {
    "term": "SIL",
-   "meaning": "Safety integrity level: how reliable a safety function must be."
+   "meaning": "Safety integrity level: how reliable a safety function must be.",
+   "tr": {
+    "ms": {
+     "meaning": "Tahap integriti keselamatan: sejauh mana fungsi keselamatan mesti boleh dipercayai."
+    },
+    "de": {
+     "meaning": "Sicherheits-Integritätslevel: wie zuverlässig eine Sicherheitsfunktion sein muss."
+    }
+   }
   },
   {
    "term": "RTD",
-   "meaning": "A temperature sensor whose resistance changes with heat."
+   "meaning": "A temperature sensor whose resistance changes with heat.",
+   "tr": {
+    "ms": {
+     "meaning": "Sensor suhu yang rintangannya berubah mengikut haba."
+    },
+    "de": {
+     "meaning": "Ein Temperatursensor, dessen Widerstand sich mit der Wärme ändert."
+    }
+   }
   },
   {
    "term": "watchdog",
-   "meaning": "A timer that stops the PLC safely if the program gets stuck."
+   "meaning": "A timer that stops the PLC safely if the program gets stuck.",
+   "tr": {
+    "ms": {
+     "meaning": "Pemasa yang menghentikan PLC dengan selamat jika program tersekat."
+    },
+    "de": {
+     "meaning": "Ein Timer, der die SPS sicher stoppt, wenn das Programm hängen bleibt."
+    }
+   }
   },
   {
    "term": "SQLite",
-   "meaning": "A small database kept in a single file."
+   "meaning": "A small database kept in a single file.",
+   "tr": {
+    "ms": {
+     "meaning": "Pangkalan data kecil yang disimpan dalam satu fail."
+    },
+    "de": {
+     "meaning": "Eine kleine Datenbank in einer einzigen Datei."
+    }
+   }
   }
  ]
 };

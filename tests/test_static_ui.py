@@ -701,3 +701,58 @@ def test_dark_mode_follows_device_and_has_a_switch() -> None:
     # Diagrams, Ladder rungs and tables stay on light "paper" cards.
     assert 'Light "paper" cards' in (static / "hub.css").read_text(encoding="utf-8")
 
+
+
+def test_language_switch_has_complete_malay_and_german_text() -> None:
+    import json
+    import re
+    import subprocess
+    import sys
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parent.parent
+    static = root / "static"
+    lang = {code: json.loads((static / "lang" / f"{code}.json").read_text(encoding="utf-8"))
+            for code in ("en", "ms", "de")}
+    # Same keys everywhere, nothing left empty or untranslated by accident.
+    assert set(lang["ms"]) == set(lang["en"]) == set(lang["de"])
+    tags = re.compile(r"<[^>]+>")
+    holes = re.compile(r"\{[a-z]+\}")
+    for key, english in lang["en"].items():
+        for code in ("ms", "de"):
+            value = lang[code][key]
+            assert value.strip(), (code, key)
+            assert tags.findall(value) == tags.findall(english), (code, key)
+            assert sorted(holes.findall(value)) == sorted(holes.findall(english)), (code, key)
+
+    # Every key used in a page exists in the translation files.
+    pages = ["start", "beginner-guide", "how-it-works", "industrial-situations",
+             "plc-programming-methods", "oil-palm-industrial-environment",
+             "oil-palm-control-stack-analysis", "risk-assessment-certification",
+             "phase-2-start-here", "phase-3-data-analytics", "phase-4-legacy-ot-recovery"]
+    for page in pages:
+        html = (static / f"{page}.html").read_text(encoding="utf-8")
+        keys = re.findall(r'data-i18n(?:-html)?="([^"]+)"', html)
+        keys += [pair.split(":")[1] for attr in re.findall(r'data-i18n-attr="([^"]+)"', html)
+                 for pair in attr.split(";")]
+        assert len(keys) > 20, page
+        missing = [k for k in keys if k not in lang["en"]]
+        assert not missing, (page, missing[:5])
+        assert "hub-prefs.js" in html and "data-i18n-in" not in html, page
+
+    # The switch offers English (default), Bahasa Malaysia and Deutsch.
+    prefs = (static / "hub-prefs.js").read_text(encoding="utf-8")
+    assert '"salbotics-hub-lang"' in prefs
+    for code in ('code: "en"', 'code: "ms"', 'code: "de"'):
+        assert code in prefs
+    assert 'lang = "en"' in prefs
+
+    # Generated files are current: en.json matches the pages, search has BM/DE.
+    for script in ("i18n_keys.py", "build_search_index.py"):
+        result = subprocess.run([sys.executable, str(root / "scripts" / script), "--check"],
+                                capture_output=True, text=True)
+        assert result.returncode == 0, result.stdout
+    index = (static / "search-index.js").read_text(encoding="utf-8")
+    data = json.loads(index[index.index("{"):index.rindex("}") + 1])
+    assert len(data["topics"]) > 60
+    assert all("ms" in item["tr"] and "de" in item["tr"] for item in data["lessons"] + data["words"])

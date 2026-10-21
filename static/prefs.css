@@ -63,3 +63,11 @@
     margin: 0 0 10px;
   }
 }
+
+/* German and Malay words can be long ("Sicherheitsqualifikation"). Let them break
+   at a hyphen instead of pushing the page sideways on phones. */
+html:not([lang="en"]) body {
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}

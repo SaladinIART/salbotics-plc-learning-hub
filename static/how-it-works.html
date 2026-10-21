@@ -15,17 +15,17 @@
     <div class="app-shell guide-shell">
       <header class="topbar">
         <div class="brand-block">
-          <strong><a class="hub-home" href="/static/start.html">Salbotics PLC Hub</a></strong>
-          <span>How the traffic light works</span>
+          <strong><a class="hub-home" href="/static/start.html" data-i18n="ui.brand">Salbotics PLC Hub</a></strong>
+          <span data-i18n="lesson.how-it-works.title">How the traffic light works</span>
         </div>
         <div class="top-actions">
-          <a class="header-link" href="/static/start.html">Home</a>
-          <a class="header-link" href="/static/beginner-guide.html" data-stage="basics">Basics</a>
-          <a class="header-link" href="/static/plc-programming-methods.html" data-stage="skills">Skills</a>
-          <a class="header-link" href="/static/oil-palm-industrial-environment.html" data-stage="factory">Factory</a>
-          <a class="header-link" href="/static/phase-2-start-here.html" data-stage="data">Data</a>
-          <a class="header-link" href="/static/risk-assessment-certification.html" data-stage="safety">Safety</a>
-          <a class="connection-pill guide-back" href="/">Simulator</a>
+          <a class="header-link" href="/static/start.html" data-i18n="ui.nav.home">Home</a>
+          <a class="header-link" href="/static/beginner-guide.html" data-stage="basics" data-i18n="ui.nav.basics">Basics</a>
+          <a class="header-link" href="/static/plc-programming-methods.html" data-stage="skills" data-i18n="ui.nav.skills">Skills</a>
+          <a class="header-link" href="/static/oil-palm-industrial-environment.html" data-stage="factory" data-i18n="ui.nav.factory">Factory</a>
+          <a class="header-link" href="/static/phase-2-start-here.html" data-stage="data" data-i18n="ui.nav.data">Data</a>
+          <a class="header-link" href="/static/risk-assessment-certification.html" data-stage="safety" data-i18n="ui.nav.safety">Safety</a>
+          <a class="connection-pill guide-back" href="/" data-i18n="ui.nav.sim">Simulator</a>
         </div>
         <div class="status-strip guide-status-strip">
           <div class="status-item">
@@ -157,61 +157,61 @@
             <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="hw.auto-cycle.like">Taking turns at a junction, with a pause so nobody crashes.</span></p>
             <figure class="sp-scene hub-scene" style="--sp-start: 0s">
           <svg class="sp-anim sp-anim-traffic" viewBox="0 0 480 340" role="img" aria-labelledby="anim-traffic-title">
-                  <title id="anim-traffic-title">Animated junction: north-south green, yellow, all red, then east-west green, yellow, all red</title>
-                  <defs>
-                    <clipPath id="clip-traffic"><rect x="0" y="0" width="480" height="262" rx="14"></rect></clipPath>
-                  </defs>
-                  <g clip-path="url(#clip-traffic)">
-                    <rect width="480" height="262" class="sp-a-ground"></rect>
-                    <rect x="200" y="0" width="80" height="262" class="sp-a-road"></rect>
-                    <rect x="0" y="95" width="480" height="70" class="sp-a-road"></rect>
-                    <line x1="240" y1="0" x2="240" y2="95" class="sp-a-dash"></line>
-                    <line x1="240" y1="165" x2="240" y2="262" class="sp-a-dash"></line>
-                    <line x1="0" y1="130" x2="200" y2="130" class="sp-a-dash"></line>
-                    <line x1="280" y1="130" x2="480" y2="130" class="sp-a-dash"></line>
-                    <line x1="242" y1="172" x2="280" y2="172" class="sp-a-stop"></line>
-                    <line x1="194" y1="132" x2="194" y2="165" class="sp-a-stop"></line>
-                    <g class="sp-a-mover a-tl-car-ns">
-                      <rect x="247" y="180" width="26" height="44" rx="6" class="sp-a-car1"></rect>
-                      <rect x="250" y="186" width="20" height="10" rx="2" class="sp-a-glass"></rect>
-                    </g>
-                    <g class="sp-a-mover a-tl-car-ew">
-                      <rect x="140" y="137" width="48" height="24" rx="6" class="sp-a-car2"></rect>
-                      <rect x="174" y="140" width="10" height="18" rx="2" class="sp-a-glass"></rect>
-                    </g>
-                    <rect x="296" y="8" width="32" height="80" rx="8" class="sp-a-head"></rect>
-                    <circle cx="312" cy="22" r="9" class="sp-a-off"></circle>
-                    <circle cx="312" cy="48" r="9" class="sp-a-off"></circle>
-                    <circle cx="312" cy="74" r="9" class="sp-a-off"></circle>
-                    <circle cx="312" cy="22" r="9" class="sp-a-red a-tl-ns-red"></circle>
-                    <circle cx="312" cy="48" r="9" class="sp-a-yellow a-tl-ns-yellow"></circle>
-                    <circle cx="312" cy="74" r="9" class="sp-a-green a-tl-ns-green"></circle>
-                    <text x="374" y="54" class="sp-a-label">N-S road</text>
-                    <rect x="100" y="180" width="84" height="32" rx="8" class="sp-a-head"></rect>
-                    <circle cx="116" cy="196" r="9" class="sp-a-off"></circle>
-                    <circle cx="142" cy="196" r="9" class="sp-a-off"></circle>
-                    <circle cx="168" cy="196" r="9" class="sp-a-off"></circle>
-                    <circle cx="116" cy="196" r="9" class="sp-a-red a-tl-ew-red"></circle>
-                    <circle cx="142" cy="196" r="9" class="sp-a-yellow a-tl-ew-yellow"></circle>
-                    <circle cx="168" cy="196" r="9" class="sp-a-green a-tl-ew-green"></circle>
-                    <text x="142" y="236" class="sp-a-label">E-W road</text>
+                <title id="anim-traffic-title">Animated junction: north-south green, yellow, all red, then east-west green, yellow, all red</title>
+                <defs>
+                  <clipPath id="clip-traffic"><rect x="0" y="0" width="480" height="262" rx="14"></rect></clipPath>
+                </defs>
+                <g clip-path="url(#clip-traffic)">
+                  <rect width="480" height="262" class="sp-a-ground"></rect>
+                  <rect x="200" y="0" width="80" height="262" class="sp-a-road"></rect>
+                  <rect x="0" y="95" width="480" height="70" class="sp-a-road"></rect>
+                  <line x1="240" y1="0" x2="240" y2="95" class="sp-a-dash"></line>
+                  <line x1="240" y1="165" x2="240" y2="262" class="sp-a-dash"></line>
+                  <line x1="0" y1="130" x2="200" y2="130" class="sp-a-dash"></line>
+                  <line x1="280" y1="130" x2="480" y2="130" class="sp-a-dash"></line>
+                  <line x1="242" y1="172" x2="280" y2="172" class="sp-a-stop"></line>
+                  <line x1="194" y1="132" x2="194" y2="165" class="sp-a-stop"></line>
+                  <g class="sp-a-mover a-tl-car-ns">
+                    <rect x="247" y="180" width="26" height="44" rx="6" class="sp-a-car1"></rect>
+                    <rect x="250" y="186" width="20" height="10" rx="2" class="sp-a-glass"></rect>
                   </g>
-                  <rect x="1" y="274" width="478" height="62" rx="12" class="sp-a-strip"></rect>
-                  <text x="20" y="311" class="sp-a-strip-text sp-a-start">PLC step:</text>
-                  <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s1">1 &#183; N-S green</text>
-                  <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s2">2 &#183; N-S yellow</text>
-                  <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s3">3 &#183; all red</text>
-                  <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s4">4 &#183; E-W green</text>
-                  <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s5">5 &#183; E-W yellow</text>
-                  <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s6">6 &#183; all red</text>
-                  <circle cx="300" cy="305" r="8" class="sp-a-lamp-off"></circle>
-                  <circle cx="300" cy="305" r="8" class="sp-a-lamp-in a-tl-timer"></circle>
-                  <text x="314" y="311" class="sp-a-strip-text sp-a-start">timer done</text>
-                </svg>
+                  <g class="sp-a-mover a-tl-car-ew">
+                    <rect x="140" y="137" width="48" height="24" rx="6" class="sp-a-car2"></rect>
+                    <rect x="174" y="140" width="10" height="18" rx="2" class="sp-a-glass"></rect>
+                  </g>
+                  <rect x="296" y="8" width="32" height="80" rx="8" class="sp-a-head"></rect>
+                  <circle cx="312" cy="22" r="9" class="sp-a-off"></circle>
+                  <circle cx="312" cy="48" r="9" class="sp-a-off"></circle>
+                  <circle cx="312" cy="74" r="9" class="sp-a-off"></circle>
+                  <circle cx="312" cy="22" r="9" class="sp-a-red a-tl-ns-red"></circle>
+                  <circle cx="312" cy="48" r="9" class="sp-a-yellow a-tl-ns-yellow"></circle>
+                  <circle cx="312" cy="74" r="9" class="sp-a-green a-tl-ns-green"></circle>
+                  <text x="374" y="54" class="sp-a-label" data-i18n="st.98">N-S road</text>
+                  <rect x="100" y="180" width="84" height="32" rx="8" class="sp-a-head"></rect>
+                  <circle cx="116" cy="196" r="9" class="sp-a-off"></circle>
+                  <circle cx="142" cy="196" r="9" class="sp-a-off"></circle>
+                  <circle cx="168" cy="196" r="9" class="sp-a-off"></circle>
+                  <circle cx="116" cy="196" r="9" class="sp-a-red a-tl-ew-red"></circle>
+                  <circle cx="142" cy="196" r="9" class="sp-a-yellow a-tl-ew-yellow"></circle>
+                  <circle cx="168" cy="196" r="9" class="sp-a-green a-tl-ew-green"></circle>
+                  <text x="142" y="236" class="sp-a-label" data-i18n="st.99">E-W road</text>
+                </g>
+                <rect x="1" y="274" width="478" height="62" rx="12" class="sp-a-strip"></rect>
+                <text x="20" y="311" class="sp-a-strip-text sp-a-start" data-i18n="st.100">PLC step:</text>
+                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s1" data-i18n="st.101">1 &#183; N-S green</text>
+                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s2" data-i18n="st.102">2 &#183; N-S yellow</text>
+                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s3" data-i18n="st.103">3 &#183; all red</text>
+                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s4" data-i18n="st.104">4 &#183; E-W green</text>
+                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s5" data-i18n="st.105">5 &#183; E-W yellow</text>
+                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s6" data-i18n="st.106">6 &#183; all red</text>
+                <circle cx="300" cy="305" r="8" class="sp-a-lamp-off"></circle>
+                <circle cx="300" cy="305" r="8" class="sp-a-lamp-in a-tl-timer"></circle>
+                <text x="314" y="311" class="sp-a-strip-text sp-a-start" data-i18n="st.107">timer done</text>
+              </svg>
             <figcaption>
-              <h3>Watch the auto cycle</h3>
-              <p>Each road gets green, then yellow. Both go red for a moment before the other road starts.</p>
-              <p class="sp-rule"><strong>The rule:</strong> both roads are never green together.</p>
+              <h3 data-i18n="hw.scene.1">Watch the auto cycle</h3>
+              <p data-i18n="hw.scene.2">Each road gets green, then yellow. Both go red for a moment before the other road starts.</p>
+              <p class="sp-rule" data-i18n-html="hw.scene.3"><strong>The rule:</strong> both roads are never green together.</p>
               <button type="button" class="sp-play">Pause</button>
             </figcaption>
           </figure>
@@ -597,7 +597,7 @@
           </details>
         </section>
       </main>
-      <footer class="product-footer">
+      <footer class="product-footer" data-i18n-html="ui.footer">
         Salbotics PLC Learning Hub is an open educational product by
         <a href="https://salbotics.uk/">Salbotics Solutions</a>. It is not certified safety or traffic-control software.
       </footer>
