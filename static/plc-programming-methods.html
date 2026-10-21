@@ -35,19 +35,23 @@
       <main class="guide-main" data-collapsible-sections>
         <section class="panel lesson-panel intro-panel industrial-intro">
           <div class="panel-heading">
-            <h1>How To Write A Reliable PLC Program From Scratch</h1>
-                <span>flowcharts first, Ladder first, then choose the right language for each job</span>
+            <h1 data-i18n="pm.title">Writing a reliable program</h1>
+            <span class="hub-techname"><span data-i18n="ui.techname">Technical name:</span> How To Write A Reliable PLC Program From Scratch</span>
           </div>
+          <p class="hub-lead" data-i18n="pm.lead">This lesson shows the order professionals follow to write PLC programs that are safe and easy to fix.</p>
           <div class="hub-summary" role="region" aria-labelledby="hub-summary-title">
-            <h2 id="hub-summary-title">In 30 seconds</h2>
+            <h2 id="hub-summary-title" data-i18n="ui.summary">In 30 seconds</h2>
             <ul>
-              <li>A good PLC program starts as a flowchart of the machine story, not as code.</li>
-              <li>Write Ladder in a fixed order: modes, permissives, interlocks, alarms, then outputs.</li>
-              <li>Three palm-oil mill case studies show which language suits which job.</li>
+              <li data-i18n="pm.sum1">A good PLC program starts as a flowchart of the machine story, not as code.</li>
+              <li data-i18n="pm.sum2">Write Ladder in a fixed order: modes, permissives, interlocks, alarms, then outputs.</li>
+              <li data-i18n="pm.sum3">Three palm-oil mill case studies show which language suits which job.</li>
             </ul>
-            <p class="hub-summary-tip">Tap a topic below to open it, or use "Open all topics".</p>
+            <p class="hub-summary-tip" data-i18n="ui.summarytip">Tap a topic below to open it, or use "Open all topics".</p>
           </div>
-          <div class="intro-grid industrial-intro-grid">
+          <details class="hub-safety">
+            <summary><span class="hub-safety-icon" aria-hidden="true">!</span> <span data-i18n="pm.safety">Normal PLC code is not a safety system. Real safety needs certified parts and review.</span> <span class="hub-more" data-i18n="ui.readmore">Read more</span></summary>
+            <p class="hub-scope"><strong data-i18n="ui.covers">This lesson covers:</strong> flowcharts first, Ladder first, then choose the right language for each job</p>
+            <div class="intro-grid industrial-intro-grid">
             <div>
               <h2>Core idea</h2>
               <p>
@@ -66,34 +70,36 @@
               </p>
             </div>
           </div>
+          </details>
         </section>
 
 
         <nav class="scenario-nav industrial-nav method-nav" aria-label="PLC programming methods sections">
-          <a href="#scratch-method">Scratch Method</a>
-          <a href="#flowcharts">Flowcharts</a>
-          <a href="#lad-structure">Reliable LAD</a>
-          <a href="#languages">Languages</a>
-          <a href="#limits">CPU Limits</a>
-          <a href="#case-conveyor">Case 1</a>
-          <a href="#case-sterilizer">Case 2</a>
-          <a href="#case-clarifier">Case 3</a>
-          <a href="#checklist">Checklist</a>
+          <a href="#scratch-method" data-i18n="pm.scratch-method.nav">Scratch Method</a>
+          <a href="#flowcharts" data-i18n="pm.flowcharts.nav">Flowcharts</a>
+          <a href="#lad-structure" data-i18n="pm.lad-structure.nav">Reliable LAD</a>
+          <a href="#languages" data-i18n="pm.languages.nav">Languages</a>
+          <a href="#limits" data-i18n="pm.limits.nav">CPU Limits</a>
+          <a href="#case-conveyor" data-i18n="pm.case-conveyor.nav">Case 1</a>
+          <a href="#case-sterilizer" data-i18n="pm.case-sterilizer.nav">Case 2</a>
+          <a href="#case-clarifier" data-i18n="pm.case-clarifier.nav">Case 3</a>
+          <a href="#checklist" data-i18n="pm.checklist.nav">Checklist</a>
           <a href="/static/risk-assessment-certification.html">Safety Cert</a>
         </nav>
 
         <section id="scratch-method" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>1. Reliable Program Method From Scratch</h2>
-            <span>the order matters more than the software brand</span>
+            <h2 data-i18n="pm.scratch-method.title">Plan before you program</h2>
+            <span>1. Reliable Program Method From Scratch · the order matters more than the software brand</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Good programs follow a fixed order: understand the machine, list the dangers, plan, then write code. Starting with code is the most common beginner mistake.</p>
-            <p class="plain-like"><strong>Like:</strong> Drawing a house plan before laying bricks.</p>
+            <p class="plain-text" data-i18n="pm.scratch-method.plain">Good programs follow a fixed order: understand the machine, list the dangers, plan, then write code. Starting with code is the most common beginner mistake.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="pm.scratch-method.like">Drawing a house plan before laying bricks.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="diagram-panel">
             <svg class="process-svg method-svg" viewBox="0 0 1180 430" role="img" aria-labelledby="scratch-title">
               <title id="scratch-title">Reliable PLC program development flow</title>
@@ -139,16 +145,17 @@
 
         <section id="flowcharts" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>2. Flowcharts Before Ladder</h2>
-            <span>flowchart is the machine story; Ladder is only one expression of it</span>
+            <h2 data-i18n="pm.flowcharts.title">Draw the machine&#x27;s steps first</h2>
+            <span>2. Flowcharts Before Ladder · flowchart is the machine story; Ladder is only one expression of it</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">First draw the machine's steps as boxes and arrows. The program then simply follows that drawing.</p>
-            <p class="plain-like"><strong>Like:</strong> Writing a recipe step by step before you start cooking.</p>
+            <p class="plain-text" data-i18n="pm.flowcharts.plain">First draw the machine's steps as boxes and arrows. The program then simply follows that drawing.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="pm.flowcharts.like">Writing a recipe step by step before you start cooking.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="compare-grid">
             <div class="diagram-panel">
               <svg class="process-svg mini-flow-svg" viewBox="0 0 900 430" role="img" aria-labelledby="flow-title">
@@ -190,16 +197,17 @@
 
         <section id="lad-structure" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>3. Reliable Ladder Structure</h2>
-            <span>recommended rung order for maintainable LAD</span>
+            <h2 data-i18n="pm.lad-structure.title">Keep the program in a fixed order</h2>
+            <span>3. Reliable Ladder Structure · recommended rung order for maintainable LAD</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Keep every program in the same order: inputs, safety checks, steps, alarms, then outputs. Anyone can then find a problem quickly.</p>
-            <p class="plain-like"><strong>Like:</strong> A tidy toolbox where every tool has its place.</p>
+            <p class="plain-text" data-i18n="pm.lad-structure.plain">Keep every program in the same order: inputs, safety checks, steps, alarms, then outputs. Anyone can then find a problem quickly.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="pm.lad-structure.like">A tidy toolbox where every tool has its place.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="wide-table">
             <table>
               <thead>
@@ -230,16 +238,17 @@
 
         <section id="languages" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>4. PLC Programming Languages And Modern Approaches</h2>
-            <span>LAD is not old-fashioned; it is one tool in a mixed toolkit</span>
+            <h2 data-i18n="pm.languages.title">Different ways to write PLC rules</h2>
+            <span>4. PLC Programming Languages And Modern Approaches · LAD is not old-fashioned; it is one tool in a mixed toolkit</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">PLCs can be programmed in several styles. Ladder is easiest for technicians to read; other styles suit maths, sequences or temperature control.</p>
-            <p class="plain-like"><strong>Like:</strong> Choosing a hammer or a screwdriver for the job.</p>
+            <p class="plain-text" data-i18n="pm.languages.plain">PLCs can be programmed in several styles. Ladder is easiest for technicians to read; other styles suit maths, sequences or temperature control.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="pm.languages.like">Choosing a hammer or a screwdriver for the job.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="wide-table">
             <table>
               <thead>
@@ -264,16 +273,17 @@
 
         <section id="limits" class="panel scenario-panel danger-scenario">
           <div class="panel-heading">
-            <h2>5. Hardware Processing Limits Shape The Programming Style</h2>
-            <span>scan time, memory, watchdog, I/O update, and online troubleshooting matter</span>
+            <h2 data-i18n="pm.limits.title">A PLC has limited speed and memory</h2>
+            <span>5. Hardware Processing Limits Shape The Programming Style · scan time, memory, watchdog, I/O update, and online troubleshooting matter</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">A PLC is a small computer with limited speed and memory. Simple, readable code is often better than clever code.</p>
-            <p class="plain-like"><strong>Like:</strong> Clear notes that the night shift can follow at 2 AM.</p>
+            <p class="plain-text" data-i18n="pm.limits.plain">A PLC is a small computer with limited speed and memory. Simple, readable code is often better than clever code.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="pm.limits.like">Clear notes that the night shift can follow at 2 AM.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="robust-grid">
             <div class="robust-item"><h3>Scan time</h3><p>Every extra rung, loop, communication call, and calculation adds work. Slow scans can miss short pulses or make control feel late.</p></div>
             <div class="robust-item"><h3>Watchdog</h3><p>Loops in ST must be bounded. A bad loop can exceed watchdog time and fault the controller.</p></div>
@@ -288,16 +298,17 @@
 
         <section id="case-conveyor" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>Case Study 1: Conveyor Train</h2>
-            <span>best default: LAD for interlocks, SFC for sequence, ST only for counters/data</span>
+            <h2 data-i18n="pm.case-conveyor.title">Example: starting and stopping conveyors</h2>
+            <span>Case Study 1: Conveyor Train · best default: LAD for interlocks, SFC for sequence, ST only for counters/data</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Conveyors must start in the right order and stop if a belt stops turning. Ladder shows these rules clearly for maintenance staff.</p>
-            <p class="plain-like"><strong>Like:</strong> Opening the exit before letting more people into a hallway.</p>
+            <p class="plain-text" data-i18n="pm.case-conveyor.plain">Conveyors must start in the right order and stop if a belt stops turning. Ladder shows these rules clearly for maintenance staff.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="pm.case-conveyor.like">Opening the exit before letting more people into a hallway.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="case-grid">
             <div class="ladder-diagram compact-lad">
               <h3>LAD version</h3>
@@ -335,16 +346,17 @@ Alm_ZeroSpeed := ZeroSpeedTimer.Q;</code></pre>
 
         <section id="case-sterilizer" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>Case Study 2: Sterilizer Batch Cycle</h2>
-            <span>best default: SFC or state machine, with LAD safety/permissive rungs</span>
+            <h2 data-i18n="pm.case-sterilizer.title">Example: the steam cooker cycle</h2>
+            <span>Case Study 2: Sterilizer Batch Cycle · best default: SFC or state machine, with LAD safety/permissive rungs</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">The sterilizer is a room-sized pressure cooker for fruit. Its steps run in strict order, and the door stays locked while there is pressure.</p>
-            <p class="plain-like"><strong>Like:</strong> A pressure cooker you must not open until it is safe.</p>
+            <p class="plain-text" data-i18n="pm.case-sterilizer.plain">The sterilizer is a room-sized pressure cooker for fruit. Its steps run in strict order, and the door stays locked while there is pressure.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="pm.case-sterilizer.like">A pressure cooker you must not open until it is safe.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="case-grid">
             <div class="mini-table">
               <h3>SFC steps</h3>
@@ -381,16 +393,17 @@ END_CASE;</code></pre>
 
         <section id="case-clarifier" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>Case Study 3: Clarifier Temperature And Oil Transfer</h2>
-            <span>best default: FBD for analog/PID, ST for scaling, LAD for permissives</span>
+            <h2 data-i18n="pm.case-clarifier.title">Example: keeping oil at the right heat</h2>
+            <span>Case Study 3: Clarifier Temperature And Oil Transfer · best default: FBD for analog/PID, ST for scaling, LAD for permissives</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">The clarifier keeps oil at the right temperature and moves it when tanks are ready. Different programming styles suit heating control and safety checks.</p>
-            <p class="plain-like"><strong>Like:</strong> A kettle thermostat plus a 'tank is full' check.</p>
+            <p class="plain-text" data-i18n="pm.case-clarifier.plain">The clarifier keeps oil at the right temperature and moves it when tanks are ready. Different programming styles suit heating control and safety checks.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="pm.case-clarifier.like">A kettle thermostat plus a 'tank is full' check.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="case-grid">
             <div class="code-panel">
               <h3>ST scaling</h3>
@@ -423,16 +436,17 @@ SensorFault := RawAI < RawUnderRange OR RawAI > RawOverRange;</code></pre>
 
         <section id="checklist" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>9. Final Checklist Before Writing Or Downloading Code</h2>
-            <span>use this before touching a live PLC</span>
+            <h2 data-i18n="pm.checklist.title">Checklist before loading a program</h2>
+            <span>9. Final Checklist Before Writing Or Downloading Code · use this before touching a live PLC</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Before loading a program into a real machine, answer a short list of questions. It covers safety, modes, alarms, tests and backups.</p>
-            <p class="plain-like"><strong>Like:</strong> A pilot's checklist before take-off.</p>
+            <p class="plain-text" data-i18n="pm.checklist.plain">Before loading a program into a real machine, answer a short list of questions. It covers safety, modes, alarms, tests and backups.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="pm.checklist.like">A pilot's checklist before take-off.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="wide-table">
             <table>
               <thead><tr><th>Check</th><th>Question</th><th>Evidence</th></tr></thead>
@@ -455,6 +469,22 @@ SensorFault := RawAI < RawUnderRange OR RawAI > RawOverRange;</code></pre>
             <a href="https://mqtt.org/">MQTT</a>
           </div>
             </div>
+          </details>
+        </section>
+        <section class="panel hub-check" aria-labelledby="hub-check-title">
+          <h2 id="hub-check-title" data-i18n="ui.check">Check yourself</h2>
+          <p class="hub-check-tip" data-i18n="ui.checktip">Think of your answer, then tap the question to see it.</p>
+          <details class="hub-q">
+            <summary data-i18n="pm.q1">What should you do before writing any code?</summary>
+            <p data-i18n="pm.a1">Understand the machine, list its dangers and draw its steps as a flowchart.</p>
+          </details>
+          <details class="hub-q">
+            <summary data-i18n="pm.q2">Why write all real outputs in one place at the end?</summary>
+            <p data-i18n="pm.a2">So anyone can quickly see what finally switches each motor or valve.</p>
+          </details>
+          <details class="hub-q">
+            <summary data-i18n="pm.q3">Which programming style do technicians usually find easiest to read?</summary>
+            <p data-i18n="pm.a3">Ladder, because it looks like a wiring drawing.</p>
           </details>
         </section>
       </main>

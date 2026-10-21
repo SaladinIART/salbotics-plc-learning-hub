@@ -649,3 +649,34 @@ def test_dashboards_show_recorded_samples_on_the_website() -> None:
     assert "sample-analytics.json" in (static / "phase3-analytics.js").read_text(encoding="utf-8")
     assert "sample-legacy.json" in (static / "phase4-legacy.js").read_text(encoding="utf-8")
 
+
+def test_every_lesson_follows_the_same_skeleton() -> None:
+    import re
+    from pathlib import Path
+
+    static = Path(__file__).resolve().parent.parent / "static"
+    lessons = ["how-it-works", "plc-programming-methods", "industrial-situations",
+               "oil-palm-industrial-environment", "oil-palm-control-stack-analysis",
+               "phase-2-start-here", "phase-3-data-analytics", "phase-4-legacy-ot-recovery",
+               "risk-assessment-certification"]
+    flow = (static / "hub-flow.js").read_text(encoding="utf-8")
+    titles = dict(re.findall(r'file: "([a-z0-9-]+)\.html", stage: "[a-z]+", title: "([^"]+)"', flow))
+    for name in lessons:
+        page = (static / f"{name}.html").read_text(encoding="utf-8")
+        # Plain title (same as the learning path) with the old title kept as a technical name.
+        h1 = re.search(r"<h1[^>]*>(.*?)</h1>", page).group(1)
+        assert h1 == titles[name], name
+        assert "Technical name:" in page and 'class="hub-lead"' in page, name
+        # Long intro and safety note fold into one compact safety line.
+        assert page.count('<details class="hub-safety">') == 1 and "Read more" in page, name
+        # Title -> In 30 seconds -> safety -> topics -> Check yourself.
+        order = [page.index("<h1"), page.index('class="hub-summary"'), page.index("hub-safety"),
+                 page.index("<section id="), page.index('class="panel hub-check"')]
+        assert order == sorted(order), name
+        assert page.count('<details class="hub-q">') == 3, name
+    # Every tag on every page stays balanced after the edits.
+    for page in static.glob("*.html"):
+        text = page.read_text(encoding="utf-8")
+        for tag in ("h1", "h2", "span", "div", "section", "details", "summary", "p", "li"):
+            assert len(re.findall(rf"<{tag}\b", text)) == text.count(f"</{tag}>"), (page.name, tag)
+

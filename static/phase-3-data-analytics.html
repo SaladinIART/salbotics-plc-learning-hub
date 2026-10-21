@@ -35,18 +35,22 @@
       <main class="guide-main">
         <section class="panel lesson-panel intro-panel industrial-intro">
           <div class="panel-heading">
-            <h1>Phase 3: Local Data Collection, Historian, Analytics, And Management Dashboard</h1>
-            <span>simulated oil-palm plant data, persistent SQLite storage, and management KPIs</span>
+            <h1 data-i18n="p3.title">Factory data and dashboards</h1>
+            <span class="hub-techname"><span data-i18n="ui.techname">Technical name:</span> Phase 3: Local Data Collection, Historian, Analytics, And Management Dashboard</span>
           </div>
+          <p class="hub-lead" data-i18n="p3.lead">Managers need simple numbers, not PLC rules. This dashboard turns machine data into charts and key figures.</p>
           <div class="hub-summary" role="region" aria-labelledby="hub-summary-title">
-            <h2 id="hub-summary-title">In 30 seconds</h2>
+            <h2 id="hub-summary-title" data-i18n="ui.summary">In 30 seconds</h2>
             <ul>
-              <li>Managers need numbers like output, downtime and alarms, not Ladder rungs.</li>
-              <li>A local database records simulated mill data over time.</li>
-              <li>A dashboard turns those records into simple charts and key figures.</li>
+              <li data-i18n="p3.sum1">Managers need numbers like output, downtime and alarms, not Ladder rungs.</li>
+              <li data-i18n="p3.sum2">A local database records simulated mill data over time.</li>
+              <li data-i18n="p3.sum3">A dashboard turns those records into simple charts and key figures.</li>
             </ul>
           </div>
-          <div class="intro-grid industrial-intro-grid">
+          <details class="hub-safety">
+            <summary><span class="hub-safety-icon" aria-hidden="true">!</span> <span data-i18n="p3.safety">Simulated data: no real plant is connected.</span> <span class="hub-more" data-i18n="ui.readmore">Read more</span></summary>
+            <p class="hub-scope"><strong data-i18n="ui.covers">This lesson covers:</strong> simulated oil-palm plant data, persistent SQLite storage, and management KPIs</p>
+            <div class="intro-grid industrial-intro-grid">
             <div>
               <h2>Why dashboard matters</h2>
               <p>
@@ -65,21 +69,23 @@
               </p>
             </div>
           </div>
+          </details>
         </section>
 
 
         <nav class="scenario-nav industrial-nav phase3-nav" aria-label="Phase 3 lesson sections">
-          <a href="#management">Management</a>
-          <a href="#trends">Trends</a>
-          <a href="#events">Events</a>
-          <a href="#station">Screw Press</a>
-          <a href="#architecture">OT IT MES ERP</a>
-          <a href="#pipeline">Pipeline</a>
+          <a href="#management" data-i18n="p3.management.nav">Management</a>
+          <a href="#trends" data-i18n="p3.trends.nav">Trends</a>
+          <a href="#events" data-i18n="p3.events.nav">Events</a>
+          <a href="#station" data-i18n="p3.station.nav">Screw Press</a>
+          <a href="#architecture" data-i18n="p3.architecture.nav">OT IT MES ERP</a>
+          <a href="#pipeline" data-i18n="p3.pipeline.nav">Pipeline</a>
         </nav>
 
         <section id="management" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>1. Management Dashboard</h2>
+            <h2 data-i18n="p3.management.title">The numbers managers watch</h2>
+            <span>1. Management Dashboard</span>
             <span id="storage-status">SQLite historian</span>
           </div>
           <div class="plain-view">
@@ -94,11 +100,26 @@
 
         <section id="trends" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>2. Historian Trends</h2>
-            <span>one sample every 2 seconds represents 1 minute of plant time</span>
+            <h2 data-i18n="p3.trends.title">Values over time</h2>
+            <span>2. Historian Trends · one sample every 2 seconds represents 1 minute of plant time</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Each chart shows how one value changes over time. Trends show whether a problem is new or keeps coming back.</p>
+            <p class="plain-text" data-i18n="p3.management.plain">These boxes show the numbers managers care about: fruit processed, oil produced, downtime and alarms.</p>
+          </div>
+          <div class="analytics-toolbar">
+            <span>Last refresh: <strong id="generated-at">--</strong></span>
+            <button id="reset-analytics" type="button">RESET DEMO DATA</button>
+          </div>
+          <div id="management-cards" class="analytics-kpi-grid" aria-live="polite"></div>
+        </section>
+
+        <section id="trends" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2 data-i18n="p3.trends.title">Values over time</h2>
+            <span>2. Historian Trends</span>
+          </div>
+          <div class="plain-view">
+            <p class="plain-text" data-i18n="p3.trends.plain">Each chart shows how one value changes over time. Trends show whether a problem is new or keeps coming back.</p>
           </div>
           <div class="analytics-trend-grid">
             <article id="trend-oer_percent" class="trend-card"></article>
@@ -109,11 +130,11 @@
 
         <section id="events" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>3. Alarm, Downtime, And Production Events</h2>
-            <span>events explain why KPI numbers moved</span>
+            <h2 data-i18n="p3.events.title">Alarms and stops</h2>
+            <span>3. Alarm, Downtime, And Production Events · events explain why KPI numbers moved</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">A list of alarms and stops with their times. It explains why the numbers above went up or down.</p>
+            <p class="plain-text" data-i18n="p3.events.plain">A list of alarms and stops with their times. It explains why the numbers above went up or down.</p>
           </div>
           <div class="wide-table">
             <table>
@@ -127,11 +148,11 @@
 
         <section id="station" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>4. Station Deep Dive: Screw Press</h2>
-            <span>one realistic station example behind the management summary</span>
+            <h2 data-i18n="p3.station.title">A close look at the screw press</h2>
+            <span>4. Station Deep Dive: Screw Press · one realistic station example behind the management summary</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">A close look at one machine, the screw press, which squeezes the oil out of the fruit.</p>
+            <p class="plain-text" data-i18n="p3.station.plain">A close look at one machine, the screw press, which squeezes the oil out of the fruit.</p>
           </div>
           <div class="station-deep-grid">
             <div id="station-states" class="station-state-list"></div>
@@ -141,11 +162,11 @@
 
         <section id="architecture" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>5. OT, IT, MES, ERP: Where Dashboard Data Goes</h2>
-            <span>plant signals become business decisions through layers</span>
+            <h2 data-i18n="p3.architecture.title">How data moves up to the business</h2>
+            <span>5. OT, IT, MES, ERP: Where Dashboard Data Goes · plant signals become business decisions through layers</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Data moves up in layers: machines, computers, production planning, then business systems. Each layer answers a different question.</p>
+            <p class="plain-text" data-i18n="p3.architecture.plain">Data moves up in layers: machines, computers, production planning, then business systems. Each layer answers a different question.</p>
           </div>
           <div class="diagram-panel">
             <svg class="process-svg phase3-svg" viewBox="0 0 1180 330" role="img" aria-labelledby="phase3-architecture-title">
@@ -187,11 +208,11 @@
 
         <section id="pipeline" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>6. Local Data Pipeline In This Demo</h2>
-            <span>Phase 3 V1 uses simulated data before virtual Modbus TCP runtime</span>
+            <h2 data-i18n="p3.pipeline.title">How this demo works</h2>
+            <span>6. Local Data Pipeline In This Demo · Phase 3 V1 uses simulated data before virtual Modbus TCP runtime</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">How this demo works behind the scenes. A small program saves a sample every two seconds, and this page reads it.</p>
+            <p class="plain-text" data-i18n="p3.pipeline.plain">How this demo works behind the scenes. A small program saves a sample every two seconds, and this page reads it.</p>
           </div>
           <div class="code-panel">
             <h3>Current local analytics flow</h3>
@@ -211,6 +232,22 @@ Browser management dashboard
             <a href="/static/oil-palm-industrial-environment.html">Oil Palm Plant</a>
             <a href="/static/oil-palm-control-stack-analysis.html">Stack Analysis</a>
           </div>
+        </section>
+        <section class="panel hub-check" aria-labelledby="hub-check-title">
+          <h2 id="hub-check-title" data-i18n="ui.check">Check yourself</h2>
+          <p class="hub-check-tip" data-i18n="ui.checktip">Think of your answer, then tap the question to see it.</p>
+          <details class="hub-q">
+            <summary data-i18n="p3.q1">Why do managers prefer dashboards to PLC rules?</summary>
+            <p data-i18n="p3.a1">Dashboards show output, downtime and alarms as simple numbers.</p>
+          </details>
+          <details class="hub-q">
+            <summary data-i18n="p3.q2">What does a trend chart show?</summary>
+            <p data-i18n="p3.a2">How one value changes over time, so repeating problems stand out.</p>
+          </details>
+          <details class="hub-q">
+            <summary data-i18n="p3.q3">Is the data on this page from a real mill?</summary>
+            <p data-i18n="p3.a3">No. It is simulated, for learning.</p>
+          </details>
         </section>
       </main>
     </div>

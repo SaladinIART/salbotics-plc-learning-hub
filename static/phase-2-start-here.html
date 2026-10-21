@@ -47,19 +47,23 @@
       <main class="guide-main" data-collapsible-sections>
         <section class="panel lesson-panel intro-panel industrial-intro">
           <div class="panel-heading">
-            <h1>Phase 2 Start Here: Communications, SCADA, Local Server, And Analytics</h1>
-            <span>learn the plant data story before touching real PLC protocol drivers</span>
+            <h1 data-i18n="p2.title">Control rooms and networks</h1>
+            <span class="hub-techname"><span data-i18n="ui.techname">Technical name:</span> Phase 2 Start Here: Communications, SCADA, Local Server, And Analytics</span>
           </div>
+          <p class="hub-lead" data-i18n="p2.lead">See how information from machines reaches screens, control rooms and managers. Everything here is simulated.</p>
           <div class="hub-summary" role="region" aria-labelledby="hub-summary-title">
-            <h2 id="hub-summary-title">In 30 seconds</h2>
+            <h2 id="hub-summary-title" data-i18n="ui.summary">In 30 seconds</h2>
             <ul>
-              <li>Phase 2 shows how machine data reaches operators, engineers and managers.</li>
-              <li>You meet the names of networks and protocols before using real ones.</li>
-              <li>Everything is still simulated, so nothing here touches a real machine.</li>
+              <li data-i18n="p2.sum1">Phase 2 shows how machine data reaches operators, engineers and managers.</li>
+              <li data-i18n="p2.sum2">You meet the names of networks and protocols before using real ones.</li>
+              <li data-i18n="p2.sum3">Everything is still simulated, so nothing here touches a real machine.</li>
             </ul>
-            <p class="hub-summary-tip">Tap a topic below to open it, or use "Open all topics".</p>
+            <p class="hub-summary-tip" data-i18n="ui.summarytip">Tap a topic below to open it, or use "Open all topics".</p>
           </div>
-          <div class="intro-grid industrial-intro-grid">
+          <details class="hub-safety">
+            <summary><span class="hub-safety-icon" aria-hidden="true">!</span> <span data-i18n="p2.safety">Still simulated: nothing here connects to a real machine.</span> <span class="hub-more" data-i18n="ui.readmore">Read more</span></summary>
+            <p class="hub-scope"><strong data-i18n="ui.covers">This lesson covers:</strong> learn the plant data story before touching real PLC protocol drivers</p>
+            <div class="intro-grid industrial-intro-grid">
             <div>
               <h2>Do not panic</h2>
               <p>
@@ -78,32 +82,34 @@
               </p>
             </div>
           </div>
+          </details>
         </section>
 
 
         <nav class="scenario-nav industrial-nav phase2-nav" aria-label="Phase 2 lesson sections">
-          <a href="#paths">Start Paths</a>
-          <a href="#data-story">Data Story</a>
-          <a href="#communications">Comms Notes</a>
-          <a href="#local-server">Local Server</a>
-          <a href="#scada-design">SCADA/HMI</a>
-          <a href="#hmi-challenges">HMI Challenges</a>
-          <a href="#phase3-preview">Phase 3</a>
-          <a href="#glossary">Glossary</a>
+          <a href="#paths" data-i18n="p2.paths.nav">Start Paths</a>
+          <a href="#data-story" data-i18n="p2.data-story.nav">Data Story</a>
+          <a href="#communications" data-i18n="p2.communications.nav">Comms Notes</a>
+          <a href="#local-server" data-i18n="p2.local-server.nav">Local Server</a>
+          <a href="#scada-design" data-i18n="p2.scada-design.nav">SCADA/HMI</a>
+          <a href="#hmi-challenges" data-i18n="p2.hmi-challenges.nav">HMI Challenges</a>
+          <a href="#phase3-preview" data-i18n="p2.phase3-preview.nav">Phase 3</a>
+          <a href="#glossary" data-i18n="p2.glossary.nav">Glossary</a>
         </nav>
 
         <section id="paths" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>1. Choose Your Learning Path First</h2>
-            <span>three doors into the same plant</span>
+            <h2 data-i18n="p2.paths.title">Choose your path</h2>
+            <span>1. Choose Your Learning Path First · three doors into the same plant</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Pick the path that fits you: operator, technician or developer. Each path shows what to focus on first.</p>
-            <p class="plain-like"><strong>Like:</strong> Choosing the easy, medium or advanced trail.</p>
+            <p class="plain-text" data-i18n="p2.paths.plain">Pick the path that fits you: operator, technician or developer. Each path shows what to focus on first.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="p2.paths.like">Choosing the easy, medium or advanced trail.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="learning-path-grid">
             <article class="path-card operator-path">
               <h3>Operator Path</h3>
@@ -154,18 +160,18 @@
 
         <section id="data-story" class="panel scenario-panel" data-start-open>
           <div class="panel-heading">
-            <h2>2. The Industrial Data Story</h2>
-            <span>Ladder, HMI, SCADA, and analytics answer different questions</span>
+            <h2 data-i18n="p2.data-story.title">How machine data travels</h2>
+            <span>2. The Industrial Data Story · Ladder, HMI, SCADA, and analytics answer different questions</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Machine data travels in layers. The PLC acts, screens tell operators what to do, and reports help managers improve.</p>
-            <p class="plain-like"><strong>Like:</strong> A shop's till, its shop-floor screen and its monthly report.</p>
+            <p class="plain-text" data-i18n="p2.data-story.plain">Machine data travels in layers. The PLC acts, screens tell operators what to do, and reports help managers improve.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="p2.data-story.like">A shop's till, its shop-floor screen and its monthly report.</span></p>
             <ol class="phone-flow" aria-label="Steps in order">
-              <li><strong>Field</strong><span>sensors and motor drives</span></li>
-              <li><strong>PLC / PAC</strong><span>follows the rules, many times a second</span></li>
-              <li><strong>HMI</strong><span>tells the operator what to do now</span></li>
-              <li><strong>SCADA</strong><span>shows the whole plant</span></li>
-              <li><strong>Analytics</strong><span>finds patterns and repeated losses</span></li>
+              <li><strong data-i18n="p2.data-story.f1">Field</strong><span data-i18n="p2.data-story.f1d">sensors and motor drives</span></li>
+              <li><strong data-i18n="p2.data-story.f2">PLC / PAC</strong><span data-i18n="p2.data-story.f2d">follows the rules, many times a second</span></li>
+              <li><strong data-i18n="p2.data-story.f3">HMI</strong><span data-i18n="p2.data-story.f3d">tells the operator what to do now</span></li>
+              <li><strong data-i18n="p2.data-story.f4">SCADA</strong><span data-i18n="p2.data-story.f4d">shows the whole plant</span></li>
+              <li><strong data-i18n="p2.data-story.f5">Analytics</strong><span data-i18n="p2.data-story.f5d">finds patterns and repeated losses</span></li>
             </ol>
             <div class="diagram-panel has-phone-flow">
             <svg class="process-svg phase2-svg" viewBox="0 0 1180 360" role="img" aria-labelledby="phase2-data-title">
@@ -223,8 +229,9 @@
           </div>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           
           <div class="phase2-answer-grid">
             <div><b>Ladder diagram</b><span>What is the PLC logic doing?</span></div>
@@ -238,16 +245,17 @@
 
         <section id="communications" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>3. Industrial Communications Notes</h2>
-            <span>names you will see before touching real drivers</span>
+            <h2 data-i18n="p2.communications.title">How machines talk to each other</h2>
+            <span>3. Industrial Communications Notes · names you will see before touching real drivers</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Machines talk using different cables and 'languages'. Older ones use serial cables; newer ones use Ethernet networks.</p>
-            <p class="plain-like"><strong>Like:</strong> Old landline phones versus modern chat apps.</p>
+            <p class="plain-text" data-i18n="p2.communications.plain">Machines talk using different cables and 'languages'. Older ones use serial cables; newer ones use Ethernet networks.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="p2.communications.like">Old landline phones versus modern chat apps.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="comm-card-grid">
             <article class="comm-card">
               <h3>RS-232</h3>
@@ -294,16 +302,17 @@
 
         <section id="local-server" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>4. Computer Network And Locally Hosted Server</h2>
-            <span>why the browser can see the simulator</span>
+            <h2 data-i18n="p2.local-server.title">Why the trainer runs on your own computer</h2>
+            <span>4. Computer Network And Locally Hosted Server · why the browser can see the simulator</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">The trainer runs on your own computer, which is the safe default. Sharing controls on a network needs passwords and safety rules.</p>
-            <p class="plain-like"><strong>Like:</strong> Practising in your own garage, not on a public road.</p>
+            <p class="plain-text" data-i18n="p2.local-server.plain">The trainer runs on your own computer, which is the safe default. Sharing controls on a network needs passwords and safety rules.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="p2.local-server.like">Practising in your own garage, not on a public road.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="diagram-panel">
             <svg class="process-svg phase2-svg" viewBox="0 0 1180 360" role="img" aria-labelledby="phase2-server-title">
               <title id="phase2-server-title">Local server and LAN learning boundary</title>
@@ -370,16 +379,17 @@ PLC simulator
 
         <section id="scada-design" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>5. Oil-Palm SCADA And HMI Design</h2>
-            <span>why engineers design screens instead of showing only Ladder</span>
+            <h2 data-i18n="p2.scada-design.title">Screens that operators can read</h2>
+            <span>5. Oil-Palm SCADA And HMI Design · why engineers design screens instead of showing only Ladder</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Engineers design screens so operators see what matters at a glance. There are overview, station, alarm, trend and maintenance screens.</p>
-            <p class="plain-like"><strong>Like:</strong> A car dashboard: speed up front, details in the menus.</p>
+            <p class="plain-text" data-i18n="p2.scada-design.plain">Engineers design screens so operators see what matters at a glance. There are overview, station, alarm, trend and maintenance screens.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="p2.scada-design.like">A car dashboard: speed up front, details in the menus.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="scada-screen-grid">
             <article class="scada-screen plant-screen">
               <h3>Plant Overview</h3>
@@ -413,16 +423,17 @@ PLC simulator
 
         <section id="hmi-challenges" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>6. HMI Design Challenges Engineers Face</h2>
-            <span>good screens reduce panic during faults</span>
+            <h2 data-i18n="p2.hmi-challenges.title">Common screen design mistakes</h2>
+            <span>6. HMI Design Challenges Engineers Face · good screens reduce panic during faults</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Bad screens cause confusion when things go wrong. Good screens use clear alarms and show what is stopping a machine.</p>
-            <p class="plain-like"><strong>Like:</strong> A clear road sign versus a confusing one.</p>
+            <p class="plain-text" data-i18n="p2.hmi-challenges.plain">Bad screens cause confusion when things go wrong. Good screens use clear alarms and show what is stopping a machine.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="p2.hmi-challenges.like">A clear road sign versus a confusing one.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="wide-table">
             <table>
               <thead>
@@ -444,16 +455,17 @@ PLC simulator
 
         <section id="phase3-preview" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>7. Phase 3 Preview: Python Data Extraction And Analytics</h2>
-            <span>virtual Modbus TCP first, then OPC UA/MQTT, then pySerial/RS-232</span>
+            <h2 data-i18n="p2.phase3-preview.title">Coming next: collecting machine data</h2>
+            <span>7. Phase 3 Preview: Python Data Extraction And Analytics · virtual Modbus TCP first, then OPC UA/MQTT, then pySerial/RS-232</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Phase 3 collects machine numbers with a small Python program. It stores them and turns them into charts.</p>
-            <p class="plain-like"><strong>Like:</strong> A diary that records the mill's numbers every minute.</p>
+            <p class="plain-text" data-i18n="p2.phase3-preview.plain">Phase 3 collects machine numbers with a small Python program. It stores them and turns them into charts.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="p2.phase3-preview.like">A diary that records the mill's numbers every minute.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="phase2-roadmap">
             <div><b>1</b><span>Virtual Modbus TCP</span><code>simulated registers</code></div>
             <div><b>2</b><span>Python collector</span><code>poll, timeout, retry</code></div>
@@ -480,15 +492,16 @@ Analytics page
 
         <section id="glossary" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>8. Tiny Glossary For Newcomers</h2>
-            <span>words that stop being scary after one sentence</span>
+            <h2 data-i18n="p2.glossary.title">Key words in one line</h2>
+            <span>8. Tiny Glossary For Newcomers · words that stop being scary after one sentence</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Key words explained in one line each. You can also tap any underlined word on this site for a quick meaning.</p>
+            <p class="plain-text" data-i18n="p2.glossary.plain">Key words explained in one line each. You can also tap any underlined word on this site for a quick meaning.</p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="wide-table">
             <table>
               <tbody>
@@ -512,6 +525,22 @@ Analytics page
             <a href="/static/plc-programming-methods.html">PLC Methods</a>
           </div>
             </div>
+          </details>
+        </section>
+        <section class="panel hub-check" aria-labelledby="hub-check-title">
+          <h2 id="hub-check-title" data-i18n="ui.check">Check yourself</h2>
+          <p class="hub-check-tip" data-i18n="ui.checktip">Think of your answer, then tap the question to see it.</p>
+          <details class="hub-q">
+            <summary data-i18n="p2.q1">Which screen tells an operator what to do right now?</summary>
+            <p data-i18n="p2.a1">The HMI, the screen at the machine or station.</p>
+          </details>
+          <details class="hub-q">
+            <summary data-i18n="p2.q2">Why does the trainer run only on your own computer by default?</summary>
+            <p data-i18n="p2.a2">It is safer: nearby devices cannot control it without proper security.</p>
+          </details>
+          <details class="hub-q">
+            <summary data-i18n="p2.q3">What makes a good alarm message?</summary>
+            <p data-i18n="p2.a3">It names the source, the problem and the safe next step.</p>
           </details>
         </section>
       </main>

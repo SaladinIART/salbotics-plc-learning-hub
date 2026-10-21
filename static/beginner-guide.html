@@ -29,17 +29,17 @@
       <main class="guide-main" data-collapsible-sections>
         <section class="panel lesson-panel intro-panel industrial-intro">
           <div class="panel-heading">
-            <h1>New to automation? Start here.</h1>
+            <h1 data-i18n="bg.title">New to automation? Start here.</h1>
             <span>no engineering background needed</span>
           </div>
           <div class="hub-summary" role="region" aria-labelledby="hub-summary-title">
-            <h2 id="hub-summary-title">In 30 seconds</h2>
+            <h2 id="hub-summary-title" data-i18n="ui.summary">In 30 seconds</h2>
             <ul>
-              <li>A PLC is a tough little computer that switches machines on and off by following rules.</li>
-              <li>It repeats three steps: read buttons and sensors, decide, then switch motors and lamps.</li>
-              <li>Six everyday machines show the main tricks: timers, memory, safety checks and holding a temperature.</li>
+              <li data-i18n="bg.sum1">A PLC is a tough little computer that switches machines on and off by following rules.</li>
+              <li data-i18n="bg.sum2">It repeats three steps: read buttons and sensors, decide, then switch motors and lamps.</li>
+              <li data-i18n="bg.sum3">Six everyday machines show the main tricks: timers, memory, safety checks and holding a temperature.</li>
             </ul>
-            <p class="hub-summary-tip">Tap a topic below to open it, or use "Open all topics".</p>
+            <p class="hub-summary-tip" data-i18n="ui.summarytip">Tap a topic below to open it, or use "Open all topics".</p>
           </div>
           <div class="intro-grid industrial-intro-grid">
             <div>
@@ -73,22 +73,27 @@
 
 
         <nav class="scenario-nav industrial-nav" aria-label="Beginner lesson sections">
-          <a href="#loop">The 3-step loop</a>
-          <a href="#parts">Inputs &amp; outputs</a>
-          <a href="#washer">Washing machine</a>
-          <a href="#lift">Lift</a>
-          <a href="#gate">Auto gate</a>
-          <a href="#escalator">Escalator</a>
-          <a href="#cooker">Rice cooker</a>
-          <a href="#barrier">Barrier</a>
-          <a href="#words">Key words</a>
-          <a href="#trainer">Use the trainer</a>
+          <a href="#loop" data-i18n="bg.loop.nav">The 3-step loop</a>
+          <a href="#parts" data-i18n="bg.parts.nav">Inputs &amp; outputs</a>
+          <a href="#washer" data-i18n="bg.washer.nav">Washing machine</a>
+          <a href="#lift" data-i18n="bg.lift.nav">Lift</a>
+          <a href="#gate" data-i18n="bg.gate.nav">Auto gate</a>
+          <a href="#escalator" data-i18n="bg.escalator.nav">Escalator</a>
+          <a href="#cooker" data-i18n="bg.cooker.nav">Rice cooker</a>
+          <a href="#barrier" data-i18n="bg.barrier.nav">Barrier</a>
+          <a href="#words" data-i18n="bg.words.nav">Key words</a>
+          <a href="#trainer" data-i18n="bg.trainer.nav">Use the trainer</a>
         </nav>
 
         <section id="loop" class="panel scenario-panel" data-start-open>
           <div class="panel-heading">
-            <h2>1. The 3-step loop every PLC repeats</h2>
+            <h2 data-i18n="bg.loop.title">1. The 3-step loop every PLC repeats</h2>
             <span>read, decide, act</span>
+          </div>
+          <div class="plain-view">
+            <p class="plain-text" data-i18n="bg.loop.plain">Every PLC repeats three steps, many times a second: read the inputs, decide, then switch the outputs.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="bg.loop.like">Look, think, step, and repeat.</span></p>
+            <p class="lang-note" data-i18n="ui.fullnote">The full explanation below is in English.</p>
           </div>
           <div class="learning-path-grid">
             <article class="path-card operator-path">
@@ -189,8 +194,13 @@
 
         <section id="parts" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>2. Inputs and outputs in everyday machines</h2>
+            <h2 data-i18n="bg.parts.title">2. Inputs and outputs in everyday machines</h2>
             <span>what the PLC listens to, and what it controls</span>
+          </div>
+          <div class="plain-view">
+            <p class="plain-text" data-i18n="bg.parts.plain">Inputs are what the PLC senses, like buttons and sensors. Outputs are what it controls, like motors and lamps.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="bg.parts.like">Senses and muscles.</span></p>
+            <p class="lang-note" data-i18n="ui.fullnote">The full explanation below is in English.</p>
           </div>
           <div class="learning-path-grid">
             <article class="path-card operator-path">
@@ -224,8 +234,13 @@
 
         <section id="washer" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>3. Washing machine: a sequence with timers</h2>
+            <h2 data-i18n="bg.washer.title">3. Washing machine: a sequence with timers</h2>
             <span>one step after another, each waiting for a condition</span>
+          </div>
+          <div class="plain-view">
+            <p class="plain-text" data-i18n="bg.washer.plain">A washing machine runs its steps in order: fill, wash, drain, spin. Each step waits for a timer or a sensor.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="bg.washer.like">Following a recipe, one step at a time.</span></p>
+            <p class="lang-note" data-i18n="ui.fullnote">The full explanation below is in English.</p>
           </div>
           <div class="diagram-panel">
             <svg class="process-svg beginner-svg beginner-svg-wide" viewBox="0 0 1000 230" role="img" aria-labelledby="beginner-washer-title">
@@ -326,8 +341,13 @@
 
         <section id="lift" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>4. Lift (elevator): remembering requests and staying safe</h2>
+            <h2 data-i18n="bg.lift.title">4. Lift (elevator): remembering requests and staying safe</h2>
             <span>latching, interlocks and priorities</span>
+          </div>
+          <div class="plain-view">
+            <p class="plain-text" data-i18n="bg.lift.plain">A lift remembers every button press and serves them in a sensible order. It never moves with its doors open.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="bg.lift.like">A to-do list that is always checked for safety.</span></p>
+            <p class="lang-note" data-i18n="ui.fullnote">The full explanation below is in English.</p>
           </div>
           <div class="learning-path-grid">
             <article class="path-card operator-path">
@@ -364,8 +384,13 @@
 
         <section id="gate" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>5. Automatic gate: inputs from the world, safety first</h2>
+            <h2 data-i18n="bg.gate.title">5. Automatic gate: inputs from the world, safety first</h2>
             <span>limit switches, a safety beam and a timer</span>
+          </div>
+          <div class="plain-view">
+            <p class="plain-text" data-i18n="bg.gate.plain">An automatic gate listens to switches and a safety beam. If something is in the way, it stops or opens again.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="bg.gate.like">A careful driver who brakes for anything in front.</span></p>
+            <p class="lang-note" data-i18n="ui.fullnote">The full explanation below is in English.</p>
           </div>
           <ol>
             <li>Remote is pressed (<em>input</em>) - the gate motor starts opening (<em>output</em>).</li>
@@ -388,8 +413,13 @@
 
         <section id="escalator" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>6. Escalator: run on demand, stop on danger</h2>
+            <h2 data-i18n="bg.escalator.title">6. Escalator: run on demand, stop on danger</h2>
             <span>start conditions, run timer and emergency stop</span>
+          </div>
+          <div class="plain-view">
+            <p class="plain-text" data-i18n="bg.escalator.plain">An escalator runs when people use it and stops at once if the emergency button is pressed.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="bg.escalator.like">A treadmill with a big red stop button.</span></p>
+            <p class="lang-note" data-i18n="ui.fullnote">The full explanation below is in English.</p>
           </div>
           <ol>
             <li>A sensor at the entrance sees a person (<em>input</em>).</li>
@@ -410,8 +440,13 @@
 
         <section id="cooker" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>7. Rice cooker: keeping something at the right temperature</h2>
+            <h2 data-i18n="bg.cooker.title">7. Rice cooker: keeping something at the right temperature</h2>
             <span>on/off control with a safe gap</span>
+          </div>
+          <div class="plain-view">
+            <p class="plain-text" data-i18n="bg.cooker.plain">A rice cooker switches its heater on and off to keep the food at the right temperature.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="bg.cooker.like">Adjusting a stove so the pot neither burns nor cools.</span></p>
+            <p class="lang-note" data-i18n="ui.fullnote">The full explanation below is in English.</p>
           </div>
           <ol>
             <li>You press "Cook". The heater switches on (<em>output</em>).</li>
@@ -437,8 +472,13 @@
 
         <section id="barrier" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>8. Car-park barrier: never lower on a car</h2>
+            <h2 data-i18n="bg.barrier.title">8. Car-park barrier: never lower on a car</h2>
             <span>a road sensor, a timer and an interlock</span>
+          </div>
+          <div class="plain-view">
+            <p class="plain-text" data-i18n="bg.barrier.plain">A car-park barrier lifts for a car and only lowers when the space under it is clear.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="bg.barrier.like">Holding a door until the person has fully passed.</span></p>
+            <p class="lang-note" data-i18n="ui.fullnote">The full explanation below is in English.</p>
           </div>
           <ol>
             <li>A driver takes a ticket or presses a button (<em>input</em>).</li>
@@ -462,8 +502,12 @@
 
         <section id="words" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>9. Key words in plain language</h2>
+            <h2 data-i18n="bg.words.title">9. Key words in plain language</h2>
             <span>keep this list nearby</span>
+          </div>
+          <div class="plain-view">
+            <p class="plain-text" data-i18n="bg.words.plain">The key words used across this hub, each explained in one line.</p>
+            <p class="lang-note" data-i18n="ui.fullnote">The full explanation below is in English.</p>
           </div>
           <table>
             <thead>
@@ -488,8 +532,12 @@
 
         <section id="trainer" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>10. Now use the trainer</h2>
+            <h2 data-i18n="bg.trainer.title">10. Now use the trainer</h2>
             <span>a traffic light is the same ideas in one small package</span>
+          </div>
+          <div class="plain-view">
+            <p class="plain-text" data-i18n="bg.trainer.plain">The trainer is a traffic light that uses all of these ideas. Try the steps below.</p>
+            <p class="lang-note" data-i18n="ui.fullnote">The full explanation below is in English.</p>
           </div>
           <ol>
             <li><strong>Press START.</strong> It runs one direction green, then yellow, then both red, then the other direction green. That is a <em>sequence with timers</em>.</li>

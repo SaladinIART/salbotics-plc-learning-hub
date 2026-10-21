@@ -315,6 +315,158 @@ body.hub-page {
   gap: 6px;
 }
 
+/* ---------- Same skeleton on every lesson ---------- */
+.hub-page .panel-heading .hub-techname {
+  flex-basis: 100%;
+  font-size: 14px;
+}
+
+.hub-page .guide-main .hub-lead {
+  margin: 0 0 16px;
+  color: var(--hp-text);
+  font-size: 19px;
+  line-height: 1.55;
+}
+
+.hub-page .hub-safety {
+  margin-top: 16px;
+  border: 1px solid color-mix(in srgb, var(--hp-warn-line) 45%, transparent);
+  border-radius: 12px;
+  background: var(--hp-warn-bg);
+}
+
+.hub-page .hub-safety > summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  min-height: 48px;
+  padding: 10px 14px;
+  color: var(--hp-warn-text);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.hub-page .hub-safety > summary::-webkit-details-marker {
+  display: none;
+}
+
+.hub-safety-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--hp-warn-line);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.hub-page .hub-more {
+  color: var(--hp-brand-strong);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hub-page .hub-safety[open] .hub-more {
+  display: none;
+}
+
+.hub-page .hub-safety > :not(summary) {
+  margin: 0 14px 14px;
+}
+
+.hub-page .guide-main .hub-scope {
+  font-size: 15px;
+}
+
+/* "Check yourself" questions at the end of every lesson */
+.hub-page .hub-check {
+  padding: 20px 24px 24px;
+}
+
+.hub-page .hub-check h2 {
+  margin: 0 0 4px;
+  font-size: 22px;
+}
+
+.hub-page .guide-main .hub-check-tip {
+  margin: 0 0 14px;
+  color: var(--hp-muted);
+  font-size: 15px;
+}
+
+.hub-page .hub-q {
+  margin-top: 10px;
+  border: 1px solid var(--hp-line);
+  border-radius: 12px;
+  background: var(--hp-surface);
+}
+
+.hub-page .hub-q > summary {
+  min-height: 48px;
+  padding: 12px 16px 12px 44px;
+  position: relative;
+  color: var(--hp-text);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.45;
+  cursor: pointer;
+  list-style: none;
+}
+
+.hub-page .hub-q > summary::-webkit-details-marker {
+  display: none;
+}
+
+.hub-page .hub-q > summary::before {
+  content: "?";
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--hp-brand-soft);
+  color: var(--hp-brand-strong);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.hub-page .hub-q[open] > summary::before {
+  content: "\2713";
+  background: var(--hp-ok-soft);
+  color: var(--hp-ok);
+}
+
+.hub-page .guide-main .hub-q > p {
+  margin: 0;
+  padding: 0 16px 14px 44px;
+  color: var(--hp-body);
+}
+
+/* Shown only when the page is in Bahasa Malaysia or German */
+.lang-note {
+  display: none;
+}
+
+html:not([lang="en"]) .lang-note {
+  display: block;
+}
+
+.hub-page .guide-main .lang-note {
+  margin: 0;
+  color: var(--hp-muted);
+  font-size: 14px;
+  font-style: italic;
+}
+
 /* ---------- "In 30 seconds" summary ---------- */
 .hub-page .hub-summary {
   margin: 0 0 18px;

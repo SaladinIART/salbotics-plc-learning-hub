@@ -7,11 +7,7 @@ window.HUB_SEARCH = {
    "title": "Beginner guide",
    "blurb": "PLC ideas through a washer, lift, gate and rice cooker.",
    "number": 1,
-   "summary": [
-    "A PLC is a tough little computer that switches machines on and off by following rules.",
-    "It repeats three steps: read buttons and sensors, decide, then switch motors and lamps.",
-    "Six everyday machines show the main tricks: timers, memory, safety checks and holding a temperature."
-   ]
+   "summary": []
   },
   {
    "file": "how-it-works.html",
@@ -19,11 +15,7 @@ window.HUB_SEARCH = {
    "title": "How the traffic light works",
    "blurb": "Follow the trainer's rules, one scenario at a time.",
    "number": 2,
-   "summary": [
-    "The trainer is a 4-way traffic light run by Ladder-style rules.",
-    "Seven short scenarios cover normal running, crossing requests, emergencies, night mode and faults.",
-    "Each one lists the inputs to press and what the lamps should do."
-   ]
+   "summary": []
   },
   {
    "file": "plc-programming-methods.html",
@@ -31,11 +23,7 @@ window.HUB_SEARCH = {
    "title": "Writing a reliable program",
    "blurb": "Plan with a flowchart first, then write Ladder.",
    "number": 3,
-   "summary": [
-    "A good PLC program starts as a flowchart of the machine story, not as code.",
-    "Write Ladder in a fixed order: modes, permissives, interlocks, alarms, then outputs.",
-    "Three palm-oil mill case studies show which language suits which job."
-   ]
+   "summary": []
   },
   {
    "file": "industrial-situations.html",
@@ -43,11 +31,7 @@ window.HUB_SEARCH = {
    "title": "Real industrial situations",
    "blurb": "Brands, sensors, motor drives and common cabinet faults.",
    "number": 4,
-   "summary": [
-    "Real cabinets mix PLC brands, analog signals, motor drives and different sensor wiring.",
-    "Many faults come from wiring and scaling mistakes, not from the program.",
-    "Learn these habits here before you touch a live cabinet."
-   ]
+   "summary": []
   },
   {
    "file": "oil-palm-industrial-environment.html",
@@ -55,11 +39,7 @@ window.HUB_SEARCH = {
    "title": "Inside a palm-oil mill",
    "blurb": "Follow fruit bunches all the way to crude palm oil.",
    "number": 5,
-   "summary": [
-    "A palm-oil mill turns fresh fruit bunches into crude palm oil, station by station.",
-    "Each station has its own controller, sensors, motors and alarms.",
-    "Learn the process first, then the checks technicians make before editing logic."
-   ]
+   "summary": []
   },
   {
    "file": "oil-palm-control-stack-analysis.html",
@@ -67,11 +47,7 @@ window.HUB_SEARCH = {
    "title": "Choosing the right controller",
    "blurb": "PLC, PAC, Raspberry Pi or Arduino: which job suits which?",
    "number": 6,
-   "summary": [
-    "Factories mix PLCs, PACs, Raspberry Pi and Arduino-style boards.",
-    "Certified PLCs handle control and safety. Small boards suit data, learning and prototypes.",
-    "Choose each device by its job, budget and risk, not by brand."
-   ]
+   "summary": []
   },
   {
    "file": "phase-2-start-here.html",
@@ -79,11 +55,7 @@ window.HUB_SEARCH = {
    "title": "Control rooms and networks",
    "blurb": "How machines, screens and servers share information.",
    "number": 7,
-   "summary": [
-    "Phase 2 shows how machine data reaches operators, engineers and managers.",
-    "You meet the names of networks and protocols before using real ones.",
-    "Everything is still simulated, so nothing here touches a real machine."
-   ]
+   "summary": []
   },
   {
    "file": "phase-3-data-analytics.html",
@@ -91,11 +63,7 @@ window.HUB_SEARCH = {
    "title": "Factory data and dashboards",
    "blurb": "Turn machine signals into numbers managers can use.",
    "number": 8,
-   "summary": [
-    "Managers need numbers like output, downtime and alarms, not Ladder rungs.",
-    "A local database records simulated mill data over time.",
-    "A dashboard turns those records into simple charts and key figures."
-   ]
+   "summary": []
   },
   {
    "file": "phase-4-legacy-ot-recovery.html",
@@ -103,11 +71,7 @@ window.HUB_SEARCH = {
    "title": "Rescuing old machines",
    "blurb": "Read data safely from old equipment that must keep running.",
    "number": 9,
-   "summary": [
-    "Many factories still depend on old PLCs and Windows XP or 7 screens.",
-    "The safe approach: save evidence, isolate risk, then read data without changing anything.",
-    "Replacement comes later, after testing and a rollback plan."
-   ]
+   "summary": []
   },
   {
    "file": "risk-assessment-certification.html",
@@ -115,663 +79,10 @@ window.HUB_SEARCH = {
    "title": "Becoming safety qualified",
    "blurb": "What machine-safety training means, and how to get it.",
    "number": 10,
-   "summary": [
-    "No single licence makes someone a machine-safety assessor everywhere.",
-    "Competence mixes standards training, machine experience and review by qualified engineers.",
-    "This page shows training options, typical costs and what a good assessment produces."
-   ]
+   "summary": []
   }
  ],
- "topics": [
-  {
-   "id": "loop",
-   "title": "1. The 3-step loop every PLC repeats",
-   "sub": "read, decide, act",
-   "plain": "",
-   "file": "beginner-guide.html",
-   "lesson": "Beginner guide"
-  },
-  {
-   "id": "parts",
-   "title": "2. Inputs and outputs in everyday machines",
-   "sub": "what the PLC listens to, and what it controls",
-   "plain": "",
-   "file": "beginner-guide.html",
-   "lesson": "Beginner guide"
-  },
-  {
-   "id": "washer",
-   "title": "3. Washing machine: a sequence with timers",
-   "sub": "one step after another, each waiting for a condition",
-   "plain": "",
-   "file": "beginner-guide.html",
-   "lesson": "Beginner guide"
-  },
-  {
-   "id": "lift",
-   "title": "4. Lift (elevator): remembering requests and staying safe",
-   "sub": "latching, interlocks and priorities",
-   "plain": "",
-   "file": "beginner-guide.html",
-   "lesson": "Beginner guide"
-  },
-  {
-   "id": "gate",
-   "title": "5. Automatic gate: inputs from the world, safety first",
-   "sub": "limit switches, a safety beam and a timer",
-   "plain": "",
-   "file": "beginner-guide.html",
-   "lesson": "Beginner guide"
-  },
-  {
-   "id": "escalator",
-   "title": "6. Escalator: run on demand, stop on danger",
-   "sub": "start conditions, run timer and emergency stop",
-   "plain": "",
-   "file": "beginner-guide.html",
-   "lesson": "Beginner guide"
-  },
-  {
-   "id": "cooker",
-   "title": "7. Rice cooker: keeping something at the right temperature",
-   "sub": "on/off control with a safe gap",
-   "plain": "",
-   "file": "beginner-guide.html",
-   "lesson": "Beginner guide"
-  },
-  {
-   "id": "barrier",
-   "title": "8. Car-park barrier: never lower on a car",
-   "sub": "a road sensor, a timer and an interlock",
-   "plain": "",
-   "file": "beginner-guide.html",
-   "lesson": "Beginner guide"
-  },
-  {
-   "id": "words",
-   "title": "9. Key words in plain language",
-   "sub": "keep this list nearby",
-   "plain": "",
-   "file": "beginner-guide.html",
-   "lesson": "Beginner guide"
-  },
-  {
-   "id": "trainer",
-   "title": "10. Now use the trainer",
-   "sub": "a traffic light is the same ideas in one small package",
-   "plain": "",
-   "file": "beginner-guide.html",
-   "lesson": "Beginner guide"
-  },
-  {
-   "id": "auto-cycle",
-   "title": "Scenario 1: Auto Cycle",
-   "sub": "normal running sequence",
-   "plain": "Press START and the lights run by themselves. Each road gets green, then yellow, then a short all-red gap before the other road starts.",
-   "file": "how-it-works.html",
-   "lesson": "How the traffic light works"
-  },
-  {
-   "id": "pedestrian",
-   "title": "Scenario 2: Pedestrian Request",
-   "sub": "latched request",
-   "plain": "Pressing the crossing button is remembered, even after you let go. The PLC serves the request when that road next turns green.",
-   "file": "how-it-works.html",
-   "lesson": "How the traffic light works"
-  },
-  {
-   "id": "vehicle",
-   "title": "Scenario 3: Vehicle Demand Extension",
-   "sub": "green can extend, but not forever",
-   "plain": "A car sensor can keep a green light on a little longer. There is always a maximum, so the other road never waits forever.",
-   "file": "how-it-works.html",
-   "lesson": "How the traffic light works"
-  },
-  {
-   "id": "emergency",
-   "title": "Scenario 4: Emergency All-Red",
-   "sub": "highest priority override",
-   "plain": "The emergency switch beats every other rule. All lights turn red at once and an alarm is recorded.",
-   "file": "how-it-works.html",
-   "lesson": "How the traffic light works"
-  },
-  {
-   "id": "night",
-   "title": "Scenario 5: Night Red Flash",
-   "sub": "normal sequence paused",
-   "plain": "At night the normal sequence pauses. Both red lights blink together and the greens stay off.",
-   "file": "how-it-works.html",
-   "lesson": "How the traffic light works"
-  },
-  {
-   "id": "manual",
-   "title": "Scenario 6: Manual Safe-Step",
-   "sub": "one safe phase at a time",
-   "plain": "A technician can step through the lights one press at a time. Even then, the PLC only allows a safe next step.",
-   "file": "how-it-works.html",
-   "lesson": "How the traffic light works"
-  },
-  {
-   "id": "fault",
-   "title": "Scenario 7: Fault And Reset",
-   "sub": "stuck pushbutton training fault",
-   "plain": "If START and STOP are on together, the PLC treats it as a broken button. Everything goes red until someone fixes it and presses reset.",
-   "file": "how-it-works.html",
-   "lesson": "How the traffic light works"
-  },
-  {
-   "id": "scratch-method",
-   "title": "1. Reliable Program Method From Scratch",
-   "sub": "the order matters more than the software brand",
-   "plain": "Good programs follow a fixed order: understand the machine, list the dangers, plan, then write code. Starting with code is the most common beginner mistake.",
-   "file": "plc-programming-methods.html",
-   "lesson": "Writing a reliable program"
-  },
-  {
-   "id": "flowcharts",
-   "title": "2. Flowcharts Before Ladder",
-   "sub": "flowchart is the machine story; Ladder is only one expression of it",
-   "plain": "First draw the machine's steps as boxes and arrows. The program then simply follows that drawing.",
-   "file": "plc-programming-methods.html",
-   "lesson": "Writing a reliable program"
-  },
-  {
-   "id": "lad-structure",
-   "title": "3. Reliable Ladder Structure",
-   "sub": "recommended rung order for maintainable LAD",
-   "plain": "Keep every program in the same order: inputs, safety checks, steps, alarms, then outputs. Anyone can then find a problem quickly.",
-   "file": "plc-programming-methods.html",
-   "lesson": "Writing a reliable program"
-  },
-  {
-   "id": "languages",
-   "title": "4. PLC Programming Languages And Modern Approaches",
-   "sub": "LAD is not old-fashioned; it is one tool in a mixed toolkit",
-   "plain": "PLCs can be programmed in several styles. Ladder is easiest for technicians to read; other styles suit maths, sequences or temperature control.",
-   "file": "plc-programming-methods.html",
-   "lesson": "Writing a reliable program"
-  },
-  {
-   "id": "limits",
-   "title": "5. Hardware Processing Limits Shape The Programming Style",
-   "sub": "scan time, memory, watchdog, I/O update, and online troubleshooting matter",
-   "plain": "A PLC is a small computer with limited speed and memory. Simple, readable code is often better than clever code.",
-   "file": "plc-programming-methods.html",
-   "lesson": "Writing a reliable program"
-  },
-  {
-   "id": "case-conveyor",
-   "title": "Case Study 1: Conveyor Train",
-   "sub": "best default: LAD for interlocks, SFC for sequence, ST only for counters/data",
-   "plain": "Conveyors must start in the right order and stop if a belt stops turning. Ladder shows these rules clearly for maintenance staff.",
-   "file": "plc-programming-methods.html",
-   "lesson": "Writing a reliable program"
-  },
-  {
-   "id": "case-sterilizer",
-   "title": "Case Study 2: Sterilizer Batch Cycle",
-   "sub": "best default: SFC or state machine, with LAD safety/permissive rungs",
-   "plain": "The sterilizer is a room-sized pressure cooker for fruit. Its steps run in strict order, and the door stays locked while there is pressure.",
-   "file": "plc-programming-methods.html",
-   "lesson": "Writing a reliable program"
-  },
-  {
-   "id": "case-clarifier",
-   "title": "Case Study 3: Clarifier Temperature And Oil Transfer",
-   "sub": "best default: FBD for analog/PID, ST for scaling, LAD for permissives",
-   "plain": "The clarifier keeps oil at the right temperature and moves it when tanks are ready. Different programming styles suit heating control and safety checks.",
-   "file": "plc-programming-methods.html",
-   "lesson": "Writing a reliable program"
-  },
-  {
-   "id": "checklist",
-   "title": "9. Final Checklist Before Writing Or Downloading Code",
-   "sub": "use this before touching a live PLC",
-   "plain": "Before loading a program into a real machine, answer a short list of questions. It covers safety, modes, alarms, tests and backups.",
-   "file": "plc-programming-methods.html",
-   "lesson": "Writing a reliable program"
-  },
-  {
-   "id": "brand-reality",
-   "title": "Situation 1: PLC Brand Reality",
-   "sub": "Omron and Siemens are both common, but the habits differ",
-   "plain": "Omron and Siemens are two common PLC makers. The ideas are the same, but their software and wiring habits differ.",
-   "file": "industrial-situations.html",
-   "lesson": "Real industrial situations"
-  },
-  {
-   "id": "lower-higher",
-   "title": "Situation 2: Lower PLC Or Higher PLC?",
-   "sub": "choose by machine risk, I/O count, network needs, diagnostics, and motion",
-   "plain": "Small PLCs suit simple machines and cost less. Bigger PLCs handle many signals, networks and motors, but need more skill.",
-   "file": "industrial-situations.html",
-   "lesson": "Real industrial situations"
-  },
-  {
-   "id": "master-device",
-   "title": "Situation 3: Master / Device Roles",
-   "sub": "learn modern terms, but understand old manuals",
-   "plain": "In a network, one device asks and the others answer. Older manuals say master and slave; newer ones say controller and device.",
-   "file": "industrial-situations.html",
-   "lesson": "Real industrial situations"
-  },
-  {
-   "id": "analog",
-   "title": "Situation 4: Analog Modules",
-   "sub": "not just on/off: voltage, current, scaling, and failure clues",
-   "plain": "Some signals are not just on or off, like temperature or pressure. The PLC turns them into real units such as bar or degrees.",
-   "file": "industrial-situations.html",
-   "lesson": "Real industrial situations"
-  },
-  {
-   "id": "vfd",
-   "title": "Situation 5: VFD / PWM Motor Control",
-   "sub": "the PLC commands speed; the drive creates motor power",
-   "plain": "A motor drive (VFD) controls how fast a motor turns. The PLC says run and how fast; the drive does the heavy power work.",
-   "file": "industrial-situations.html",
-   "lesson": "Real industrial situations"
-  },
-  {
-   "id": "npn-pnp",
-   "title": "Situation 6: NPN / PNP Sensor Troubleshooting",
-   "sub": "sourcing and sinking mistakes are common cabinet faults",
-   "plain": "Sensors come in two wiring types that are easy to mix up. A wrong match is a very common reason a sensor seems dead.",
-   "file": "industrial-situations.html",
-   "lesson": "Real industrial situations"
-  },
-  {
-   "id": "robust-design",
-   "title": "Situation 7: Robust System Design",
-   "sub": "make the machine easier to diagnose before it fails",
-   "plain": "Good machines explain themselves when something goes wrong. Clear names, clear alarms and safe manual modes save hours of fault-finding.",
-   "file": "industrial-situations.html",
-   "lesson": "Real industrial situations"
-  },
-  {
-   "id": "future-languages",
-   "title": "Situation 8: Future PLC Languages",
-   "sub": "ladder first, then compare other IEC styles later",
-   "plain": "Learn Ladder first, because technicians use it most. Other PLC languages are different ways to write the same rules.",
-   "file": "industrial-situations.html",
-   "lesson": "Real industrial situations"
-  },
-  {
-   "id": "operating-modes",
-   "title": "1. Operating Modes: Manual, Semi-Auto, Auto",
-   "sub": "the same machine behaves differently depending on mode ownership",
-   "plain": "Machines run in three modes. Manual moves one part at a time, semi-auto runs one step, and auto runs the whole line. Safety rules apply in every mode.",
-   "file": "oil-palm-industrial-environment.html",
-   "lesson": "Inside a palm-oil mill"
-  },
-  {
-   "id": "process-flow",
-   "title": "2. Main Process Flow",
-   "sub": "fresh fruit bunches to crude palm oil",
-   "plain": "Fresh fruit bunches arrive by truck and pass through eight stations. Steam, pressing and settling turn them into crude palm oil.",
-   "file": "oil-palm-industrial-environment.html",
-   "lesson": "Inside a palm-oil mill"
-  },
-  {
-   "id": "handling-systems",
-   "title": "3. Conveyor And Handling Systems",
-   "sub": "where many real plant faults begin",
-   "plain": "Conveyors carry fruit between stations. They start from the far end first and stop from the near end first, so nothing piles up.",
-   "file": "oil-palm-industrial-environment.html",
-   "lesson": "Inside a palm-oil mill"
-  },
-  {
-   "id": "process-lad",
-   "title": "4. Process LAD Examples By Stage",
-   "sub": "Ladder-style control narratives for each major oil-palm process",
-   "plain": "Each station has its own simple rules. For example, the dump gate only opens when the conveyor ahead is ready.",
-   "file": "oil-palm-industrial-environment.html",
-   "lesson": "Inside a palm-oil mill"
-  },
-  {
-   "id": "station-map",
-   "title": "5. Four Mixed Control Stations",
-   "sub": "economy PLC, PAC, Raspberry Pi industrial edge, Arduino industrial PLC",
-   "plain": "A mill can mix different controllers. Strong PLCs run the machines; small computers collect data or test new ideas.",
-   "file": "oil-palm-industrial-environment.html",
-   "lesson": "Inside a palm-oil mill"
-  },
-  {
-   "id": "utilities",
-   "title": "6. Utility And Byproduct Loop",
-   "sub": "steam, fiber/shell fuel, POME, and environmental monitoring",
-   "plain": "The mill also needs steam, power and water, and must treat its waste water. Sensors track these for safety, cost and the environment.",
-   "file": "oil-palm-industrial-environment.html",
-   "lesson": "Inside a palm-oil mill"
-  },
-  {
-   "id": "control-network",
-   "title": "7. PAC And IIoT Control Network",
-   "sub": "keep control, safety, edge, and cloud roles separated",
-   "plain": "Machine control, office computers and the internet are kept on separate networks. Dashboards may read data but should not control machines.",
-   "file": "oil-palm-industrial-environment.html",
-   "lesson": "Inside a palm-oil mill"
-  },
-  {
-   "id": "equipment-map",
-   "title": "8. Typical Oil-Palm I/O And Actuator Map",
-   "sub": "where analog modules, VFDs, sensors, and alarms appear",
-   "plain": "A list of real mill parts and what they sense or do. Inputs are sensors and switches; outputs are motors, valves and alarms.",
-   "file": "oil-palm-industrial-environment.html",
-   "lesson": "Inside a palm-oil mill"
-  },
-  {
-   "id": "scenarios",
-   "title": "9. Technician Fault Scenarios",
-   "sub": "what to check before editing logic",
-   "plain": "When something goes wrong, check the real equipment before changing the program. Each fault here has a short checklist.",
-   "file": "oil-palm-industrial-environment.html",
-   "lesson": "Inside a palm-oil mill"
-  },
-  {
-   "id": "standards",
-   "title": "10. Standards And Regulations Awareness",
-   "sub": "what a learner should recognize, not certify alone",
-   "plain": "Factories follow standards for safety, quality and the environment. Learners should recognise the names, not certify alone.",
-   "file": "oil-palm-industrial-environment.html",
-   "lesson": "Inside a palm-oil mill"
-  },
-  {
-   "id": "matrix",
-   "title": "1. Technology Comparison Matrix",
-   "sub": "pick by job, not by brand pride",
-   "plain": "Four kinds of controller are compared: WECON PLCs, PAC systems, Raspberry Pi and Arduino. Each is best at a different job.",
-   "file": "oil-palm-control-stack-analysis.html",
-   "lesson": "Choosing the right controller"
-  },
-  {
-   "id": "scale",
-   "title": "2. Hobbyist, Small, Medium, Large Scale",
-   "sub": "same plant idea, different engineering burden",
-   "plain": "The same mill idea needs different tools at different sizes. A hobby project, a small plant and a large group each need more engineering.",
-   "file": "oil-palm-control-stack-analysis.html",
-   "lesson": "Choosing the right controller"
-  },
-  {
-   "id": "edge-ai",
-   "title": "3. AI At The Edge",
-   "sub": "what AI should and should not do in a mill",
-   "plain": "AI can help spot problems, check quality and save energy. It must never replace safety trips or secretly control machines.",
-   "file": "oil-palm-control-stack-analysis.html",
-   "lesson": "Choosing the right controller"
-  },
-  {
-   "id": "install",
-   "title": "4. Installation And Commissioning Speed",
-   "sub": "where time is really spent",
-   "plain": "Setting up a system takes longer than buying it. Most time goes on drawings, wiring, settings and testing.",
-   "file": "oil-palm-control-stack-analysis.html",
-   "lesson": "Choosing the right controller"
-  },
-  {
-   "id": "reliability",
-   "title": "5. Reliability Factors Beginners Often Miss",
-   "sub": "the device is only one part of reliability",
-   "plain": "Reliable systems need clean power, cool cabinets, spare parts and backups. The controller alone is not enough.",
-   "file": "oil-palm-control-stack-analysis.html",
-   "lesson": "Choosing the right controller"
-  },
-  {
-   "id": "cyber",
-   "title": "6. Cybersecurity And Remote Access",
-   "sub": "IIoT adds value and risk together",
-   "plain": "Connecting machines to networks adds risk. Keep networks separate, use proper passwords and control remote access.",
-   "file": "oil-palm-control-stack-analysis.html",
-   "lesson": "Choosing the right controller"
-  },
-  {
-   "id": "standards-stack",
-   "title": "7. Standards Cheat Sheet",
-   "sub": "recognize the family before reading the full standard",
-   "plain": "A quick guide to the standard names you will hear. Each row says what area it covers and what to do first.",
-   "file": "oil-palm-control-stack-analysis.html",
-   "lesson": "Choosing the right controller"
-  },
-  {
-   "id": "paths",
-   "title": "1. Choose Your Learning Path First",
-   "sub": "three doors into the same plant",
-   "plain": "Pick the path that fits you: operator, technician or developer. Each path shows what to focus on first.",
-   "file": "phase-2-start-here.html",
-   "lesson": "Control rooms and networks"
-  },
-  {
-   "id": "data-story",
-   "title": "2. The Industrial Data Story",
-   "sub": "Ladder, HMI, SCADA, and analytics answer different questions",
-   "plain": "Machine data travels in layers. The PLC acts, screens tell operators what to do, and reports help managers improve.",
-   "file": "phase-2-start-here.html",
-   "lesson": "Control rooms and networks"
-  },
-  {
-   "id": "communications",
-   "title": "3. Industrial Communications Notes",
-   "sub": "names you will see before touching real drivers",
-   "plain": "Machines talk using different cables and 'languages'. Older ones use serial cables; newer ones use Ethernet networks.",
-   "file": "phase-2-start-here.html",
-   "lesson": "Control rooms and networks"
-  },
-  {
-   "id": "local-server",
-   "title": "4. Computer Network And Locally Hosted Server",
-   "sub": "why the browser can see the simulator",
-   "plain": "The trainer runs on your own computer, which is the safe default. Sharing controls on a network needs passwords and safety rules.",
-   "file": "phase-2-start-here.html",
-   "lesson": "Control rooms and networks"
-  },
-  {
-   "id": "scada-design",
-   "title": "5. Oil-Palm SCADA And HMI Design",
-   "sub": "why engineers design screens instead of showing only Ladder",
-   "plain": "Engineers design screens so operators see what matters at a glance. There are overview, station, alarm, trend and maintenance screens.",
-   "file": "phase-2-start-here.html",
-   "lesson": "Control rooms and networks"
-  },
-  {
-   "id": "hmi-challenges",
-   "title": "6. HMI Design Challenges Engineers Face",
-   "sub": "good screens reduce panic during faults",
-   "plain": "Bad screens cause confusion when things go wrong. Good screens use clear alarms and show what is stopping a machine.",
-   "file": "phase-2-start-here.html",
-   "lesson": "Control rooms and networks"
-  },
-  {
-   "id": "phase3-preview",
-   "title": "7. Phase 3 Preview: Python Data Extraction And Analytics",
-   "sub": "virtual Modbus TCP first, then OPC UA/MQTT, then pySerial/RS-232",
-   "plain": "Phase 3 collects machine numbers with a small Python program. It stores them and turns them into charts.",
-   "file": "phase-2-start-here.html",
-   "lesson": "Control rooms and networks"
-  },
-  {
-   "id": "glossary",
-   "title": "8. Tiny Glossary For Newcomers",
-   "sub": "words that stop being scary after one sentence",
-   "plain": "Key words explained in one line each. You can also tap any underlined word on this site for a quick meaning.",
-   "file": "phase-2-start-here.html",
-   "lesson": "Control rooms and networks"
-  },
-  {
-   "id": "management",
-   "title": "1. Management Dashboard",
-   "sub": "",
-   "plain": "These boxes show the numbers managers care about: fruit processed, oil produced, downtime and alarms.",
-   "file": "phase-3-data-analytics.html",
-   "lesson": "Factory data and dashboards"
-  },
-  {
-   "id": "trends",
-   "title": "2. Historian Trends",
-   "sub": "one sample every 2 seconds represents 1 minute of plant time",
-   "plain": "Each chart shows how one value changes over time. Trends show whether a problem is new or keeps coming back.",
-   "file": "phase-3-data-analytics.html",
-   "lesson": "Factory data and dashboards"
-  },
-  {
-   "id": "events",
-   "title": "3. Alarm, Downtime, And Production Events",
-   "sub": "events explain why KPI numbers moved",
-   "plain": "A list of alarms and stops with their times. It explains why the numbers above went up or down.",
-   "file": "phase-3-data-analytics.html",
-   "lesson": "Factory data and dashboards"
-  },
-  {
-   "id": "station",
-   "title": "4. Station Deep Dive: Screw Press",
-   "sub": "one realistic station example behind the management summary",
-   "plain": "A close look at one machine, the screw press, which squeezes the oil out of the fruit.",
-   "file": "phase-3-data-analytics.html",
-   "lesson": "Factory data and dashboards"
-  },
-  {
-   "id": "architecture",
-   "title": "5. OT, IT, MES, ERP: Where Dashboard Data Goes",
-   "sub": "plant signals become business decisions through layers",
-   "plain": "Data moves up in layers: machines, computers, production planning, then business systems. Each layer answers a different question.",
-   "file": "phase-3-data-analytics.html",
-   "lesson": "Factory data and dashboards"
-  },
-  {
-   "id": "pipeline",
-   "title": "6. Local Data Pipeline In This Demo",
-   "sub": "Phase 3 V1 uses simulated data before virtual Modbus TCP runtime",
-   "plain": "How this demo works behind the scenes. A small program saves a sample every two seconds, and this page reads it.",
-   "file": "phase-3-data-analytics.html",
-   "lesson": "Factory data and dashboards"
-  },
-  {
-   "id": "summary",
-   "title": "1. Read-Only Bridge Summary",
-   "sub": "",
-   "plain": "Shows whether the old machine is being read safely. Nothing on this page can change the machine.",
-   "file": "phase-4-legacy-ot-recovery.html",
-   "lesson": "Rescuing old machines"
-  },
-  {
-   "id": "workflow",
-   "title": "2. Recovery Workflow",
-   "sub": "stabilize first, migrate later",
-   "plain": "The safe order: save evidence, protect the old machine, watch it read-only, then plan a replacement.",
-   "file": "phase-4-legacy-ot-recovery.html",
-   "lesson": "Rescuing old machines"
-  },
-  {
-   "id": "registers",
-   "title": "3. Read-Only Register Map",
-   "sub": "Virtual Modbus TCP register view, no writes",
-   "plain": "Values read from the old controller, such as tank level or motor current. Every row is read-only.",
-   "file": "phase-4-legacy-ot-recovery.html",
-   "lesson": "Rescuing old machines"
-  },
-  {
-   "id": "isolation",
-   "title": "4. XP/7 Risk Isolation Diagram",
-   "sub": "old assets stay protected while modern systems read summaries",
-   "plain": "The old computer and PLC sit behind a protective barrier. Modern systems only read summaries through a one-way bridge.",
-   "file": "phase-4-legacy-ot-recovery.html",
-   "lesson": "Rescuing old machines"
-  },
-  {
-   "id": "situations",
-   "title": "5. Real Situations Engineers Face",
-   "sub": "what companies usually do before replacement",
-   "plain": "Common real cases, like a lost installer or missing licence, and what companies usually do about them.",
-   "file": "phase-4-legacy-ot-recovery.html",
-   "lesson": "Rescuing old machines"
-  },
-  {
-   "id": "events",
-   "title": "6. Bridge Events",
-   "sub": "faults and communication clues without touching PLC outputs",
-   "plain": "Communication problems the bridge noticed, recorded without touching the machine.",
-   "file": "phase-4-legacy-ot-recovery.html",
-   "lesson": "Rescuing old machines"
-  },
-  {
-   "id": "rs232",
-   "title": "7. Simulated RS-232 / pySerial Lesson",
-   "sub": "legacy COM-port thinking without opening a real COM port",
-   "plain": "Many old machines talk through a serial cable. This lesson shows how to listen safely, in a simulation.",
-   "file": "phase-4-legacy-ot-recovery.html",
-   "lesson": "Rescuing old machines"
-  },
-  {
-   "id": "phase5",
-   "title": "8. Phase 5 Preview: Modernization And Migration Strategy",
-   "sub": "replace the risk only after evidence, testing, and rollback planning",
-   "plain": "Replacing an old system happens in careful steps, with testing and a way to go back if needed.",
-   "file": "phase-4-legacy-ot-recovery.html",
-   "lesson": "Rescuing old machines"
-  },
-  {
-   "id": "meaning",
-   "title": "1. What \"Qualified\" Should Mean",
-   "sub": "certification helps, but competence is bigger than a certificate",
-   "plain": "Being qualified means knowing the standards, understanding real machines and documenting your work. A short course alone is not enough.",
-   "file": "risk-assessment-certification.html",
-   "lesson": "Becoming safety qualified"
-  },
-  {
-   "id": "when",
-   "title": "2. When Risk Assessment Is Needed",
-   "sub": "do it before the machine teaches the lesson the expensive way",
-   "plain": "Check the risks before installing, changing or buying a used machine. Changing code or speed can make an old check out of date.",
-   "file": "risk-assessment-certification.html",
-   "lesson": "Becoming safety qualified"
-  },
-  {
-   "id": "where",
-   "title": "3. Where To Get Training Or Certification",
-   "sub": "choose the certificate based on the machine type and job responsibility",
-   "plain": "Training ranges from short local courses to recognised certificates such as CMSE, TUV or exida. Pick one that fits your machines and job.",
-   "file": "risk-assessment-certification.html",
-   "lesson": "Becoming safety qualified"
-  },
-  {
-   "id": "path",
-   "title": "4. Practical Learning Path",
-   "sub": "a realistic route from beginner to useful risk-assessment contributor",
-   "plain": "Plan for years, not weeks. Learn hazards first, then assist others, then lead small assessments under review.",
-   "file": "risk-assessment-certification.html",
-   "lesson": "Becoming safety qualified"
-  },
-  {
-   "id": "cost",
-   "title": "5. Cost Planning",
-   "sub": "budget ranges as of June 2026; always request a current quote",
-   "plain": "Self-study can start free. Short courses start around RM 800, and full certification can cost more than RM 25,000.",
-   "file": "risk-assessment-certification.html",
-   "lesson": "Becoming safety qualified"
-  },
-  {
-   "id": "deliverables",
-   "title": "6. What A Proper Risk Assessment Produces",
-   "sub": "the paperwork is proof that the thinking happened",
-   "plain": "A proper risk assessment leaves written proof. It lists the hazards, how serious they are, and what was done to reduce them.",
-   "file": "risk-assessment-certification.html",
-   "lesson": "Becoming safety qualified"
-  },
-  {
-   "id": "malaysia",
-   "title": "7. Malaysia And Oil-Palm Plant Reality",
-   "sub": "connect the training to local plant responsibility",
-   "plain": "In Malaysian mills, involve operations, maintenance, safety staff and a qualified engineer. Check current DOSH, DOE and MPOB rules for your plant.",
-   "file": "risk-assessment-certification.html",
-   "lesson": "Becoming safety qualified"
-  },
-  {
-   "id": "sources",
-   "title": "8. Reference Links To Verify Current Details",
-   "sub": "use these for syllabus, edition, provider availability, and current quote",
-   "plain": "Official links to check the latest courses, standard editions and prices.",
-   "file": "risk-assessment-certification.html",
-   "lesson": "Becoming safety qualified"
-  }
- ],
+ "topics": [],
  "words": [
   {
    "term": "PLC",
