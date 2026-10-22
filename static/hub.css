@@ -18,8 +18,59 @@
   --hp-warn-bg: #fffbeb;
   --hp-warn-line: #f59e0b;
   --hp-warn-text: #78350f;
+  --hp-on-brand: #ffffff;
+  --hp-tip-bg: #0f172a;
+  --hp-tip-fg: #ffffff;
   --hp-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.06);
 }
+
+/* Dark mode: follows the device unless the reader picks Light or Dark (hub-prefs.js). */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --hp-bg: #0b1120;
+    --hp-surface: #111a2e;
+    --hp-surface-2: #17223a;
+    --hp-text: #f1f5f9;
+    --hp-body: #cbd5e1;
+    --hp-muted: #94a3b8;
+    --hp-line: #24324d;
+    --hp-brand: #60a5fa;
+    --hp-brand-strong: #93c5fd;
+    --hp-brand-soft: #1e3a8a;
+    --hp-ok: #34d399;
+    --hp-ok-soft: #064e3b;
+    --hp-warn-bg: #2a1f0a;
+    --hp-warn-line: #f59e0b;
+    --hp-warn-text: #fde68a;
+    --hp-on-brand: #0b1120;
+    --hp-tip-bg: #e2e8f0;
+    --hp-tip-fg: #0f172a;
+    --hp-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+}
+
+:root[data-theme="dark"] {
+  --hp-bg: #0b1120;
+  --hp-surface: #111a2e;
+  --hp-surface-2: #17223a;
+  --hp-text: #f1f5f9;
+  --hp-body: #cbd5e1;
+  --hp-muted: #94a3b8;
+  --hp-line: #24324d;
+  --hp-brand: #60a5fa;
+  --hp-brand-strong: #93c5fd;
+  --hp-brand-soft: #1e3a8a;
+  --hp-ok: #34d399;
+  --hp-ok-soft: #064e3b;
+  --hp-warn-bg: #2a1f0a;
+  --hp-warn-line: #f59e0b;
+  --hp-warn-text: #fde68a;
+  --hp-on-brand: #0b1120;
+  --hp-tip-bg: #e2e8f0;
+  --hp-tip-fg: #0f172a;
+  --hp-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
 
 body.hub-page {
   background: var(--hp-bg);
@@ -109,13 +160,13 @@ body.hub-page {
 .hub-page .connection-pill {
   margin-left: 6px;
   background: var(--hp-brand);
-  color: #ffffff;
+  color: var(--hp-on-brand);
 }
 
 .hub-page .connection-pill:hover,
 .hub-page .connection-pill:focus-visible {
   background: var(--hp-brand-strong);
-  color: #ffffff;
+  color: var(--hp-on-brand);
 }
 
 /* The jargon tiles under the old header add noise for new readers. */
@@ -315,6 +366,158 @@ body.hub-page {
   gap: 6px;
 }
 
+/* ---------- Same skeleton on every lesson ---------- */
+.hub-page .panel-heading .hub-techname {
+  flex-basis: 100%;
+  font-size: 14px;
+}
+
+.hub-page .guide-main .hub-lead {
+  margin: 0 0 16px;
+  color: var(--hp-text);
+  font-size: 19px;
+  line-height: 1.55;
+}
+
+.hub-page .hub-safety {
+  margin-top: 16px;
+  border: 1px solid color-mix(in srgb, var(--hp-warn-line) 45%, transparent);
+  border-radius: 12px;
+  background: var(--hp-warn-bg);
+}
+
+.hub-page .hub-safety > summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  min-height: 48px;
+  padding: 10px 14px;
+  color: var(--hp-warn-text);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.hub-page .hub-safety > summary::-webkit-details-marker {
+  display: none;
+}
+
+.hub-safety-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--hp-warn-line);
+  color: #1f1300;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.hub-page .hub-more {
+  color: var(--hp-brand-strong);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hub-page .hub-safety[open] .hub-more {
+  display: none;
+}
+
+.hub-page .hub-safety > :not(summary) {
+  margin: 0 14px 14px;
+}
+
+.hub-page .guide-main .hub-scope {
+  font-size: 15px;
+}
+
+/* "Check yourself" questions at the end of every lesson */
+.hub-page .hub-check {
+  padding: 20px 24px 24px;
+}
+
+.hub-page .hub-check h2 {
+  margin: 0 0 4px;
+  font-size: 22px;
+}
+
+.hub-page .guide-main .hub-check-tip {
+  margin: 0 0 14px;
+  color: var(--hp-muted);
+  font-size: 15px;
+}
+
+.hub-page .hub-q {
+  margin-top: 10px;
+  border: 1px solid var(--hp-line);
+  border-radius: 12px;
+  background: var(--hp-surface);
+}
+
+.hub-page .hub-q > summary {
+  min-height: 48px;
+  padding: 12px 16px 12px 44px;
+  position: relative;
+  color: var(--hp-text);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.45;
+  cursor: pointer;
+  list-style: none;
+}
+
+.hub-page .hub-q > summary::-webkit-details-marker {
+  display: none;
+}
+
+.hub-page .hub-q > summary::before {
+  content: "?";
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--hp-brand-soft);
+  color: var(--hp-brand-strong);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.hub-page .hub-q[open] > summary::before {
+  content: "\2713";
+  background: var(--hp-ok-soft);
+  color: var(--hp-ok);
+}
+
+.hub-page .guide-main .hub-q > p {
+  margin: 0;
+  padding: 0 16px 14px 44px;
+  color: var(--hp-body);
+}
+
+/* Shown only when the page is in Bahasa Malaysia or German */
+.lang-note {
+  display: none;
+}
+
+html:not([lang="en"]) .lang-note {
+  display: block;
+}
+
+.hub-page .guide-main .lang-note {
+  margin: 0;
+  color: var(--hp-muted);
+  font-size: 14px;
+  font-style: italic;
+}
+
 /* ---------- "In 30 seconds" summary ---------- */
 .hub-page .hub-summary {
   margin: 0 0 18px;
@@ -507,7 +710,7 @@ body.hub-page {
   gap: 4px;
   padding: 20px 22px;
   border-radius: 14px;
-  background: var(--hp-brand);
+  background: #2563eb;
   color: #ffffff;
   text-decoration: none;
   transition: transform 0.15s ease, background 0.15s ease;
@@ -515,7 +718,7 @@ body.hub-page {
 
 .hub-page .guide-main .hub-next-card:hover,
 .hub-page .guide-main .hub-next-card:focus-visible {
-  background: var(--hp-brand-strong);
+  background: #1d4ed8;
   transform: translateY(-1px);
 }
 
@@ -526,7 +729,7 @@ body.hub-page {
 }
 
 .hub-next-card span {
-  color: #dbeafe;
+  color: #ffffff;
   font-size: 16px;
 }
 
@@ -745,8 +948,8 @@ body.hub-page {
   margin: 4px 0 4px 6px;
   padding: 4px 10px;
   border-radius: 8px;
-  background: var(--hp-text);
-  color: #ffffff;
+  background: var(--hp-tip-bg);
+  color: var(--hp-tip-fg);
   font-size: 14px;
   font-weight: 500;
   line-height: 1.45;
@@ -809,6 +1012,83 @@ body.hub-page {
   .hub-page .flow-animated {
     animation: none;
   }
+}
+
+/* ---------- Light "paper" cards ----------
+   Diagrams, Ladder rungs, tables and cards were drawn for a light background.
+   They keep light colours in dark mode so every label stays readable. */
+.hub-page .path-card,
+.hub-page .analytics-kpi-card,
+.hub-page .analytics-toolbar,
+.hub-page .brand-card,
+.hub-page .cert-card,
+.hub-page .cert-step,
+.hub-page .cert-warning,
+.hub-page .code-panel,
+.hub-page .comm-card,
+.hub-page .cost-card,
+.hub-page .decision-strip div,
+.hub-page .diagram-panel,
+.hub-page .fbd-panel,
+.hub-page .formula,
+.hub-page .handshake-lanes div,
+.hub-page .industrial-diagram,
+.hub-page .lad-stage,
+.hub-page .ladder-diagram,
+.hub-page .language-card,
+.hub-page .legacy-readonly,
+.hub-page .legacy-situation-card,
+.hub-page .legacy-station-strip div,
+.hub-page .legacy-workflow-card,
+.hub-page .lesson-callout,
+.hub-page .method-card,
+.hub-page .mini-trend,
+.hub-page .mode-card,
+.hub-page .phase-strip span,
+.hub-page .phase2-answer-grid div,
+.hub-page .phase2-roadmap div,
+.hub-page .press-deep-dive,
+.hub-page .robust-item,
+.hub-page .safety-note,
+.hub-page .scada-screen,
+.hub-page .scale-flow div,
+.hub-page .scan-flow div,
+.hub-page .scenario-notes,
+.hub-page .screen-strip span,
+.hub-page .sensor-card,
+.hub-page .source-strip,
+.hub-page .station-state-list,
+.hub-page .station-state-row,
+.hub-page .trend-card,
+.hub-page .trend-placeholder,
+.hub-page .try-it,
+.hub-page .wide-table,
+.hub-page .hub-scene,
+.hub-page .guide-main table {
+  --hp-bg: #f7f9fc;
+  --hp-surface: #ffffff;
+  --hp-surface-2: #eef3f9;
+  --hp-text: #0f172a;
+  --hp-body: #334155;
+  --hp-muted: #64748b;
+  --hp-line: #e2e8f0;
+  --hp-brand: #2563eb;
+  --hp-brand-strong: #1d4ed8;
+  --hp-brand-soft: #dbeafe;
+  --hp-ok: #059669;
+  --hp-ok-soft: #d1fae5;
+  --hp-warn-bg: #fffbeb;
+  --hp-warn-line: #f59e0b;
+  --hp-warn-text: #78350f;
+  --hp-on-brand: #ffffff;
+  --hp-tip-bg: #0f172a;
+  --hp-tip-fg: #ffffff;
+  color-scheme: light;
+  color: var(--hp-body);
+}
+
+.hub-page .guide-main table {
+  background: #ffffff;
 }
 
 /* ---------- Phone ---------- */
@@ -1068,4 +1348,10 @@ body.hub-page {
   .hub-page .hub-next-card {
     transition: none;
   }
+}
+
+/* Wide tables that scroll sideways get keyboard focus (hub-ui.js); show where it is. */
+.mini-table[data-scroll-focus]:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;
 }

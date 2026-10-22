@@ -7,23 +7,25 @@
     <title>Salbotics PLC Learning Hub - What Is This?</title>
     <meta name="description" content="Learn how factory machines think, for free, in your browser. No equipment needed." />
     <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
-    <link rel="stylesheet" href="/static/start.css?v=home-20261021" />
+    <link rel="stylesheet" href="/static/start.css?v=prefs-20261021" />
     <link rel="stylesheet" href="/static/scenes.css?v=flow-20261020" />
+    <link rel="stylesheet" href="/static/prefs.css?v=prefs-20261021" />
+    <script src="/static/hub-prefs.js?v=prefs-20261021"></script>
   </head>
   <body class="start-page">
     <header class="topbar">
       <div class="brand-block">
-        <strong>Salbotics PLC Hub</strong>
-        <span>Learn how machines think</span>
+        <strong data-i18n="st.1">Salbotics PLC Hub</strong>
+        <span data-i18n="st.2">Learn how machines think</span>
       </div>
       <nav class="top-actions" aria-label="Hub pages">
-        <a class="header-link" href="/static/start.html" aria-current="page">Home</a>
-        <a class="header-link" href="/static/beginner-guide.html" data-stage="basics">Basics</a>
-        <a class="header-link" href="/static/plc-programming-methods.html" data-stage="skills">Skills</a>
-        <a class="header-link" href="/static/oil-palm-industrial-environment.html" data-stage="factory">Factory</a>
-        <a class="header-link" href="/static/phase-2-start-here.html" data-stage="data">Data</a>
-        <a class="header-link" href="/static/risk-assessment-certification.html" data-stage="safety">Safety</a>
-        <a class="connection-pill guide-back" href="/">Simulator</a>
+        <a class="header-link" href="/static/start.html" aria-current="page" data-i18n="ui.nav.home">Home</a>
+        <a class="header-link" href="/static/beginner-guide.html" data-stage="basics" data-i18n="ui.nav.basics">Basics</a>
+        <a class="header-link" href="/static/plc-programming-methods.html" data-stage="skills" data-i18n="ui.nav.skills">Skills</a>
+        <a class="header-link" href="/static/oil-palm-industrial-environment.html" data-stage="factory" data-i18n="ui.nav.factory">Factory</a>
+        <a class="header-link" href="/static/phase-2-start-here.html" data-stage="data" data-i18n="ui.nav.data">Data</a>
+        <a class="header-link" href="/static/risk-assessment-certification.html" data-stage="safety" data-i18n="ui.nav.safety">Safety</a>
+        <a class="connection-pill guide-back" href="/" data-i18n="ui.nav.sim">Simulator</a>
       </nav>
     </header>
 
@@ -33,141 +35,141 @@
         <div class="sp-wrap sp-hero-inner">
           <div>
             <ul class="sp-pills" aria-label="At a glance">
-              <li>Free</li>
-              <li>Works in your browser</li>
-              <li>No equipment needed</li>
+              <li data-i18n="st.3">Free</li>
+              <li data-i18n="st.4">Works in your browser</li>
+              <li data-i18n="st.5">No equipment needed</li>
             </ul>
-            <h1 id="sp-title">Learn how factory machines think.</h1>
-            <p class="sp-lead">
+            <h1 id="sp-title" data-i18n="st.6">Learn how factory machines think.</h1>
+            <p class="sp-lead" data-i18n-html="st.7">
               Lifts, traffic lights and factory conveyors are run by a small computer called a
               <strong>PLC</strong>. This hub teaches how it works, step by step, in plain language.
             </p>
-            <p class="sp-sub">
+            <p class="sp-sub" data-i18n="st.8">
               No real machine, special software or engineering degree needed.
               Everything is simulated, so mistakes are safe and free.
             </p>
             <div class="sp-actions">
-              <a class="sp-button sp-button-main" href="/static/beginner-guide.html">Start learning &rarr;</a>
-              <a class="sp-button" href="#picture">See how it works</a>
+              <a class="sp-button sp-button-main" href="/static/beginner-guide.html" data-i18n="st.9">Start learning &rarr;</a>
+              <a class="sp-button" href="#picture" data-i18n="st.10">See how it works</a>
             </div>
             <div class="sp-continue" id="continue" hidden></div>
             <div class="sp-search" id="search" role="search" hidden>
-              <label for="hub-search-input">Search lessons and words</label>
+              <label for="hub-search-input" data-i18n="st.11">Search lessons and words</label>
               <input id="hub-search-input" type="search" autocomplete="off" spellcheck="false"
-                     placeholder="Try: sensor, VFD, conveyor, safety" aria-controls="hub-search-results" />
+                     placeholder="Try: sensor, VFD, conveyor, safety" data-i18n-attr="placeholder:st.searchhint" aria-controls="hub-search-results" />
               <ul id="hub-search-results" class="sp-search-results" aria-live="polite"></ul>
             </div>
           </div>
 
-          <aside class="sp-card sp-hero-card" aria-label="The idea in three parts">
+          <div class="sp-card sp-hero-card" role="group" aria-label="The idea in three parts">
             <ol class="sp-flow">
-              <li><span class="sp-badge sp-badge-in" aria-hidden="true">1</span><span><strong>Inputs sense</strong>Buttons and sensors notice what is happening.</span></li>
-              <li><span class="sp-badge sp-badge-plc" aria-hidden="true">2</span><span><strong>The PLC decides</strong>It checks its written rules.</span></li>
-              <li><span class="sp-badge sp-badge-out" aria-hidden="true">3</span><span><strong>Outputs act</strong>Motors, lamps and valves switch on or off.</span></li>
+              <li><span class="sp-badge sp-badge-in" aria-hidden="true">1</span><span data-i18n-html="st.12"><strong>Inputs sense</strong>Buttons and sensors notice what is happening.</span></li>
+              <li><span class="sp-badge sp-badge-plc" aria-hidden="true">2</span><span data-i18n-html="st.13"><strong>The PLC decides</strong>It checks its written rules.</span></li>
+              <li><span class="sp-badge sp-badge-out" aria-hidden="true">3</span><span data-i18n-html="st.14"><strong>Outputs act</strong>Motors, lamps and valves switch on or off.</span></li>
             </ol>
-            <p class="sp-flow-note">Repeated about ten times every second.</p>
-          </aside>
+            <p class="sp-flow-note" data-i18n="st.15">Repeated about ten times every second.</p>
+          </div>
         </div>
       </section>
 
       <div class="sp-wrap">
         <ul class="sp-stats" aria-label="The hub at a glance">
-          <li><strong>10+</strong><span>free guide pages</span></li>
-          <li><strong>6</strong><span>everyday machines explained</span></li>
-          <li><strong>8 &rarr; 6</strong><span>inputs and outputs in the trainer</span></li>
-          <li><strong>0.1 s</strong><span>for one read, decide, act lap</span></li>
-          <li><strong>0</strong><span>pieces of equipment needed</span></li>
+          <li><strong>10+</strong><span data-i18n="st.16">free guide pages</span></li>
+          <li><strong>6</strong><span data-i18n="st.17">everyday machines explained</span></li>
+          <li><strong>8 &rarr; 6</strong><span data-i18n="st.18">inputs and outputs in the trainer</span></li>
+          <li><strong data-i18n="st.19">0.1 s</strong><span data-i18n="st.20">for one read, decide, act lap</span></li>
+          <li><strong>0</strong><span data-i18n="st.21">pieces of equipment needed</span></li>
         </ul>
 
         <nav class="sp-pills sp-jump" aria-label="Page sections">
-          <a href="#who">What do you want?</a>
-          <a href="#why">Why it exists</a>
-          <a href="#picture">The big picture</a>
-          <a href="#action">See it move</a>
-          <a href="#io">Inputs &amp; outputs</a>
-          <a href="#steps">3 steps</a>
-          <a href="#path">Your path</a>
-          <a href="#roadmap">Roadmap</a>
+          <a href="#who" data-i18n="st.22">What do you want?</a>
+          <a href="#why" data-i18n="st.23">Why it exists</a>
+          <a href="#picture" data-i18n="st.24">The big picture</a>
+          <a href="#action" data-i18n="st.25">See it move</a>
+          <a href="#io" data-i18n="st.26">Inputs &amp; outputs</a>
+          <a href="#steps" data-i18n="st.27">3 steps</a>
+          <a href="#path" data-i18n="st.28">Your path</a>
+          <a href="#roadmap" data-i18n="st.29">Roadmap</a>
         </nav>
 
         <!-- 0. What do you want to do? -->
         <section id="who" class="sp-section">
-          <p class="sp-eyebrow">Start where you are</p>
-          <h2>What do you want to do?</h2>
-          <p class="sp-intro">Pick a goal and we will open the right lesson.</p>
+          <p class="sp-eyebrow" data-i18n="st.30">Start where you are</p>
+          <h2 data-i18n="st.31">What do you want to do?</h2>
+          <p class="sp-intro" data-i18n="st.32">Pick a goal and we will open the right lesson.</p>
           <div class="sp-goals">
             <a class="sp-goal" href="/static/beginner-guide.html">
               <span class="sp-badge sp-badge-in" aria-hidden="true">1</span>
-              <strong>Understand what a PLC is</strong>
-              <small>Beginners and students</small>
+              <strong data-i18n="st.33">Understand what a PLC is</strong>
+              <small data-i18n="st.34">Beginners and students</small>
             </a>
             <a class="sp-goal" href="/static/industrial-situations.html">
               <span class="sp-badge sp-badge-out" aria-hidden="true">2</span>
-              <strong>Fix real machines</strong>
-              <small>Technicians and operators</small>
+              <strong data-i18n="st.35">Fix real machines</strong>
+              <small data-i18n="st.36">Technicians and operators</small>
             </a>
             <a class="sp-goal" href="/static/oil-palm-industrial-environment.html">
               <span class="sp-badge" aria-hidden="true">3</span>
-              <strong>See inside a palm-oil mill</strong>
-              <small>Anyone curious about factories</small>
+              <strong data-i18n="st.37">See inside a palm-oil mill</strong>
+              <small data-i18n="st.38">Anyone curious about factories</small>
             </a>
             <a class="sp-goal" href="/static/plc-programming-methods.html">
               <span class="sp-badge sp-badge-plc" aria-hidden="true">4</span>
-              <strong>Write a PLC program</strong>
-              <small>Future programmers</small>
+              <strong data-i18n="st.39">Write a PLC program</strong>
+              <small data-i18n="st.40">Future programmers</small>
             </a>
             <a class="sp-goal" href="/static/phase-2-start-here.html">
               <span class="sp-badge sp-badge-in" aria-hidden="true">5</span>
-              <strong>Work with factory data</strong>
-              <small>Engineers and IT staff</small>
+              <strong data-i18n="st.41">Work with factory data</strong>
+              <small data-i18n="st.42">Engineers and IT staff</small>
             </a>
             <a class="sp-goal" href="/static/risk-assessment-certification.html">
               <span class="sp-badge sp-badge-out" aria-hidden="true">6</span>
-              <strong>Become safety qualified</strong>
-              <small>Technicians and engineers</small>
+              <strong data-i18n="st.43">Become safety qualified</strong>
+              <small data-i18n="st.44">Technicians and engineers</small>
             </a>
             <a class="sp-goal" href="https://github.com/SaladinIART/salbotics-plc-learning-hub">
               <span class="sp-badge" aria-hidden="true">7</span>
-              <strong>Check practical skills</strong>
-              <small>Employers and recruiters</small>
+              <strong data-i18n="st.45">Check practical skills</strong>
+              <small data-i18n="st.46">Employers and recruiters</small>
             </a>
             <a class="sp-goal" href="#search">
               <span class="sp-badge sp-badge-plc" aria-hidden="true">?</span>
-              <strong>Look something up</strong>
-              <small>Search lessons and words</small>
+              <strong data-i18n="st.47">Look something up</strong>
+              <small data-i18n="st.48">Search lessons and words</small>
             </a>
           </div>
         </section>
 
         <!-- 1. Why -->
         <section id="why" class="sp-section">
-          <p class="sp-eyebrow">Why it exists</p>
-          <h2>Learning automation is usually hard to start.</h2>
-          <p class="sp-intro">This hub removes the three biggest barriers.</p>
+          <p class="sp-eyebrow" data-i18n="st.49">Why it exists</p>
+          <h2 data-i18n="st.50">Learning automation is usually hard to start.</h2>
+          <p class="sp-intro" data-i18n="st.51">This hub removes the three biggest barriers.</p>
           <div class="sp-grid">
             <article class="sp-card">
               <span class="sp-badge" aria-hidden="true">$</span>
-              <h3>Real equipment is expensive</h3>
-              <p>A training kit with sensors and motors can cost thousands. Most learners never touch one.</p>
+              <h3 data-i18n="st.52">Real equipment is expensive</h3>
+              <p data-i18n="st.53">A training kit with sensors and motors can cost thousands. Most learners never touch one.</p>
             </article>
             <article class="sp-card">
               <span class="sp-badge sp-badge-out" aria-hidden="true">!</span>
-              <h3>Mistakes on real machines are risky</h3>
-              <p>A wrong rule can start a motor at the wrong moment. Here you can break things safely.</p>
+              <h3 data-i18n="st.54">Mistakes on real machines are risky</h3>
+              <p data-i18n="st.55">A wrong rule can start a motor at the wrong moment. Here you can break things safely.</p>
             </article>
             <article class="sp-card">
               <span class="sp-badge sp-badge-plc" aria-hidden="true">Aa</span>
-              <h3>Most material is full of jargon</h3>
-              <p>We start with machines you already know. Technical words come only after the plain idea.</p>
+              <h3 data-i18n="st.56">Most material is full of jargon</h3>
+              <p data-i18n="st.57">We start with machines you already know. Technical words come only after the plain idea.</p>
             </article>
           </div>
         </section>
 
         <!-- 2. Big picture -->
         <section id="picture" class="sp-section">
-          <p class="sp-eyebrow">The big picture</p>
-          <h2>Think of a machine like a body: senses, brain, muscles.</h2>
-          <p class="sp-intro">
+          <p class="sp-eyebrow" data-i18n="st.58">The big picture</p>
+          <h2 data-i18n="st.59">Think of a machine like a body: senses, brain, muscles.</h2>
+          <p class="sp-intro" data-i18n-html="st.60">
             <strong>Inputs</strong> are its senses. The <strong>PLC</strong> is its brain.
             <strong>Outputs</strong> are its muscles.
           </p>
@@ -175,68 +177,68 @@
             <svg class="beginner-svg beginner-svg-wide" viewBox="0 0 960 320" role="img" aria-labelledby="start-io-title">
               <title id="start-io-title">Inputs such as buttons and sensors go into the PLC, which switches outputs such as motors, lamps and valves</title>
               <rect x="20" y="20" width="270" height="240" rx="20" class="sp-svg-box sp-svg-in"></rect>
-              <text x="155" y="64" class="sp-svg-title">INPUTS</text>
-              <text x="155" y="90" class="sp-svg-note">the senses</text>
-              <text x="155" y="130" class="sp-svg-text">push buttons</text>
-              <text x="155" y="158" class="sp-svg-text">switches</text>
-              <text x="155" y="186" class="sp-svg-text">light beams</text>
-              <text x="155" y="214" class="sp-svg-text">level and heat sensors</text>
-              <text x="155" y="242" class="sp-svg-text">emergency stop</text>
+              <text x="155" y="64" class="sp-svg-title" data-i18n="st.61">INPUTS</text>
+              <text x="155" y="90" class="sp-svg-note" data-i18n="st.62">the senses</text>
+              <text x="155" y="130" class="sp-svg-text" data-i18n="st.63">push buttons</text>
+              <text x="155" y="158" class="sp-svg-text" data-i18n="st.64">switches</text>
+              <text x="155" y="186" class="sp-svg-text" data-i18n="st.65">light beams</text>
+              <text x="155" y="214" class="sp-svg-text" data-i18n="st.66">level and heat sensors</text>
+              <text x="155" y="242" class="sp-svg-text" data-i18n="st.67">emergency stop</text>
 
               <rect x="345" y="20" width="270" height="240" rx="20" class="sp-svg-box sp-svg-plc"></rect>
-              <text x="480" y="64" class="sp-svg-title">PLC</text>
-              <text x="480" y="90" class="sp-svg-note">the brain</text>
-              <text x="480" y="144" class="sp-svg-text">reads the inputs</text>
-              <text x="480" y="172" class="sp-svg-text">checks its written rules</text>
-              <text x="480" y="200" class="sp-svg-text">decides what to switch</text>
-              <text x="480" y="228" class="sp-svg-text">~10 times a second</text>
+              <text x="480" y="64" class="sp-svg-title" data-i18n="st.68">PLC</text>
+              <text x="480" y="90" class="sp-svg-note" data-i18n="st.69">the brain</text>
+              <text x="480" y="144" class="sp-svg-text" data-i18n="st.70">reads the inputs</text>
+              <text x="480" y="172" class="sp-svg-text" data-i18n="st.71">checks its written rules</text>
+              <text x="480" y="200" class="sp-svg-text" data-i18n="st.72">decides what to switch</text>
+              <text x="480" y="228" class="sp-svg-text" data-i18n="st.73">~10 times a second</text>
 
               <rect x="670" y="20" width="270" height="240" rx="20" class="sp-svg-box sp-svg-out"></rect>
-              <text x="805" y="64" class="sp-svg-title">OUTPUTS</text>
-              <text x="805" y="90" class="sp-svg-note">the muscles</text>
-              <text x="805" y="130" class="sp-svg-text">motors</text>
-              <text x="805" y="158" class="sp-svg-text">valves and pumps</text>
-              <text x="805" y="186" class="sp-svg-text">lamps and buzzers</text>
-              <text x="805" y="214" class="sp-svg-text">locks and brakes</text>
-              <text x="805" y="242" class="sp-svg-text">screens (HMI)</text>
+              <text x="805" y="64" class="sp-svg-title" data-i18n="st.74">OUTPUTS</text>
+              <text x="805" y="90" class="sp-svg-note" data-i18n="st.75">the muscles</text>
+              <text x="805" y="130" class="sp-svg-text" data-i18n="st.76">motors</text>
+              <text x="805" y="158" class="sp-svg-text" data-i18n="st.77">valves and pumps</text>
+              <text x="805" y="186" class="sp-svg-text" data-i18n="st.78">lamps and buzzers</text>
+              <text x="805" y="214" class="sp-svg-text" data-i18n="st.79">locks and brakes</text>
+              <text x="805" y="242" class="sp-svg-text" data-i18n="st.80">screens (HMI)</text>
 
               <path d="M296,140 H332" class="sp-svg-arrow"></path>
               <path d="M330,131 L342,140 L330,149 z" class="sp-svg-head"></path>
               <path d="M621,140 H657" class="sp-svg-arrow"></path>
               <path d="M655,131 L667,140 L655,149 z" class="sp-svg-head"></path>
-              <text x="480" y="300" class="sp-svg-note">Example: lift button pressed (input), PLC decides, lift motor runs (output).</text>
+              <text x="480" y="300" class="sp-svg-note" data-i18n="st.81">Example: lift button pressed (input), PLC decides, lift motor runs (output).</text>
             </svg>
             <svg class="beginner-svg beginner-svg-tall" viewBox="0 0 360 640" role="img" aria-labelledby="start-io-title-m">
               <title id="start-io-title-m">Inputs such as buttons and sensors go into the PLC, which switches outputs such as motors, lamps and valves</title>
               <rect x="10" y="10" width="340" height="160" rx="20" class="sp-svg-box sp-svg-in"></rect>
-              <text x="180" y="50" class="sp-svg-title">INPUTS</text>
-              <text x="180" y="76" class="sp-svg-note">the senses</text>
-              <text x="180" y="110" class="sp-svg-text">buttons, switches, light beams</text>
-              <text x="180" y="138" class="sp-svg-text">level and heat sensors, e-stop</text>
+              <text x="180" y="50" class="sp-svg-title" data-i18n="st.82">INPUTS</text>
+              <text x="180" y="76" class="sp-svg-note" data-i18n="st.83">the senses</text>
+              <text x="180" y="110" class="sp-svg-text" data-i18n="st.84">buttons, switches, light beams</text>
+              <text x="180" y="138" class="sp-svg-text" data-i18n="st.85">level and heat sensors, e-stop</text>
               <path d="M180,176 V204" class="sp-svg-arrow"></path>
               <path d="M171,202 L180,214 L189,202 z" class="sp-svg-head"></path>
               <rect x="10" y="220" width="340" height="160" rx="20" class="sp-svg-box sp-svg-plc"></rect>
-              <text x="180" y="260" class="sp-svg-title">PLC</text>
-              <text x="180" y="286" class="sp-svg-note">the brain</text>
-              <text x="180" y="320" class="sp-svg-text">reads, checks its rules, decides</text>
-              <text x="180" y="348" class="sp-svg-text">about 10 times a second</text>
+              <text x="180" y="260" class="sp-svg-title" data-i18n="st.86">PLC</text>
+              <text x="180" y="286" class="sp-svg-note" data-i18n="st.87">the brain</text>
+              <text x="180" y="320" class="sp-svg-text" data-i18n="st.88">reads, checks its rules, decides</text>
+              <text x="180" y="348" class="sp-svg-text" data-i18n="st.89">about 10 times a second</text>
               <path d="M180,386 V414" class="sp-svg-arrow"></path>
               <path d="M171,412 L180,424 L189,412 z" class="sp-svg-head"></path>
               <rect x="10" y="430" width="340" height="160" rx="20" class="sp-svg-box sp-svg-out"></rect>
-              <text x="180" y="470" class="sp-svg-title">OUTPUTS</text>
-              <text x="180" y="496" class="sp-svg-note">the muscles</text>
-              <text x="180" y="530" class="sp-svg-text">motors, valves, pumps</text>
-              <text x="180" y="558" class="sp-svg-text">lamps, buzzers, screens</text>
-              <text x="180" y="624" class="sp-svg-note">Lift button in, lift motor out.</text>
+              <text x="180" y="470" class="sp-svg-title" data-i18n="st.90">OUTPUTS</text>
+              <text x="180" y="496" class="sp-svg-note" data-i18n="st.91">the muscles</text>
+              <text x="180" y="530" class="sp-svg-text" data-i18n="st.92">motors, valves, pumps</text>
+              <text x="180" y="558" class="sp-svg-text" data-i18n="st.93">lamps, buzzers, screens</text>
+              <text x="180" y="624" class="sp-svg-note" data-i18n="st.94">Lift button in, lift motor out.</text>
             </svg>
           </div>
         </section>
 
         <!-- 2b. Animated scenes -->
         <section id="action" class="sp-section">
-          <p class="sp-eyebrow">See it in action</p>
-          <h2>Watch the rules at work.</h2>
-          <p class="sp-intro">
+          <p class="sp-eyebrow" data-i18n="st.95">See it in action</p>
+          <h2 data-i18n="st.96">Watch the rules at work.</h2>
+          <p class="sp-intro" data-i18n="st.97">
             Each scene shows its inputs and outputs lighting up as the PLC decides.
             Green dots are inputs. Orange dots are outputs.
           </p>
@@ -273,7 +275,7 @@
                   <circle cx="312" cy="22" r="9" class="sp-a-red a-tl-ns-red"></circle>
                   <circle cx="312" cy="48" r="9" class="sp-a-yellow a-tl-ns-yellow"></circle>
                   <circle cx="312" cy="74" r="9" class="sp-a-green a-tl-ns-green"></circle>
-                  <text x="374" y="54" class="sp-a-label">N-S road</text>
+                  <text x="374" y="54" class="sp-a-label" data-i18n="st.98">N-S road</text>
                   <rect x="100" y="180" width="84" height="32" rx="8" class="sp-a-head"></rect>
                   <circle cx="116" cy="196" r="9" class="sp-a-off"></circle>
                   <circle cx="142" cy="196" r="9" class="sp-a-off"></circle>
@@ -281,28 +283,28 @@
                   <circle cx="116" cy="196" r="9" class="sp-a-red a-tl-ew-red"></circle>
                   <circle cx="142" cy="196" r="9" class="sp-a-yellow a-tl-ew-yellow"></circle>
                   <circle cx="168" cy="196" r="9" class="sp-a-green a-tl-ew-green"></circle>
-                  <text x="142" y="236" class="sp-a-label">E-W road</text>
+                  <text x="142" y="236" class="sp-a-label" data-i18n="st.99">E-W road</text>
                 </g>
                 <rect x="1" y="274" width="478" height="62" rx="12" class="sp-a-strip"></rect>
-                <text x="20" y="311" class="sp-a-strip-text sp-a-start">PLC step:</text>
-                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s1">1 &#183; N-S green</text>
-                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s2">2 &#183; N-S yellow</text>
-                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s3">3 &#183; all red</text>
-                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s4">4 &#183; E-W green</text>
-                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s5">5 &#183; E-W yellow</text>
-                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s6">6 &#183; all red</text>
+                <text x="20" y="311" class="sp-a-strip-text sp-a-start" data-i18n="st.100">PLC step:</text>
+                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s1" data-i18n="st.101">1 &#183; N-S green</text>
+                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s2" data-i18n="st.102">2 &#183; N-S yellow</text>
+                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s3" data-i18n="st.103">3 &#183; all red</text>
+                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s4" data-i18n="st.104">4 &#183; E-W green</text>
+                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s5" data-i18n="st.105">5 &#183; E-W yellow</text>
+                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s6" data-i18n="st.106">6 &#183; all red</text>
                 <circle cx="300" cy="305" r="8" class="sp-a-lamp-off"></circle>
                 <circle cx="300" cy="305" r="8" class="sp-a-lamp-in a-tl-timer"></circle>
-                <text x="314" y="311" class="sp-a-strip-text sp-a-start">timer done</text>
+                <text x="314" y="311" class="sp-a-strip-text sp-a-start" data-i18n="st.107">timer done</text>
               </svg>
               <figcaption>
-                <h3>Traffic light: our trainer</h3>
+                <h3 data-i18n="st.108">Traffic light: our trainer</h3>
                 <ol>
-                  <li>A timer keeps one road on green, then yellow.</li>
-                  <li>Both roads go red for a moment.</li>
-                  <li>Then the other road gets its turn.</li>
+                  <li data-i18n="st.109">A timer keeps one road on green, then yellow.</li>
+                  <li data-i18n="st.110">Both roads go red for a moment.</li>
+                  <li data-i18n="st.111">Then the other road gets its turn.</li>
                 </ol>
-                <p class="sp-rule"><strong>The rule:</strong> both roads are never green together.</p>
+                <p class="sp-rule" data-i18n-html="st.112"><strong>The rule:</strong> both roads are never green together.</p>
                 <button type="button" class="sp-play">Pause</button>
               </figcaption>
             </figure>
@@ -330,29 +332,29 @@
                     <line x1="250" y1="226" x2="250" y2="100" class="sp-a-arm-stripe"></line>
                   </g>
                   <circle cx="250" cy="236" r="11" class="sp-a-pillar"></circle>
-                  <text x="194" y="250" class="sp-a-label">car sensor</text>
-                  <text x="346" y="96" class="sp-a-label">light beam</text>
-                  <text x="290" y="256" class="sp-a-label sp-a-start">barrier</text>
+                  <text x="194" y="250" class="sp-a-label" data-i18n="st.113">car sensor</text>
+                  <text x="346" y="96" class="sp-a-label" data-i18n="st.114">light beam</text>
+                  <text x="290" y="256" class="sp-a-label sp-a-start" data-i18n="st.115">barrier</text>
                 </g>
                 <rect x="1" y="274" width="478" height="62" rx="12" class="sp-a-strip"></rect>
                 <circle cx="24" cy="305" r="8" class="sp-a-lamp-off"></circle>
                 <circle cx="24" cy="305" r="8" class="sp-a-lamp-in a-bar-wait"></circle>
-                <text x="38" y="311" class="sp-a-strip-text sp-a-start">Car waiting</text>
+                <text x="38" y="311" class="sp-a-strip-text sp-a-start" data-i18n="st.116">Car waiting</text>
                 <circle cx="180" cy="305" r="8" class="sp-a-lamp-off"></circle>
                 <circle cx="180" cy="305" r="8" class="sp-a-lamp-in a-bar-beam"></circle>
-                <text x="194" y="311" class="sp-a-strip-text sp-a-start">Beam blocked</text>
+                <text x="194" y="311" class="sp-a-strip-text sp-a-start" data-i18n="st.117">Beam blocked</text>
                 <circle cx="342" cy="305" r="8" class="sp-a-lamp-off"></circle>
                 <circle cx="342" cy="305" r="8" class="sp-a-lamp-out a-bar-up"></circle>
-                <text x="356" y="311" class="sp-a-strip-text sp-a-start">Barrier up</text>
+                <text x="356" y="311" class="sp-a-strip-text sp-a-start" data-i18n="st.118">Barrier up</text>
               </svg>
               <figcaption>
-                <h3>Car-park barrier: never lower on a car</h3>
+                <h3 data-i18n="st.119">Car-park barrier: never lower on a car</h3>
                 <ol>
-                  <li>A sensor in the road sees a waiting car.</li>
-                  <li>The PLC lifts the barrier.</li>
-                  <li>It waits until the light beam is clear, then lowers.</li>
+                  <li data-i18n="st.120">A sensor in the road sees a waiting car.</li>
+                  <li data-i18n="st.121">The PLC lifts the barrier.</li>
+                  <li data-i18n="st.122">It waits until the light beam is clear, then lowers.</li>
                 </ol>
-                <p class="sp-rule"><strong>The rule:</strong> the barrier only lowers when the beam sees nothing.</p>
+                <p class="sp-rule" data-i18n-html="st.123"><strong>The rule:</strong> the barrier only lowers when the beam sees nothing.</p>
                 <button type="button" class="sp-play">Pause</button>
               </figcaption>
             </figure>
@@ -388,37 +390,37 @@
                   <g class="sp-a-mover a-cv-pull">
                     <rect x="214" y="116" width="14" height="22" rx="3" class="sp-a-handle"></rect>
                   </g>
-                  <text x="221" y="100" class="sp-a-label">pull-cord (emergency stop)</text>
+                  <text x="221" y="100" class="sp-a-label" data-i18n="st.124">pull-cord (emergency stop)</text>
                   <rect x="424" y="165" width="44" height="36" rx="6" class="sp-a-motor"></rect>
                   <rect x="424" y="165" width="44" height="36" rx="6" class="sp-a-motor-on a-cv-run"></rect>
-                  <text x="446" y="190" class="sp-a-motor-text">M</text>
+                  <text x="446" y="190" class="sp-a-motor-text" data-i18n="st.125">M</text>
                   <line x1="452" y1="104" x2="452" y2="165" class="sp-a-pole"></line>
                   <rect x="440" y="40" width="24" height="20" rx="4" class="sp-a-off"></rect>
                   <rect x="440" y="62" width="24" height="20" rx="4" class="sp-a-off"></rect>
                   <rect x="440" y="84" width="24" height="20" rx="4" class="sp-a-off"></rect>
                   <rect x="440" y="40" width="24" height="20" rx="4" class="sp-a-red a-cv-flash"></rect>
                   <rect x="440" y="84" width="24" height="20" rx="4" class="sp-a-green a-cv-run"></rect>
-                  <text x="452" y="30" class="sp-a-label">alarm</text>
+                  <text x="452" y="30" class="sp-a-label" data-i18n="st.126">alarm</text>
                 </g>
                 <rect x="1" y="274" width="478" height="62" rx="12" class="sp-a-strip"></rect>
                 <circle cx="24" cy="305" r="8" class="sp-a-lamp-off"></circle>
                 <circle cx="24" cy="305" r="8" class="sp-a-lamp-in a-cv-stop"></circle>
-                <text x="38" y="311" class="sp-a-strip-text sp-a-start">Cord pulled</text>
+                <text x="38" y="311" class="sp-a-strip-text sp-a-start" data-i18n="st.127">Cord pulled</text>
                 <circle cx="180" cy="305" r="8" class="sp-a-lamp-off"></circle>
                 <circle cx="180" cy="305" r="8" class="sp-a-lamp-out a-cv-run"></circle>
-                <text x="194" y="311" class="sp-a-strip-text sp-a-start">Belt motor</text>
+                <text x="194" y="311" class="sp-a-strip-text sp-a-start" data-i18n="st.128">Belt motor</text>
                 <circle cx="342" cy="305" r="8" class="sp-a-lamp-off"></circle>
                 <circle cx="342" cy="305" r="8" class="sp-a-lamp-out a-cv-flash"></circle>
-                <text x="356" y="311" class="sp-a-strip-text sp-a-start">Alarm light</text>
+                <text x="356" y="311" class="sp-a-strip-text sp-a-start" data-i18n="st.129">Alarm light</text>
               </svg>
               <figcaption>
-                <h3>Palm-oil mill: emergency pull-cord</h3>
+                <h3 data-i18n="st.130">Palm-oil mill: emergency pull-cord</h3>
                 <ol>
-                  <li>The conveyor carries fruit bunches into the mill.</li>
-                  <li>A worker pulls the cord that runs along the belt.</li>
-                  <li>The motor stops at once and the alarm light flashes.</li>
+                  <li data-i18n="st.131">The conveyor carries fruit bunches into the mill.</li>
+                  <li data-i18n="st.132">A worker pulls the cord that runs along the belt.</li>
+                  <li data-i18n="st.133">The motor stops at once and the alarm light flashes.</li>
                 </ol>
-                <p class="sp-rule"><strong>The rule:</strong> a stop signal always wins over a run signal.</p>
+                <p class="sp-rule" data-i18n-html="st.134"><strong>The rule:</strong> a stop signal always wins over a run signal.</p>
                 <button type="button" class="sp-play">Pause</button>
               </figcaption>
             </figure>
@@ -427,57 +429,57 @@
 
         <!-- 3. Inputs and outputs -->
         <section id="io" class="sp-section">
-          <p class="sp-eyebrow">Inputs &amp; outputs</p>
-          <h2>You already know these parts.</h2>
-          <p class="sp-intro">
+          <p class="sp-eyebrow" data-i18n="st.135">Inputs &amp; outputs</p>
+          <h2 data-i18n="st.136">You already know these parts.</h2>
+          <p class="sp-intro" data-i18n="st.137">
             The same parts appear at home and in big factories.
             Our factory example is a palm-oil mill.
           </p>
           <div class="sp-card sp-table-card">
             <table class="sp-table">
               <thead>
-                <tr><th scope="col">Part</th><th scope="col">Everyday example</th><th scope="col">Palm-oil mill example</th></tr>
+                <tr><th scope="col" data-i18n="st.138">Part</th><th scope="col" data-i18n="st.139">Everyday example</th><th scope="col" data-i18n="st.140">Palm-oil mill example</th></tr>
               </thead>
               <tbody>
-                <tr class="sp-group sp-group-in"><th colspan="3" scope="colgroup"><span class="sp-dot" aria-hidden="true"></span>Inputs: what the PLC senses</th></tr>
-                <tr><td>Push button</td><td data-label="Everyday">Lift floor button</td><td data-label="Palm-oil mill">Conveyor start / stop button</td></tr>
-                <tr><td>Limit switch</td><td data-label="Everyday">Gate fully open</td><td data-label="Palm-oil mill">Steriliser door closed</td></tr>
-                <tr><td>Photo-eye (light beam)</td><td data-label="Everyday">Car-park barrier beam</td><td data-label="Palm-oil mill">Fruit bunch on the conveyor</td></tr>
-                <tr><td>Level sensor</td><td data-label="Everyday">Water level in a washer</td><td data-label="Palm-oil mill">Oil tank level</td></tr>
-                <tr><td>Temperature sensor</td><td data-label="Everyday">Rice cooker</td><td data-label="Palm-oil mill">Steriliser and oil tank heat</td></tr>
-                <tr><td>Emergency stop</td><td data-label="Everyday">Escalator red stop button</td><td data-label="Palm-oil mill">Pull-cord along a conveyor</td></tr>
-                <tr class="sp-group sp-group-out"><th colspan="3" scope="colgroup"><span class="sp-dot" aria-hidden="true"></span>Outputs: what the PLC controls</th></tr>
-                <tr><td>Motor</td><td data-label="Everyday">Escalator steps</td><td data-label="Palm-oil mill">Conveyor, screw press</td></tr>
-                <tr><td>Valve / pump</td><td data-label="Everyday">Washer fill and drain</td><td data-label="Palm-oil mill">Steam valve, oil transfer pump</td></tr>
-                <tr><td>Lamp / buzzer</td><td data-label="Everyday">Lift "door closing" chime</td><td data-label="Palm-oil mill">Alarm light tower and siren</td></tr>
-                <tr><td>Screen (HMI)</td><td data-label="Everyday">Lift floor display</td><td data-label="Palm-oil mill">Control-room screen (SCADA)</td></tr>
+                <tr class="sp-group sp-group-in"><th colspan="3" scope="colgroup" data-i18n-html="st.141"><span class="sp-dot" aria-hidden="true"></span>Inputs: what the PLC senses</th></tr>
+                <tr><td data-i18n="st.142">Push button</td><td data-label="Everyday" data-i18n="st.143">Lift floor button</td><td data-label="Palm-oil mill" data-i18n="st.144">Conveyor start / stop button</td></tr>
+                <tr><td data-i18n="st.145">Limit switch</td><td data-label="Everyday" data-i18n="st.146">Gate fully open</td><td data-label="Palm-oil mill" data-i18n="st.147">Steriliser door closed</td></tr>
+                <tr><td data-i18n="st.148">Photo-eye (light beam)</td><td data-label="Everyday" data-i18n="st.149">Car-park barrier beam</td><td data-label="Palm-oil mill" data-i18n="st.150">Fruit bunch on the conveyor</td></tr>
+                <tr><td data-i18n="st.151">Level sensor</td><td data-label="Everyday" data-i18n="st.152">Water level in a washer</td><td data-label="Palm-oil mill" data-i18n="st.153">Oil tank level</td></tr>
+                <tr><td data-i18n="st.154">Temperature sensor</td><td data-label="Everyday" data-i18n="st.155">Rice cooker</td><td data-label="Palm-oil mill" data-i18n="st.156">Steriliser and oil tank heat</td></tr>
+                <tr><td data-i18n="st.157">Emergency stop</td><td data-label="Everyday" data-i18n="st.158">Escalator red stop button</td><td data-label="Palm-oil mill" data-i18n="st.159">Pull-cord along a conveyor</td></tr>
+                <tr class="sp-group sp-group-out"><th colspan="3" scope="colgroup" data-i18n-html="st.160"><span class="sp-dot" aria-hidden="true"></span>Outputs: what the PLC controls</th></tr>
+                <tr><td data-i18n="st.161">Motor</td><td data-label="Everyday" data-i18n="st.162">Escalator steps</td><td data-label="Palm-oil mill" data-i18n="st.163">Conveyor, screw press</td></tr>
+                <tr><td data-i18n="st.164">Valve / pump</td><td data-label="Everyday" data-i18n="st.165">Washer fill and drain</td><td data-label="Palm-oil mill" data-i18n="st.166">Steam valve, oil transfer pump</td></tr>
+                <tr><td data-i18n="st.167">Lamp / buzzer</td><td data-label="Everyday" data-i18n="st.168">Lift "door closing" chime</td><td data-label="Palm-oil mill" data-i18n="st.169">Alarm light tower and siren</td></tr>
+                <tr><td data-i18n="st.170">Screen (HMI)</td><td data-label="Everyday" data-i18n="st.171">Lift floor display</td><td data-label="Palm-oil mill" data-i18n="st.172">Control-room screen (SCADA)</td></tr>
               </tbody>
             </table>
           </div>
           <div class="sp-grid sp-grid-after">
             <article class="sp-card">
               <span class="sp-badge sp-badge-in" aria-hidden="true">8</span>
-              <h3>In our trainer: 8 inputs</h3>
+              <h3 data-i18n="st.173">In our trainer: 8 inputs</h3>
               <ul>
-                <li>START and STOP buttons</li>
-                <li>Two pedestrian crossing buttons</li>
-                <li>Two car sensors, one per road</li>
-                <li>EMERGENCY and NIGHT switches</li>
+                <li data-i18n="st.174">START and STOP buttons</li>
+                <li data-i18n="st.175">Two pedestrian crossing buttons</li>
+                <li data-i18n="st.176">Two car sensors, one per road</li>
+                <li data-i18n="st.177">EMERGENCY and NIGHT switches</li>
               </ul>
             </article>
             <article class="sp-card">
               <span class="sp-badge sp-badge-out" aria-hidden="true">6</span>
-              <h3>In our trainer: 6 outputs</h3>
+              <h3 data-i18n="st.178">In our trainer: 6 outputs</h3>
               <ul>
-                <li>Red, yellow, green for one road</li>
-                <li>Red, yellow, green for the other</li>
+                <li data-i18n="st.179">Red, yellow, green for one road</li>
+                <li data-i18n="st.180">Red, yellow, green for the other</li>
               </ul>
-              <p>A traffic light is small, but it uses every key idea.</p>
+              <p data-i18n="st.181">A traffic light is small, but it uses every key idea.</p>
             </article>
             <article class="sp-card">
               <span class="sp-badge sp-badge-plc" aria-hidden="true">~</span>
-              <h3>On / off or "how much"</h3>
-              <p>
+              <h3 data-i18n="st.182">On / off or "how much"</h3>
+              <p data-i18n-html="st.183">
                 A button is simply on or off. A temperature changes smoothly.
                 Engineers call these <em>digital</em> and <em>analog</em> signals.
               </p>
@@ -487,15 +489,15 @@
 
         <!-- 4. Steps -->
         <section id="steps" class="sp-section">
-          <p class="sp-eyebrow">How it works</p>
-          <h2>Every PLC repeats 3 simple steps.</h2>
-          <p class="sp-intro">It does this about ten times every second, for years.</p>
+          <p class="sp-eyebrow" data-i18n="st.184">How it works</p>
+          <h2 data-i18n="st.185">Every PLC repeats 3 simple steps.</h2>
+          <p class="sp-intro" data-i18n="st.186">It does this about ten times every second, for years.</p>
           <ol class="sp-steps">
-            <li class="sp-card"><h3>Read</h3><p>Check every button and sensor. Is the door closed? Is the tank full?</p></li>
-            <li class="sp-card"><h3>Decide</h3><p>Follow the written rules. "If the door is closed and Start is pressed, run."</p></li>
-            <li class="sp-card"><h3>Act</h3><p>Switch motors, lamps and valves to match. Then go back to step 1.</p></li>
+            <li class="sp-card"><h3 data-i18n="st.187">Read</h3><p data-i18n="st.188">Check every button and sensor. Is the door closed? Is the tank full?</p></li>
+            <li class="sp-card"><h3 data-i18n="st.189">Decide</h3><p data-i18n="st.190">Follow the written rules. "If the door is closed and Start is pressed, run."</p></li>
+            <li class="sp-card"><h3 data-i18n="st.191">Act</h3><p data-i18n="st.192">Switch motors, lamps and valves to match. Then go back to step 1.</p></li>
           </ol>
-          <p class="sp-after">
+          <p class="sp-after" data-i18n-html="st.193">
             That is the whole secret. The <a href="/static/beginner-guide.html#loop">Beginner guide</a>
             explains each step with a washing machine, a lift and more.
           </p>
@@ -504,115 +506,115 @@
 
         <!-- 6. Path -->
         <section id="path" class="sp-section">
-          <p class="sp-eyebrow">Your learning path</p>
-          <h2>10 short lessons in 5 stages.</h2>
-          <p class="sp-intro">Go in order, or jump to what you need. Every lesson ends with a link to the next one.</p>
+          <p class="sp-eyebrow" data-i18n="st.194">Your learning path</p>
+          <h2 data-i18n="st.195">10 short lessons in 5 stages.</h2>
+          <p class="sp-intro" data-i18n="st.196">Go in order, or jump to what you need. Every lesson ends with a link to the next one.</p>
           <ol class="sp-path sp-stages">
             <li>
               <div>
-                <h3>The basics</h3>
+                <h3 data-i18n="stage.basics">The basics</h3>
                 <ul class="sp-lessons">
-                <li><a href="/static/beginner-guide.html"><span class="sp-lesson-no">1</span><span><strong>Beginner guide</strong><small>PLC ideas through a washer, lift, gate and rice cooker.</small></span></a></li>
-                <li><a href="/static/how-it-works.html"><span class="sp-lesson-no">2</span><span><strong>How the traffic light works</strong><small>Follow the trainer's rules, one scenario at a time.</small></span></a></li>
+                <li><a href="/static/beginner-guide.html"><span class="sp-lesson-no">1</span><span><strong data-i18n="lesson.beginner-guide.title">Beginner guide</strong><small data-i18n="lesson.beginner-guide.blurb">PLC ideas through a washer, lift, gate and rice cooker.</small></span></a></li>
+                <li><a href="/static/how-it-works.html"><span class="sp-lesson-no">2</span><span><strong data-i18n="lesson.how-it-works.title">How the traffic light works</strong><small data-i18n="lesson.how-it-works.blurb">Follow the trainer's rules, one scenario at a time.</small></span></a></li>
                 </ul>
               </div>
             </li>
             <li>
               <div>
-                <h3>Real skills</h3>
+                <h3 data-i18n="stage.skills">Real skills</h3>
                 <ul class="sp-lessons">
-                <li><a href="/static/plc-programming-methods.html"><span class="sp-lesson-no">3</span><span><strong>Writing a reliable program</strong><small>Plan with a flowchart first, then write Ladder.</small></span></a></li>
-                <li><a href="/static/industrial-situations.html"><span class="sp-lesson-no">4</span><span><strong>Real industrial situations</strong><small>Brands, sensors, motor drives and common cabinet faults.</small></span></a></li>
+                <li><a href="/static/plc-programming-methods.html"><span class="sp-lesson-no">3</span><span><strong data-i18n="lesson.plc-programming-methods.title">Writing a reliable program</strong><small data-i18n="lesson.plc-programming-methods.blurb">Plan with a flowchart first, then write Ladder.</small></span></a></li>
+                <li><a href="/static/industrial-situations.html"><span class="sp-lesson-no">4</span><span><strong data-i18n="lesson.industrial-situations.title">Real industrial situations</strong><small data-i18n="lesson.industrial-situations.blurb">Brands, sensors, motor drives and common cabinet faults.</small></span></a></li>
                 </ul>
               </div>
             </li>
             <li>
               <div>
-                <h3>A real factory</h3>
+                <h3 data-i18n="stage.factory">A real factory</h3>
                 <ul class="sp-lessons">
-                <li><a href="/static/oil-palm-industrial-environment.html"><span class="sp-lesson-no">5</span><span><strong>Inside a palm-oil mill</strong><small>Follow fruit bunches all the way to crude palm oil.</small></span></a></li>
-                <li><a href="/static/oil-palm-control-stack-analysis.html"><span class="sp-lesson-no">6</span><span><strong>Choosing the right controller</strong><small>PLC, PAC, Raspberry Pi or Arduino: which job suits which?</small></span></a></li>
+                <li><a href="/static/oil-palm-industrial-environment.html"><span class="sp-lesson-no">5</span><span><strong data-i18n="lesson.oil-palm-industrial-environment.title">Inside a palm-oil mill</strong><small data-i18n="lesson.oil-palm-industrial-environment.blurb">Follow fruit bunches all the way to crude palm oil.</small></span></a></li>
+                <li><a href="/static/oil-palm-control-stack-analysis.html"><span class="sp-lesson-no">6</span><span><strong data-i18n="lesson.oil-palm-control-stack-analysis.title">Choosing the right controller</strong><small data-i18n="lesson.oil-palm-control-stack-analysis.blurb">PLC, PAC, Raspberry Pi or Arduino: which job suits which?</small></span></a></li>
                 </ul>
               </div>
             </li>
             <li>
               <div>
-                <h3>Data and networks</h3>
+                <h3 data-i18n="stage.data">Data and networks</h3>
                 <ul class="sp-lessons">
-                <li><a href="/static/phase-2-start-here.html"><span class="sp-lesson-no">7</span><span><strong>Control rooms and networks</strong><small>How machines, screens and servers share information.</small></span></a></li>
-                <li><a href="/static/phase-3-data-analytics.html"><span class="sp-lesson-no">8</span><span><strong>Factory data and dashboards</strong><small>Turn machine signals into numbers managers can use.</small></span></a></li>
-                <li><a href="/static/phase-4-legacy-ot-recovery.html"><span class="sp-lesson-no">9</span><span><strong>Rescuing old machines</strong><small>Read data safely from old equipment that must keep running.</small></span></a></li>
+                <li><a href="/static/phase-2-start-here.html"><span class="sp-lesson-no">7</span><span><strong data-i18n="lesson.phase-2-start-here.title">Control rooms and networks</strong><small data-i18n="lesson.phase-2-start-here.blurb">How machines, screens and servers share information.</small></span></a></li>
+                <li><a href="/static/phase-3-data-analytics.html"><span class="sp-lesson-no">8</span><span><strong data-i18n="lesson.phase-3-data-analytics.title">Factory data and dashboards</strong><small data-i18n="lesson.phase-3-data-analytics.blurb">Turn machine signals into numbers managers can use.</small></span></a></li>
+                <li><a href="/static/phase-4-legacy-ot-recovery.html"><span class="sp-lesson-no">9</span><span><strong data-i18n="lesson.phase-4-legacy-ot-recovery.title">Rescuing old machines</strong><small data-i18n="lesson.phase-4-legacy-ot-recovery.blurb">Read data safely from old equipment that must keep running.</small></span></a></li>
                 </ul>
               </div>
             </li>
             <li>
               <div>
-                <h3>Safety career</h3>
+                <h3 data-i18n="stage.safety">Safety career</h3>
                 <ul class="sp-lessons">
-                <li><a href="/static/risk-assessment-certification.html"><span class="sp-lesson-no">10</span><span><strong>Becoming safety qualified</strong><small>What machine-safety training means, and how to get it.</small></span></a></li>
+                <li><a href="/static/risk-assessment-certification.html"><span class="sp-lesson-no">10</span><span><strong data-i18n="lesson.risk-assessment-certification.title">Becoming safety qualified</strong><small data-i18n="lesson.risk-assessment-certification.blurb">What machine-safety training means, and how to get it.</small></span></a></li>
                 </ul>
               </div>
             </li>
           </ol>
           <div class="sp-callout">
-            <p><strong>Want to press the buttons yourself?</strong> The full interactive trainer runs free on a Windows PC.</p>
-            <a class="sp-button sp-button-main" href="https://github.com/SaladinIART/salbotics-plc-learning-hub#download-and-open-on-windows">How to download</a>
+            <p data-i18n-html="st.197"><strong>Want to press the buttons yourself?</strong> The full interactive trainer runs free on a Windows PC.</p>
+            <a class="sp-button sp-button-main" href="https://github.com/SaladinIART/salbotics-plc-learning-hub#download-and-open-on-windows" data-i18n="st.198">How to download</a>
           </div>
         </section>
 
         <!-- 7. Roadmap -->
         <section id="roadmap" class="sp-section">
-          <p class="sp-eyebrow">Roadmap</p>
-          <h2>Where the hub is going.</h2>
-          <p class="sp-intro">The hub grows in phases. Each phase adds a new layer of real factory skills.</p>
+          <p class="sp-eyebrow" data-i18n="st.199">Roadmap</p>
+          <h2 data-i18n="st.200">Where the hub is going.</h2>
+          <p class="sp-intro" data-i18n="st.201">The hub grows in phases. Each phase adds a new layer of real factory skills.</p>
           <ol class="sp-roadmap">
             <li class="sp-milestone is-live">
-              <span class="sp-status">Live</span>
-              <h3>Phase 1 &#183; The basics</h3>
-              <p>PLC ideas, everyday machines and the traffic-light trainer.</p>
-              <a href="/static/beginner-guide.html">Open the lessons</a>
+              <span class="sp-status" data-i18n="st.202">Live</span>
+              <h3 data-i18n="st.203">Phase 1 &#183; The basics</h3>
+              <p data-i18n="st.204">PLC ideas, everyday machines and the traffic-light trainer.</p>
+              <a href="/static/beginner-guide.html" data-i18n="st.205">Open the lessons</a>
             </li>
             <li class="sp-milestone is-progress">
-              <span class="sp-status">In progress</span>
-              <h3>Phase 1B&#8211;1C &#183; Livelier lessons</h3>
-              <p>Animated diagrams like the ones above, and guided scenarios.</p>
+              <span class="sp-status" data-i18n="st.206">In progress</span>
+              <h3 data-i18n="st.207">Phase 1B&#8211;1C &#183; Livelier lessons</h3>
+              <p data-i18n="st.208">Animated diagrams like the ones above, and guided scenarios.</p>
             </li>
             <li class="sp-milestone is-live">
-              <span class="sp-status">Lessons live</span>
-              <h3>Phase 2 &#183; Control rooms</h3>
-              <p>How screens and machines talk to each other across a factory.</p>
-              <a href="/static/phase-2-start-here.html">Open Phase 2</a>
+              <span class="sp-status" data-i18n="st.209">Lessons live</span>
+              <h3 data-i18n="st.210">Phase 2 &#183; Control rooms</h3>
+              <p data-i18n="st.211">How screens and machines talk to each other across a factory.</p>
+              <a href="/static/phase-2-start-here.html" data-i18n="st.212">Open Phase 2</a>
             </li>
             <li class="sp-milestone is-live">
-              <span class="sp-status">Lessons live</span>
-              <h3>Phase 3 &#183; Factory data</h3>
-              <p>Collecting numbers and turning them into simple dashboards.</p>
-              <a href="/static/phase-3-data-analytics.html">Open Phase 3</a>
+              <span class="sp-status" data-i18n="st.213">Lessons live</span>
+              <h3 data-i18n="st.214">Phase 3 &#183; Factory data</h3>
+              <p data-i18n="st.215">Collecting numbers and turning them into simple dashboards.</p>
+              <a href="/static/phase-3-data-analytics.html" data-i18n="st.216">Open Phase 3</a>
             </li>
             <li class="sp-milestone is-live">
-              <span class="sp-status">Lessons live</span>
-              <h3>Phase 4 &#183; Old machines</h3>
-              <p>Safely reading data from ageing equipment that still runs.</p>
-              <a href="/static/phase-4-legacy-ot-recovery.html">Open Phase 4</a>
+              <span class="sp-status" data-i18n="st.217">Lessons live</span>
+              <h3 data-i18n="st.218">Phase 4 &#183; Old machines</h3>
+              <p data-i18n="st.219">Safely reading data from ageing equipment that still runs.</p>
+              <a href="/static/phase-4-legacy-ot-recovery.html" data-i18n="st.220">Open Phase 4</a>
             </li>
             <li class="sp-milestone is-planned">
-              <span class="sp-status">Planned</span>
-              <h3>Phase 5 &#183; Upgrading safely</h3>
-              <p>Planning a careful switch from old controls to new ones.</p>
+              <span class="sp-status" data-i18n="st.221">Planned</span>
+              <h3 data-i18n="st.222">Phase 5 &#183; Upgrading safely</h3>
+              <p data-i18n="st.223">Planning a careful switch from old controls to new ones.</p>
             </li>
           </ol>
         </section>
 
         <div class="sp-note" role="note" aria-label="Educational use note">
-          <h2>Educational use</h2>
-          <p>
+          <h2 data-i18n="st.224">Educational use</h2>
+          <p data-i18n-html="st.225">
             Simplified teaching material from <a href="https://salbotics.uk/">Salbotics</a>.
             It is not certified safety software. Do not use it to design or change real machines.
           </p>
         </div>
 
         <footer class="sp-footer">
-          An open educational project by <a href="https://salbotics.uk/">Salbotics Solutions</a>.
+          An open educational project by <a href="https://salbotics.uk/" data-i18n="st.226">Salbotics Solutions</a>.
         </footer>
       </div>
     </main>

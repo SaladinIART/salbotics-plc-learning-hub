@@ -6,23 +6,25 @@
     <title>Salbotics PLC Learning Hub - Oil Palm Industrial Environment</title>
     <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
     <link rel="stylesheet" href="/static/guide.css" />
-    <link rel="stylesheet" href="/static/hub.css?v=plain-20261021" />
+    <link rel="stylesheet" href="/static/hub.css?v=prefs-20261021" />
+    <link rel="stylesheet" href="/static/prefs.css?v=prefs-20261021" />
+    <script src="/static/hub-prefs.js?v=prefs-20261021"></script>
   </head>
   <body class="hub-page" data-lesson="oil-palm-industrial-environment.html">
     <div class="app-shell guide-shell industrial-shell oil-shell">
       <header class="topbar">
         <div class="brand-block">
-          <strong><a class="hub-home" href="/static/start.html">Salbotics PLC Hub</a></strong>
-          <span>Inside a palm-oil mill</span>
+          <strong><a class="hub-home" href="/static/start.html" data-i18n="ui.brand">Salbotics PLC Hub</a></strong>
+          <span data-i18n="lesson.oil-palm-industrial-environment.title">Inside a palm-oil mill</span>
         </div>
         <div class="top-actions">
-          <a class="header-link" href="/static/start.html">Home</a>
-          <a class="header-link" href="/static/beginner-guide.html" data-stage="basics">Basics</a>
-          <a class="header-link" href="/static/plc-programming-methods.html" data-stage="skills">Skills</a>
-          <a class="header-link" href="/static/oil-palm-industrial-environment.html" data-stage="factory">Factory</a>
-          <a class="header-link" href="/static/phase-2-start-here.html" data-stage="data">Data</a>
-          <a class="header-link" href="/static/risk-assessment-certification.html" data-stage="safety">Safety</a>
-          <a class="connection-pill guide-back" href="/">Simulator</a>
+          <a class="header-link" href="/static/start.html" data-i18n="ui.nav.home">Home</a>
+          <a class="header-link" href="/static/beginner-guide.html" data-stage="basics" data-i18n="ui.nav.basics">Basics</a>
+          <a class="header-link" href="/static/plc-programming-methods.html" data-stage="skills" data-i18n="ui.nav.skills">Skills</a>
+          <a class="header-link" href="/static/oil-palm-industrial-environment.html" data-stage="factory" data-i18n="ui.nav.factory">Factory</a>
+          <a class="header-link" href="/static/phase-2-start-here.html" data-stage="data" data-i18n="ui.nav.data">Data</a>
+          <a class="header-link" href="/static/risk-assessment-certification.html" data-stage="safety" data-i18n="ui.nav.safety">Safety</a>
+          <a class="connection-pill guide-back" href="/" data-i18n="ui.nav.sim">Simulator</a>
         </div>
         <div class="status-strip guide-status-strip">
           <div class="status-item">
@@ -47,19 +49,23 @@
       <main class="guide-main" data-collapsible-sections>
         <section class="panel lesson-panel intro-panel industrial-intro">
           <div class="panel-heading">
-            <h1>Oil Palm Plant: From FFB To Crude Palm Oil</h1>
-            <span>process flow, station control, PAC, IIoT, and edge devices</span>
+            <h1 data-i18n="om.title">Inside a palm-oil mill</h1>
+            <span class="hub-techname"><span data-i18n="ui.techname">Technical name:</span> Oil Palm Plant: From FFB To Crude Palm Oil</span>
           </div>
+          <p class="hub-lead" data-i18n="om.lead">Follow a palm-oil mill from fresh fruit to crude palm oil, and see what the controllers do at each station.</p>
           <div class="hub-summary" role="region" aria-labelledby="hub-summary-title">
-            <h2 id="hub-summary-title">In 30 seconds</h2>
+            <h2 id="hub-summary-title" data-i18n="ui.summary">In 30 seconds</h2>
             <ul>
-              <li>A palm-oil mill turns fresh fruit bunches into crude palm oil, station by station.</li>
-              <li>Each station has its own controller, sensors, motors and alarms.</li>
-              <li>Learn the process first, then the checks technicians make before editing logic.</li>
+              <li data-i18n="om.sum1">A palm-oil mill turns fresh fruit bunches into crude palm oil, station by station.</li>
+              <li data-i18n="om.sum2">Each station has its own controller, sensors, motors and alarms.</li>
+              <li data-i18n="om.sum3">Learn the process first, then the checks technicians make before editing logic.</li>
             </ul>
-            <p class="hub-summary-tip">Tap a topic below to open it, or use "Open all topics".</p>
+            <p class="hub-summary-tip" data-i18n="ui.summarytip">Tap a topic below to open it, or use "Open all topics".</p>
           </div>
-          <div class="intro-grid industrial-intro-grid">
+          <details class="hub-safety">
+            <summary><span class="hub-safety-icon" aria-hidden="true">!</span> <span data-i18n="om.safety">Educational only: real mills involve steam, pressure and heavy machinery.</span> <span class="hub-more" data-i18n="ui.readmore">Read more</span></summary>
+            <p class="hub-scope"><strong data-i18n="ui.covers">This lesson covers:</strong> process flow, station control, PAC, IIoT, and edge devices</p>
+            <div class="intro-grid industrial-intro-grid">
             <div>
               <h2>Training goal</h2>
               <p>
@@ -77,20 +83,21 @@
               </p>
             </div>
           </div>
+          </details>
         </section>
 
 
         <nav class="scenario-nav industrial-nav oil-nav" aria-label="Oil palm lesson sections">
-          <a href="#operating-modes">Modes</a>
-          <a href="#process-flow">Process Flow</a>
-          <a href="#handling-systems">Handling</a>
-          <a href="#process-lad">Process LAD</a>
-          <a href="#station-map">Stations</a>
-          <a href="#utilities">Utilities</a>
-          <a href="#control-network">Control Network</a>
-          <a href="#equipment-map">I/O Map</a>
-          <a href="#scenarios">Fault Scenarios</a>
-          <a href="#standards">Standards</a>
+          <a href="#operating-modes" data-i18n="om.operating-modes.nav">Modes</a>
+          <a href="#process-flow" data-i18n="om.process-flow.nav">Process Flow</a>
+          <a href="#handling-systems" data-i18n="om.handling-systems.nav">Handling</a>
+          <a href="#process-lad" data-i18n="om.process-lad.nav">Process LAD</a>
+          <a href="#station-map" data-i18n="om.station-map.nav">Stations</a>
+          <a href="#utilities" data-i18n="om.utilities.nav">Utilities</a>
+          <a href="#control-network" data-i18n="om.control-network.nav">Control Network</a>
+          <a href="#equipment-map" data-i18n="om.equipment-map.nav">I/O Map</a>
+          <a href="#scenarios" data-i18n="om.scenarios.nav">Fault Scenarios</a>
+          <a href="#standards" data-i18n="om.standards.nav">Standards</a>
           <a href="/static/phase-2-start-here.html">Phase 2 Start</a>
           <a href="/static/phase-3-data-analytics.html">Data Analytics</a>
           <a href="/static/phase-4-legacy-ot-recovery.html">Legacy OT</a>
@@ -99,16 +106,17 @@
 
         <section id="operating-modes" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>1. Operating Modes: Manual, Semi-Auto, Auto</h2>
-            <span>the same machine behaves differently depending on mode ownership</span>
+            <h2 data-i18n="om.operating-modes.title">Manual, semi-auto and auto</h2>
+            <span>1. Operating Modes: Manual, Semi-Auto, Auto · the same machine behaves differently depending on mode ownership</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Machines run in three modes. Manual moves one part at a time, semi-auto runs one step, and auto runs the whole line. Safety rules apply in every mode.</p>
-            <p class="plain-like"><strong>Like:</strong> Driving yourself, cruise control, or a driverless train.</p>
+            <p class="plain-text" data-i18n="om.operating-modes.plain">Machines run in three modes. Manual moves one part at a time, semi-auto runs one step, and auto runs the whole line. Safety rules apply in every mode.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="om.operating-modes.like">Driving yourself, cruise control, or a driverless train.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="mode-grid">
             <article class="mode-card manual-mode">
               <h3>Manual</h3>
@@ -180,21 +188,21 @@
 
         <section id="process-flow" class="panel scenario-panel" data-start-open>
           <div class="panel-heading">
-            <h2>2. Main Process Flow</h2>
-            <span>fresh fruit bunches to crude palm oil</span>
+            <h2 data-i18n="om.process-flow.title">From fresh fruit to crude palm oil</h2>
+            <span>2. Main Process Flow · fresh fruit bunches to crude palm oil</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Fresh fruit bunches arrive by truck and pass through eight stations. Steam, pressing and settling turn them into crude palm oil.</p>
-            <p class="plain-like"><strong>Like:</strong> A kitchen recipe: cook, separate, squeeze, strain, store.</p>
+            <p class="plain-text" data-i18n="om.process-flow.plain">Fresh fruit bunches arrive by truck and pass through eight stations. Steam, pressing and settling turn them into crude palm oil.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="om.process-flow.like">A kitchen recipe: cook, separate, squeeze, strain, store.</span></p>
             <ol class="phone-flow" aria-label="Steps in order">
-              <li><strong>FFB reception</strong><span>trucks are weighed and unloaded</span></li>
-              <li><strong>Sterilizer</strong><span>steam cooks the fruit</span></li>
-              <li><strong>Thresher</strong><span>fruit is shaken off the bunch</span></li>
-              <li><strong>Digester</strong><span>fruit is heated and mashed</span></li>
-              <li><strong>Screw press</strong><span>oil is squeezed out</span></li>
-              <li><strong>Clarifier</strong><span>oil is separated from water and solids</span></li>
-              <li><strong>Purifier</strong><span>oil is cleaned and dried</span></li>
-              <li><strong>CPO tank</strong><span>crude palm oil is stored</span></li>
+              <li><strong data-i18n="om.process-flow.f1">FFB reception</strong><span data-i18n="om.process-flow.f1d">trucks are weighed and unloaded</span></li>
+              <li><strong data-i18n="om.process-flow.f2">Sterilizer</strong><span data-i18n="om.process-flow.f2d">steam cooks the fruit</span></li>
+              <li><strong data-i18n="om.process-flow.f3">Thresher</strong><span data-i18n="om.process-flow.f3d">fruit is shaken off the bunch</span></li>
+              <li><strong data-i18n="om.process-flow.f4">Digester</strong><span data-i18n="om.process-flow.f4d">fruit is heated and mashed</span></li>
+              <li><strong data-i18n="om.process-flow.f5">Screw press</strong><span data-i18n="om.process-flow.f5d">oil is squeezed out</span></li>
+              <li><strong data-i18n="om.process-flow.f6">Clarifier</strong><span data-i18n="om.process-flow.f6d">oil is separated from water and solids</span></li>
+              <li><strong data-i18n="om.process-flow.f7">Purifier</strong><span data-i18n="om.process-flow.f7d">oil is cleaned and dried</span></li>
+              <li><strong data-i18n="om.process-flow.f8">CPO tank</strong><span data-i18n="om.process-flow.f8d">crude palm oil is stored</span></li>
             </ol>
             <div class="diagram-panel has-phone-flow" aria-label="FFB to CPO process flow diagram">
             <svg class="process-svg" viewBox="0 0 1180 360" role="img" aria-labelledby="process-title process-desc">
@@ -250,8 +258,9 @@
           </div>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           
           <div class="compare-grid oil-process-grid">
             <div class="mini-table">
@@ -285,16 +294,17 @@
 
         <section id="handling-systems" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>3. Conveyor And Handling Systems</h2>
-            <span>where many real plant faults begin</span>
+            <h2 data-i18n="om.handling-systems.title">Conveyors that move the fruit</h2>
+            <span>3. Conveyor And Handling Systems · where many real plant faults begin</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Conveyors carry fruit between stations. They start from the far end first and stop from the near end first, so nothing piles up.</p>
-            <p class="plain-like"><strong>Like:</strong> Clearing the queue ahead before letting more people in.</p>
+            <p class="plain-text" data-i18n="om.handling-systems.plain">Conveyors carry fruit between stations. They start from the far end first and stop from the near end first, so nothing piles up.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="om.handling-systems.like">Clearing the queue ahead before letting more people in.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="diagram-panel">
             <svg class="process-svg handling-svg" viewBox="0 0 1180 390" role="img" aria-labelledby="handling-title">
               <title id="handling-title">Oil palm conveyor and material handling system</title>
@@ -359,16 +369,17 @@
 
         <section id="process-lad" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>4. Process LAD Examples By Stage</h2>
-            <span>Ladder-style control narratives for each major oil-palm process</span>
+            <h2 data-i18n="om.process-lad.title">Simple rules for each station</h2>
+            <span>4. Process LAD Examples By Stage · Ladder-style control narratives for each major oil-palm process</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Each station has its own simple rules. For example, the dump gate only opens when the conveyor ahead is ready.</p>
-            <p class="plain-like"><strong>Like:</strong> A small traffic light for each part of the mill.</p>
+            <p class="plain-text" data-i18n="om.process-lad.plain">Each station has its own simple rules. For example, the dump gate only opens when the conveyor ahead is ready.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="om.process-lad.like">A small traffic light for each part of the mill.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <p class="lesson-callout">
             These LAD examples are training patterns, not certified plant code. In real projects,
             every rung must match the machine drawing, hazard analysis, device manual, and site
@@ -483,16 +494,17 @@
 
         <section id="station-map" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>5. Four Mixed Control Stations</h2>
-            <span>economy PLC, PAC, Raspberry Pi industrial edge, Arduino industrial PLC</span>
+            <h2 data-i18n="om.station-map.title">Different controllers in one mill</h2>
+            <span>5. Four Mixed Control Stations · economy PLC, PAC, Raspberry Pi industrial edge, Arduino industrial PLC</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">A mill can mix different controllers. Strong PLCs run the machines; small computers collect data or test new ideas.</p>
-            <p class="plain-like"><strong>Like:</strong> Senior staff run the floor; trainees help with records.</p>
+            <p class="plain-text" data-i18n="om.station-map.plain">A mill can mix different controllers. Strong PLCs run the machines; small computers collect data or test new ideas.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="om.station-map.like">Senior staff run the floor; trainees help with records.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="diagram-panel">
             <svg class="process-svg station-svg" viewBox="0 0 1180 420" role="img" aria-labelledby="station-title">
               <title id="station-title">Oil palm four station control architecture</title>
@@ -569,16 +581,17 @@
 
         <section id="utilities" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>6. Utility And Byproduct Loop</h2>
-            <span>steam, fiber/shell fuel, POME, and environmental monitoring</span>
+            <h2 data-i18n="om.utilities.title">Steam, power, water and waste</h2>
+            <span>6. Utility And Byproduct Loop · steam, fiber/shell fuel, POME, and environmental monitoring</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">The mill also needs steam, power and water, and must treat its waste water. Sensors track these for safety, cost and the environment.</p>
-            <p class="plain-like"><strong>Like:</strong> A home's electricity, water and rubbish, but far bigger.</p>
+            <p class="plain-text" data-i18n="om.utilities.plain">The mill also needs steam, power and water, and must treat its waste water. Sensors track these for safety, cost and the environment.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="om.utilities.like">A home's electricity, water and rubbish, but far bigger.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="diagram-panel">
             <svg class="process-svg utility-svg" viewBox="0 0 1180 320" role="img" aria-labelledby="utility-title">
               <title id="utility-title">Oil palm utility and byproduct loop</title>
@@ -631,16 +644,17 @@
 
         <section id="control-network" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>7. PAC And IIoT Control Network</h2>
-            <span>keep control, safety, edge, and cloud roles separated</span>
+            <h2 data-i18n="om.control-network.title">Keeping networks separate and safe</h2>
+            <span>7. PAC And IIoT Control Network · keep control, safety, edge, and cloud roles separated</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Machine control, office computers and the internet are kept on separate networks. Dashboards may read data but should not control machines.</p>
-            <p class="plain-like"><strong>Like:</strong> Visitors can look through the window but not enter the kitchen.</p>
+            <p class="plain-text" data-i18n="om.control-network.plain">Machine control, office computers and the internet are kept on separate networks. Dashboards may read data but should not control machines.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="om.control-network.like">Visitors can look through the window but not enter the kitchen.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="diagram-panel">
             <svg class="process-svg network-svg" viewBox="0 0 1180 380" role="img" aria-labelledby="network-title">
               <title id="network-title">Layered industrial network</title>
@@ -697,16 +711,17 @@
 
         <section id="equipment-map" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>8. Typical Oil-Palm I/O And Actuator Map</h2>
-            <span>where analog modules, VFDs, sensors, and alarms appear</span>
+            <h2 data-i18n="om.equipment-map.title">The mill&#x27;s sensors and machines</h2>
+            <span>8. Typical Oil-Palm I/O And Actuator Map · where analog modules, VFDs, sensors, and alarms appear</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">A list of real mill parts and what they sense or do. Inputs are sensors and switches; outputs are motors, valves and alarms.</p>
-            <p class="plain-like"><strong>Like:</strong> A parts list for the mill's senses and muscles.</p>
+            <p class="plain-text" data-i18n="om.equipment-map.plain">A list of real mill parts and what they sense or do. Inputs are sensors and switches; outputs are motors, valves and alarms.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="om.equipment-map.like">A parts list for the mill's senses and muscles.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="map-grid">
             <div class="mini-table">
               <h3>Digital inputs</h3>
@@ -748,16 +763,17 @@
 
         <section id="scenarios" class="panel scenario-panel danger-scenario">
           <div class="panel-heading">
-            <h2>9. Technician Fault Scenarios</h2>
-            <span>what to check before editing logic</span>
+            <h2 data-i18n="om.scenarios.title">What to check when something fails</h2>
+            <span>9. Technician Fault Scenarios · what to check before editing logic</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">When something goes wrong, check the real equipment before changing the program. Each fault here has a short checklist.</p>
-            <p class="plain-like"><strong>Like:</strong> Checking the plug before calling the repair shop.</p>
+            <p class="plain-text" data-i18n="om.scenarios.plain">When something goes wrong, check the real equipment before changing the program. Each fault here has a short checklist.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="om.scenarios.like">Checking the plug before calling the repair shop.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="robust-grid">
             <div class="robust-item">
               <h3>Sterilizer pressure fault</h3>
@@ -790,16 +806,17 @@
 
         <section id="standards" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>10. Standards And Regulations Awareness</h2>
-            <span>what a learner should recognize, not certify alone</span>
+            <h2 data-i18n="om.standards.title">Rules and standards to recognise</h2>
+            <span>10. Standards And Regulations Awareness · what a learner should recognize, not certify alone</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Factories follow standards for safety, quality and the environment. Learners should recognise the names, not certify alone.</p>
-            <p class="plain-like"><strong>Like:</strong> Road rules you should know before you drive.</p>
+            <p class="plain-text" data-i18n="om.standards.plain">Factories follow standards for safety, quality and the environment. Learners should recognise the names, not certify alone.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="om.standards.like">Road rules you should know before you drive.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="compare-grid">
             <div class="mini-table">
               <h3>Automation and safety references</h3>
@@ -840,8 +857,24 @@
             </div>
           </details>
         </section>
+        <section class="panel hub-check" aria-labelledby="hub-check-title">
+          <h2 id="hub-check-title" data-i18n="ui.check">Check yourself</h2>
+          <p class="hub-check-tip" data-i18n="ui.checktip">Think of your answer, then tap the question to see it.</p>
+          <details class="hub-q">
+            <summary data-i18n="om.q1">What arrives at the mill first?</summary>
+            <p data-i18n="om.a1">Fresh fruit bunches (FFB), brought by truck and weighed.</p>
+          </details>
+          <details class="hub-q">
+            <summary data-i18n="om.q2">When starting a line of conveyors, which end starts first?</summary>
+            <p data-i18n="om.a2">The far end, so fruit never piles onto a stopped belt.</p>
+          </details>
+          <details class="hub-q">
+            <summary data-i18n="om.q3">Should a cloud dashboard control the mill&#x27;s machines?</summary>
+            <p data-i18n="om.a3">No. Dashboards may read data, but control stays on the plant network.</p>
+          </details>
+        </section>
       </main>
-      <footer class="product-footer">
+      <footer class="product-footer" data-i18n-html="ui.footer">
         Salbotics PLC Learning Hub is an open educational product by
         <a href="https://salbotics.uk/">Salbotics Solutions</a>. It is not certified safety or traffic-control software.
       </footer>

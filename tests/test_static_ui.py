@@ -649,3 +649,131 @@ def test_dashboards_show_recorded_samples_on_the_website() -> None:
     assert "sample-analytics.json" in (static / "phase3-analytics.js").read_text(encoding="utf-8")
     assert "sample-legacy.json" in (static / "phase4-legacy.js").read_text(encoding="utf-8")
 
+
+def test_every_lesson_follows_the_same_skeleton() -> None:
+    import re
+    from pathlib import Path
+
+    static = Path(__file__).resolve().parent.parent / "static"
+    lessons = ["how-it-works", "plc-programming-methods", "industrial-situations",
+               "oil-palm-industrial-environment", "oil-palm-control-stack-analysis",
+               "phase-2-start-here", "phase-3-data-analytics", "phase-4-legacy-ot-recovery",
+               "risk-assessment-certification"]
+    flow = (static / "hub-flow.js").read_text(encoding="utf-8")
+    titles = dict(re.findall(r'file: "([a-z0-9-]+)\.html", stage: "[a-z]+", title: "([^"]+)"', flow))
+    for name in lessons:
+        page = (static / f"{name}.html").read_text(encoding="utf-8")
+        # Plain title (same as the learning path) with the old title kept as a technical name.
+        h1 = re.search(r"<h1[^>]*>(.*?)</h1>", page).group(1)
+        assert h1 == titles[name], name
+        assert "Technical name:" in page and 'class="hub-lead"' in page, name
+        # Long intro and safety note fold into one compact safety line.
+        assert page.count('<details class="hub-safety">') == 1 and "Read more" in page, name
+        # Title -> In 30 seconds -> safety -> topics -> Check yourself.
+        order = [page.index("<h1"), page.index('class="hub-summary"'), page.index("hub-safety"),
+                 page.index("<section id="), page.index('class="panel hub-check"')]
+        assert order == sorted(order), name
+        assert page.count('<details class="hub-q">') == 3, name
+    # Every tag on every page stays balanced after the edits.
+    for page in static.glob("*.html"):
+        text = page.read_text(encoding="utf-8")
+        for tag in ("h1", "h2", "span", "div", "section", "details", "summary", "p", "li"):
+            assert len(re.findall(rf"<{tag}\b", text)) == text.count(f"</{tag}>"), (page.name, tag)
+
+
+def test_dark_mode_follows_device_and_has_a_switch() -> None:
+    from pathlib import Path
+
+    static = Path(__file__).resolve().parent.parent / "static"
+    for css_name in ("hub.css", "start.css"):
+        css = (static / css_name).read_text(encoding="utf-8")
+        assert "prefers-color-scheme: dark" in css and ':root:not([data-theme="light"])' in css
+        assert ':root[data-theme="dark"]' in css, css_name
+    prefs = (static / "hub-prefs.js").read_text(encoding="utf-8")
+    assert '"salbotics-hub-theme"' in prefs and '"auto", "light", "dark"' in prefs
+    # Loaded in <head> without defer so the theme applies before first paint.
+    for page in ["start"] + ["beginner-guide", "how-it-works", "industrial-situations",
+                             "phase-3-data-analytics", "risk-assessment-certification"]:
+        html = (static / f"{page}.html").read_text(encoding="utf-8")
+        head = html[:html.index("</head>")]
+        assert '<script src="/static/hub-prefs.js' in head and "defer" not in head.split("hub-prefs.js")[1][:30]
+        assert "/static/prefs.css" in head, page
+    # Diagrams, Ladder rungs and tables stay on light "paper" cards.
+    assert 'Light "paper" cards' in (static / "hub.css").read_text(encoding="utf-8")
+
+
+
+def test_language_switch_has_complete_malay_and_german_text() -> None:
+    import json
+    import re
+    import subprocess
+    import sys
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parent.parent
+    static = root / "static"
+    lang = {code: json.loads((static / "lang" / f"{code}.json").read_text(encoding="utf-8"))
+            for code in ("en", "ms", "de")}
+    # Same keys everywhere, nothing left empty or untranslated by accident.
+    assert set(lang["ms"]) == set(lang["en"]) == set(lang["de"])
+    tags = re.compile(r"<[^>]+>")
+    holes = re.compile(r"\{[a-z]+\}")
+    for key, english in lang["en"].items():
+        for code in ("ms", "de"):
+            value = lang[code][key]
+            assert value.strip(), (code, key)
+            assert tags.findall(value) == tags.findall(english), (code, key)
+            assert sorted(holes.findall(value)) == sorted(holes.findall(english)), (code, key)
+
+    # Every key used in a page exists in the translation files.
+    pages = ["start", "beginner-guide", "how-it-works", "industrial-situations",
+             "plc-programming-methods", "oil-palm-industrial-environment",
+             "oil-palm-control-stack-analysis", "risk-assessment-certification",
+             "phase-2-start-here", "phase-3-data-analytics", "phase-4-legacy-ot-recovery"]
+    for page in pages:
+        html = (static / f"{page}.html").read_text(encoding="utf-8")
+        keys = re.findall(r'data-i18n(?:-html)?="([^"]+)"', html)
+        keys += [pair.split(":")[1] for attr in re.findall(r'data-i18n-attr="([^"]+)"', html)
+                 for pair in attr.split(";")]
+        assert len(keys) > 20, page
+        missing = [k for k in keys if k not in lang["en"]]
+        assert not missing, (page, missing[:5])
+        assert "hub-prefs.js" in html and "data-i18n-in" not in html, page
+
+    # The switch offers English (default), Bahasa Malaysia and Deutsch.
+    prefs = (static / "hub-prefs.js").read_text(encoding="utf-8")
+    assert '"salbotics-hub-lang"' in prefs
+    for code in ('code: "en"', 'code: "ms"', 'code: "de"'):
+        assert code in prefs
+    assert 'lang = "en"' in prefs
+
+    # Generated files are current: en.json matches the pages, search has BM/DE.
+    for script in ("i18n_keys.py", "build_search_index.py"):
+        result = subprocess.run([sys.executable, str(root / "scripts" / script), "--check"],
+                                capture_output=True, text=True)
+        assert result.returncode == 0, result.stdout
+    index = (static / "search-index.js").read_text(encoding="utf-8")
+    data = json.loads(index[index.index("{"):index.rindex("}") + 1])
+    assert len(data["topics"]) > 60
+    assert all("ms" in item["tr"] and "de" in item["tr"] for item in data["lessons"] + data["words"])
+
+
+def test_accessibility_basics() -> None:
+    from pathlib import Path
+
+    static = Path(__file__).resolve().parent.parent / "static"
+    prefs = (static / "hub-prefs.js").read_text(encoding="utf-8")
+    # Keyboard users can jump past the menus; switches say what they are.
+    assert "hub-skip" in prefs and '"js.skip"' in prefs
+    assert 'aria-pressed' in prefs and 'setAttribute("aria-label"' in prefs
+    assert ".hub-skip:focus" in (static / "prefs.css").read_text(encoding="utf-8")
+    # Wide tables that scroll sideways can be reached with the keyboard.
+    assert "focusScrollBoxes" in (static / "hub-ui.js").read_text(encoding="utf-8")
+    # Text on the "Up next" card and the start page input/output headings is
+    # dark or light enough to read (checked with axe-core).
+    assert ".hub-next-card span {\n  color: #ffffff;" in (static / "hub.css").read_text(encoding="utf-8")
+    start_css = (static / "start.css").read_text(encoding="utf-8")
+    assert ".sp-group-in th { color: var(--sp-in-text); }" in start_css
+    assert start_css.count("--sp-in-text:") == 3 and start_css.count("--sp-out-text:") == 3
+    # No landmark inside another landmark on the start page.
+    assert "<aside" not in (static / "start.html").read_text(encoding="utf-8")

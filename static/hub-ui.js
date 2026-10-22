@@ -58,54 +58,76 @@
   var ALLOWED = "p, li, td, dd";
 
   function escapeRe(s) { return s.replace(/[.*+?^${}()|[\]\\/]/g, "\\$&"); }
-  var pending = GLOSSARY.slice().sort(function (a, b) { return b[0].length - a[0].length; });
   var lowercaseWord = function (term) { return term === term.toLowerCase(); };
-
   function patternFor(term) {
     var flags = lowercaseWord(term) || term === "Ladder" ? "i" : "";
     return new RegExp("(^|[^\\w/-])(" + escapeRe(term) + ")(?![\\w/-])", flags);
   }
-
-  var walker = document.createTreeWalker(main, NodeFilter.SHOW_TEXT, {
-    acceptNode: function (node) {
-      var parent = node.parentElement;
-      if (!parent || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-      if (parent.closest(SKIP) || !parent.closest(ALLOWED)) return NodeFilter.FILTER_REJECT;
-      return NodeFilter.FILTER_ACCEPT;
-    }
-  });
-  var textNodes = [];
-  while (walker.nextNode()) textNodes.push(walker.currentNode);
+  // Meaning in the reader's language (hub-prefs.js); English when no translation.
+  function meaning(entry) {
+    return window.hubT ? window.hubT("gl." + entry[0], entry[1]) : entry[1];
+  }
 
   var tipCount = 0;
-  textNodes.forEach(function (node) {
-    for (var i = 0; i < pending.length && node; i++) {
-      var term = pending[i][0];
-      var match = patternFor(term).exec(node.nodeValue);
-      if (!match) continue;
-      var start = match.index + match[1].length;
-      var word = match[2];
-      var after = node.splitText(start);
-      var rest = after.splitText(word.length);
-      var button = document.createElement("button");
-      button.type = "button";
-      button.className = "term";
-      button.textContent = word;
-      button.setAttribute("aria-expanded", "false");
-      var tip = document.createElement("span");
-      tip.className = "term-tip";
-      tip.id = "term-tip-" + (++tipCount);
-      tip.setAttribute("role", "note");
-      tip.hidden = true;
-      tip.textContent = pending[i][1];
-      button.setAttribute("aria-controls", tip.id);
-      after.parentNode.replaceChild(button, after);
-      button.parentNode.insertBefore(tip, rest);
-      pending.splice(i, 1); // only the first use on each page
-      i = -1;
-      node = rest;          // keep looking for other words after this one
-    }
-  });
+
+  // Remove earlier marks (after a language switch the text may have changed).
+  function unmark() {
+    Array.prototype.forEach.call(main.querySelectorAll(".term-tip"), function (tip) {
+      tip.parentNode.removeChild(tip);
+    });
+    Array.prototype.forEach.call(main.querySelectorAll("button.term"), function (button) {
+      var parent = button.parentNode;
+      parent.replaceChild(document.createTextNode(button.textContent), button);
+      parent.normalize();
+    });
+  }
+
+  function markTerms() {
+    unmark();
+    var pending = GLOSSARY.slice().sort(function (a, b) { return b[0].length - a[0].length; });
+    var walker = document.createTreeWalker(main, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (node) {
+        var parent = node.parentElement;
+        if (!parent || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        if (parent.closest(SKIP) || !parent.closest(ALLOWED)) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var textNodes = [];
+    while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+    textNodes.forEach(function (node) {
+      for (var i = 0; i < pending.length && node; i++) {
+        var term = pending[i][0];
+        var match = patternFor(term).exec(node.nodeValue);
+        if (!match) continue;
+        var start = match.index + match[1].length;
+        var word = match[2];
+        var after = node.splitText(start);
+        var rest = after.splitText(word.length);
+        var button = document.createElement("button");
+        button.type = "button";
+        button.className = "term";
+        button.textContent = word;
+        button.setAttribute("aria-expanded", "false");
+        var tip = document.createElement("span");
+        tip.className = "term-tip";
+        tip.id = "term-tip-" + (++tipCount);
+        tip.setAttribute("role", "note");
+        tip.hidden = true;
+        tip.textContent = meaning(pending[i]);
+        button.setAttribute("aria-controls", tip.id);
+        after.parentNode.replaceChild(button, after);
+        button.parentNode.insertBefore(tip, rest);
+        pending.splice(i, 1); // only the first use on each page
+        i = -1;
+        node = rest;          // keep looking for other words after this one
+      }
+    });
+  }
+
+  markTerms();
+  document.addEventListener("hub:lang", markTerms);
 
   main.addEventListener("click", function (event) {
     var button = event.target.closest(".term");
@@ -145,4 +167,33 @@
       new MutationObserver(function () { labelTable(table); }).observe(body, { childList: true });
     }
   });
+
+  // ---------- 3. Keyboard access to boxes that scroll sideways ----------
+  // A table wider than its box can be scrolled with the arrow keys once it has focus.
+  function focusScrollBoxes() {
+    Array.prototype.forEach.call(main.querySelectorAll(".mini-table"), function (box) {
+      var scrolls = box.scrollWidth > box.clientWidth + 1;
+      if (scrolls && !box.hasAttribute("tabindex")) {
+        box.setAttribute("tabindex", "0");
+        box.setAttribute("role", "region");
+        var cap = box.querySelector("caption, th");
+        box.setAttribute("aria-label", cap ? cap.textContent.trim() : "Table");
+        box.setAttribute("data-scroll-focus", "");
+      } else if (!scrolls && box.hasAttribute("data-scroll-focus")) {
+        ["tabindex", "role", "aria-label", "data-scroll-focus"].forEach(function (a) { box.removeAttribute(a); });
+      }
+    });
+  }
+  focusScrollBoxes();
+  window.addEventListener("resize", focusScrollBoxes);
+  // Live dashboards (Phase 4) draw their tables after loading data.
+  if (window.MutationObserver) {
+    var pending = false;
+    new MutationObserver(function () {
+      if (pending) return;
+      pending = true;
+      setTimeout(function () { pending = false; focusScrollBoxes(); }, 200);
+    }).observe(main, { childList: true, subtree: true });
+  }
+  document.addEventListener("hub:lang", focusScrollBoxes);
 })();

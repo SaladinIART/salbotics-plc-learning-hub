@@ -295,8 +295,9 @@ async function showWebsiteSample() {
       return sample[url];
     };
     await refreshDashboard();
-    qs("#storage-status").textContent = "Sample data recorded from the trainer";
-    qs("#generated-at").textContent = "sample, not live";
+    const T = window.hubT || ((k, e) => e);
+    qs("#storage-status").textContent = T("js.sample.status", "Sample data recorded from the trainer");
+    qs("#generated-at").textContent = T("js.sample.time", "sample, not live");
     qs("#reset-analytics").hidden = true;
   } catch (error) {
     renderWebsitePreview();

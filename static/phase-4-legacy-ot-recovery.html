@@ -6,23 +6,25 @@
     <title>Salbotics PLC Learning Hub - Phase 4 Legacy OT Recovery</title>
     <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
     <link rel="stylesheet" href="/static/guide.css?v=phase4-legacy-ot-20260626" />
-    <link rel="stylesheet" href="/static/hub.css?v=plain-20261021" />
+    <link rel="stylesheet" href="/static/hub.css?v=prefs-20261021" />
+    <link rel="stylesheet" href="/static/prefs.css?v=prefs-20261021" />
+    <script src="/static/hub-prefs.js?v=prefs-20261021"></script>
   </head>
   <body class="hub-page" data-lesson="phase-4-legacy-ot-recovery.html" data-needs-trainer>
     <div class="app-shell guide-shell industrial-shell phase4-shell">
       <header class="topbar">
         <div class="brand-block">
-          <strong><a class="hub-home" href="/static/start.html">Salbotics PLC Hub</a></strong>
-          <span>Rescuing old machines</span>
+          <strong><a class="hub-home" href="/static/start.html" data-i18n="ui.brand">Salbotics PLC Hub</a></strong>
+          <span data-i18n="lesson.phase-4-legacy-ot-recovery.title">Rescuing old machines</span>
         </div>
         <div class="top-actions">
-          <a class="header-link" href="/static/start.html">Home</a>
-          <a class="header-link" href="/static/beginner-guide.html" data-stage="basics">Basics</a>
-          <a class="header-link" href="/static/plc-programming-methods.html" data-stage="skills">Skills</a>
-          <a class="header-link" href="/static/oil-palm-industrial-environment.html" data-stage="factory">Factory</a>
-          <a class="header-link" href="/static/phase-2-start-here.html" data-stage="data">Data</a>
-          <a class="header-link" href="/static/risk-assessment-certification.html" data-stage="safety">Safety</a>
-          <a class="connection-pill guide-back" href="/">Simulator</a>
+          <a class="header-link" href="/static/start.html" data-i18n="ui.nav.home">Home</a>
+          <a class="header-link" href="/static/beginner-guide.html" data-stage="basics" data-i18n="ui.nav.basics">Basics</a>
+          <a class="header-link" href="/static/plc-programming-methods.html" data-stage="skills" data-i18n="ui.nav.skills">Skills</a>
+          <a class="header-link" href="/static/oil-palm-industrial-environment.html" data-stage="factory" data-i18n="ui.nav.factory">Factory</a>
+          <a class="header-link" href="/static/phase-2-start-here.html" data-stage="data" data-i18n="ui.nav.data">Data</a>
+          <a class="header-link" href="/static/risk-assessment-certification.html" data-stage="safety" data-i18n="ui.nav.safety">Safety</a>
+          <a class="connection-pill guide-back" href="/" data-i18n="ui.nav.sim">Simulator</a>
         </div>
         <div class="status-strip guide-status-strip">
           <div class="status-item"><span>Mode</span><strong>Read Only</strong></div>
@@ -35,18 +37,22 @@
       <main class="guide-main">
         <section class="panel lesson-panel intro-panel industrial-intro">
           <div class="panel-heading">
-            <h1>Phase 4: Legacy OT Recovery And Read-Only Data Bridging</h1>
-            <span>obsolete PLCs, XP/7 HMIs, missing software, fragile production, safe shadow monitoring</span>
+            <h1 data-i18n="p4.title">Rescuing old machines</h1>
+            <span class="hub-techname"><span data-i18n="ui.techname">Technical name:</span> Phase 4: Legacy OT Recovery And Read-Only Data Bridging</span>
           </div>
+          <p class="hub-lead" data-i18n="p4.lead">Many factories still run old machines that cannot stop. Learn the safe way to read their data first.</p>
           <div class="hub-summary" role="region" aria-labelledby="hub-summary-title">
-            <h2 id="hub-summary-title">In 30 seconds</h2>
+            <h2 id="hub-summary-title" data-i18n="ui.summary">In 30 seconds</h2>
             <ul>
-              <li>Many factories still depend on old PLCs and Windows XP or 7 screens.</li>
-              <li>The safe approach: save evidence, isolate risk, then read data without changing anything.</li>
-              <li>Replacement comes later, after testing and a rollback plan.</li>
+              <li data-i18n="p4.sum1">Many factories still depend on old PLCs and Windows XP or 7 screens.</li>
+              <li data-i18n="p4.sum2">The safe approach: save evidence, isolate risk, then read data without changing anything.</li>
+              <li data-i18n="p4.sum3">Replacement comes later, after testing and a rollback plan.</li>
             </ul>
           </div>
-          <div class="intro-grid industrial-intro-grid">
+          <details class="hub-safety">
+            <summary><span class="hub-safety-icon" aria-hidden="true">!</span> <span data-i18n="p4.safety">Read-only training: never change or bypass old equipment.</span> <span class="hub-more" data-i18n="ui.readmore">Read more</span></summary>
+            <p class="hub-scope"><strong data-i18n="ui.covers">This lesson covers:</strong> obsolete PLCs, XP/7 HMIs, missing software, fragile production, safe shadow monitoring</p>
+            <div class="intro-grid industrial-intro-grid">
             <div>
               <h2>The real plant problem</h2>
               <p>
@@ -65,23 +71,25 @@
               </p>
             </div>
           </div>
+          </details>
         </section>
 
 
         <nav class="scenario-nav industrial-nav phase4-nav" aria-label="Phase 4 lesson sections">
-          <a href="#summary">Bridge</a>
-          <a href="#workflow">Workflow</a>
-          <a href="#registers">Registers</a>
-          <a href="#isolation">Isolation</a>
-          <a href="#situations">Situations</a>
-          <a href="#events">Events</a>
-          <a href="#rs232">RS-232</a>
-          <a href="#phase5">Phase 5</a>
+          <a href="#summary" data-i18n="p4.summary.nav">Bridge</a>
+          <a href="#workflow" data-i18n="p4.workflow.nav">Workflow</a>
+          <a href="#registers" data-i18n="p4.registers.nav">Registers</a>
+          <a href="#isolation" data-i18n="p4.isolation.nav">Isolation</a>
+          <a href="#situations" data-i18n="p4.situations.nav">Situations</a>
+          <a href="#events" data-i18n="p4.events.nav">Events</a>
+          <a href="#rs232" data-i18n="p4.rs232.nav">RS-232</a>
+          <a href="#phase5" data-i18n="p4.phase5.nav">Phase 5</a>
         </nav>
 
         <section id="summary" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>1. Read-Only Bridge Summary</h2>
+            <h2 data-i18n="p4.summary.title">Is the old machine being read safely?</h2>
+            <span>1. Read-Only Bridge Summary</span>
             <span id="legacy-health">virtual legacy bridge</span>
           </div>
           <div class="plain-view">
@@ -97,22 +105,38 @@
 
         <section id="workflow" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>2. Recovery Workflow</h2>
-            <span>stabilize first, migrate later</span>
+            <h2 data-i18n="p4.workflow.title">The safe order of work</h2>
+            <span>2. Recovery Workflow · stabilize first, migrate later</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">The safe order: save evidence, protect the old machine, watch it read-only, then plan a replacement.</p>
+            <p class="plain-text" data-i18n="p4.summary.plain">Shows whether the old machine is being read safely. Nothing on this page can change the machine.</p>
+          </div>
+          <div class="analytics-toolbar">
+            <span>Last refresh: <strong id="legacy-generated-at">--</strong></span>
+            <button id="reset-legacy" type="button">RESET LEGACY DEMO</button>
+          </div>
+          <div id="legacy-cards" class="analytics-kpi-grid" aria-live="polite"></div>
+          <div id="legacy-station" class="legacy-station-strip"></div>
+        </section>
+
+        <section id="workflow" class="panel scenario-panel">
+          <div class="panel-heading">
+            <h2 data-i18n="p4.workflow.title">The safe order of work</h2>
+            <span>2. Recovery Workflow</span>
+          </div>
+          <div class="plain-view">
+            <p class="plain-text" data-i18n="p4.workflow.plain">The safe order: save evidence, protect the old machine, watch it read-only, then plan a replacement.</p>
           </div>
           <div id="legacy-workflow" class="legacy-workflow-grid"></div>
         </section>
 
         <section id="registers" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>3. Read-Only Register Map</h2>
-            <span>Virtual Modbus TCP register view, no writes</span>
+            <h2 data-i18n="p4.registers.title">Values read from the old controller</h2>
+            <span>3. Read-Only Register Map · Virtual Modbus TCP register view, no writes</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Values read from the old controller, such as tank level or motor current. Every row is read-only.</p>
+            <p class="plain-text" data-i18n="p4.registers.plain">Values read from the old controller, such as tank level or motor current. Every row is read-only.</p>
           </div>
           <div class="wide-table">
             <table>
@@ -128,16 +152,16 @@
 
         <section id="isolation" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>4. XP/7 Risk Isolation Diagram</h2>
-            <span>old assets stay protected while modern systems read summaries</span>
+            <h2 data-i18n="p4.isolation.title">Protecting the old machine</h2>
+            <span>4. XP/7 Risk Isolation Diagram · old assets stay protected while modern systems read summaries</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">The old computer and PLC sit behind a protective barrier. Modern systems only read summaries through a one-way bridge.</p>
-            <p class="plain-like"><strong>Like:</strong> Reading a museum label without touching the exhibit.</p>
+            <p class="plain-text" data-i18n="p4.isolation.plain">The old computer and PLC sit behind a protective barrier. Modern systems only read summaries through a one-way bridge.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="p4.isolation.like">Reading a museum label without touching the exhibit.</span></p>
                       <ol class="phone-flow" aria-label="How the data flows">
-              <li><strong>Old machine zone</strong><span>the old PLC and XP/7 screen keep running the machine</span></li>
-              <li><strong>Read-only bridge</strong><span>a small program reads values and never writes</span></li>
-              <li><strong>Modern view</strong><span>dashboards and records, plus planning for replacement</span></li>
+              <li><strong data-i18n="p4.isolation.f1">Old machine zone</strong><span data-i18n="p4.isolation.f1d">the old PLC and XP/7 screen keep running the machine</span></li>
+              <li><strong data-i18n="p4.isolation.f2">Read-only bridge</strong><span data-i18n="p4.isolation.f2d">a small program reads values and never writes</span></li>
+              <li><strong data-i18n="p4.isolation.f3">Modern view</strong><span data-i18n="p4.isolation.f3d">dashboards and records, plus planning for replacement</span></li>
             </ol>
           </div>
           <div class="diagram-panel has-phone-flow">
@@ -183,22 +207,22 @@
 
         <section id="situations" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>5. Real Situations Engineers Face</h2>
-            <span>what companies usually do before replacement</span>
+            <h2 data-i18n="p4.situations.title">Real cases and what companies do</h2>
+            <span>5. Real Situations Engineers Face · what companies usually do before replacement</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Common real cases, like a lost installer or missing licence, and what companies usually do about them.</p>
+            <p class="plain-text" data-i18n="p4.situations.plain">Common real cases, like a lost installer or missing licence, and what companies usually do about them.</p>
           </div>
           <div id="legacy-situations" class="legacy-situation-grid"></div>
         </section>
 
         <section id="events" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>6. Bridge Events</h2>
-            <span>faults and communication clues without touching PLC outputs</span>
+            <h2 data-i18n="p4.events.title">Problems the bridge noticed</h2>
+            <span>6. Bridge Events · faults and communication clues without touching PLC outputs</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Communication problems the bridge noticed, recorded without touching the machine.</p>
+            <p class="plain-text" data-i18n="p4.events.plain">Communication problems the bridge noticed, recorded without touching the machine.</p>
           </div>
           <div class="wide-table">
             <table>
@@ -212,11 +236,11 @@
 
         <section id="rs232" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>7. Simulated RS-232 / pySerial Lesson</h2>
-            <span>legacy COM-port thinking without opening a real COM port</span>
+            <h2 data-i18n="p4.rs232.title">Listening to an old serial cable</h2>
+            <span>7. Simulated RS-232 / pySerial Lesson · legacy COM-port thinking without opening a real COM port</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Many old machines talk through a serial cable. This lesson shows how to listen safely, in a simulation.</p>
+            <p class="plain-text" data-i18n="p4.rs232.plain">Many old machines talk through a serial cable. This lesson shows how to listen safely, in a simulation.</p>
           </div>
           <div class="legacy-rs232-grid">
             <div id="legacy-rs232-card" class="code-panel"></div>
@@ -237,11 +261,11 @@ observe first, command never, until an approved test plan exists.</code></pre>
 
         <section id="phase5" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>8. Phase 5 Preview: Modernization And Migration Strategy</h2>
-            <span>replace the risk only after evidence, testing, and rollback planning</span>
+            <h2 data-i18n="p4.phase5.title">Replacing an old system step by step</h2>
+            <span>8. Phase 5 Preview: Modernization And Migration Strategy · replace the risk only after evidence, testing, and rollback planning</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Replacing an old system happens in careful steps, with testing and a way to go back if needed.</p>
+            <p class="plain-text" data-i18n="p4.phase5.plain">Replacing an old system happens in careful steps, with testing and a way to go back if needed.</p>
           </div>
           <div class="phase2-roadmap phase4-roadmap">
             <div><b>1</b><span>Rebuild HMI</span><code>screens + alarms</code></div>
@@ -257,6 +281,22 @@ observe first, command never, until an approved test plan exists.</code></pre>
             <a href="/static/phase-2-start-here.html">Phase 2 Communications</a>
             <a href="/static/risk-assessment-certification.html">Safety Cert</a>
           </div>
+        </section>
+        <section class="panel hub-check" aria-labelledby="hub-check-title">
+          <h2 id="hub-check-title" data-i18n="ui.check">Check yourself</h2>
+          <p class="hub-check-tip" data-i18n="ui.checktip">Think of your answer, then tap the question to see it.</p>
+          <details class="hub-q">
+            <summary data-i18n="p4.q1">What is the first thing to do with an old, fragile machine?</summary>
+            <p data-i18n="p4.a1">Save evidence: backups, photos, drawings and notes.</p>
+          </details>
+          <details class="hub-q">
+            <summary data-i18n="p4.q2">Can the read-only bridge change the old machine?</summary>
+            <p data-i18n="p4.a2">No. It only reads values; it never writes.</p>
+          </details>
+          <details class="hub-q">
+            <summary data-i18n="p4.q3">When should the old system be replaced?</summary>
+            <p data-i18n="p4.a3">After testing, with a plan to switch back if needed.</p>
+          </details>
         </section>
       </main>
     </div>

@@ -27,15 +27,16 @@ REPO_URL = "https://github.com/SaladinIART/salbotics-plc-learning-hub"
 LANDING_SOURCE = "start.html"
 EXCLUDED = {"index.html"}  # live simulator: requires the local FastAPI backend
 
-BACK_LINK = re.compile(r'<a class="([^"]*)" href="/">(.*?)</a>', re.S)
+BACK_LINK = re.compile(r'<a class="([^"]*)" href="/"[^>]*>(.*?)</a>', re.S)
 ATTR = re.compile(r'(?:href|src)="([^"]+)"')
 
 
 def rewrite_html(text):
     def back_link(m):
         # Keep the page's own style: "SIMULATOR" -> "RUN LOCALLY", "Simulator" -> "Run locally".
-        label = "RUN LOCALLY" if m.group(2).isupper() else "Run locally"
-        return f'<a class="{m.group(1)}" href="{REPO_URL}">{label}</a>'
+        if m.group(2).isupper():
+            return f'<a class="{m.group(1)}" href="{REPO_URL}">RUN LOCALLY</a>'
+        return f'<a class="{m.group(1)}" href="{REPO_URL}" data-i18n="ui.nav.runlocal">Run locally</a>'
 
     text = BACK_LINK.sub(back_link, text)
     text = text.replace('href="/static/', 'href="').replace('src="/static/', 'src="')
@@ -55,6 +56,13 @@ def build(output):
             (output / src.name).write_text(text, encoding="utf-8", newline="\n")
         else:
             shutil.copy2(src, output / src.name)
+    # Translations (language switch): copy, with /static/ links made relative like the pages.
+    lang_dir = STATIC / "lang"
+    if lang_dir.is_dir():
+        (output / "lang").mkdir()
+        for src in sorted(lang_dir.glob("*.json")):
+            text = src.read_text(encoding="utf-8").replace('href=\\"/static/', 'href=\\"')
+            (output / "lang" / src.name).write_text(text, encoding="utf-8", newline="\n")
     landing = (output / LANDING_SOURCE).read_text(encoding="utf-8")
     (output / "index.html").write_text(landing, encoding="utf-8", newline="\n")
     (output / ".nojekyll").write_text("", encoding="utf-8")

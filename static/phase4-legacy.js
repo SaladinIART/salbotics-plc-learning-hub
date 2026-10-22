@@ -225,8 +225,9 @@ async function showLegacyWebsiteSample() {
       return sample[url];
     };
     await refreshLegacy();
-    legacyQs("#legacy-health").textContent = "Sample data recorded from the trainer";
-    legacyQs("#legacy-generated-at").textContent = "sample, not live";
+    const T = window.hubT || ((k, e) => e);
+    legacyQs("#legacy-health").textContent = T("js.sample.status", "Sample data recorded from the trainer");
+    legacyQs("#legacy-generated-at").textContent = T("js.sample.time", "sample, not live");
     legacyQs("#reset-legacy").hidden = true;
   } catch (error) {
     renderLegacyWebsitePreview();

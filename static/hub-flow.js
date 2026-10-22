@@ -58,13 +58,6 @@
     return node;
   }
 
-  function stageOf(lesson) {
-    for (var s = 0; s < STAGES.length; s++) {
-      if (STAGES[s].id === lesson.stage) return { number: s + 1, name: STAGES[s].name };
-    }
-    return { number: 0, name: "" };
-  }
-
   // Finished lessons are remembered only in this browser (start page reads it too).
   var KEY = "salbotics-hub-progress";
   function loadProgress() {
@@ -87,126 +80,160 @@
   }
 
   var lesson = LESSONS[index];
-  var stage = stageOf(lesson);
   var words = (main.textContent || "").split(/\s+/).length;
   var minutes = Math.max(2, Math.round(words / 200));
+
+  // Text in the reader's language (hub-prefs.js); English when no translation.
+  function T(key, english, vars) {
+    return window.hubT ? window.hubT(key, english, vars) : english;
+  }
+  function base(file) { return file.replace(/\.html$/, ""); }
+  function lessonTitle(item) { return T("lesson." + base(item.file) + ".title", item.title); }
+  function lessonBlurb(item) { return T("lesson." + base(item.file) + ".blurb", item.blurb); }
+  function stageName(st) { return T("stage." + st.id, st.name); }
+  function stageOf(item) {
+    for (var s = 0; s < STAGES.length; s++) {
+      if (STAGES[s].id === item.stage) return { number: s + 1, id: STAGES[s].id, name: stageName(STAGES[s]) };
+    }
+    return { number: 0, id: "", name: "" };
+  }
 
   // Highlight the current stage in the top menu.
   Array.prototype.forEach.call(document.querySelectorAll(".top-actions a[data-stage]"), function (a) {
     if (a.getAttribute("data-stage") === lesson.stage) a.setAttribute("aria-current", "true");
   });
 
-  // 1. Progress bar at the top of the page.
-  var progress = el("nav", "hub-progress");
-  progress.setAttribute("aria-label", "Learning path");
-  var top = el("div", "hub-progress-top");
-  top.appendChild(el("span", "hub-stage", "Stage " + stage.number + " of " + STAGES.length + " · " + stage.name));
-  var step = el("span", "hub-step");
-  function stepText() {
-    var count = doneCount();
-    step.textContent = "Lesson " + (index + 1) + " of " + LESSONS.length + " · about " + minutes +
-      " min read" + (count ? " · " + count + " finished" : "");
-  }
-  stepText();
-  top.appendChild(step);
-  var tools = el("span", "hub-progress-links");
-  var find = el("a", "hub-map-link", "Search");
-  find.href = href("start.html") + "#search";
-  var map = el("a", "hub-map-link", "All lessons");
-  map.href = href("start.html") + "#path";
-  tools.appendChild(find);
-  tools.appendChild(map);
-  top.appendChild(tools);
-  progress.appendChild(top);
+  var built = [];
+  var observer = null;
 
-  var bar = el("ol", "hub-progress-bar");
-  LESSONS.forEach(function (item, n) {
-    var li = el("li", (saved.done.indexOf(item.file) !== -1 ? "is-done " : "") + (n === index ? "is-current" : ""));
-    var a = el("a");
-    a.href = href(item.file);
-    a.title = "Lesson " + (n + 1) + ": " + item.title;
-    a.appendChild(el("span", "hub-sr", "Lesson " + (n + 1) + ": " + item.title +
-      (saved.done.indexOf(item.file) !== -1 ? " (finished)" : "")));
-    if (n === index) a.setAttribute("aria-current", "page");
-    li.appendChild(a);
-    bar.appendChild(li);
-  });
-  progress.appendChild(bar);
-  main.insertBefore(progress, main.firstChild);
+  function render() {
+    built.forEach(function (node) { if (node.parentNode) node.parentNode.removeChild(node); });
+    built = [];
+    if (observer) observer.disconnect();
+    var stage = stageOf(lesson);
 
-  // 2. Friendly note where the page's live dashboard needs the local trainer.
-  if (document.body.hasAttribute("data-needs-trainer") && !local) {
-    var note = el("div", "hub-offline");
-    note.setAttribute("role", "note");
-    note.appendChild(el("strong", "", "Live numbers need the free trainer. "));
-    note.appendChild(document.createTextNode(
-      "This page shows a dashboard from the Windows trainer. On this website you see sample numbers recorded from it. "));
-    var dl = el("a", "", "How to download the trainer");
-    dl.href = DOWNLOAD_URL;
-    note.appendChild(dl);
-    main.insertBefore(note, progress.nextSibling);
-  }
-
-  // 3. "Up next" card at the end of the page.
-  var next = el("nav", "hub-next");
-  next.setAttribute("aria-label", "What to learn next");
-  if (index + 1 < LESSONS.length) {
-    var upcoming = LESSONS[index + 1];
-    var upcomingStage = stageOf(upcoming);
-    next.appendChild(el("p", "hub-next-label",
-      "Up next · Lesson " + (index + 2) + " of " + LESSONS.length +
-      (upcomingStage.number !== stage.number ? " · new stage: " + upcomingStage.name : "")));
-    var card = el("a", "hub-next-card");
-    card.href = href(upcoming.file);
-    card.appendChild(el("strong", "", upcoming.title));
-    card.appendChild(el("span", "", upcoming.blurb));
-    card.appendChild(el("span", "hub-next-go", "Start this lesson →"));
-    next.appendChild(card);
-  } else {
-    next.appendChild(el("p", "hub-next-label", "You reached the end of the learning path"));
-    var done = el("a", "hub-next-card");
-    done.href = DOWNLOAD_URL;
-    done.appendChild(el("strong", "", "Practise with the full trainer"));
-    done.appendChild(el("span", "", "Press the buttons yourself in the free Windows simulator."));
-    done.appendChild(el("span", "hub-next-go", "How to download →"));
-    next.appendChild(done);
-  }
-  var links = el("div", "hub-next-links");
-  if (index > 0) {
-    var back = el("a", "", "← Back: " + LESSONS[index - 1].title);
-    back.href = href(LESSONS[index - 1].file);
-    links.appendChild(back);
-  }
-  var all = el("a", "", "See all lessons");
-  all.href = href("start.html") + "#path";
-  links.appendChild(all);
-  next.appendChild(links);
-  main.appendChild(next);
-
-  // Reaching the "Up next" card counts as finishing this lesson.
-  var finished = el("p", "hub-finished", "\u2713 Lesson finished. Your progress is saved in this browser.");
-  finished.hidden = saved.done.indexOf(current) === -1;
-  next.insertBefore(finished, next.firstChild);
-  function markDone() {
-    saved = loadProgress();
-    if (saved.done.indexOf(current) === -1) saved.done.push(current);
-    saved.last = current;
-    saveProgress(saved);
-    finished.hidden = false;
-    var seg = bar.children[index];
-    if (seg) seg.classList.add("is-done");
+    // 1. Progress bar at the top of the page.
+    var progress = el("nav", "hub-progress");
+    progress.setAttribute("aria-label", T("js.path", "Learning path"));
+    var top = el("div", "hub-progress-top");
+    top.appendChild(el("span", "hub-stage", T("js.stage", "Stage {n} of {total} · {name}",
+      { n: stage.number, total: STAGES.length, name: stage.name })));
+    var step = el("span", "hub-step");
+    function stepText() {
+      var count = doneCount();
+      step.textContent = T("js.lessonstep", "Lesson {n} of {total} · about {min} min read",
+        { n: index + 1, total: LESSONS.length, min: minutes }) +
+        (count ? T("js.finishedcount", " · {n} finished", { n: count }) : "");
+    }
     stepText();
+    top.appendChild(step);
+    var tools = el("span", "hub-progress-links");
+    var find = el("a", "hub-map-link", T("js.search", "Search"));
+    find.href = href("start.html") + "#search";
+    var map = el("a", "hub-map-link", T("js.alllessons", "All lessons"));
+    map.href = href("start.html") + "#path";
+    tools.appendChild(find);
+    tools.appendChild(map);
+    top.appendChild(tools);
+    progress.appendChild(top);
+
+    var bar = el("ol", "hub-progress-bar");
+    LESSONS.forEach(function (item, n) {
+      var isDone = saved.done.indexOf(item.file) !== -1;
+      var li = el("li", (isDone ? "is-done " : "") + (n === index ? "is-current" : ""));
+      var a = el("a");
+      a.href = href(item.file);
+      var label = T("js.lessonlabel", "Lesson {n}: {title}", { n: n + 1, title: lessonTitle(item) });
+      a.title = label;
+      a.appendChild(el("span", "hub-sr", label + (isDone ? T("js.finishedsuffix", " (finished)") : "")));
+      if (n === index) a.setAttribute("aria-current", "page");
+      li.appendChild(a);
+      bar.appendChild(li);
+    });
+    progress.appendChild(bar);
+    main.insertBefore(progress, main.firstChild);
+    built.push(progress);
+
+    // 2. Friendly note where the page's live dashboard needs the local trainer.
+    if (document.body.hasAttribute("data-needs-trainer") && !local) {
+      var note = el("div", "hub-offline");
+      note.setAttribute("role", "note");
+      note.appendChild(el("strong", "", T("js.offline.title", "Live numbers need the free trainer.") + " "));
+      note.appendChild(document.createTextNode(T("js.offline.text",
+        "This page shows a dashboard from the Windows trainer. On this website you see sample numbers recorded from it.") + " "));
+      var dl = el("a", "", T("js.offline.link", "How to download the trainer"));
+      dl.href = DOWNLOAD_URL;
+      note.appendChild(dl);
+      main.insertBefore(note, progress.nextSibling);
+      built.push(note);
+    }
+
+    // 3. "Up next" card at the end of the page.
+    var next = el("nav", "hub-next");
+    next.setAttribute("aria-label", T("js.whatnext", "What to learn next"));
+    if (index + 1 < LESSONS.length) {
+      var upcoming = LESSONS[index + 1];
+      var upcomingStage = stageOf(upcoming);
+      next.appendChild(el("p", "hub-next-label",
+        T("js.upnext", "Up next · Lesson {n} of {total}", { n: index + 2, total: LESSONS.length }) +
+        (upcomingStage.number !== stage.number ? T("js.newstage", " · new stage: {name}", { name: upcomingStage.name }) : "")));
+      var card = el("a", "hub-next-card");
+      card.href = href(upcoming.file);
+      card.appendChild(el("strong", "", lessonTitle(upcoming)));
+      card.appendChild(el("span", "", lessonBlurb(upcoming)));
+      card.appendChild(el("span", "hub-next-go", T("js.startlesson", "Start this lesson →")));
+      next.appendChild(card);
+    } else {
+      next.appendChild(el("p", "hub-next-label", T("js.endpath", "You reached the end of the learning path")));
+      var done = el("a", "hub-next-card");
+      done.href = DOWNLOAD_URL;
+      done.appendChild(el("strong", "", T("js.practise", "Practise with the full trainer")));
+      done.appendChild(el("span", "", T("js.practisetext", "Press the buttons yourself in the free Windows simulator.")));
+      done.appendChild(el("span", "hub-next-go", T("js.download", "How to download →")));
+      next.appendChild(done);
+    }
+    var links = el("div", "hub-next-links");
+    if (index > 0) {
+      var back = el("a", "", T("js.back", "← Back: {title}", { title: lessonTitle(LESSONS[index - 1]) }));
+      back.href = href(LESSONS[index - 1].file);
+      links.appendChild(back);
+    }
+    var all = el("a", "", T("js.seeall", "See all lessons"));
+    all.href = href("start.html") + "#path";
+    links.appendChild(all);
+    next.appendChild(links);
+    main.appendChild(next);
+    built.push(next);
+
+    // Reaching the "Up next" card counts as finishing this lesson.
+    var finished = el("p", "hub-finished", T("js.finished", "✓ Lesson finished. Your progress is saved in this browser."));
+    finished.hidden = saved.done.indexOf(current) === -1;
+    next.insertBefore(finished, next.firstChild);
+    function markDone() {
+      saved = loadProgress();
+      if (saved.done.indexOf(current) === -1) saved.done.push(current);
+      saved.last = current;
+      saveProgress(saved);
+      finished.hidden = false;
+      var seg = bar.children[index];
+      if (seg) seg.classList.add("is-done");
+      stepText();
+    }
+    if ("IntersectionObserver" in window) {
+      observer = new IntersectionObserver(function (entries) {
+        if (entries.some(function (e) { return e.isIntersecting; })) {
+          markDone();
+          observer.disconnect();
+        }
+      }, { threshold: 0.6 });
+      observer.observe(next);
+    }
+    next.addEventListener("click", function (event) {
+      if (event.target.closest(".hub-next-card")) markDone();
+    });
   }
-  if ("IntersectionObserver" in window) {
-    var seen = new IntersectionObserver(function (entries) {
-      if (entries.some(function (e) { return e.isIntersecting; })) {
-        markDone();
-        seen.disconnect();
-      }
-    }, { threshold: 0.6 });
-    seen.observe(next);
-  }
-  next.addEventListener("click", function (event) {
-    if (event.target.closest(".hub-next-card")) markDone();
-  });
+
+  render();
+  // Redraw in the new language when the reader switches (hub-prefs.js).
+  document.addEventListener("hub:lang", render);
 })();

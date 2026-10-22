@@ -1,0 +1,97 @@
+/* Reader preference controls in the top bar (hub-prefs.js): theme and language.
+   Works on the start page (--sp-*) and lesson pages (--hp-*). */
+.hub-prefs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 8px;
+}
+
+.hub-prefs button {
+  display: inline-grid;
+  place-items: center;
+  min-width: 36px;
+  min-height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--hp-line, var(--sp-line, #e2e8f0));
+  border-radius: 999px;
+  background: var(--hp-surface, var(--sp-surface, #ffffff));
+  color: var(--hp-text, var(--sp-text, #0f172a));
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.hub-prefs button:hover,
+.hub-prefs button:focus-visible {
+  border-color: var(--hp-brand, var(--sp-brand, #2563eb));
+  color: var(--hp-brand-strong, var(--sp-brand-strong, #1d4ed8));
+}
+
+.hub-prefs .hub-theme {
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+}
+
+/* Language buttons sit together like one switch */
+.hub-lang {
+  display: inline-flex;
+  padding: 2px;
+  border: 1px solid var(--hp-line, var(--sp-line, #e2e8f0));
+  border-radius: 999px;
+  background: var(--hp-surface-2, var(--sp-surface-2, #eef3f9));
+}
+
+.hub-lang button {
+  min-width: 34px;
+  min-height: 32px;
+  border: 0;
+  background: transparent;
+  font-size: 13px;
+}
+
+.hub-lang button[aria-pressed="true"] {
+  background: var(--hp-brand-strong, var(--sp-brand-strong, #1d4ed8));
+  color: var(--hp-surface, var(--sp-surface, #ffffff));
+}
+
+@media (max-width: 760px) {
+  .hub-prefs {
+    flex: 1 1 100%;
+    justify-content: flex-end;
+    margin: 0 0 10px;
+  }
+}
+
+/* German and Malay words can be long ("Sicherheitsqualifikation"). Let them break
+   at a hyphen instead of pushing the page sideways on phones. */
+html:not([lang="en"]) body {
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+/* Hidden until a keyboard user tabs to it. */
+.hub-skip {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: #1d4ed8;
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-160%);
+}
+.hub-skip:focus {
+  transform: none;
+  outline: 3px solid #f59e0b;
+  outline-offset: 2px;
+}
+main h1[tabindex="-1"]:focus {
+  outline: none;
+}

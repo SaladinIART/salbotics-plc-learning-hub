@@ -6,23 +6,25 @@
     <title>Salbotics PLC Learning Hub - Oil Palm Control Stack Analysis</title>
     <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
     <link rel="stylesheet" href="/static/guide.css" />
-    <link rel="stylesheet" href="/static/hub.css?v=plain-20261021" />
+    <link rel="stylesheet" href="/static/hub.css?v=prefs-20261021" />
+    <link rel="stylesheet" href="/static/prefs.css?v=prefs-20261021" />
+    <script src="/static/hub-prefs.js?v=prefs-20261021"></script>
   </head>
   <body class="hub-page" data-lesson="oil-palm-control-stack-analysis.html">
     <div class="app-shell guide-shell industrial-shell oil-shell">
       <header class="topbar">
         <div class="brand-block">
-          <strong><a class="hub-home" href="/static/start.html">Salbotics PLC Hub</a></strong>
-          <span>Choosing the right controller</span>
+          <strong><a class="hub-home" href="/static/start.html" data-i18n="ui.brand">Salbotics PLC Hub</a></strong>
+          <span data-i18n="lesson.oil-palm-control-stack-analysis.title">Choosing the right controller</span>
         </div>
         <div class="top-actions">
-          <a class="header-link" href="/static/start.html">Home</a>
-          <a class="header-link" href="/static/beginner-guide.html" data-stage="basics">Basics</a>
-          <a class="header-link" href="/static/plc-programming-methods.html" data-stage="skills">Skills</a>
-          <a class="header-link" href="/static/oil-palm-industrial-environment.html" data-stage="factory">Factory</a>
-          <a class="header-link" href="/static/phase-2-start-here.html" data-stage="data">Data</a>
-          <a class="header-link" href="/static/risk-assessment-certification.html" data-stage="safety">Safety</a>
-          <a class="connection-pill guide-back" href="/">Simulator</a>
+          <a class="header-link" href="/static/start.html" data-i18n="ui.nav.home">Home</a>
+          <a class="header-link" href="/static/beginner-guide.html" data-stage="basics" data-i18n="ui.nav.basics">Basics</a>
+          <a class="header-link" href="/static/plc-programming-methods.html" data-stage="skills" data-i18n="ui.nav.skills">Skills</a>
+          <a class="header-link" href="/static/oil-palm-industrial-environment.html" data-stage="factory" data-i18n="ui.nav.factory">Factory</a>
+          <a class="header-link" href="/static/phase-2-start-here.html" data-stage="data" data-i18n="ui.nav.data">Data</a>
+          <a class="header-link" href="/static/risk-assessment-certification.html" data-stage="safety" data-i18n="ui.nav.safety">Safety</a>
+          <a class="connection-pill guide-back" href="/" data-i18n="ui.nav.sim">Simulator</a>
         </div>
         <div class="status-strip guide-status-strip">
           <div class="status-item">
@@ -47,19 +49,23 @@
       <main class="guide-main" data-collapsible-sections>
         <section class="panel lesson-panel intro-panel industrial-intro">
           <div class="panel-heading">
-            <h1>Oil Palm Control Stack Analysis</h1>
-            <span>economy, reliability, installation, prototyping, edge AI, standards</span>
+            <h1 data-i18n="sa.title">Choosing the right controller</h1>
+            <span class="hub-techname"><span data-i18n="ui.techname">Technical name:</span> Oil Palm Control Stack Analysis</span>
           </div>
+          <p class="hub-lead" data-i18n="sa.lead">Factories mix different controllers. This lesson shows which one suits which job, budget and risk.</p>
           <div class="hub-summary" role="region" aria-labelledby="hub-summary-title">
-            <h2 id="hub-summary-title">In 30 seconds</h2>
+            <h2 id="hub-summary-title" data-i18n="ui.summary">In 30 seconds</h2>
             <ul>
-              <li>Factories mix PLCs, PACs, Raspberry Pi and Arduino-style boards.</li>
-              <li>Certified PLCs handle control and safety. Small boards suit data, learning and prototypes.</li>
-              <li>Choose each device by its job, budget and risk, not by brand.</li>
+              <li data-i18n="sa.sum1">Factories mix PLCs, PACs, Raspberry Pi and Arduino-style boards.</li>
+              <li data-i18n="sa.sum2">Certified PLCs handle control and safety. Small boards suit data, learning and prototypes.</li>
+              <li data-i18n="sa.sum3">Choose each device by its job, budget and risk, not by brand.</li>
             </ul>
-            <p class="hub-summary-tip">Tap a topic below to open it, or use "Open all topics".</p>
+            <p class="hub-summary-tip" data-i18n="ui.summarytip">Tap a topic below to open it, or use "Open all topics".</p>
           </div>
-          <div class="intro-grid industrial-intro-grid">
+          <details class="hub-safety">
+            <summary><span class="hub-safety-icon" aria-hidden="true">!</span> <span data-i18n="sa.safety">Use certified controllers for machine control and safety.</span> <span class="hub-more" data-i18n="ui.readmore">Read more</span></summary>
+            <p class="hub-scope"><strong data-i18n="ui.covers">This lesson covers:</strong> economy, reliability, installation, prototyping, edge AI, standards</p>
+            <div class="intro-grid industrial-intro-grid">
             <div>
               <h2>How to read this page</h2>
               <p>
@@ -77,32 +83,34 @@
               </p>
             </div>
           </div>
+          </details>
         </section>
 
 
         <nav class="scenario-nav industrial-nav oil-nav" aria-label="Stack analysis sections">
-          <a href="#matrix">Matrix</a>
-          <a href="#scale">Scale Guide</a>
-          <a href="#edge-ai">Edge AI</a>
-          <a href="#install">Install Speed</a>
-          <a href="#reliability">Reliability</a>
-          <a href="#cyber">Cybersecurity</a>
-          <a href="#standards-stack">Standards</a>
+          <a href="#matrix" data-i18n="sa.matrix.nav">Matrix</a>
+          <a href="#scale" data-i18n="sa.scale.nav">Scale Guide</a>
+          <a href="#edge-ai" data-i18n="sa.edge-ai.nav">Edge AI</a>
+          <a href="#install" data-i18n="sa.install.nav">Install Speed</a>
+          <a href="#reliability" data-i18n="sa.reliability.nav">Reliability</a>
+          <a href="#cyber" data-i18n="sa.cyber.nav">Cybersecurity</a>
+          <a href="#standards-stack" data-i18n="sa.standards-stack.nav">Standards</a>
           <a href="/static/oil-palm-industrial-environment.html">Plant Page</a>
         </nav>
 
         <section id="matrix" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>1. Technology Comparison Matrix</h2>
-            <span>pick by job, not by brand pride</span>
+            <h2 data-i18n="sa.matrix.title">Four kinds of controller compared</h2>
+            <span>1. Technology Comparison Matrix · pick by job, not by brand pride</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Four kinds of controller are compared: WECON PLCs, PAC systems, Raspberry Pi and Arduino. Each is best at a different job.</p>
-            <p class="plain-like"><strong>Like:</strong> Choosing between a van, a lorry, a car and a bicycle.</p>
+            <p class="plain-text" data-i18n="sa.matrix.plain">Four kinds of controller are compared: WECON PLCs, PAC systems, Raspberry Pi and Arduino. Each is best at a different job.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="sa.matrix.like">Choosing between a van, a lorry, a car and a bicycle.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="wide-table">
             <table>
               <thead>
@@ -173,16 +181,17 @@
 
         <section id="scale" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>2. Hobbyist, Small, Medium, Large Scale</h2>
-            <span>same plant idea, different engineering burden</span>
+            <h2 data-i18n="sa.scale.title">Small, medium and large mills</h2>
+            <span>2. Hobbyist, Small, Medium, Large Scale · same plant idea, different engineering burden</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">The same mill idea needs different tools at different sizes. A hobby project, a small plant and a large group each need more engineering.</p>
-            <p class="plain-like"><strong>Like:</strong> A home kitchen versus a restaurant chain.</p>
+            <p class="plain-text" data-i18n="sa.scale.plain">The same mill idea needs different tools at different sizes. A hobby project, a small plant and a large group each need more engineering.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="sa.scale.like">A home kitchen versus a restaurant chain.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="compare-grid language-grid">
             <div class="language-card">
               <h3>Hobbyist / learning</h3>
@@ -207,16 +216,17 @@
 
         <section id="edge-ai" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>3. AI At The Edge</h2>
-            <span>what AI should and should not do in a mill</span>
+            <h2 data-i18n="sa.edge-ai.title">What AI should and should not do</h2>
+            <span>3. AI At The Edge · what AI should and should not do in a mill</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">AI can help spot problems, check quality and save energy. It must never replace safety trips or secretly control machines.</p>
-            <p class="plain-like"><strong>Like:</strong> A helpful assistant, not the person holding the brake.</p>
+            <p class="plain-text" data-i18n="sa.edge-ai.plain">AI can help spot problems, check quality and save energy. It must never replace safety trips or secretly control machines.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="sa.edge-ai.like">A helpful assistant, not the person holding the brake.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="compare-grid">
             <div class="mini-table">
               <h3>Good edge AI jobs</h3>
@@ -247,16 +257,17 @@
 
         <section id="install" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>4. Installation And Commissioning Speed</h2>
-            <span>where time is really spent</span>
+            <h2 data-i18n="sa.install.title">Where setup time really goes</h2>
+            <span>4. Installation And Commissioning Speed · where time is really spent</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Setting up a system takes longer than buying it. Most time goes on drawings, wiring, settings and testing.</p>
-            <p class="plain-like"><strong>Like:</strong> Moving house takes longer than buying the furniture.</p>
+            <p class="plain-text" data-i18n="sa.install.plain">Setting up a system takes longer than buying it. Most time goes on drawings, wiring, settings and testing.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="sa.install.like">Moving house takes longer than buying the furniture.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="decision-strip">
             <div><b>1</b><span>Panel drawings</span><code>I/O, MCC, network</code></div>
             <div><b>2</b><span>Tag naming</span><code>consistent plant labels</code></div>
@@ -275,16 +286,17 @@
 
         <section id="reliability" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>5. Reliability Factors Beginners Often Miss</h2>
-            <span>the device is only one part of reliability</span>
+            <h2 data-i18n="sa.reliability.title">What keeps a system reliable</h2>
+            <span>5. Reliability Factors Beginners Often Miss · the device is only one part of reliability</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Reliable systems need clean power, cool cabinets, spare parts and backups. The controller alone is not enough.</p>
-            <p class="plain-like"><strong>Like:</strong> A good car still needs fuel, servicing and a spare tyre.</p>
+            <p class="plain-text" data-i18n="sa.reliability.plain">Reliable systems need clean power, cool cabinets, spare parts and backups. The controller alone is not enough.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="sa.reliability.like">A good car still needs fuel, servicing and a spare tyre.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="robust-grid">
             <div class="robust-item"><h3>Power quality</h3><p>Use proper 24V supplies, surge protection, earthing, UPS where needed, and separate noisy motor loads.</p></div>
             <div class="robust-item"><h3>Heat and enclosure</h3><p>Panel temperature, dust, humidity, ventilation, IP rating, and cable glands matter in mill environments.</p></div>
@@ -299,16 +311,17 @@
 
         <section id="cyber" class="panel scenario-panel danger-scenario">
           <div class="panel-heading">
-            <h2>6. Cybersecurity And Remote Access</h2>
-            <span>IIoT adds value and risk together</span>
+            <h2 data-i18n="sa.cyber.title">Keeping connected machines secure</h2>
+            <span>6. Cybersecurity And Remote Access · IIoT adds value and risk together</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Connecting machines to networks adds risk. Keep networks separate, use proper passwords and control remote access.</p>
-            <p class="plain-like"><strong>Like:</strong> Locking the factory gate, not just the office door.</p>
+            <p class="plain-text" data-i18n="sa.cyber.plain">Connecting machines to networks adds risk. Keep networks separate, use proper passwords and control remote access.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="sa.cyber.like">Locking the factory gate, not just the office door.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="compare-grid">
             <div class="mini-table">
               <h3>Good practice</h3>
@@ -339,16 +352,17 @@
 
         <section id="standards-stack" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>7. Standards Cheat Sheet</h2>
-            <span>recognize the family before reading the full standard</span>
+            <h2 data-i18n="sa.standards-stack.title">Standard names in one table</h2>
+            <span>7. Standards Cheat Sheet · recognize the family before reading the full standard</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">A quick guide to the standard names you will hear. Each row says what area it covers and what to do first.</p>
-            <p class="plain-like"><strong>Like:</strong> A road-sign guide for factory rules.</p>
+            <p class="plain-text" data-i18n="sa.standards-stack.plain">A quick guide to the standard names you will hear. Each row says what area it covers and what to do first.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="sa.standards-stack.like">A road-sign guide for factory rules.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="wide-table">
             <table>
               <thead>
@@ -378,8 +392,24 @@
             </div>
           </details>
         </section>
+        <section class="panel hub-check" aria-labelledby="hub-check-title">
+          <h2 id="hub-check-title" data-i18n="ui.check">Check yourself</h2>
+          <p class="hub-check-tip" data-i18n="ui.checktip">Think of your answer, then tap the question to see it.</p>
+          <details class="hub-q">
+            <summary data-i18n="sa.q1">Which controller should handle machine safety?</summary>
+            <p data-i18n="sa.a1">A certified PLC or safety controller, not a hobby board.</p>
+          </details>
+          <details class="hub-q">
+            <summary data-i18n="sa.q2">Where does most setup time go?</summary>
+            <p data-i18n="sa.a2">Drawings, wiring, settings, testing and training, not the hardware itself.</p>
+          </details>
+          <details class="hub-q">
+            <summary data-i18n="sa.q3">Name one good job for AI in a mill.</summary>
+            <p data-i18n="sa.a3">Spotting unusual motor current, or checking fruit quality with a camera.</p>
+          </details>
+        </section>
       </main>
-      <footer class="product-footer">
+      <footer class="product-footer" data-i18n-html="ui.footer">
         Salbotics PLC Learning Hub is an open educational product by
         <a href="https://salbotics.uk/">Salbotics Solutions</a>. It is not certified safety or traffic-control software.
       </footer>

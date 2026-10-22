@@ -6,24 +6,26 @@
     <title>Salbotics PLC Learning Hub - How It Works</title>
     <link rel="stylesheet" href="/static/styles.css?v=topbar-compact-20260626" />
     <link rel="stylesheet" href="/static/guide.css" />
-    <link rel="stylesheet" href="/static/hub.css?v=plain-20261021" />
+    <link rel="stylesheet" href="/static/hub.css?v=prefs-20261021" />
     <link rel="stylesheet" href="/static/scenes.css?v=flow-20261020" />
+    <link rel="stylesheet" href="/static/prefs.css?v=prefs-20261021" />
+    <script src="/static/hub-prefs.js?v=prefs-20261021"></script>
   </head>
   <body class="hub-page" data-lesson="how-it-works.html">
     <div class="app-shell guide-shell">
       <header class="topbar">
         <div class="brand-block">
-          <strong><a class="hub-home" href="/static/start.html">Salbotics PLC Hub</a></strong>
-          <span>How the traffic light works</span>
+          <strong><a class="hub-home" href="/static/start.html" data-i18n="ui.brand">Salbotics PLC Hub</a></strong>
+          <span data-i18n="lesson.how-it-works.title">How the traffic light works</span>
         </div>
         <div class="top-actions">
-          <a class="header-link" href="/static/start.html">Home</a>
-          <a class="header-link" href="/static/beginner-guide.html" data-stage="basics">Basics</a>
-          <a class="header-link" href="/static/plc-programming-methods.html" data-stage="skills">Skills</a>
-          <a class="header-link" href="/static/oil-palm-industrial-environment.html" data-stage="factory">Factory</a>
-          <a class="header-link" href="/static/phase-2-start-here.html" data-stage="data">Data</a>
-          <a class="header-link" href="/static/risk-assessment-certification.html" data-stage="safety">Safety</a>
-          <a class="connection-pill guide-back" href="/">Simulator</a>
+          <a class="header-link" href="/static/start.html" data-i18n="ui.nav.home">Home</a>
+          <a class="header-link" href="/static/beginner-guide.html" data-stage="basics" data-i18n="ui.nav.basics">Basics</a>
+          <a class="header-link" href="/static/plc-programming-methods.html" data-stage="skills" data-i18n="ui.nav.skills">Skills</a>
+          <a class="header-link" href="/static/oil-palm-industrial-environment.html" data-stage="factory" data-i18n="ui.nav.factory">Factory</a>
+          <a class="header-link" href="/static/phase-2-start-here.html" data-stage="data" data-i18n="ui.nav.data">Data</a>
+          <a class="header-link" href="/static/risk-assessment-certification.html" data-stage="safety" data-i18n="ui.nav.safety">Safety</a>
+          <a class="connection-pill guide-back" href="/" data-i18n="ui.nav.sim">Simulator</a>
         </div>
         <div class="status-strip guide-status-strip">
           <div class="status-item">
@@ -48,19 +50,23 @@
       <main class="guide-main" data-collapsible-sections>
         <section class="panel lesson-panel intro-panel">
           <div class="panel-heading">
-            <h1>How This PLC Learning Hub Works</h1>
-            <span>beginner ladder guide</span>
+            <h1 data-i18n="hw.title">How the traffic light works</h1>
+            <span class="hub-techname"><span data-i18n="ui.techname">Technical name:</span> How This PLC Learning Hub Works</span>
           </div>
+          <p class="hub-lead" data-i18n="hw.lead">The trainer is a traffic light run by PLC rules. Each scenario below shows one rule in action.</p>
           <div class="hub-summary" role="region" aria-labelledby="hub-summary-title">
-            <h2 id="hub-summary-title">In 30 seconds</h2>
+            <h2 id="hub-summary-title" data-i18n="ui.summary">In 30 seconds</h2>
             <ul>
-              <li>The trainer is a 4-way traffic light run by Ladder-style rules.</li>
-              <li>Seven short scenarios cover normal running, crossing requests, emergencies, night mode and faults.</li>
-              <li>Each one lists the inputs to press and what the lamps should do.</li>
+              <li data-i18n="hw.sum1">The trainer is a 4-way traffic light run by Ladder-style rules.</li>
+              <li data-i18n="hw.sum2">Seven short scenarios cover normal running, crossing requests, emergencies, night mode and faults.</li>
+              <li data-i18n="hw.sum3">Each one lists the inputs to press and what the lamps should do.</li>
             </ul>
-            <p class="hub-summary-tip">Tap a topic below to open it, or use "Open all topics".</p>
+            <p class="hub-summary-tip" data-i18n="ui.summarytip">Tap a topic below to open it, or use "Open all topics".</p>
           </div>
-          <div class="intro-grid">
+          <details class="hub-safety">
+            <summary><span class="hub-safety-icon" aria-hidden="true">!</span> <span data-i18n="hw.safety">Teaching simulator only, not real traffic-control software.</span> <span class="hub-more" data-i18n="ui.readmore">Read more</span></summary>
+            <p class="hub-scope"><strong data-i18n="ui.covers">This lesson covers:</strong> beginner ladder guide</p>
+            <div class="intro-grid">
             <div>
               <h2>One repeated scan</h2>
               <p>
@@ -76,6 +82,7 @@
               <div><b>4</b><span>Write outputs</span><code>Q0.0-Q0.5</code></div>
             </div>
           </div>
+          </details>
         </section>
 
 
@@ -131,87 +138,88 @@
         </section>
 
         <nav class="scenario-nav" aria-label="Scenario list">
-          <a href="#auto-cycle">Auto Cycle</a>
-          <a href="#pedestrian">Pedestrian Request</a>
-          <a href="#vehicle">Vehicle Extension</a>
-          <a href="#emergency">Emergency All-Red</a>
-          <a href="#night">Night Flash</a>
-          <a href="#manual">Manual Safe-Step</a>
-          <a href="#fault">Fault / Reset</a>
+          <a href="#auto-cycle" data-i18n="hw.auto-cycle.nav">Auto Cycle</a>
+          <a href="#pedestrian" data-i18n="hw.pedestrian.nav">Pedestrian Request</a>
+          <a href="#vehicle" data-i18n="hw.vehicle.nav">Vehicle Extension</a>
+          <a href="#emergency" data-i18n="hw.emergency.nav">Emergency All-Red</a>
+          <a href="#night" data-i18n="hw.night.nav">Night Flash</a>
+          <a href="#manual" data-i18n="hw.manual.nav">Manual Safe-Step</a>
+          <a href="#fault" data-i18n="hw.fault.nav">Fault / Reset</a>
         </nav>
 
         <section id="auto-cycle" class="panel scenario-panel" data-start-open>
           <div class="panel-heading">
-            <h2>Scenario 1: Auto Cycle</h2>
-            <span>normal running sequence</span>
+            <h2 data-i18n="hw.auto-cycle.title">Normal running: the lights take turns</h2>
+            <span>Scenario 1: Auto Cycle · normal running sequence</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Press START and the lights run by themselves. Each road gets green, then yellow, then a short all-red gap before the other road starts.</p>
-            <p class="plain-like"><strong>Like:</strong> Taking turns at a junction, with a pause so nobody crashes.</p>
+            <p class="plain-text" data-i18n="hw.auto-cycle.plain">Press START and the lights run by themselves. Each road gets green, then yellow, then a short all-red gap before the other road starts.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="hw.auto-cycle.like">Taking turns at a junction, with a pause so nobody crashes.</span></p>
             <figure class="sp-scene hub-scene" style="--sp-start: 0s">
           <svg class="sp-anim sp-anim-traffic" viewBox="0 0 480 340" role="img" aria-labelledby="anim-traffic-title">
-                  <title id="anim-traffic-title">Animated junction: north-south green, yellow, all red, then east-west green, yellow, all red</title>
-                  <defs>
-                    <clipPath id="clip-traffic"><rect x="0" y="0" width="480" height="262" rx="14"></rect></clipPath>
-                  </defs>
-                  <g clip-path="url(#clip-traffic)">
-                    <rect width="480" height="262" class="sp-a-ground"></rect>
-                    <rect x="200" y="0" width="80" height="262" class="sp-a-road"></rect>
-                    <rect x="0" y="95" width="480" height="70" class="sp-a-road"></rect>
-                    <line x1="240" y1="0" x2="240" y2="95" class="sp-a-dash"></line>
-                    <line x1="240" y1="165" x2="240" y2="262" class="sp-a-dash"></line>
-                    <line x1="0" y1="130" x2="200" y2="130" class="sp-a-dash"></line>
-                    <line x1="280" y1="130" x2="480" y2="130" class="sp-a-dash"></line>
-                    <line x1="242" y1="172" x2="280" y2="172" class="sp-a-stop"></line>
-                    <line x1="194" y1="132" x2="194" y2="165" class="sp-a-stop"></line>
-                    <g class="sp-a-mover a-tl-car-ns">
-                      <rect x="247" y="180" width="26" height="44" rx="6" class="sp-a-car1"></rect>
-                      <rect x="250" y="186" width="20" height="10" rx="2" class="sp-a-glass"></rect>
-                    </g>
-                    <g class="sp-a-mover a-tl-car-ew">
-                      <rect x="140" y="137" width="48" height="24" rx="6" class="sp-a-car2"></rect>
-                      <rect x="174" y="140" width="10" height="18" rx="2" class="sp-a-glass"></rect>
-                    </g>
-                    <rect x="296" y="8" width="32" height="80" rx="8" class="sp-a-head"></rect>
-                    <circle cx="312" cy="22" r="9" class="sp-a-off"></circle>
-                    <circle cx="312" cy="48" r="9" class="sp-a-off"></circle>
-                    <circle cx="312" cy="74" r="9" class="sp-a-off"></circle>
-                    <circle cx="312" cy="22" r="9" class="sp-a-red a-tl-ns-red"></circle>
-                    <circle cx="312" cy="48" r="9" class="sp-a-yellow a-tl-ns-yellow"></circle>
-                    <circle cx="312" cy="74" r="9" class="sp-a-green a-tl-ns-green"></circle>
-                    <text x="374" y="54" class="sp-a-label">N-S road</text>
-                    <rect x="100" y="180" width="84" height="32" rx="8" class="sp-a-head"></rect>
-                    <circle cx="116" cy="196" r="9" class="sp-a-off"></circle>
-                    <circle cx="142" cy="196" r="9" class="sp-a-off"></circle>
-                    <circle cx="168" cy="196" r="9" class="sp-a-off"></circle>
-                    <circle cx="116" cy="196" r="9" class="sp-a-red a-tl-ew-red"></circle>
-                    <circle cx="142" cy="196" r="9" class="sp-a-yellow a-tl-ew-yellow"></circle>
-                    <circle cx="168" cy="196" r="9" class="sp-a-green a-tl-ew-green"></circle>
-                    <text x="142" y="236" class="sp-a-label">E-W road</text>
+                <title id="anim-traffic-title">Animated junction: north-south green, yellow, all red, then east-west green, yellow, all red</title>
+                <defs>
+                  <clipPath id="clip-traffic"><rect x="0" y="0" width="480" height="262" rx="14"></rect></clipPath>
+                </defs>
+                <g clip-path="url(#clip-traffic)">
+                  <rect width="480" height="262" class="sp-a-ground"></rect>
+                  <rect x="200" y="0" width="80" height="262" class="sp-a-road"></rect>
+                  <rect x="0" y="95" width="480" height="70" class="sp-a-road"></rect>
+                  <line x1="240" y1="0" x2="240" y2="95" class="sp-a-dash"></line>
+                  <line x1="240" y1="165" x2="240" y2="262" class="sp-a-dash"></line>
+                  <line x1="0" y1="130" x2="200" y2="130" class="sp-a-dash"></line>
+                  <line x1="280" y1="130" x2="480" y2="130" class="sp-a-dash"></line>
+                  <line x1="242" y1="172" x2="280" y2="172" class="sp-a-stop"></line>
+                  <line x1="194" y1="132" x2="194" y2="165" class="sp-a-stop"></line>
+                  <g class="sp-a-mover a-tl-car-ns">
+                    <rect x="247" y="180" width="26" height="44" rx="6" class="sp-a-car1"></rect>
+                    <rect x="250" y="186" width="20" height="10" rx="2" class="sp-a-glass"></rect>
                   </g>
-                  <rect x="1" y="274" width="478" height="62" rx="12" class="sp-a-strip"></rect>
-                  <text x="20" y="311" class="sp-a-strip-text sp-a-start">PLC step:</text>
-                  <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s1">1 &#183; N-S green</text>
-                  <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s2">2 &#183; N-S yellow</text>
-                  <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s3">3 &#183; all red</text>
-                  <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s4">4 &#183; E-W green</text>
-                  <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s5">5 &#183; E-W yellow</text>
-                  <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s6">6 &#183; all red</text>
-                  <circle cx="300" cy="305" r="8" class="sp-a-lamp-off"></circle>
-                  <circle cx="300" cy="305" r="8" class="sp-a-lamp-in a-tl-timer"></circle>
-                  <text x="314" y="311" class="sp-a-strip-text sp-a-start">timer done</text>
-                </svg>
+                  <g class="sp-a-mover a-tl-car-ew">
+                    <rect x="140" y="137" width="48" height="24" rx="6" class="sp-a-car2"></rect>
+                    <rect x="174" y="140" width="10" height="18" rx="2" class="sp-a-glass"></rect>
+                  </g>
+                  <rect x="296" y="8" width="32" height="80" rx="8" class="sp-a-head"></rect>
+                  <circle cx="312" cy="22" r="9" class="sp-a-off"></circle>
+                  <circle cx="312" cy="48" r="9" class="sp-a-off"></circle>
+                  <circle cx="312" cy="74" r="9" class="sp-a-off"></circle>
+                  <circle cx="312" cy="22" r="9" class="sp-a-red a-tl-ns-red"></circle>
+                  <circle cx="312" cy="48" r="9" class="sp-a-yellow a-tl-ns-yellow"></circle>
+                  <circle cx="312" cy="74" r="9" class="sp-a-green a-tl-ns-green"></circle>
+                  <text x="374" y="54" class="sp-a-label" data-i18n="st.98">N-S road</text>
+                  <rect x="100" y="180" width="84" height="32" rx="8" class="sp-a-head"></rect>
+                  <circle cx="116" cy="196" r="9" class="sp-a-off"></circle>
+                  <circle cx="142" cy="196" r="9" class="sp-a-off"></circle>
+                  <circle cx="168" cy="196" r="9" class="sp-a-off"></circle>
+                  <circle cx="116" cy="196" r="9" class="sp-a-red a-tl-ew-red"></circle>
+                  <circle cx="142" cy="196" r="9" class="sp-a-yellow a-tl-ew-yellow"></circle>
+                  <circle cx="168" cy="196" r="9" class="sp-a-green a-tl-ew-green"></circle>
+                  <text x="142" y="236" class="sp-a-label" data-i18n="st.99">E-W road</text>
+                </g>
+                <rect x="1" y="274" width="478" height="62" rx="12" class="sp-a-strip"></rect>
+                <text x="20" y="311" class="sp-a-strip-text sp-a-start" data-i18n="st.100">PLC step:</text>
+                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s1" data-i18n="st.101">1 &#183; N-S green</text>
+                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s2" data-i18n="st.102">2 &#183; N-S yellow</text>
+                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s3" data-i18n="st.103">3 &#183; all red</text>
+                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s4" data-i18n="st.104">4 &#183; E-W green</text>
+                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s5" data-i18n="st.105">5 &#183; E-W yellow</text>
+                <text x="118" y="311" class="sp-a-strip-text sp-a-start sp-a-strong a-tl-s6" data-i18n="st.106">6 &#183; all red</text>
+                <circle cx="300" cy="305" r="8" class="sp-a-lamp-off"></circle>
+                <circle cx="300" cy="305" r="8" class="sp-a-lamp-in a-tl-timer"></circle>
+                <text x="314" y="311" class="sp-a-strip-text sp-a-start" data-i18n="st.107">timer done</text>
+              </svg>
             <figcaption>
-              <h3>Watch the auto cycle</h3>
-              <p>Each road gets green, then yellow. Both go red for a moment before the other road starts.</p>
-              <p class="sp-rule"><strong>The rule:</strong> both roads are never green together.</p>
+              <h3 data-i18n="hw.scene.1">Watch the auto cycle</h3>
+              <p data-i18n="hw.scene.2">Each road gets green, then yellow. Both go red for a moment before the other road starts.</p>
+              <p class="sp-rule" data-i18n-html="hw.scene.3"><strong>The rule:</strong> both roads are never green together.</p>
               <button type="button" class="sp-play">Pause</button>
             </figcaption>
           </figure>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           
           <div class="scenario-layout">
             <div class="scenario-notes">
@@ -277,16 +285,17 @@
 
         <section id="pedestrian" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>Scenario 2: Pedestrian Request</h2>
-            <span>latched request</span>
+            <h2 data-i18n="hw.pedestrian.title">A crossing button is remembered</h2>
+            <span>Scenario 2: Pedestrian Request · latched request</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">Pressing the crossing button is remembered, even after you let go. The PLC serves the request when that road next turns green.</p>
-            <p class="plain-like"><strong>Like:</strong> A lift button that stays lit until the lift arrives.</p>
+            <p class="plain-text" data-i18n="hw.pedestrian.plain">Pressing the crossing button is remembered, even after you let go. The PLC serves the request when that road next turns green.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="hw.pedestrian.like">A lift button that stays lit until the lift arrives.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="scenario-layout">
             <div class="scenario-notes">
               <h3>What happens</h3>
@@ -333,16 +342,17 @@
 
         <section id="vehicle" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>Scenario 3: Vehicle Demand Extension</h2>
-            <span>green can extend, but not forever</span>
+            <h2 data-i18n="hw.vehicle.title">A waiting car can extend green, up to a limit</h2>
+            <span>Scenario 3: Vehicle Demand Extension · green can extend, but not forever</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">A car sensor can keep a green light on a little longer. There is always a maximum, so the other road never waits forever.</p>
-            <p class="plain-like"><strong>Like:</strong> Holding a door for someone, but not all day.</p>
+            <p class="plain-text" data-i18n="hw.vehicle.plain">A car sensor can keep a green light on a little longer. There is always a maximum, so the other road never waits forever.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="hw.vehicle.like">Holding a door for someone, but not all day.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="scenario-layout">
             <div class="scenario-notes">
               <h3>What happens</h3>
@@ -384,16 +394,17 @@
 
         <section id="emergency" class="panel scenario-panel danger-scenario">
           <div class="panel-heading">
-            <h2>Scenario 4: Emergency All-Red</h2>
-            <span>highest priority override</span>
+            <h2 data-i18n="hw.emergency.title">Emergency: everything turns red</h2>
+            <span>Scenario 4: Emergency All-Red · highest priority override</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">The emergency switch beats every other rule. All lights turn red at once and an alarm is recorded.</p>
-            <p class="plain-like"><strong>Like:</strong> A fire alarm that stops every lift in a building.</p>
+            <p class="plain-text" data-i18n="hw.emergency.plain">The emergency switch beats every other rule. All lights turn red at once and an alarm is recorded.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="hw.emergency.like">A fire alarm that stops every lift in a building.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="scenario-layout">
             <div class="scenario-notes">
               <h3>What happens</h3>
@@ -434,16 +445,17 @@
 
         <section id="night" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>Scenario 5: Night Red Flash</h2>
-            <span>normal sequence paused</span>
+            <h2 data-i18n="hw.night.title">Night mode: the red lights blink</h2>
+            <span>Scenario 5: Night Red Flash · normal sequence paused</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">At night the normal sequence pauses. Both red lights blink together and the greens stay off.</p>
-            <p class="plain-like"><strong>Like:</strong> A quiet junction flashing red after midnight.</p>
+            <p class="plain-text" data-i18n="hw.night.plain">At night the normal sequence pauses. Both red lights blink together and the greens stay off.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="hw.night.like">A quiet junction flashing red after midnight.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="scenario-layout">
             <div class="scenario-notes">
               <h3>What happens</h3>
@@ -479,16 +491,17 @@
 
         <section id="manual" class="panel scenario-panel">
           <div class="panel-heading">
-            <h2>Scenario 6: Manual Safe-Step</h2>
-            <span>one safe phase at a time</span>
+            <h2 data-i18n="hw.manual.title">Stepping through by hand, safely</h2>
+            <span>Scenario 6: Manual Safe-Step · one safe phase at a time</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">A technician can step through the lights one press at a time. Even then, the PLC only allows a safe next step.</p>
-            <p class="plain-like"><strong>Like:</strong> Turning pages one by one, without skipping the warning page.</p>
+            <p class="plain-text" data-i18n="hw.manual.plain">A technician can step through the lights one press at a time. Even then, the PLC only allows a safe next step.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="hw.manual.like">Turning pages one by one, without skipping the warning page.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="scenario-layout">
             <div class="scenario-notes">
               <h3>What happens</h3>
@@ -524,16 +537,17 @@
 
         <section id="fault" class="panel scenario-panel danger-scenario">
           <div class="panel-heading">
-            <h2>Scenario 7: Fault And Reset</h2>
-            <span>stuck pushbutton training fault</span>
+            <h2 data-i18n="hw.fault.title">Two buttons at once: a fault</h2>
+            <span>Scenario 7: Fault And Reset · stuck pushbutton training fault</span>
           </div>
           <div class="plain-view">
-            <p class="plain-text">If START and STOP are on together, the PLC treats it as a broken button. Everything goes red until someone fixes it and presses reset.</p>
-            <p class="plain-like"><strong>Like:</strong> A machine that refuses to run when two opposite buttons are held.</p>
+            <p class="plain-text" data-i18n="hw.fault.plain">If START and STOP are on together, the PLC treats it as a broken button. Everything goes red until someone fixes it and presses reset.</p>
+            <p class="plain-like"><strong data-i18n="ui.like">Like:</strong> <span data-i18n="hw.fault.like">A machine that refuses to run when two opposite buttons are held.</span></p>
           </div>
           <details class="tech-details">
-            <summary><span class="tech-closed">Show technical details</span><span class="tech-open">Hide technical details</span></summary>
+            <summary><span class="tech-closed" data-i18n="ui.tech.show">Show technical details</span><span class="tech-open" data-i18n="ui.tech.hide">Hide technical details</span></summary>
             <div class="tech-body">
+              <p class="lang-note" data-i18n="ui.tech.note">Technical details are in English.</p>
           <div class="scenario-layout">
             <div class="scenario-notes">
               <h3>What happens</h3>
@@ -566,8 +580,24 @@
             </div>
           </details>
         </section>
+        <section class="panel hub-check" aria-labelledby="hub-check-title">
+          <h2 id="hub-check-title" data-i18n="ui.check">Check yourself</h2>
+          <p class="hub-check-tip" data-i18n="ui.checktip">Think of your answer, then tap the question to see it.</p>
+          <details class="hub-q">
+            <summary data-i18n="hw.q1">What happens to both roads between green phases?</summary>
+            <p data-i18n="hw.a1">Both turn red for a moment, so the junction clears.</p>
+          </details>
+          <details class="hub-q">
+            <summary data-i18n="hw.q2">You tap the crossing button and let go. Is the request lost?</summary>
+            <p data-i18n="hw.a2">No. The PLC remembers it (a latch) until that road turns green.</p>
+          </details>
+          <details class="hub-q">
+            <summary data-i18n="hw.q3">Which input beats every other rule?</summary>
+            <p data-i18n="hw.a3">The emergency switch. All lights turn red at once.</p>
+          </details>
+        </section>
       </main>
-      <footer class="product-footer">
+      <footer class="product-footer" data-i18n-html="ui.footer">
         Salbotics PLC Learning Hub is an open educational product by
         <a href="https://salbotics.uk/">Salbotics Solutions</a>. It is not certified safety or traffic-control software.
       </footer>
