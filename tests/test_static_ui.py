@@ -740,12 +740,15 @@ def test_language_switch_has_complete_malay_and_german_text() -> None:
         assert not missing, (page, missing[:5])
         assert "hub-prefs.js" in html and "data-i18n-in" not in html, page
 
-    # The switch offers English (default), Bahasa Malaysia and Deutsch.
+    # English (default), Bahasa Malaysia and Deutsch are defined, but only reviewed
+    # languages are offered: BM and DE stay hidden until the owner checks them.
     prefs = (static / "hub-prefs.js").read_text(encoding="utf-8")
     assert '"salbotics-hub-lang"' in prefs
     for code in ('code: "en"', 'code: "ms"', 'code: "de"'):
         assert code in prefs
     assert 'lang = "en"' in prefs
+    assert 'var ENABLED_LANGS = ["en"];' in prefs
+    assert "if (LANGS.length > 1) group.appendChild(langGroup);" in prefs
 
     # Generated files are current: en.json matches the pages, search has BM/DE.
     for script in ("i18n_keys.py", "build_search_index.py"):

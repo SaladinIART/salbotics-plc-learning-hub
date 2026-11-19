@@ -1,6 +1,7 @@
 // Reader preferences shared by the start page and every lesson:
 //   - colour theme: Auto (follows the device), Light or Dark
-//   - language: English (default), Bahasa Malaysia or Deutsch
+//   - language: English (default); Bahasa Malaysia and Deutsch are hidden until
+//     the owner reviews them (see ENABLED_LANGS below)
 // Loaded in <head> without "defer" so the saved theme applies before the page
 // is drawn (no white flash in dark mode).
 //
@@ -32,11 +33,16 @@
   applyTheme(theme);
 
   // ---------- Language ----------
-  var LANGS = [
+  var ALL_LANGS = [
     { code: "en", short: "EN", name: "English" },
     { code: "ms", short: "BM", name: "Bahasa Malaysia" },
     { code: "de", short: "DE", name: "Deutsch" }
   ];
+  // Review gate (owner, 2026-11-19): only languages the owner has checked are offered.
+  // Bahasa Malaysia and Deutsch stay in static/lang/ but are hidden until reviewed.
+  // To turn one back on after review, add its code here, e.g. ["en", "ms"].
+  var ENABLED_LANGS = ["en"];
+  var LANGS = ALL_LANGS.filter(function (l) { return ENABLED_LANGS.indexOf(l.code) !== -1; });
   var lang = read(LANG_KEY);
   if (!LANGS.some(function (l) { return l.code === lang; })) lang = "en";
   root.setAttribute("lang", lang);
@@ -161,7 +167,7 @@
       langButtons.push(b);
       langGroup.appendChild(b);
     });
-    group.appendChild(langGroup);
+    if (LANGS.length > 1) group.appendChild(langGroup);
 
     themeButton = document.createElement("button");
     themeButton.type = "button";
