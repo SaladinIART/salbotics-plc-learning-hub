@@ -95,10 +95,10 @@ published automatically from `main` by GitHub Actions:
   titles, and "Check yourself" (three tap-to-reveal questions) before "Up next".
 - **Dark mode** - follows the phone or computer setting; the round button in the top bar switches
   Auto, Light and Dark and is remembered. Diagrams, Ladder rungs and tables stay on light cards.
-- **English, Bahasa Malaysia, Deutsch** - the EN | BM | DE switch in the top bar changes menus,
-  titles, summaries, plain views, questions, glossary meanings and search. English is the default;
-  "Show technical details" stays in English. Translations live in `static/lang/` (see
-  [Translations](#translations)) and still need a native-speaker review.
+- **English** - the live site is English only for now. Bahasa Malaysia and Deutsch translations
+  exist in `static/lang/` (see [Translations](#translations)) but are switched off until they have
+  been reviewed. To turn one back on, add its code to `ENABLED_LANGS` in `static/hub-prefs.js`;
+  the EN | BM | DE switch then reappears in the top bar.
 - **Accessible** - checked with axe-core on every page (light, dark, BM, DE) with no issues found;
   a "Skip to content" link, keyboard focus on every control and on wide tables, and labelled switches.
 - **Beginner guide** - PLC basics in plain language using a washing machine, lift,
@@ -147,7 +147,7 @@ On a phone: MENU button, learning-path progress bar and the "In 30 seconds" summ
 
 <img src="docs/screenshots/mobile.png" alt="Oil-palm lesson on a phone with MENU button, progress bar and 30-second summary" width="320">
 
-The same lesson in dark mode and German:
+The same lesson in dark mode (German shown; German is switched off on the live site until reviewed):
 
 <img src="docs/screenshots/mobile-dark-de.png" alt="Oil-palm lesson on a phone in dark mode with the German language selected" width="320">
 
