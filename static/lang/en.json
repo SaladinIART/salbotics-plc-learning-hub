@@ -785,6 +785,8 @@
  "st.97": "Each scene shows its inputs and outputs lighting up as the PLC decides. Green dots are inputs. Orange dots are outputs.",
  "st.98": "N-S road",
  "st.99": "E-W road",
+ "st.lab1": "Practise finding faults",
+ "st.lab2": "Seven breakdowns on a virtual plant",
  "st.searchhint": "Try: sensor, VFD, conveyor, safety",
  "stage.basics": "The basics",
  "stage.data": "Data and networks",

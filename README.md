@@ -21,6 +21,9 @@ This repo is built to be useful for learners and visible for recruiters: it show
   see practical automation skills.
 - **Start here:** [salbotics.uk/salbotics-plc-learning-hub](https://salbotics.uk/salbotics-plc-learning-hub/)
   (opens on a one-page "What is this?" overview).
+- **Then practise:** the [PLC Troubleshooting Lab](https://github.com/SaladinIART/salbotics-plc-troubleshooting-lab)
+  is a free virtual batching plant with seven illustrated breakdowns: what the operator sees, what the
+  machine's data shows, what was really wrong, and how it was fixed.
 
 Every automated machine works the same way - **senses, brain, muscles**:
 
@@ -51,6 +54,7 @@ The rest of this README is the technical detail.
 - Product / company site: [salbotics.uk](https://salbotics.uk/)
 - GitHub repo target: [SaladinIART/salbotics-plc-learning-hub](https://github.com/SaladinIART/salbotics-plc-learning-hub)
 - Live learning site: [https://salbotics.uk/salbotics-plc-learning-hub/](https://salbotics.uk/salbotics-plc-learning-hub/) (opens on the "What is this?" overview)
+- Companion lab (practise fault-finding): [SaladinIART/salbotics-plc-troubleshooting-lab](https://github.com/SaladinIART/salbotics-plc-troubleshooting-lab)
 - Project wiki: [GitHub wiki](https://github.com/SaladinIART/salbotics-plc-learning-hub/wiki) (mirrored in [docs/wiki](docs/wiki/Home.md))
 - Portfolio: `TODO: add portfolio URL before public launch`
 
@@ -290,6 +294,7 @@ New to automation? Start with the Beginner guide (`/static/beginner-guide.html` 
 10. Open `/static/plc-programming-methods.html` for reliable PLC programming workflow, flowcharts, language comparisons, and case studies.
 11. Open `/static/risk-assessment-certification.html` for machinery risk-assessment certification paths and budget ranges.
 12. Return to `/`, press `START`, and observe the scan-cycle state changes.
+13. Practise fault-finding on a full plant: the [PLC Troubleshooting Lab](https://github.com/SaladinIART/salbotics-plc-troubleshooting-lab) (OpenPLC + FUXA + simulator, seven illustrated breakdowns).
 
 ## Phase Roadmap
 
