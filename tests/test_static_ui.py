@@ -613,7 +613,7 @@ def test_start_page_helps_people_find_their_way() -> None:
     static = root / "static"
     start = (static / "start.html").read_text(encoding="utf-8")
     # Goal chooser, search box and "welcome back" banner.
-    assert "What do you want to do?" in start and start.count('class="sp-goal"') == 8
+    assert "What do you want to do?" in start and start.count('class="sp-goal"') == 9
     for hook in ('id="search"', 'id="hub-search-input"', 'id="continue"',
                  "/static/search-index.js", "/static/hub-home.js"):
         assert hook in start, hook

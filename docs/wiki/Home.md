@@ -17,6 +17,7 @@ Mission: one portable place where beginners, technicians, and recruiters can see
 
 1. [What is this? overview](https://salbotics.uk/salbotics-plc-learning-hub/) - the whole idea on one plain-language page (inputs, PLC, outputs; who it is for)
 1. [Beginner Guide](Beginner-Guide.md) - new to automation? start here
+1. [PLC Troubleshooting Lab](https://github.com/SaladinIART/salbotics-plc-troubleshooting-lab) - practise finding faults on a virtual batching plant (seven illustrated breakdowns)
 1. [Live Site And Mobile](Live-Site-And-Mobile.md)
 1. [Windows Download And Launch](Windows-Download-And-Launch.md)
 2. [Learning Roadmap](Learning-Roadmap.md)
